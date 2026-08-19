@@ -1,0 +1,1002 @@
+[
+  {
+    "id": "3-001",
+    "d": 3,
+    "obj": "3.1",
+    "topic": "Shared responsibility",
+    "diff": 2,
+    "type": "single",
+    "q": "An organization runs virtual machines in a public cloud IaaS environment. Under the shared responsibility model, who is responsible for patching the guest operating systems?",
+    "opts": [
+      "The customer",
+      "The cloud provider",
+      "The hypervisor vendor",
+      "The internet service provider"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "In IaaS the provider secures the physical facility, hardware, and hypervisor, while the customer owns the guest OS, applications, configuration, and data. The provider patches only what it controls; hardware vendors and ISPs have no role in guest patching.",
+    "tip": "Rule of thumb: IaaS = customer owns most; PaaS = customer owns app and data; SaaS = customer owns data, identity, and configuration."
+  },
+  {
+    "id": "3-002",
+    "d": 3,
+    "obj": "3.1",
+    "topic": "Shared responsibility",
+    "diff": 3,
+    "type": "single",
+    "q": "A company adopts a SaaS CRM platform. Which security responsibility ALWAYS remains with the customer?",
+    "opts": [
+      "Managing user identities, access rights, and data classification within the application",
+      "Patching the application servers",
+      "Securing the physical data center",
+      "Maintaining the platform's underlying database engine"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Identity, access management, and the data itself never transfer to the provider. Application patching, facility security, and database engine maintenance are provider responsibilities in SaaS.",
+    "tip": "You can outsource operations, never accountability. Data and identity remain yours in every service model."
+  },
+  {
+    "id": "3-003",
+    "d": 3,
+    "obj": "3.1",
+    "topic": "Air gap",
+    "diff": 2,
+    "type": "single",
+    "q": "A defense contractor must ensure a classified research network has no network path to any other network. Which architecture provides this?",
+    "opts": [
+      "Physical isolation with an air gap",
+      "Logical segmentation with VLANs",
+      "Software-defined networking with microsegmentation",
+      "A jump server with MFA"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "An air gap physically separates networks so no routed path exists. VLANs and SDN provide logical separation that shares physical infrastructure and can be misconfigured or bypassed. A jump server still constitutes a connection between zones.",
+    "tip": "Air gap trade-offs: strongest isolation but painful updates and data transfer, plus removable-media risk."
+  },
+  {
+    "id": "3-004",
+    "d": 3,
+    "obj": "3.1",
+    "topic": "SDN",
+    "diff": 3,
+    "type": "single",
+    "q": "Which benefit does software-defined networking provide that traditional per-device configuration does not?",
+    "opts": [
+      "Centralized, programmatic control of forwarding policy across many devices",
+      "Elimination of the need for any physical switches",
+      "Automatic encryption of all traffic by default",
+      "Guaranteed immunity to denial-of-service attacks"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "SDN separates the control plane from the data plane and manages policy centrally through APIs, enabling rapid, consistent change. Physical switches still forward traffic, encryption must be configured explicitly, and SDN does not prevent denial of service.",
+    "tip": "SDN security note: the controller becomes a high-value target and a single point of failure — protect and monitor it heavily."
+  },
+  {
+    "id": "3-005",
+    "d": 3,
+    "obj": "3.1",
+    "topic": "Infrastructure as code",
+    "diff": 3,
+    "type": "single",
+    "q": "A cloud team defines all network and server configuration in version-controlled templates deployed through a pipeline. Which security benefit does this MOST directly provide?",
+    "opts": [
+      "Consistent, reviewable, and repeatable configurations that reduce drift and misconfiguration",
+      "Automatic detection of zero-day vulnerabilities",
+      "Elimination of the need for identity and access management",
+      "Guaranteed compliance with all regulations"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Infrastructure as code makes configuration auditable, peer-reviewable, and reproducible, which reduces the misconfigurations that dominate cloud incidents. It does not detect unknown vulnerabilities, replace IAM, or produce regulatory compliance on its own.",
+    "tip": "IaC risk to remember: a mistake or an embedded secret propagates instantly to every environment. Scan templates and secrets in CI."
+  },
+  {
+    "id": "3-006",
+    "d": 3,
+    "obj": "3.1",
+    "topic": "Serverless",
+    "diff": 3,
+    "type": "single",
+    "q": "Which statement about serverless (function as a service) architecture is accurate from a security standpoint?",
+    "opts": [
+      "The provider manages the runtime and OS, so customer focus shifts to code security, permissions, and secrets management",
+      "Serverless functions cannot be exploited because they are short-lived",
+      "Serverless removes the need for logging and monitoring",
+      "The customer must patch the underlying operating system"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Serverless removes OS management from the customer but concentrates risk in application code, over-permissive execution roles, dependency vulnerabilities, and secret handling. Short lifetimes reduce persistence but not exploitation, monitoring remains critical, and OS patching is the provider's job.",
+    "tip": "Serverless pitfalls: excessive IAM permissions on the function role, injection through event data, and vulnerable dependencies."
+  },
+  {
+    "id": "3-007",
+    "d": 3,
+    "obj": "3.1",
+    "topic": "Microservices",
+    "diff": 3,
+    "type": "single",
+    "q": "A monolithic application is refactored into 40 microservices communicating over HTTP APIs. Which new security concern becomes MOST significant?",
+    "opts": [
+      "A large increase in east-west service-to-service traffic requiring authentication, authorization, and encryption between services",
+      "Loss of the ability to use TLS",
+      "Inability to log application events",
+      "Mandatory use of a single shared database credential"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Decomposition multiplies internal API calls, so each service boundary needs mutual authentication, authorization, and encryption — commonly delivered by a service mesh. TLS remains available, logging is still possible (and more important), and shared credentials are an antipattern rather than a requirement.",
+    "tip": "Microservices security keywords: mTLS, service mesh, API gateway, per-service identity, and least-privilege service accounts."
+  },
+  {
+    "id": "3-008",
+    "d": 3,
+    "obj": "3.1",
+    "topic": "Containerization",
+    "diff": 3,
+    "type": "single",
+    "q": "Which statement correctly compares containers to virtual machines?",
+    "opts": [
+      "Containers share the host kernel, so isolation is weaker than VMs but startup and density are better",
+      "Containers each run a full guest operating system, making them heavier than VMs",
+      "Containers cannot be scanned for vulnerabilities",
+      "Containers provide stronger isolation than hardware-assisted virtualization"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Containers virtualize at the OS level and share the host kernel, giving efficiency at the cost of a weaker isolation boundary; a kernel vulnerability can affect all containers on the host. VMs include full guest operating systems, container images are routinely scanned, and hypervisor isolation is stronger.",
+    "tip": "Container hardening: minimal base images, no root, read-only filesystems, image signing, registry scanning, and runtime policy."
+  },
+  {
+    "id": "3-009",
+    "d": 3,
+    "obj": "3.1",
+    "topic": "ICS/SCADA",
+    "diff": 3,
+    "type": "single",
+    "q": "A water treatment facility's SCADA systems cannot tolerate downtime and run protocols with no built-in authentication. Which architectural approach is MOST appropriate?",
+    "opts": [
+      "Segment the OT network from IT, allow only brokered one-way or tightly filtered flows, and monitor passively",
+      "Place SCADA devices on the corporate VLAN so existing controls apply",
+      "Enable automatic operating system updates on all controllers",
+      "Expose the historian to the internet for vendor support"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Operational technology requires strict IT/OT segmentation with controlled data brokering (such as a DMZ with a data diode or unidirectional gateway) and passive monitoring that will not disturb fragile devices. Flat placement with IT, aggressive automatic patching, and internet exposure all raise risk of outage or compromise.",
+    "tip": "OT priorities invert IT's: availability and safety first, then integrity, then confidentiality."
+  },
+  {
+    "id": "3-010",
+    "d": 3,
+    "obj": "3.1",
+    "topic": "RTOS",
+    "diff": 3,
+    "type": "single",
+    "q": "Which characteristic of a real-time operating system creates the greatest security constraint?",
+    "opts": [
+      "Deterministic timing requirements make patching and heavyweight security agents difficult to introduce",
+      "RTOS platforms cannot use any form of encryption",
+      "RTOS devices always have unlimited compute resources",
+      "RTOS software is immune to buffer overflows"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Real-time systems must meet strict timing guarantees, so updates and resource-hungry agents may be unacceptable, pushing protection to the network and physical layers. Encryption is possible but constrained, resources are typically limited, and RTOS code is written in memory-unsafe languages just like other embedded software.",
+    "tip": "Embedded and RTOS mitigations: network isolation, secure boot, signed firmware, and vendor-supported update processes."
+  },
+  {
+    "id": "3-011",
+    "d": 3,
+    "obj": "3.1",
+    "topic": "IoT",
+    "diff": 2,
+    "type": "single",
+    "q": "A company deploys 500 IP cameras with default credentials and no update mechanism. Which mitigation should be implemented FIRST?",
+    "opts": [
+      "Place the cameras on a dedicated segmented VLAN with no internet access and change all default credentials",
+      "Enable UPnP so the cameras can configure their own firewall rules",
+      "Assign each camera a public IP address for easier management",
+      "Rely on the vendor's cloud portal for security"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Segmentation plus credential remediation immediately reduces both exposure and the most likely compromise path. UPnP automatically opens inbound access, public IPs increase exposure, and relying on a vendor portal delegates control without reducing local risk.",
+    "tip": "IoT playbook: isolate, change defaults, disable UPnP/unneeded services, restrict egress, and monitor for anomalous traffic."
+  },
+  {
+    "id": "3-012",
+    "d": 3,
+    "obj": "3.1",
+    "topic": "Centralized vs decentralized",
+    "diff": 3,
+    "type": "single",
+    "q": "Which trade-off BEST describes a centralized security architecture compared to a decentralized one?",
+    "opts": [
+      "Consistent policy and simpler oversight, but the central component becomes a single point of failure and a high-value target",
+      "Lower consistency but automatic redundancy for every function",
+      "No need for change management because control is unified",
+      "Improved resilience because all decisions occur in one place"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Centralization brings uniform policy, easier auditing, and economies of scale, at the cost of concentrated failure and attack impact. Decentralization improves independence and blast-radius containment but complicates consistency. Change management is always required.",
+    "tip": "Whenever an architecture centralizes control, expect an exam answer about single point of failure and protecting the control plane."
+  },
+  {
+    "id": "3-013",
+    "d": 3,
+    "obj": "3.1",
+    "topic": "Risk transference",
+    "diff": 2,
+    "type": "single",
+    "q": "By moving email to a managed cloud provider with contractual security obligations and purchasing cyber insurance, an organization is primarily practicing which architectural consideration?",
+    "opts": [
+      "Risk transference",
+      "Risk avoidance",
+      "Risk acceptance",
+      "Attack surface elimination"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Shifting some consequences and obligations to another party through contracts and insurance is risk transference. Avoidance would mean not using email at all, acceptance means absorbing the risk without action, and outsourcing does not eliminate the attack surface.",
+    "tip": "Insurance and contracts transfer financial impact, not accountability. Regulators still hold the data owner responsible."
+  },
+  {
+    "id": "3-014",
+    "d": 3,
+    "obj": "3.1",
+    "topic": "Hybrid cloud",
+    "diff": 3,
+    "type": "single",
+    "q": "Which security challenge is MOST characteristic of hybrid cloud environments?",
+    "opts": [
+      "Maintaining consistent identity, policy, and visibility across on-premises and cloud platforms with different control sets",
+      "The impossibility of encrypting data in transit between environments",
+      "Complete loss of on-premises logging capability",
+      "A regulatory prohibition on hybrid architectures"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Hybrid designs must reconcile differing native controls, identity systems, and telemetry formats, which creates gaps and inconsistent enforcement. Encryption between environments is standard practice, on-premises logging continues, and hybrid architectures are not prohibited.",
+    "tip": "Hybrid answers usually involve federated identity, unified logging into one SIEM, and consistent policy as code."
+  },
+  {
+    "id": "3-015",
+    "d": 3,
+    "obj": "3.1",
+    "topic": "Patch availability",
+    "diff": 3,
+    "type": "single",
+    "q": "An architecture review flags a proprietary appliance whose vendor issues firmware updates only once per year and does not publish vulnerability details. Which consideration does this represent?",
+    "opts": [
+      "Limited patch availability increasing exposure duration",
+      "Excessive compute requirements",
+      "Insufficient power redundancy",
+      "Lack of data sovereignty"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Slow or unavailable patches lengthen the window during which known flaws remain exploitable, requiring compensating controls. Compute, power, and sovereignty are separate architectural considerations.",
+    "tip": "SY0-701 lists both 'patch availability' and 'inability to patch' as architecture considerations — expect them as answer choices."
+  },
+  {
+    "id": "3-016",
+    "d": 3,
+    "obj": "3.2",
+    "topic": "Jump server",
+    "diff": 2,
+    "type": "single",
+    "q": "Administrators must manage servers in a protected zone without exposing management ports to the user network. Which appliance is designed for this?",
+    "opts": [
+      "Jump server (bastion host)",
+      "Load balancer",
+      "Web application firewall",
+      "Reverse DNS resolver"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "A jump server is a hardened, heavily monitored single entry point for administrative access into a protected zone. Load balancers distribute traffic, WAFs inspect HTTP requests, and DNS resolvers translate names.",
+    "tip": "Harden jump servers aggressively: MFA, session recording, no internet access, minimal software, and strict inbound source restrictions."
+  },
+  {
+    "id": "3-017",
+    "d": 3,
+    "obj": "3.2",
+    "topic": "Fail-open vs fail-closed",
+    "diff": 3,
+    "type": "single",
+    "q": "A network security appliance is configured to block all traffic if its inspection engine crashes. Which failure mode is this, and what is the primary trade-off?",
+    "opts": [
+      "Fail-closed; security is preserved but availability may be lost",
+      "Fail-open; availability is preserved but traffic goes uninspected",
+      "Fail-safe; both security and availability are guaranteed",
+      "Fail-secure; the device automatically reboots into a bypass mode"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Fail-closed (fail-secure) denies traffic on failure, protecting security at the expense of availability. Fail-open permits traffic uninspected, protecting availability at the expense of security. No mode guarantees both.",
+    "tip": "Life-safety systems (door egress) typically fail-open for human safety; data security devices usually fail-closed."
+  },
+  {
+    "id": "3-018",
+    "d": 3,
+    "obj": "3.2",
+    "topic": "Inline vs tap",
+    "diff": 3,
+    "type": "single",
+    "q": "A team wants to monitor traffic for threats with zero risk of introducing latency or an outage. Which deployment should they choose?",
+    "opts": [
+      "Passive monitoring via a network tap or SPAN port",
+      "Inline intrusion prevention in blocking mode",
+      "A transparent proxy in the traffic path",
+      "A layer 7 firewall performing TLS interception"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "A tap or SPAN copies traffic out of band, so the sensor cannot affect the production path. Inline IPS, transparent proxies, and intercepting firewalls all sit in the path and can introduce latency or failure.",
+    "tip": "Passive/tap = detect only, no impact. Inline = can block, but becomes a potential point of failure."
+  },
+  {
+    "id": "3-019",
+    "d": 3,
+    "obj": "3.2",
+    "topic": "WAF",
+    "diff": 2,
+    "type": "single",
+    "q": "Which control is specifically designed to inspect and filter HTTP/HTTPS requests for attacks such as SQL injection and cross-site scripting?",
+    "opts": [
+      "Web application firewall",
+      "Stateful packet-filtering firewall",
+      "Network load balancer",
+      "Network access control appliance"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "A WAF understands HTTP semantics and can block application-layer attack patterns. A stateful firewall filters by addresses, ports, and connection state. A load balancer distributes requests, and NAC governs which devices may join the network.",
+    "tip": "WAF operates at layer 7 for web apps. It is a compensating control, not a substitute for secure coding."
+  },
+  {
+    "id": "3-020",
+    "d": 3,
+    "obj": "3.2",
+    "topic": "NGFW",
+    "diff": 3,
+    "type": "single",
+    "q": "Which capability distinguishes a next-generation firewall from a traditional layer 4 stateful firewall?",
+    "opts": [
+      "Application awareness and user identity-based policy with integrated deep packet inspection",
+      "The ability to perform network address translation",
+      "Support for static routing",
+      "The ability to log denied packets"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "NGFWs identify applications regardless of port, tie policy to user identity, and inspect payloads, often adding IPS and TLS inspection. NAT, routing, and logging are present in traditional firewalls as well.",
+    "tip": "Layer 4 firewall = ports and IPs. Layer 7/NGFW = applications, users, and content. UTM = many functions bundled in one appliance."
+  },
+  {
+    "id": "3-021",
+    "d": 3,
+    "obj": "3.2",
+    "topic": "Proxy server",
+    "diff": 2,
+    "type": "single",
+    "q": "An organization wants to inspect and filter employee web browsing, cache content, and hide internal addresses from external sites. Which device provides these functions?",
+    "opts": [
+      "Forward proxy server",
+      "Reverse proxy server",
+      "Layer 2 switch",
+      "DHCP server"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "A forward proxy sits between internal clients and the internet to filter, log, cache, and mask client addresses. A reverse proxy fronts servers to protect and distribute inbound requests. Switches forward frames, and DHCP assigns addresses.",
+    "tip": "Forward proxy protects and controls clients going out. Reverse proxy protects servers receiving traffic in."
+  },
+  {
+    "id": "3-022",
+    "d": 3,
+    "obj": "3.2",
+    "topic": "Load balancer",
+    "diff": 2,
+    "type": "single",
+    "q": "Which device improves both availability and scalability by distributing client requests across multiple backend servers and removing failed nodes from rotation?",
+    "opts": [
+      "Load balancer",
+      "Jump server",
+      "Intrusion detection sensor",
+      "Network tap"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Load balancers spread traffic using scheduling algorithms and perform health checks to bypass failed servers. Jump servers broker administrative access, IDS sensors detect threats, and taps copy traffic for monitoring.",
+    "tip": "Know the modes: active/active uses all nodes for capacity; active/passive holds a standby node for failover."
+  },
+  {
+    "id": "3-023",
+    "d": 3,
+    "obj": "3.2",
+    "topic": "802.1X",
+    "diff": 3,
+    "type": "single",
+    "q": "A company must ensure that any device plugging into a conference room network jack is authenticated before receiving network access. Which technology should be implemented?",
+    "opts": [
+      "802.1X port-based network access control with EAP",
+      "DHCP reservations for known devices",
+      "MAC address filtering on the access switch",
+      "A captive portal on the wireless controller"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "802.1X authenticates the supplicant at the port before granting access, typically using EAP methods against a RADIUS server. DHCP reservations do not restrict access, MAC filtering is easily spoofed, and captive portals apply after network attachment and are typically wireless.",
+    "tip": "802.1X components: supplicant, authenticator, authentication server. Strongest EAP method on the exam is EAP-TLS with certificates."
+  },
+  {
+    "id": "3-024",
+    "d": 3,
+    "obj": "3.2",
+    "topic": "EAP methods",
+    "diff": 3,
+    "type": "single",
+    "q": "Which EAP method provides mutual certificate-based authentication of both client and server and is considered the most secure option for enterprise wireless?",
+    "opts": [
+      "EAP-TLS",
+      "EAP-MD5",
+      "PEAP with MSCHAPv2 only",
+      "LEAP"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "EAP-TLS requires certificates on both ends, eliminating password-based attacks. EAP-MD5 offers no mutual authentication and is obsolete, PEAP-MSCHAPv2 protects passwords inside a TLS tunnel but still relies on credentials, and LEAP is a deprecated proprietary method vulnerable to offline cracking.",
+    "tip": "If certificates are mentioned as available, EAP-TLS is the expected answer."
+  },
+  {
+    "id": "3-025",
+    "d": 3,
+    "obj": "3.2",
+    "topic": "IPsec",
+    "diff": 3,
+    "type": "single",
+    "q": "Which IPsec component provides confidentiality, and which provides only integrity and authentication?",
+    "opts": [
+      "ESP provides confidentiality plus integrity; AH provides integrity and authentication without encryption",
+      "AH provides confidentiality; ESP provides integrity only",
+      "IKE provides confidentiality; ESP provides key exchange",
+      "Both AH and ESP provide identical services"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Encapsulating Security Payload encrypts and authenticates the payload, while Authentication Header authenticates without encrypting. IKE negotiates keys and security associations rather than protecting payloads directly.",
+    "tip": "Also know tunnel mode (encrypts the entire original packet, used site-to-site) versus transport mode (protects the payload only)."
+  },
+  {
+    "id": "3-026",
+    "d": 3,
+    "obj": "3.2",
+    "topic": "VPN types",
+    "diff": 3,
+    "type": "single",
+    "q": "A remote user's laptop is configured so that only traffic destined for corporate subnets goes through the VPN while internet browsing goes directly out. Which configuration is this, and what is the main security concern?",
+    "opts": [
+      "Split tunneling; the endpoint bypasses corporate inspection for internet traffic",
+      "Full tunneling; all traffic is inspected but bandwidth is consumed",
+      "Site-to-site tunneling; branch traffic is aggregated",
+      "Transport mode IPsec; only payloads are protected"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Split tunneling reduces VPN load and improves performance but removes corporate visibility and filtering from internet-bound traffic, creating a potential bridge between the internet and the corporate network. Full tunneling routes everything through the corporate egress, and the other options describe different deployment concepts.",
+    "tip": "Split tunnel = performance, less inspection. Full tunnel = inspection and control, more bandwidth and latency."
+  },
+  {
+    "id": "3-027",
+    "d": 3,
+    "obj": "3.2",
+    "topic": "SASE",
+    "diff": 3,
+    "type": "single",
+    "q": "A distributed workforce needs consistent security policy and low-latency access to cloud applications without backhauling all traffic to headquarters. Which architecture BEST fits?",
+    "opts": [
+      "Secure access service edge combining SD-WAN with cloud-delivered security services",
+      "A single on-premises UTM appliance at headquarters",
+      "Site-to-site IPsec tunnels from every home office to the data center",
+      "A dial-up remote access server pool"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "SASE delivers networking and security (SWG, CASB, ZTNA, FWaaS) from cloud points of presence near the user, eliminating hairpin routing while keeping policy consistent. A single appliance and universal backhaul create latency and a bottleneck, and dial-up is obsolete.",
+    "tip": "SASE = SD-WAN + cloud security stack. ZTNA is the access component that replaces broad VPN network access."
+  },
+  {
+    "id": "3-028",
+    "d": 3,
+    "obj": "3.2",
+    "topic": "Security zones",
+    "diff": 2,
+    "type": "single",
+    "q": "Where should an internet-facing web server that must also query an internal database be placed?",
+    "opts": [
+      "In a screened subnet (DMZ), with tightly restricted rules permitting only required database traffic inward",
+      "On the internal LAN with a public IP assigned directly",
+      "On the same subnet as domain controllers for performance",
+      "Outside the firewall with no filtering to simplify troubleshooting"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "A screened subnet isolates internet-facing services so a compromise does not directly expose internal systems, while narrow rules permit only the necessary backend flow. The other placements collapse security zones or remove protection entirely.",
+    "tip": "Zone design principle: public-facing services in the DMZ, data tier internal, and only explicitly required flows between them."
+  },
+  {
+    "id": "3-029",
+    "d": 3,
+    "obj": "3.2",
+    "topic": "Device placement",
+    "diff": 3,
+    "type": "single",
+    "q": "An IDS sensor is deployed to detect attacks against internet-facing services before they reach internal networks. Where is the MOST effective placement?",
+    "opts": [
+      "Monitoring traffic at the network perimeter between the internet edge and the screened subnet",
+      "On the guest wireless VLAN only",
+      "Inside a single application server's loopback interface",
+      "On an isolated lab network with no production traffic"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Sensors must see the traffic of interest, so perimeter placement covers inbound attacks against exposed services. Guest VLANs, loopback interfaces, and lab networks do not carry the relevant traffic.",
+    "tip": "Sensor placement rule: visibility follows traffic. Decide what you must see, then place the sensor where that traffic flows."
+  },
+  {
+    "id": "3-030",
+    "d": 3,
+    "obj": "3.2",
+    "topic": "Port security",
+    "diff": 3,
+    "type": "single",
+    "q": "Which switch feature prevents an attacker from connecting a rogue switch that floods the CAM table to force the switch into fail-open flooding behavior?",
+    "opts": [
+      "Port security limiting the number of learned MAC addresses per port",
+      "Enabling Spanning Tree Protocol only",
+      "Setting a static IP address on the switch",
+      "Increasing the switch's MTU"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Port security caps MAC addresses per port and can shut down or restrict violating ports, defeating MAC flooding. STP prevents loops rather than table exhaustion, and IP or MTU settings are unrelated.",
+    "tip": "Switch attacks and defenses: MAC flooding → port security; ARP poisoning → DAI; rogue DHCP → DHCP snooping; STP manipulation → BPDU guard."
+  },
+  {
+    "id": "3-031",
+    "d": 3,
+    "obj": "3.1",
+    "topic": "High availability",
+    "diff": 3,
+    "type": "single",
+    "q": "Which design provides the HIGHEST availability for a critical customer-facing application?",
+    "opts": [
+      "Active/active clustering across two geographically separate regions with automated failover and health-based traffic steering",
+      "A single high-specification server with a redundant power supply",
+      "Nightly backups to an offsite vault",
+      "A warm standby server restored manually within eight hours"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Geographic active/active clustering with automated failover eliminates single points of failure at both the server and site level. Redundant power protects one component, backups enable recovery rather than continuous availability, and a manually restored warm standby produces hours of downtime.",
+    "tip": "Availability ladder: single server < redundant components < local cluster < multi-site active/passive < multi-region active/active."
+  },
+  {
+    "id": "3-032",
+    "d": 3,
+    "obj": "3.2",
+    "topic": "Firewall rules",
+    "diff": 3,
+    "type": "single",
+    "q": "Which firewall rule design principle should be applied at the end of every access control list?",
+    "opts": [
+      "An explicit deny-all rule with logging",
+      "An explicit allow-all rule for troubleshooting",
+      "A rule permitting ICMP from any source",
+      "A rule allowing all outbound traffic on any port"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "An explicit final deny with logging enforces default-deny posture and creates evidence of blocked attempts. Broad allow rules, unrestricted ICMP, and unrestricted egress undermine control and enable exfiltration and reconnaissance.",
+    "tip": "Rule order matters: most specific first, implicit deny last, and always log denies. Also filter egress, not just ingress."
+  },
+  {
+    "id": "3-033",
+    "d": 3,
+    "obj": "3.2",
+    "topic": "TLS inspection",
+    "diff": 3,
+    "type": "single",
+    "q": "An organization deploys TLS interception at the perimeter. Which concern MUST be addressed for this to work without breaking client trust?",
+    "opts": [
+      "The inspection appliance's issuing CA certificate must be trusted by managed endpoints, and exemptions are needed for pinned or sensitive traffic",
+      "TLS interception requires disabling all certificate validation on clients",
+      "Interception eliminates the need for endpoint protection",
+      "Interception works only with TLS 1.0"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Interception re-signs traffic with an internal CA, so endpoints must trust that CA, and categories such as banking, health, and certificate-pinned applications typically require bypass. Disabling validation would be dangerous, endpoint protection remains necessary, and modern TLS versions are supported.",
+    "tip": "TLS inspection trade-offs: visibility versus privacy, performance cost, and breakage of pinned applications."
+  },
+  {
+    "id": "3-034",
+    "d": 3,
+    "obj": "3.2",
+    "topic": "Network appliances",
+    "diff": 2,
+    "type": "single",
+    "q": "Which appliance is used to aggregate and normalize telemetry from many sources to support detection and investigation?",
+    "opts": [
+      "A SIEM platform collecting logs and events from sensors and devices",
+      "A layer 2 access switch",
+      "A DHCP relay agent",
+      "A network time server"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "SIEM platforms aggregate, normalize, and correlate telemetry for alerting and investigation. Switches forward frames, DHCP relays forward address requests, and time servers synchronize clocks — though accurate time is a prerequisite for correlation.",
+    "tip": "Accurate NTP is a hidden exam favorite: without synchronized time, log correlation and forensics fall apart."
+  },
+  {
+    "id": "3-035",
+    "d": 3,
+    "obj": "3.1",
+    "topic": "Multi-cloud",
+    "diff": 3,
+    "type": "single",
+    "q": "What is the PRIMARY security-relevant benefit of a deliberate multi-cloud strategy?",
+    "opts": [
+      "Reduced dependence on a single provider, limiting the impact of one provider's outage or compromise",
+      "Elimination of the shared responsibility model",
+      "A single native control plane for all environments",
+      "Automatic regulatory compliance in every jurisdiction"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Multi-cloud reduces concentration risk and vendor lock-in, improving resilience. It does not remove shared responsibility, and it actually complicates control-plane consistency and compliance rather than simplifying them.",
+    "tip": "Platform diversity and multi-cloud both address correlated failure — the trade-off is operational complexity and skills cost."
+  },
+  {
+    "id": "3-036",
+    "d": 3,
+    "obj": "3.2",
+    "topic": "Selection of controls",
+    "diff": 3,
+    "type": "single",
+    "q": "A company must prevent unmanaged personal devices from accessing internal applications while allowing corporate laptops. Which combination is MOST effective?",
+    "opts": [
+      "Device certificate-based authentication with posture assessment through conditional access policies",
+      "A shared VPN password distributed to employees",
+      "Blocking access from non-corporate IP addresses only",
+      "Requiring users to promise not to use personal devices"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Device identity plus posture checks distinguish managed from unmanaged endpoints regardless of network location. Shared passwords do not identify devices, IP-based restrictions fail for remote work and can be circumvented, and honor-system policy is unenforceable.",
+    "tip": "Modern access control decision inputs: user identity, device identity, device health, location, and risk signals."
+  },
+  {
+    "id": "3-037",
+    "d": 3,
+    "obj": "3.1",
+    "topic": "Cost and scalability",
+    "diff": 2,
+    "type": "single",
+    "q": "Which architectural characteristic BEST describes the ability to add capacity quickly in response to demand without redesigning the system?",
+    "opts": [
+      "Scalability",
+      "Resilience",
+      "Risk transference",
+      "Data sovereignty"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Scalability is the capacity to grow (or shrink) to meet demand. Resilience is the ability to withstand and recover from failure, risk transference shifts consequences to another party, and data sovereignty concerns legal jurisdiction over data.",
+    "tip": "Scalability = handle more load. Elasticity = scale up and down automatically. Resilience = survive failure."
+  },
+  {
+    "id": "3-038",
+    "d": 3,
+    "obj": "3.2",
+    "topic": "Remote access",
+    "diff": 3,
+    "type": "single",
+    "q": "Which approach follows Zero Trust principles more closely than a traditional full-network VPN for third-party contractor access?",
+    "opts": [
+      "Zero trust network access granting per-application access after continuous verification",
+      "A site-to-site IPsec tunnel to the contractor's office network",
+      "A shared remote desktop account with a strong password",
+      "Opening RDP to the contractor's static public IP address"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "ZTNA brokers access to specific applications rather than placing the contractor on the network, and it re-evaluates trust continuously. Site-to-site tunnels extend broad network trust, shared accounts destroy attribution, and exposed RDP is a well-known attack vector even when IP-restricted.",
+    "tip": "Third-party access answers: per-application access, individual accounts, MFA, time-bound, session recording, and least privilege."
+  },
+  {
+    "id": "3-039",
+    "d": 3,
+    "obj": "3.1",
+    "topic": "On-premises vs cloud",
+    "diff": 3,
+    "type": "single",
+    "q": "Which factor MOST often argues for keeping a workload on premises rather than migrating it to public cloud?",
+    "opts": [
+      "Regulatory or contractual requirements that constrain data location and physical control",
+      "A desire to reduce capital expenditure",
+      "The need for rapid elastic scaling",
+      "A preference for provider-managed patching"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Data residency, sovereignty, and physical control requirements are common drivers for on-premises retention. Lower capital expenditure, elasticity, and managed patching are all arguments in favor of cloud adoption.",
+    "tip": "Cloud pushes cost from capex to opex and adds elasticity; on-premises retains physical control and predictable latency."
+  },
+  {
+    "id": "3-040",
+    "d": 3,
+    "obj": "3.2",
+    "topic": "UTM",
+    "diff": 2,
+    "type": "single",
+    "q": "A small branch office needs firewalling, antivirus, content filtering, and VPN termination in one cost-effective device. Which product category fits?",
+    "opts": [
+      "Unified threat management appliance",
+      "Dedicated hardware security module",
+      "Layer 2 unmanaged switch",
+      "Passive network tap"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "UTM consolidates multiple security functions into a single appliance, which suits small sites with limited budget and staff. HSMs manage cryptographic keys, unmanaged switches provide no security features, and taps only copy traffic.",
+    "tip": "UTM trade-off: convenience and lower cost versus a single point of failure and possible performance limits when all features are enabled."
+  },
+  {
+    "id": "3-041",
+    "d": 3,
+    "obj": "3.1",
+    "topic": "Virtualization security",
+    "diff": 3,
+    "type": "single",
+    "q": "Which practice reduces the risk of unmanaged virtual machine sprawl?",
+    "opts": [
+      "Enforce lifecycle policies with automated inventory, ownership tagging, and expiration of unused instances",
+      "Allow any developer to create VMs without approval to improve agility",
+      "Disable logging on non-production VMs",
+      "Use identical local administrator passwords across all VMs for consistency"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Lifecycle governance with inventory, ownership, and expiration prevents forgotten, unpatched systems from accumulating. Unrestricted creation causes sprawl, disabling logs removes visibility, and shared local admin passwords enable lateral movement.",
+    "tip": "VM sprawl creates shadow assets: unpatched, unmonitored, and often forgotten in the asset inventory."
+  },
+  {
+    "id": "3-042",
+    "d": 3,
+    "obj": "3.2",
+    "topic": "IDS vs IPS",
+    "diff": 2,
+    "type": "single",
+    "q": "Which statement correctly distinguishes an IDS from an IPS in a network deployment?",
+    "opts": [
+      "An IDS detects and alerts, typically out of band; an IPS sits inline and can drop malicious traffic",
+      "An IDS blocks traffic while an IPS only logs it",
+      "Both must be deployed inline to function",
+      "An IPS cannot generate alerts"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Detection systems observe and alert, while prevention systems are inline and can block. An IPS also generates alerts, and IDS deployments are commonly passive via tap or SPAN.",
+    "tip": "False positives on an IDS create noise; false positives on an IPS create outages. That difference drives deployment decisions."
+  },
+  {
+    "id": "3-043",
+    "d": 3,
+    "obj": "3.2",
+    "topic": "Sensors",
+    "diff": 3,
+    "type": "single",
+    "q": "A security team must detect malicious activity in encrypted east-west traffic between application servers without decrypting it. Which approach is MOST practical?",
+    "opts": [
+      "Deploy host-based sensors and EDR agents on the servers themselves",
+      "Add a second perimeter firewall",
+      "Block all encrypted traffic between servers",
+      "Rely solely on NetFlow volume totals"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Host-based visibility sees activity after decryption on the endpoint, which solves the encrypted-traffic blind spot. Perimeter devices do not observe east-west flows, blocking encryption is unacceptable, and flow volume alone gives limited detection detail.",
+    "tip": "Encrypted traffic blind spots are addressed by endpoint telemetry, TLS inspection where feasible, or metadata analysis such as JA3 fingerprinting."
+  },
+  {
+    "id": "3-044",
+    "d": 3,
+    "obj": "3.1",
+    "topic": "Responsiveness and resilience",
+    "diff": 3,
+    "type": "single",
+    "q": "An architecture uses a single large database instance that all microservices depend on. Which resilience weakness does this create?",
+    "opts": [
+      "A single point of failure whose loss disables every dependent service",
+      "Excessive geographic dispersion",
+      "Insufficient logging capability",
+      "Unavoidable data sovereignty violations"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Shared critical dependencies concentrate failure impact, negating much of the isolation benefit of microservices. Dispersion, logging, and sovereignty are not consequences of a shared database instance.",
+    "tip": "Look for hidden single points of failure: shared databases, one authentication provider, one DNS resolver, or one internet circuit."
+  },
+  {
+    "id": "3-045",
+    "d": 3,
+    "obj": "3.2",
+    "topic": "Network segmentation",
+    "diff": 3,
+    "type": "single",
+    "q": "A hospital must keep medical imaging devices, guest Wi-Fi, and clinical workstations from communicating with each other. Which implementation BEST accomplishes this?",
+    "opts": [
+      "Separate VLANs per zone with inter-VLAN traffic filtered by explicit firewall rules",
+      "One flat VLAN with host-based firewalls only",
+      "Assigning different DHCP scopes in the same broadcast domain",
+      "Using unique hostnames per device category"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "VLANs paired with enforced filtering between them create real separation. Host-based firewalls in a flat network can be misconfigured or bypassed, separate DHCP scopes in one broadcast domain still permit direct communication, and naming conventions provide no isolation.",
+    "tip": "VLANs alone only separate broadcast domains — segmentation requires filtering at the routed boundary."
+  },
+  {
+    "id": "3-046",
+    "d": 3,
+    "obj": "3.2",
+    "topic": "Secure protocols",
+    "diff": 2,
+    "type": "single",
+    "q": "Which protocol pairing correctly matches a secure alternative to its insecure counterpart?",
+    "opts": [
+      "SNMPv3 replaces SNMPv1/v2c for encrypted, authenticated device management",
+      "TFTP replaces SFTP for secure file transfer",
+      "HTTP replaces HTTPS for secure web browsing",
+      "Telnet replaces SSH for encrypted administration"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "SNMPv3 adds authentication and encryption that earlier versions lack. The other pairings are reversed: SFTP, HTTPS, and SSH are the secure options.",
+    "tip": "Port pairs worth memorizing: 22 SSH/SFTP, 443 HTTPS, 465/587 SMTPS/submission, 636 LDAPS, 989/990 FTPS, 161/162 SNMP."
+  },
+  {
+    "id": "3-047",
+    "d": 3,
+    "obj": "3.1",
+    "topic": "Embedded systems",
+    "diff": 3,
+    "type": "single",
+    "q": "Which characteristic of embedded systems most complicates traditional vulnerability management?",
+    "opts": [
+      "Long deployment lifecycles with limited or vendor-controlled update mechanisms",
+      "Standardized support for endpoint detection and response agents",
+      "Frequent, automatic security patches from multiple sources",
+      "Unlimited storage for security logs"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Embedded devices often remain in service for a decade or more with infrequent, vendor-gated firmware updates and no capacity for security agents. Broad EDR support, frequent patching, and generous logging are precisely what these devices lack.",
+    "tip": "Compensate for unpatchable devices with network isolation, strict egress control, and passive monitoring."
+  },
+  {
+    "id": "3-048",
+    "d": 3,
+    "obj": "3.2",
+    "topic": "Connectivity",
+    "diff": 2,
+    "type": "single",
+    "q": "A branch office has a single ISP circuit and loses all connectivity during a fiber cut. Which architectural change addresses this?",
+    "opts": [
+      "Add a diverse secondary circuit from a different provider with automatic failover",
+      "Increase the bandwidth of the existing circuit",
+      "Add a second firewall behind the existing one",
+      "Enable quality of service on the router"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Provider and path diversity removes the single point of failure in connectivity. More bandwidth, added inline devices, and traffic prioritization do nothing when the only circuit is severed.",
+    "tip": "Redundancy must be diverse to count: different provider, different physical path, and ideally different media."
+  },
+  {
+    "id": "3-049",
+    "d": 3,
+    "obj": "3.2",
+    "topic": "Control selection",
+    "diff": 3,
+    "type": "single",
+    "q": "An application must be protected against injection attacks, but the vendor cannot modify the code for six months. Which control provides the BEST interim protection?",
+    "opts": [
+      "A web application firewall with tuned rules in blocking mode",
+      "A network intrusion detection sensor in passive mode",
+      "Increased password complexity for application users",
+      "More frequent database backups"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "A WAF can block injection payloads at layer 7 as a compensating control while code remediation is pending. Passive detection does not prevent exploitation, password rules do not affect injection, and backups aid recovery rather than prevention.",
+    "tip": "'Cannot change the code yet' = compensating control, usually a WAF or virtual patch, with a documented remediation date."
+  },
+  {
+    "id": "3-050",
+    "d": 3,
+    "obj": "3.1",
+    "topic": "Power and compute",
+    "diff": 2,
+    "type": "single",
+    "q": "Which architectural consideration is MOST relevant when deploying security agents to battery-powered field sensors?",
+    "opts": [
+      "Limited power and compute budgets may make full agents impractical",
+      "Data sovereignty rules for sensor telemetry",
+      "The need for active/active clustering on each sensor",
+      "Requirements for TLS interception on the device"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Constrained power and processing capacity are the defining limits of field and IoT devices, which is why lightweight or network-based controls are used instead. Sovereignty, clustering, and interception are not the primary constraint in this scenario.",
+    "tip": "SY0-701 explicitly lists power and compute among architecture considerations — remember them for IoT, embedded, and RTOS questions."
+  }
+]

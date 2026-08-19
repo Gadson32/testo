@@ -1,0 +1,902 @@
+[
+  {
+    "id": "5-001",
+    "d": 5,
+    "obj": "5.1",
+    "topic": "Policy types",
+    "diff": 2,
+    "type": "single",
+    "q": "Which document defines what employees may and may not do with company-issued systems, networks, and data?",
+    "opts": [
+      "Acceptable use policy",
+      "Business continuity plan",
+      "Incident response plan",
+      "Software development lifecycle standard"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "The AUP sets expectations and prohibitions for use of organizational resources and is typically acknowledged at onboarding. Continuity plans address operating through disruption, incident response plans govern handling of security events, and SDLC standards govern software delivery.",
+    "tip": "Policy = what and why (mandatory, high level). Standard = specific mandatory requirements. Procedure = step-by-step how. Guideline = recommended, not mandatory."
+  },
+  {
+    "id": "5-002",
+    "d": 5,
+    "obj": "5.1",
+    "topic": "Policy hierarchy",
+    "diff": 3,
+    "type": "single",
+    "q": "A document states, \"Consider using a passphrase of four unrelated words for easier recall.\" Which type of governance document is this statement from?",
+    "opts": [
+      "A guideline, because it is advisory rather than mandatory",
+      "A standard, because it specifies a technical requirement",
+      "A policy, because it directs organizational behavior",
+      "A procedure, because it provides steps"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Advisory language such as \"consider\" indicates a guideline. Standards use mandatory language specifying required parameters, policies establish binding direction, and procedures give ordered execution steps.",
+    "tip": "Look at the verb: 'must/shall' = policy or standard, 'should/may/consider' = guideline, numbered steps = procedure."
+  },
+  {
+    "id": "5-003",
+    "d": 5,
+    "obj": "5.1",
+    "topic": "Standards",
+    "diff": 2,
+    "type": "single",
+    "q": "Which document would specify that all remote access must use AES-256 encryption and phishing-resistant MFA?",
+    "opts": [
+      "An encryption and access control standard",
+      "The acceptable use policy",
+      "The business continuity plan",
+      "The vendor NDA"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Standards define specific mandatory technical requirements that implement broader policy intent. The AUP governs user behavior, the continuity plan addresses disruption, and an NDA governs confidentiality obligations with third parties.",
+    "tip": "SY0-701 names four standard categories: password, access control, physical security, and encryption."
+  },
+  {
+    "id": "5-004",
+    "d": 5,
+    "obj": "5.1",
+    "topic": "Procedures",
+    "diff": 2,
+    "type": "single",
+    "q": "Which document provides the specific, repeatable steps analysts follow when responding to a confirmed ransomware detection?",
+    "opts": [
+      "An incident response playbook",
+      "The information security policy",
+      "The risk register",
+      "The service level agreement"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Playbooks are procedural documents giving step-by-step response actions for a specific scenario. Policy sets direction, the risk register tracks identified risks, and an SLA defines service commitments with a provider.",
+    "tip": "Playbooks reduce decision latency during incidents — expect exam scenarios that reward having one prepared in advance."
+  },
+  {
+    "id": "5-005",
+    "d": 5,
+    "obj": "5.1",
+    "topic": "Onboarding and offboarding",
+    "diff": 2,
+    "type": "single",
+    "q": "Which procedure MOST directly reduces the risk of former employees retaining access to systems?",
+    "opts": [
+      "A documented offboarding procedure covering account disablement, credential revocation, and asset return",
+      "An annual acceptable use policy refresher",
+      "A quarterly phishing simulation",
+      "A software development lifecycle standard"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Offboarding procedures ensure timely, complete removal of access and recovery of assets. Policy refreshers, phishing tests, and SDLC standards address different risks entirely.",
+    "tip": "Offboarding checklist: disable accounts, revoke tokens and certificates, collect devices and badges, transfer data ownership, and remove from distribution lists."
+  },
+  {
+    "id": "5-006",
+    "d": 5,
+    "obj": "5.1",
+    "topic": "Governance structures",
+    "diff": 3,
+    "type": "single",
+    "q": "A company forms a cross-functional group of leaders from IT, legal, finance, and operations that meets monthly to review security risks and approve exceptions. What is this structure?",
+    "opts": [
+      "A security steering committee",
+      "An external regulatory body",
+      "A managed security service provider",
+      "An independent audit firm"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Committees provide cross-functional governance, oversight, and decision-making authority within the organization. Regulators are external government entities, MSSPs deliver operational services, and audit firms provide independent assurance.",
+    "tip": "Governance structures on the exam: boards, committees, government entities, and centralized versus decentralized models."
+  },
+  {
+    "id": "5-007",
+    "d": 5,
+    "obj": "5.1",
+    "topic": "Data roles",
+    "diff": 3,
+    "type": "single",
+    "q": "Under privacy regulation terminology, which party determines the purposes and means of processing personal data?",
+    "opts": [
+      "The data controller",
+      "The data processor",
+      "The data custodian",
+      "The data subject"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "The controller decides why and how personal data is processed and bears primary accountability. The processor acts on the controller's instructions, the custodian implements technical safeguards, and the data subject is the individual the data describes.",
+    "tip": "Controller decides, processor executes, custodian maintains, steward oversees quality, subject is the person."
+  },
+  {
+    "id": "5-008",
+    "d": 5,
+    "obj": "5.1",
+    "topic": "Data roles",
+    "diff": 3,
+    "type": "single",
+    "q": "A cloud email provider stores and processes customer messages strictly according to the customer's configuration and instructions. What role does the provider hold?",
+    "opts": [
+      "Data processor",
+      "Data controller",
+      "Data subject",
+      "Data owner"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Acting only on the customer's instructions makes the provider a processor. The customer organization is the controller and owner, and data subjects are the individuals whose personal data is involved.",
+    "tip": "Processor obligations flow from the contract (a data processing agreement) — a common third-party risk exam theme."
+  },
+  {
+    "id": "5-009",
+    "d": 5,
+    "obj": "5.1",
+    "topic": "External considerations",
+    "diff": 3,
+    "type": "single",
+    "q": "A US-based retailer expands into the European Union and must now address additional requirements around personal data. Which external consideration is driving this?",
+    "opts": [
+      "Regional and global regulatory requirements applicable where data subjects reside",
+      "Internal audit scheduling constraints",
+      "The company's software development methodology",
+      "The vendor's product roadmap"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Expanding into new jurisdictions brings that region's legal and regulatory obligations, such as GDPR for EU data subjects. Internal scheduling, development methodology, and vendor plans are not external legal drivers.",
+    "tip": "External considerations to remember: regulatory, legal, industry, and geographic scope from local through global."
+  },
+  {
+    "id": "5-010",
+    "d": 5,
+    "obj": "5.1",
+    "topic": "Monitoring and revision",
+    "diff": 2,
+    "type": "single",
+    "q": "Why must security policies undergo scheduled review and revision?",
+    "opts": [
+      "Threats, technology, business operations, and regulations change, and stale policies stop reflecting actual requirements",
+      "Auditors require the document creation date to change annually",
+      "Revisions automatically improve employee compliance",
+      "Policies expire legally after 12 months"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Policies must track changes in the threat landscape, technology stack, business model, and legal environment to remain effective. Cosmetic updates, assumed compliance improvements, and automatic legal expiration are not the reasons.",
+    "tip": "Review triggers: annual cycle, major incidents, regulatory change, significant technology change, and merger or acquisition."
+  },
+  {
+    "id": "5-011",
+    "d": 5,
+    "obj": "5.2",
+    "topic": "Quantitative risk",
+    "diff": 3,
+    "type": "single",
+    "q": "A server worth $200,000 would lose 25 percent of its value in a flood, and floods are expected once every 20 years. What is the annualized loss expectancy?",
+    "opts": [
+      "$2,500",
+      "$50,000",
+      "$10,000",
+      "$1,000"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "SLE = asset value × exposure factor = $200,000 × 0.25 = $50,000. ARO = 1/20 = 0.05. ALE = SLE × ARO = $50,000 × 0.05 = $2,500. The $50,000 figure is the SLE rather than the annualized figure.",
+    "tip": "Work it in order: SLE first, then ARO, then multiply. The most common wrong answer is the SLE itself."
+  },
+  {
+    "id": "5-012",
+    "d": 5,
+    "obj": "5.2",
+    "topic": "Quantitative risk",
+    "diff": 3,
+    "type": "single",
+    "q": "A control costing $40,000 per year would reduce a risk with an ALE of $25,000 to nearly zero. What is the appropriate recommendation?",
+    "opts": [
+      "Do not implement the control as designed, since its cost exceeds the expected annual loss; seek a cheaper mitigation or accept the risk",
+      "Implement it immediately because eliminating risk is always worthwhile",
+      "Implement it and increase the asset's valuation to justify the cost",
+      "Transfer the risk and also implement the control"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Controls should be cost-justified: spending $40,000 annually to avoid $25,000 in expected annual loss is not economically sound absent other factors such as regulatory mandates or safety impact. Inflating asset values to justify spending is dishonest, and stacking transfer with an uneconomic control compounds the cost.",
+    "tip": "Rule: if the annual control cost exceeds the ALE, look for a cheaper option, unless law, safety, or reputation changes the calculus."
+  },
+  {
+    "id": "5-013",
+    "d": 5,
+    "obj": "5.2",
+    "topic": "Qualitative risk",
+    "diff": 2,
+    "type": "single",
+    "q": "Which characteristic BEST describes qualitative risk analysis?",
+    "opts": [
+      "It rates likelihood and impact using descriptive scales such as low, medium, and high, relying on expert judgment",
+      "It produces precise monetary loss figures using historical data",
+      "It requires an actuarial model to be valid",
+      "It is only usable for physical security risks"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Qualitative analysis uses relative scales and judgment, making it fast and broadly applicable when reliable numeric data is unavailable. Monetary precision and actuarial modeling describe quantitative analysis, and qualitative methods apply across all risk types.",
+    "tip": "Most organizations use both: qualitative for triage and breadth, quantitative for major decisions requiring cost justification."
+  },
+  {
+    "id": "5-014",
+    "d": 5,
+    "obj": "5.2",
+    "topic": "Risk register",
+    "diff": 2,
+    "type": "single",
+    "q": "Which document tracks identified risks along with their owners, current treatment, and status over time?",
+    "opts": [
+      "The risk register",
+      "The asset inventory",
+      "The incident response playbook",
+      "The business impact analysis"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "The risk register is the living record of identified risks, their analysis, owners, treatments, and key risk indicators. The asset inventory lists systems, playbooks provide response steps, and a BIA analyzes process criticality and downtime impact.",
+    "tip": "Register contents to remember: risk description, likelihood, impact, owner, treatment, residual risk, KRIs, and review date."
+  },
+  {
+    "id": "5-015",
+    "d": 5,
+    "obj": "5.2",
+    "topic": "Key risk indicators",
+    "diff": 3,
+    "type": "single",
+    "q": "Which metric functions as a key risk indicator for credential compromise risk?",
+    "opts": [
+      "The percentage of privileged accounts without MFA enabled",
+      "The number of help desk tickets closed per week",
+      "Total storage consumed by the SIEM",
+      "The number of employees who attended the holiday party"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "A KRI is a measurable signal that changes as risk exposure changes; unprotected privileged accounts directly track credential compromise exposure. Ticket throughput, storage consumption, and social participation do not indicate risk levels.",
+    "tip": "Good KRIs are leading indicators — they warn before the loss event, unlike lagging metrics such as incident counts."
+  },
+  {
+    "id": "5-016",
+    "d": 5,
+    "obj": "5.2",
+    "topic": "Risk appetite",
+    "diff": 3,
+    "type": "single",
+    "q": "A startup deliberately accepts higher security risk to launch features quickly and capture market share. Which risk appetite does this reflect?",
+    "opts": [
+      "Expansionary",
+      "Conservative",
+      "Neutral",
+      "Zero tolerance"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "An expansionary appetite accepts greater risk in pursuit of growth. A conservative appetite minimizes risk even at the cost of opportunity, and a neutral appetite balances the two. Zero tolerance is not one of the three appetite categories on the exam.",
+    "tip": "Appetite categories: expansionary (growth-seeking), conservative (risk-averse), and neutral (balanced)."
+  },
+  {
+    "id": "5-017",
+    "d": 5,
+    "obj": "5.2",
+    "topic": "Risk strategies",
+    "diff": 2,
+    "type": "single",
+    "q": "A company discontinues a legacy product line entirely because securing it would cost more than it earns. Which risk management strategy is this?",
+    "opts": [
+      "Avoidance",
+      "Mitigation",
+      "Transference",
+      "Acceptance"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Eliminating the activity removes the risk entirely, which is avoidance. Mitigation reduces likelihood or impact, transference shifts consequences to another party, and acceptance retains the risk knowingly.",
+    "tip": "Avoid = stop doing it. Mitigate = reduce it. Transfer = share or insure it. Accept = knowingly live with it."
+  },
+  {
+    "id": "5-018",
+    "d": 5,
+    "obj": "5.2",
+    "topic": "Risk strategies",
+    "diff": 3,
+    "type": "single",
+    "q": "Which pair of terms correctly describes formally documented deviations from a security requirement?",
+    "opts": [
+      "An exemption permanently excludes something from a requirement, while an exception is a temporary approved deviation",
+      "Both terms mean the same thing and are interchangeable in all frameworks",
+      "An exception is permanent and an exemption is temporary",
+      "Neither requires documentation or approval"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Exemptions carve out a permanent exclusion from a requirement, while exceptions are time-bound approved deviations pending remediation. Both require documented justification, compensating controls, and an accountable approver.",
+    "tip": "Whichever term your organization uses, the exam expects documentation, compensating controls, an owner, and a review date."
+  },
+  {
+    "id": "5-019",
+    "d": 5,
+    "obj": "5.2",
+    "topic": "BIA metrics",
+    "diff": 3,
+    "type": "single",
+    "q": "Which metric expresses the average time required to repair a failed component and restore it to service?",
+    "opts": [
+      "Mean time to repair (MTTR)",
+      "Mean time between failures (MTBF)",
+      "Recovery point objective (RPO)",
+      "Annualized rate of occurrence (ARO)"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "MTTR measures average repair and restoration time. MTBF measures average operating time between failures, RPO expresses tolerable data loss, and ARO expresses how often a risk event is expected annually.",
+    "tip": "MTBF is a reliability measure (higher is better); MTTR is a maintainability measure (lower is better)."
+  },
+  {
+    "id": "5-020",
+    "d": 5,
+    "obj": "5.2",
+    "topic": "BIA",
+    "diff": 2,
+    "type": "single",
+    "q": "What is the PRIMARY output of a business impact analysis?",
+    "opts": [
+      "Identification of critical business processes with their dependencies, downtime tolerances, and recovery objectives",
+      "A list of technical vulnerabilities requiring patches",
+      "The organization's marketing strategy",
+      "A signed vendor contract"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "A BIA determines which processes are critical, what they depend on, and how quickly they must be restored, producing RTO and RPO values that drive continuity design. Vulnerability lists come from scanning, and marketing and contracts are unrelated.",
+    "tip": "The BIA comes before the continuity and recovery plans — it tells you what to protect and how fast to restore it."
+  },
+  {
+    "id": "5-021",
+    "d": 5,
+    "obj": "5.2",
+    "topic": "Risk assessment types",
+    "diff": 3,
+    "type": "single",
+    "q": "A company performs a risk assessment immediately after acquiring a competitor, outside its normal annual cycle. Which assessment type is this?",
+    "opts": [
+      "An ad hoc assessment triggered by a specific event",
+      "A recurring assessment",
+      "A continuous assessment",
+      "A one-time assessment that replaces all future reviews"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Ad hoc assessments are triggered by specific circumstances such as acquisitions, incidents, or major changes. Recurring assessments follow a schedule, continuous assessment is ongoing automated evaluation, and no single assessment eliminates the need for future reviews.",
+    "tip": "Assessment cadence types: ad hoc, recurring, one-time, and continuous. Match the type to the trigger in the scenario."
+  },
+  {
+    "id": "5-022",
+    "d": 5,
+    "obj": "5.2",
+    "topic": "Residual risk",
+    "diff": 3,
+    "type": "single",
+    "q": "After implementing controls, some risk remains. Who should formally accept that remaining risk?",
+    "opts": [
+      "The business risk owner with authority proportional to the potential impact",
+      "The security analyst who identified the risk",
+      "The vendor supplying the affected system",
+      "The external auditor"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Residual risk acceptance is a business decision belonging to an accountable owner whose authority matches the impact level. Analysts identify and advise, vendors have no organizational authority, and auditors assess rather than accept risk.",
+    "tip": "Inherent risk (before controls) → controls applied → residual risk (after controls) → accepted by the risk owner."
+  },
+  {
+    "id": "5-023",
+    "d": 5,
+    "obj": "5.2",
+    "topic": "Risk reporting",
+    "diff": 3,
+    "type": "single",
+    "q": "Which characteristic makes a risk report MOST useful to executive leadership?",
+    "opts": [
+      "It expresses risks in business terms with impact, trend, ownership, and required decisions",
+      "It lists every CVE identified in the last scan cycle",
+      "It focuses on the technical configuration of security tools",
+      "It reports only the risks that have already been fully mitigated"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Executives need business-framed information that supports decisions about resources and acceptance. Raw vulnerability lists and tool configurations lack decision context, and reporting only resolved risks conceals current exposure.",
+    "tip": "Translate technical findings into business impact: revenue, regulatory exposure, safety, and reputation."
+  },
+  {
+    "id": "5-024",
+    "d": 5,
+    "obj": "5.2",
+    "topic": "Risk identification",
+    "diff": 2,
+    "type": "single",
+    "q": "Which activity BEST supports systematic risk identification?",
+    "opts": [
+      "Structured workshops, threat modeling, audit findings, incident history, and asset-based analysis",
+      "Waiting for incidents to reveal weaknesses",
+      "Copying another organization's risk register verbatim",
+      "Relying solely on the newest security product's dashboard"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Multiple structured inputs surface risks proactively across technology, process, and people. Reactive discovery, copied registers, and single-tool views all produce incomplete and context-free risk pictures.",
+    "tip": "Risk = threat × vulnerability × impact. Identification must consider all three, not just technical vulnerabilities."
+  },
+  {
+    "id": "5-025",
+    "d": 5,
+    "obj": "5.2",
+    "topic": "Risk threshold",
+    "diff": 3,
+    "type": "single",
+    "q": "A risk register entry shows a KRI crossing its defined threshold. What should happen?",
+    "opts": [
+      "Escalation to the risk owner for evaluation and a decision on additional treatment",
+      "Automatic closure of the risk entry",
+      "Removal of the KRI to prevent further alerts",
+      "Immediate termination of the responsible employee"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Thresholds exist to trigger escalation and reassessment when exposure grows beyond agreed limits. Closing the entry, deleting the indicator, and punitive personnel action do not address the risk.",
+    "tip": "A threshold without a defined escalation path is just a number on a report."
+  },
+  {
+    "id": "5-026",
+    "d": 5,
+    "obj": "5.2",
+    "topic": "Likelihood vs impact",
+    "diff": 3,
+    "type": "single",
+    "q": "A risk has very low likelihood but catastrophic impact, such as a data center fire destroying the primary site. Which treatment approach is MOST appropriate?",
+    "opts": [
+      "Mitigate through suppression systems and transfer residual financial impact through insurance, with recovery capability at a separate site",
+      "Accept it because the likelihood is low",
+      "Avoid it by ceasing all data center operations",
+      "Ignore it since insurance alone resolves all consequences"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Low-likelihood, high-impact risks warrant layered treatment: reduce likelihood and impact with controls, transfer financial consequences, and maintain recovery capability. Pure acceptance ignores catastrophic exposure, ceasing operations is disproportionate, and insurance does not restore operations or reputation.",
+    "tip": "Insurance covers money, not continuity or reputation. Pair transfer with mitigation and recovery capability."
+  },
+  {
+    "id": "5-027",
+    "d": 5,
+    "obj": "5.3",
+    "topic": "Agreement types",
+    "diff": 2,
+    "type": "single",
+    "q": "Which agreement defines measurable performance commitments such as uptime percentage and support response times?",
+    "opts": [
+      "Service level agreement",
+      "Non-disclosure agreement",
+      "Memorandum of understanding",
+      "Business partnership agreement"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "An SLA specifies measurable service commitments and often remedies for failing to meet them. An NDA protects confidential information, an MOU expresses non-binding intent, and a BPA governs the terms of a business partnership.",
+    "tip": "SLA = measurable performance. MOU = intent, usually non-binding. MSA = master terms. SOW/WO = specific deliverables under the MSA."
+  },
+  {
+    "id": "5-028",
+    "d": 5,
+    "obj": "5.3",
+    "topic": "Agreement types",
+    "diff": 3,
+    "type": "single",
+    "q": "Two organizations sign a broad contract establishing general legal terms, then issue separate documents for each project's specific deliverables and timelines. Which pair of agreements is being used?",
+    "opts": [
+      "A master service agreement with statements of work",
+      "A non-disclosure agreement with a memorandum of understanding",
+      "A service level agreement with a business partnership agreement",
+      "A memorandum of agreement with an acceptable use policy"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "An MSA sets the overarching legal framework so individual SOWs or work orders can define scope, deliverables, and schedule without renegotiating terms. The other pairings serve confidentiality, intent, service performance, or internal user behavior purposes.",
+    "tip": "MSA + SOW is the standard consulting structure — expect it in vendor management questions."
+  },
+  {
+    "id": "5-029",
+    "d": 5,
+    "obj": "5.3",
+    "topic": "Right to audit",
+    "diff": 3,
+    "type": "single",
+    "q": "Which contractual provision allows a customer to inspect a vendor's security controls directly or through a designated assessor?",
+    "opts": [
+      "A right-to-audit clause",
+      "A force majeure clause",
+      "An indemnification clause",
+      "A non-compete clause"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Right-to-audit clauses grant inspection rights over the vendor's controls and practices. Force majeure excuses performance during extraordinary events, indemnification allocates liability, and non-compete restricts competitive activity.",
+    "tip": "Negotiate the right to audit before signing — it is nearly impossible to add after a relationship is established."
+  },
+  {
+    "id": "5-030",
+    "d": 5,
+    "obj": "5.3",
+    "topic": "Vendor due diligence",
+    "diff": 3,
+    "type": "single",
+    "q": "Which evidence provides the STRONGEST independent assurance of a cloud vendor's control environment?",
+    "opts": [
+      "A current SOC 2 Type II report from an independent auditor covering relevant trust services criteria",
+      "The vendor's completed self-assessment questionnaire",
+      "A marketing page describing the vendor's security commitment",
+      "A verbal assurance from the account executive"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "A Type II report reflects an independent auditor's testing of control operating effectiveness over a period of time. Self-assessments are unverified, and marketing content and verbal assurances carry no assurance value.",
+    "tip": "Type I tests design at a point in time; Type II tests operating effectiveness over a period. Type II is stronger."
+  },
+  {
+    "id": "5-031",
+    "d": 5,
+    "obj": "5.3",
+    "topic": "Supply chain analysis",
+    "diff": 3,
+    "type": "single",
+    "q": "A manufacturer requires that suppliers disclose their own subcontractors and component origins. Which risk management activity is this?",
+    "opts": [
+      "Supply chain analysis extending due diligence beyond direct vendors",
+      "Penetration testing of the supplier's network",
+      "Internal compliance reporting",
+      "Data subject access request handling"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Supply chain analysis examines risk beyond the first tier, since fourth-party providers and component sources can introduce compromise. Penetration testing evaluates technical defenses, compliance reporting communicates internal status, and data subject requests are a privacy process.",
+    "tip": "Your risk includes your vendors' vendors. Fourth-party risk is increasingly tested on this exam."
+  },
+  {
+    "id": "5-032",
+    "d": 5,
+    "obj": "5.3",
+    "topic": "Conflict of interest",
+    "diff": 3,
+    "type": "single",
+    "q": "During vendor selection, an evaluator discovers that their sibling is a senior executive at one bidding vendor. What should the evaluator do?",
+    "opts": [
+      "Disclose the relationship and recuse themselves from the evaluation and decision",
+      "Continue participating but score that vendor lower to compensate",
+      "Say nothing, since family relationships are private",
+      "Award the contract to that vendor to reward the relationship"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Disclosure and recusal preserve the integrity of the procurement process. Compensating adjustments still bias the outcome, concealment violates governance requirements, and awarding based on the relationship is a clear conflict of interest.",
+    "tip": "Conflict of interest questions always resolve to disclose and recuse — never to self-manage the bias."
+  },
+  {
+    "id": "5-033",
+    "d": 5,
+    "obj": "5.3",
+    "topic": "Vendor monitoring",
+    "diff": 3,
+    "type": "single",
+    "q": "Why is ongoing vendor monitoring necessary after the initial assessment?",
+    "opts": [
+      "A vendor's security posture, ownership, and subcontractors can change materially after onboarding",
+      "Contracts become invalid without monthly reviews",
+      "It replaces the need for contractual security requirements",
+      "Vendors are legally required to fail assessments periodically"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Point-in-time assessments become stale as vendors change staff, architecture, ownership, and subcontractors, so continuous monitoring and periodic reassessment are required. Contracts remain valid without monthly reviews, monitoring supplements rather than replaces contract terms, and the last option is nonsense.",
+    "tip": "Monitoring inputs: annual questionnaires, updated audit reports, breach notifications, and external security ratings."
+  },
+  {
+    "id": "5-034",
+    "d": 5,
+    "obj": "5.3",
+    "topic": "Questionnaires",
+    "diff": 2,
+    "type": "single",
+    "q": "What is the PRIMARY limitation of relying on vendor security questionnaires?",
+    "opts": [
+      "Responses are self-reported and unverified unless supported by independent evidence",
+      "They take too long for vendors to complete",
+      "They are legally binding contracts",
+      "They only apply to hardware vendors"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Questionnaires capture claims that require corroboration through audit reports, certifications, or testing. Completion time is an inconvenience rather than a security limitation, questionnaires are not contracts by themselves, and they apply to all vendor types.",
+    "tip": "Pair questionnaires with evidence: independent audit reports, certifications, penetration test summaries, and architecture documentation."
+  },
+  {
+    "id": "5-035",
+    "d": 5,
+    "obj": "5.3",
+    "topic": "Rules of engagement",
+    "diff": 3,
+    "type": "single",
+    "q": "Before a third party performs penetration testing, which document defines scope, permitted techniques, testing windows, and emergency contacts?",
+    "opts": [
+      "The rules of engagement",
+      "The non-disclosure agreement",
+      "The service level agreement",
+      "The business impact analysis"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Rules of engagement establish authorized scope, methods, timing, and communication protocols so testing is legal and controlled. NDAs protect confidentiality, SLAs govern service performance, and a BIA analyzes process criticality.",
+    "tip": "Never test without written authorization. Rules of engagement plus a signed authorization letter are mandatory."
+  },
+  {
+    "id": "5-036",
+    "d": 5,
+    "obj": "5.1",
+    "topic": "Centralized governance",
+    "diff": 3,
+    "type": "single",
+    "q": "Which is a disadvantage of a highly centralized security governance model in a large multinational organization?",
+    "opts": [
+      "Policies may not fit local regulatory or operational realities, and decisions can be slow to reach distant business units",
+      "Policy consistency becomes impossible to achieve",
+      "Audit evidence cannot be collected centrally",
+      "Security expertise cannot be concentrated"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Centralization delivers consistency but can be slow and insensitive to local legal and operational contexts. It actually improves consistency, central evidence collection, and expertise concentration, which are its advantages.",
+    "tip": "Hybrid governance is common: central policy and standards with local implementation autonomy within defined bounds."
+  },
+  {
+    "id": "5-037",
+    "d": 5,
+    "obj": "5.2",
+    "topic": "Risk analysis inputs",
+    "diff": 3,
+    "type": "single",
+    "q": "Which pair of factors determines a risk's rating in most risk matrices?",
+    "opts": [
+      "Likelihood and impact",
+      "Cost and vendor reputation",
+      "Patch availability and log volume",
+      "Employee count and office location"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Risk ratings combine how likely an event is with how severe its consequences would be. The other pairings may inform specific decisions but are not the fundamental axes of a risk matrix.",
+    "tip": "Watch for scenarios where a low-likelihood, high-impact risk is dismissed — that is usually the wrong answer."
+  },
+  {
+    "id": "5-038",
+    "d": 5,
+    "obj": "5.1",
+    "topic": "Business continuity policy",
+    "diff": 2,
+    "type": "single",
+    "q": "Which policy document establishes the organization's requirements for maintaining essential functions during a disruption?",
+    "opts": [
+      "The business continuity policy",
+      "The acceptable use policy",
+      "The change management procedure",
+      "The encryption standard"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Business continuity policy sets the mandate, scope, and responsibilities for sustaining operations through disruption. The AUP governs user behavior, change management governs modifications, and the encryption standard specifies cryptographic requirements.",
+    "tip": "Policy sets the requirement; the BIA informs it; the plan and playbooks implement it; exercises validate it."
+  },
+  {
+    "id": "5-039",
+    "d": 5,
+    "obj": "5.2",
+    "topic": "Risk transference limits",
+    "diff": 3,
+    "type": "single",
+    "q": "After purchasing cyber insurance, an executive states the organization no longer needs to invest in security controls. Why is this reasoning flawed?",
+    "opts": [
+      "Insurance covers some financial loss but not operational disruption, reputational damage, regulatory penalties, or the underlying obligation to protect data",
+      "Insurance policies are not legally enforceable",
+      "Insurance always costs more than any control",
+      "Insurers implement security controls on the customer's behalf"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Transference addresses financial consequences only, and policies typically require demonstrated due care with exclusions for negligence. Policies are enforceable contracts, cost varies, and insurers do not operate the insured's controls.",
+    "tip": "Insurers increasingly require MFA, EDR, tested backups, and incident response plans — and deny claims when controls were misrepresented."
+  },
+  {
+    "id": "5-040",
+    "d": 5,
+    "obj": "5.1",
+    "topic": "Roles and responsibilities",
+    "diff": 3,
+    "type": "single",
+    "q": "Who is typically accountable for approving access to a specific data set and defining its classification?",
+    "opts": [
+      "The data owner",
+      "The system administrator",
+      "The security analyst",
+      "The end user"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Data owners hold accountability for classification and access approval, while administrators implement, analysts monitor, and users comply with handling requirements.",
+    "tip": "Accountability cannot be delegated; responsibility for execution can. Owners approve, custodians implement."
+  },
+  {
+    "id": "5-041",
+    "d": 5,
+    "obj": "5.2",
+    "topic": "Quantitative calculation",
+    "diff": 3,
+    "type": "single",
+    "q": "A retailer estimates that a payment system outage costs $12,000 per hour, outages last four hours on average, and occur twice per year. What is the ALE?",
+    "opts": [
+      "$96,000",
+      "$48,000",
+      "$24,000",
+      "$12,000"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "SLE = $12,000 × 4 hours = $48,000 per occurrence. ARO = 2 per year. ALE = $48,000 × 2 = $96,000. The $48,000 answer is the SLE for one event rather than the annualized expectation.",
+    "tip": "When the scenario gives a per-hour cost, compute the single-event loss first, then multiply by frequency."
+  },
+  {
+    "id": "5-042",
+    "d": 5,
+    "obj": "5.3",
+    "topic": "NDA",
+    "diff": 2,
+    "type": "single",
+    "q": "Before sharing network architecture documentation with a prospective vendor during evaluation, what should be executed FIRST?",
+    "opts": [
+      "A non-disclosure agreement covering the shared information",
+      "A statement of work",
+      "A service level agreement",
+      "A business continuity plan"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "An NDA establishes confidentiality obligations before sensitive information is disclosed. SOWs and SLAs come later, once a relationship is being formalized, and continuity plans are internal documents.",
+    "tip": "Also apply least privilege to information sharing: give evaluators what they need, not the full architecture."
+  },
+  {
+    "id": "5-043",
+    "d": 5,
+    "obj": "5.2",
+    "topic": "Risk tolerance vs appetite",
+    "diff": 3,
+    "type": "single",
+    "q": "Which statement correctly distinguishes risk appetite from risk tolerance?",
+    "opts": [
+      "Appetite is the broad amount of risk an organization is willing to pursue; tolerance is the acceptable variation around specific risk objectives",
+      "Tolerance is set by regulators while appetite is set by auditors",
+      "They are identical concepts with different regional names",
+      "Appetite applies only to financial risk and tolerance only to cyber risk"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Appetite is the strategic willingness to take risk in pursuit of objectives, while tolerance expresses acceptable deviation at the operational level. Both are set by organizational leadership and apply across risk categories.",
+    "tip": "Appetite is strategic and directional; tolerance is specific and measurable — often expressed as thresholds in the risk register."
+  },
+  {
+    "id": "5-044",
+    "d": 5,
+    "obj": "5.1",
+    "topic": "SDLC policy",
+    "diff": 2,
+    "type": "single",
+    "q": "Which policy establishes security requirements at each stage of software development, including design review, secure coding, and testing gates?",
+    "opts": [
+      "The software development lifecycle policy",
+      "The acceptable use policy",
+      "The physical security standard",
+      "The vendor NDA"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "SDLC policy embeds security requirements throughout development, from requirements and design through testing and deployment. The other documents govern user behavior, facility protection, and third-party confidentiality.",
+    "tip": "Security requirements defined early cost far less than defects found in production — the core argument for secure SDLC."
+  },
+  {
+    "id": "5-045",
+    "d": 5,
+    "obj": "5.2",
+    "topic": "Risk process order",
+    "diff": 3,
+    "type": "single",
+    "q": "Which sequence correctly orders the risk management process?",
+    "opts": [
+      "Identify risks, analyze likelihood and impact, evaluate against tolerance, select and implement treatment, then monitor and report",
+      "Implement controls, then identify which risks they addressed, then report",
+      "Accept all risks, then analyze them at year end",
+      "Purchase insurance, then identify risks that the policy covers"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Risk management proceeds from identification through analysis and evaluation to treatment and ongoing monitoring. The other sequences apply controls or transfer before understanding exposure, which misallocates resources.",
+    "tip": "You cannot treat what you have not identified and analyzed — the exam consistently rewards this ordering."
+  }
+]

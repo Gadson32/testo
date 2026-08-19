@@ -1,0 +1,904 @@
+[
+  {
+    "id": "3-051",
+    "d": 3,
+    "obj": "3.3",
+    "topic": "Data states",
+    "diff": 2,
+    "type": "single",
+    "q": "Which technology protects data IN USE — while it is loaded in memory and being processed?",
+    "opts": [
+      "Confidential computing using hardware-based trusted execution environments",
+      "Full-disk encryption",
+      "TLS 1.3",
+      "Tape backup encryption"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Data in use resides in memory, where FDE and transport encryption provide no protection; trusted execution environments and enclaves protect it during processing. FDE covers data at rest, TLS covers data in transit, and backup encryption covers data at rest on media.",
+    "tip": "Three states: at rest (FDE, file/database encryption), in transit (TLS, IPsec), in use (enclaves, confidential computing)."
+  },
+  {
+    "id": "3-052",
+    "d": 3,
+    "obj": "3.3",
+    "topic": "Data classification",
+    "diff": 2,
+    "type": "single",
+    "q": "An organization labels data that would cause severe harm if disclosed and restricts it to a named list of individuals. Which classification level BEST applies?",
+    "opts": [
+      "Restricted",
+      "Public",
+      "Private",
+      "Unclassified"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Restricted (or its equivalent top tier) denotes data with severe impact if disclosed and access limited to specific approved individuals. Public data is intended for release, private and confidential sit at intermediate levels, and unclassified indicates no sensitivity designation.",
+    "tip": "Classification drives handling: labeling, storage, transmission, retention, and destruction requirements all follow the label."
+  },
+  {
+    "id": "3-053",
+    "d": 3,
+    "obj": "3.3",
+    "topic": "Data types",
+    "diff": 2,
+    "type": "single",
+    "q": "A soft drink company's secret formula, kept undisclosed with no patent filed, is BEST categorized as which data type?",
+    "opts": [
+      "Trade secret",
+      "Regulated data",
+      "Public information",
+      "Legal information"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Trade secrets derive value from remaining confidential and are protected by secrecy rather than registration. Regulated data is governed by law or standards, public information is intended for disclosure, and legal information covers contracts, filings, and privileged material.",
+    "tip": "Intellectual property includes patents, copyrights, and trademarks (registered). Trade secrets rely purely on confidentiality."
+  },
+  {
+    "id": "3-054",
+    "d": 3,
+    "obj": "3.3",
+    "topic": "Regulated data",
+    "diff": 2,
+    "type": "single",
+    "q": "Which data set is MOST clearly regulated data requiring specific handling controls?",
+    "opts": [
+      "Patient treatment records subject to health privacy law",
+      "The company's published marketing brochure",
+      "The employee cafeteria menu",
+      "A public press release scheduled for tomorrow"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Health records fall under statutory requirements such as HIPAA, which mandate specific safeguards. Brochures, menus, and press releases are public or non-sensitive information.",
+    "tip": "Common regulated categories on the exam: PII, PHI (HIPAA), cardholder data (PCI DSS), and EU personal data (GDPR)."
+  },
+  {
+    "id": "3-055",
+    "d": 3,
+    "obj": "3.3",
+    "topic": "Data sovereignty",
+    "diff": 3,
+    "type": "single",
+    "q": "A European customer's personal data is stored in a cloud region located in another country. Legal counsel warns that local authorities there could compel disclosure. Which concept does this concern illustrate?",
+    "opts": [
+      "Data sovereignty",
+      "Data masking",
+      "Data in use protection",
+      "Non-repudiation"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Data sovereignty means data is subject to the laws of the jurisdiction where it physically resides, which can conflict with the owner's home regulations. Masking obscures values, data-in-use protection concerns processing, and non-repudiation concerns proof of action.",
+    "tip": "Mitigations: region pinning, in-country storage, and customer-managed keys held outside the hosting jurisdiction."
+  },
+  {
+    "id": "3-056",
+    "d": 3,
+    "obj": "3.3",
+    "topic": "Geographic restrictions",
+    "diff": 3,
+    "type": "single",
+    "q": "A SaaS provider must ensure that a regulated customer's records are never processed or stored outside a specific country. Which control set is MOST appropriate?",
+    "opts": [
+      "Region-locked storage and processing with geolocation-based access restrictions and audit evidence",
+      "Client-side data masking in the user interface",
+      "Longer password expiration intervals",
+      "Increasing the size of database backups"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Geographic restrictions enforced at the storage, processing, and access layers, with audit trails to prove compliance, meet residency requirements. Masking affects presentation, and the other options are unrelated to data location.",
+    "tip": "Geolocation restrictions can apply to where data lives and where users connect from — the exam tests both angles."
+  },
+  {
+    "id": "3-057",
+    "d": 3,
+    "obj": "3.3",
+    "topic": "Human vs non-human readable",
+    "diff": 3,
+    "type": "single",
+    "q": "Which example BEST represents non-human-readable data that still requires protection?",
+    "opts": [
+      "A serialized binary file containing customer identifiers used by an internal service",
+      "A printed customer invoice",
+      "A plaintext spreadsheet of employee salaries",
+      "An email body listing account numbers"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Non-human-readable data such as binary structures, database blobs, or serialized objects still contains sensitive values and must be protected, even though it is not directly legible. The other options are all human-readable formats.",
+    "tip": "Do not confuse non-human-readable with encrypted. Binary formats are trivially parsed by tools — obscurity is not protection."
+  },
+  {
+    "id": "3-058",
+    "d": 3,
+    "obj": "3.3",
+    "topic": "Methods to secure data",
+    "diff": 3,
+    "type": "single",
+    "q": "A retailer must let analysts study purchase patterns without exposing individual identities, while preserving referential integrity across tables. Which technique is MOST appropriate?",
+    "opts": [
+      "Tokenization of identifiers with a consistent mapping",
+      "Deleting all identifier columns",
+      "Encrypting the entire database with a single key held by analysts",
+      "Publishing the data set to a public bucket"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Consistent tokenization preserves the ability to join records while removing real identifiers from the analytic environment. Deleting identifiers breaks joins, giving analysts the master key restores full exposure, and public publication is a breach.",
+    "tip": "Choose based on the requirement: masking for display, tokenization for processing and joins, encryption for confidentiality, hashing for integrity."
+  },
+  {
+    "id": "3-059",
+    "d": 3,
+    "obj": "3.3",
+    "topic": "Permission restrictions",
+    "diff": 2,
+    "type": "single",
+    "q": "Which control set BEST limits the number of people who can read a highly confidential merger document stored on a collaboration platform?",
+    "opts": [
+      "Role-based permission restrictions with periodic access reviews and sensitivity labeling",
+      "A password on the document shared by email",
+      "Watermarking the document with the company logo",
+      "Moving the document to a personal cloud drive"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Scoped permissions with recurring review and labeling enforce and sustain least privilege. An emailed password is easily forwarded, watermarks deter but do not restrict, and personal drives move data outside governance entirely.",
+    "tip": "Access reviews matter as much as initial permissions — entitlement creep is a standard audit finding."
+  },
+  {
+    "id": "3-060",
+    "d": 3,
+    "obj": "3.3",
+    "topic": "Data segmentation",
+    "diff": 3,
+    "type": "single",
+    "q": "Why is segmenting cardholder data into a dedicated environment a common PCI DSS strategy?",
+    "opts": [
+      "It reduces the scope of systems subject to assessment and limits exposure if other systems are compromised",
+      "It eliminates the requirement to encrypt cardholder data",
+      "It removes the need for access controls in that environment",
+      "It transfers all compliance responsibility to the acquiring bank"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Segmentation shrinks the cardholder data environment, reducing both assessment scope and blast radius. Encryption and access control requirements still apply inside that environment, and compliance responsibility remains with the merchant.",
+    "tip": "Scope reduction techniques for PCI: segmentation, tokenization, and outsourcing payment pages to a validated provider."
+  },
+  {
+    "id": "3-061",
+    "d": 3,
+    "obj": "3.4",
+    "topic": "Load balancing vs clustering",
+    "diff": 3,
+    "type": "single",
+    "q": "Which statement correctly distinguishes load balancing from clustering?",
+    "opts": [
+      "Load balancing distributes requests across independent nodes; clustering makes multiple nodes act as a single system with shared state and coordinated failover",
+      "Load balancing requires shared storage; clustering never does",
+      "Clustering only works for stateless web servers",
+      "Load balancing provides no availability benefit"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Load balancers spread traffic and remove failed nodes, while clusters coordinate nodes to present one logical service with state awareness and failover. Shared storage is more typical of clustering, clusters commonly support stateful services like databases, and load balancing does improve availability.",
+    "tip": "Both improve availability. Clustering is the answer when the scenario emphasizes shared state or database failover."
+  },
+  {
+    "id": "3-062",
+    "d": 3,
+    "obj": "3.4",
+    "topic": "Recovery sites",
+    "diff": 2,
+    "type": "single",
+    "q": "A company needs a recovery site that can assume production workload within minutes, with data replicated continuously and systems already running. Which site type is required?",
+    "opts": [
+      "Hot site",
+      "Warm site",
+      "Cold site",
+      "Mobile site"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "A hot site is fully provisioned and current, enabling near-immediate failover at the highest cost. A warm site has hardware and connectivity but requires configuration and data restoration. A cold site is space and power only. A mobile site is a transportable facility whose readiness varies.",
+    "tip": "Cost and recovery speed move together: hot (fastest, priciest) > warm > cold (cheapest, slowest)."
+  },
+  {
+    "id": "3-063",
+    "d": 3,
+    "obj": "3.4",
+    "topic": "Geographic dispersion",
+    "diff": 3,
+    "type": "single",
+    "q": "A company's primary data center and its designated recovery site are eight miles apart in the same metropolitan area. Which risk does this design fail to address?",
+    "opts": [
+      "A regional event such as a hurricane, flood, or extended grid failure affecting both sites",
+      "The need for encrypted replication traffic",
+      "The requirement to test failover annually",
+      "The need for role-based access control at both sites"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Insufficient geographic dispersion leaves both sites exposed to the same regional hazard. Encryption, testing, and access control are all still required but are independent of site separation distance.",
+    "tip": "Recovery sites should be far enough apart to avoid shared regional risk, yet close enough for acceptable replication latency."
+  },
+  {
+    "id": "3-064",
+    "d": 3,
+    "obj": "3.4",
+    "topic": "Platform diversity",
+    "diff": 3,
+    "type": "single",
+    "q": "After a vulnerability in a single hypervisor product took down every virtualized workload, the architecture team recommends platform diversity. What is the PRIMARY benefit?",
+    "opts": [
+      "A single product flaw or vendor outage no longer affects the entire environment",
+      "Licensing costs are always reduced",
+      "Staff training requirements decrease",
+      "Patching becomes unnecessary"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Diversity reduces correlated failure from one vendor's defect or outage, at the cost of added operational complexity and skills. Costs and training burden generally increase, and patching remains mandatory.",
+    "tip": "Platform diversity and multi-cloud both trade operational simplicity for reduced concentration risk."
+  },
+  {
+    "id": "3-065",
+    "d": 3,
+    "obj": "3.4",
+    "topic": "Testing",
+    "diff": 2,
+    "type": "single",
+    "q": "A team gathers stakeholders in a conference room to walk verbally through their response to a ransomware scenario, with no systems touched. Which test type is this?",
+    "opts": [
+      "Tabletop exercise",
+      "Failover test",
+      "Parallel processing test",
+      "Full-interruption test"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Tabletop exercises are discussion-based walkthroughs that validate plans and roles without operational impact. Failover tests actually shift production, parallel processing runs the recovery environment alongside production, and full interruption stops production entirely.",
+    "tip": "Escalating disruption: tabletop → walkthrough/simulation → parallel processing → failover → full interruption."
+  },
+  {
+    "id": "3-066",
+    "d": 3,
+    "obj": "3.4",
+    "topic": "Testing",
+    "diff": 3,
+    "type": "single",
+    "q": "Which test provides the strongest assurance that a recovery site can carry production load, while still allowing rollback if problems appear?",
+    "opts": [
+      "A controlled failover test with a defined rollback plan during a maintenance window",
+      "A tabletop discussion of the failover steps",
+      "A review of the recovery site's asset inventory",
+      "Verifying that backup jobs completed successfully"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Actually failing over proves the site works under real conditions, and a rollback plan bounds the risk. Discussion, inventory review, and backup job status all leave the critical assumption untested.",
+    "tip": "An untested recovery plan is an assumption. The exam consistently rewards actual testing over documentation review."
+  },
+  {
+    "id": "3-067",
+    "d": 3,
+    "obj": "3.4",
+    "topic": "Backups",
+    "diff": 3,
+    "type": "single",
+    "q": "Ransomware encrypts production data and also deletes the backup repository because the backup server was joined to the same domain with reachable shares. Which backup practice would have prevented this?",
+    "opts": [
+      "Immutable or air-gapped offline copies isolated from production credentials",
+      "More frequent incremental backups to the same repository",
+      "Compressing backups to save space",
+      "Storing backups on the same SAN with a different LUN"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Immutability and credential isolation prevent an attacker with production access from destroying recovery copies. Frequency, compression, and different LUNs on the same storage do not survive an attacker with domain and storage access.",
+    "tip": "Remember 3-2-1-1-0: three copies, two media types, one offsite, one immutable/offline, zero errors on restore test."
+  },
+  {
+    "id": "3-068",
+    "d": 3,
+    "obj": "3.4",
+    "topic": "Backup types",
+    "diff": 3,
+    "type": "single",
+    "q": "A company runs a full backup on Sunday and differential backups nightly. To restore Thursday's data, which backups are needed?",
+    "opts": [
+      "Sunday's full backup plus Thursday's differential",
+      "Sunday's full backup plus every nightly backup from Monday through Thursday",
+      "Thursday's differential only",
+      "Sunday's full backup only"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "A differential contains everything changed since the last full backup, so a restore needs only the full plus the most recent differential. Needing every intermediate set describes incremental backups, and a differential alone or a full alone would be incomplete.",
+    "tip": "Differential: bigger backups, faster restores (full + last differential). Incremental: smaller backups, slower restores (full + all increments)."
+  },
+  {
+    "id": "3-069",
+    "d": 3,
+    "obj": "3.4",
+    "topic": "Snapshots",
+    "diff": 3,
+    "type": "single",
+    "q": "Why is a virtual machine snapshot NOT an adequate substitute for a backup?",
+    "opts": [
+      "Snapshots usually depend on the same storage system and can be lost with it, and they are not designed for long-term retention",
+      "Snapshots cannot be created while a VM is running",
+      "Snapshots always take longer to create than full backups",
+      "Snapshots automatically encrypt themselves"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Snapshots share fate with the underlying storage and degrade performance over time, so they support short-term rollback rather than durable recovery. They can be taken on running VMs, are typically fast to create, and are not automatically encrypted.",
+    "tip": "Snapshot = fast rollback point on the same platform. Backup = independent copy that survives platform loss."
+  },
+  {
+    "id": "3-070",
+    "d": 3,
+    "obj": "3.4",
+    "topic": "Replication vs backup",
+    "diff": 3,
+    "type": "single",
+    "q": "A company relies on synchronous replication between two data centers and has no separate backups. Which risk remains unaddressed?",
+    "opts": [
+      "Logical corruption or malicious deletion is replicated instantly to the secondary site",
+      "Hardware failure at the primary site",
+      "Loss of a single disk in the primary array",
+      "A network outage between the sites"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Replication copies bad data as faithfully as good data, so corruption, ransomware, or accidental deletion propagates immediately. Hardware failures, disk loss, and inter-site network issues are precisely what replication and redundancy do address.",
+    "tip": "Replication is availability. Backup is recoverability with point-in-time history. You need both."
+  },
+  {
+    "id": "3-071",
+    "d": 3,
+    "obj": "3.4",
+    "topic": "Journaling",
+    "diff": 3,
+    "type": "single",
+    "q": "Which backup-related technology allows recovery to a specific point in time by preserving an ordered record of every change?",
+    "opts": [
+      "Transaction journaling or log shipping",
+      "A weekly full backup only",
+      "RAID 5 parity",
+      "Disk defragmentation"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Journals and transaction logs capture sequential changes, enabling point-in-time recovery to just before an incident. Weekly fulls limit granularity, RAID protects against disk failure rather than logical error, and defragmentation is a maintenance task.",
+    "tip": "Point-in-time recovery is the answer when a scenario asks to roll back to just before a corrupting transaction."
+  },
+  {
+    "id": "3-072",
+    "d": 3,
+    "obj": "3.4",
+    "topic": "UPS vs generator",
+    "diff": 2,
+    "type": "single",
+    "q": "Which power protection combination BEST supports continuous operation through a four-hour utility outage?",
+    "opts": [
+      "A UPS to bridge the transition plus a fuel-supplied generator for sustained runtime",
+      "A UPS alone sized for 15 minutes of runtime",
+      "Surge protectors on every rack",
+      "A second power distribution unit fed from the same circuit"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "The UPS carries the load during transfer and short interruptions, while the generator sustains operations for extended outages. A 15-minute UPS cannot cover four hours, surge protectors only handle transient voltage, and a second PDU on the same feed shares the same failure.",
+    "tip": "UPS = seconds to minutes, instant. Generator = hours to days, requires start time and fuel. You need both for real continuity."
+  },
+  {
+    "id": "3-073",
+    "d": 3,
+    "obj": "3.4",
+    "topic": "Capacity planning",
+    "diff": 3,
+    "type": "single",
+    "q": "During a disaster recovery test, the recovery environment handles only 40 percent of production transaction volume before saturating. Which planning failure does this reveal?",
+    "opts": [
+      "Inadequate capacity planning for technology and infrastructure at the recovery site",
+      "A failure of data classification",
+      "An error in the data retention policy",
+      "Insufficient password complexity requirements"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Recovery capacity must be planned across people, technology, and infrastructure, and this test shows the technology tier was undersized. Classification, retention, and password policy are unrelated to throughput capacity.",
+    "tip": "SY0-701 capacity planning covers three dimensions: people, technology, and infrastructure. Staffing gaps count too."
+  },
+  {
+    "id": "3-074",
+    "d": 3,
+    "obj": "3.4",
+    "topic": "Continuity of operations",
+    "diff": 2,
+    "type": "single",
+    "q": "Which document defines how the business will continue delivering essential functions when primary systems or facilities are unavailable, including manual workarounds?",
+    "opts": [
+      "Continuity of operations plan",
+      "Acceptable use policy",
+      "Software development lifecycle standard",
+      "Change management procedure"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "A COOP (continuity of operations plan) addresses sustaining essential functions during disruption, including alternate procedures. The other documents govern user behavior, software delivery, and change control respectively.",
+    "tip": "Business continuity keeps operations running; disaster recovery restores technology. Incident response handles the security event itself."
+  },
+  {
+    "id": "3-075",
+    "d": 3,
+    "obj": "3.3",
+    "topic": "Data at rest",
+    "diff": 2,
+    "type": "single",
+    "q": "Which combination BEST protects a database of customer records at rest against theft of the storage media?",
+    "opts": [
+      "Transparent data encryption with keys managed in an HSM or KMS separate from the data",
+      "Restricting SQL logins to business hours",
+      "Enabling verbose query logging",
+      "Compressing the database files"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Encrypting the data with keys stored and controlled elsewhere renders stolen media useless. Login schedules, logging, and compression do not protect stolen files.",
+    "tip": "Encryption is only as strong as key custody. If the key sits beside the data, media theft still yields plaintext."
+  },
+  {
+    "id": "3-076",
+    "d": 3,
+    "obj": "3.3",
+    "topic": "Data in transit",
+    "diff": 2,
+    "type": "single",
+    "q": "Two data centers exchange replication traffic across a leased line. Which control protects the data in transit if the carrier network is tapped?",
+    "opts": [
+      "An IPsec tunnel between the sites",
+      "Full-disk encryption on both storage arrays",
+      "File integrity monitoring at each site",
+      "Increasing the replication interval"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "IPsec encrypts and authenticates traffic between sites, so interception yields ciphertext. FDE protects at rest, integrity monitoring detects changes to files locally, and replication timing has no protective effect.",
+    "tip": "Do not assume private circuits are secure. Leased lines and MPLS are unencrypted by default — add IPsec or MACsec."
+  },
+  {
+    "id": "3-077",
+    "d": 3,
+    "obj": "3.4",
+    "topic": "RTO and RPO",
+    "diff": 3,
+    "type": "single",
+    "q": "A business states it can tolerate no more than 15 minutes of data loss and must restore service within two hours. Which metrics do these two statements define?",
+    "opts": [
+      "RPO of 15 minutes and RTO of two hours",
+      "RTO of 15 minutes and RPO of two hours",
+      "MTTR of 15 minutes and MTBF of two hours",
+      "SLA of 15 minutes and MTTF of two hours"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Recovery point objective expresses tolerable data loss and drives backup or replication frequency, while recovery time objective expresses tolerable downtime and drives recovery architecture. MTTR, MTBF, MTTF, and SLA measure repair time, failure intervals, and service commitments.",
+    "tip": "RPO looks backward (how much data can we lose). RTO looks forward (how long until we are back)."
+  },
+  {
+    "id": "3-078",
+    "d": 3,
+    "obj": "3.3",
+    "topic": "Data considerations",
+    "diff": 3,
+    "type": "single",
+    "q": "An organization discovers unclassified sensitive files scattered across shares with no ownership. Which action should be taken FIRST?",
+    "opts": [
+      "Perform data discovery and classification to identify what exists, where it resides, and who owns it",
+      "Encrypt every file share immediately",
+      "Delete all files older than one year",
+      "Grant read access to all employees to improve collaboration"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "You cannot protect data you have not identified, so discovery, classification, and ownership assignment come first and inform later controls. Blanket encryption without classification misallocates effort, deletion by age risks destroying required records, and broad access increases exposure.",
+    "tip": "Data security sequence: inventory and classify → assign ownership → apply controls → monitor → retain and dispose."
+  },
+  {
+    "id": "3-079",
+    "d": 3,
+    "obj": "3.3",
+    "topic": "Obfuscation choices",
+    "diff": 3,
+    "type": "single",
+    "q": "A logging system must record that a specific credit card was used without storing a recoverable card number, and the same card must be recognizable across records. Which technique is BEST?",
+    "opts": [
+      "A keyed hash (HMAC) of the card number stored in place of the value",
+      "Storing the full card number encrypted with a key held in the logging server",
+      "Storing the last four digits only, with no other value",
+      "Storing the card number in plaintext but restricting log access"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "A keyed hash yields a consistent, non-reversible identifier that supports correlation without storing recoverable card data. Local-key encryption keeps the value recoverable on that host, last-four alone cannot uniquely correlate, and plaintext storage violates PCI DSS regardless of access controls.",
+    "tip": "Use HMAC rather than a plain hash for low-entropy values; an unkeyed hash of a card number can be brute-forced."
+  },
+  {
+    "id": "3-080",
+    "d": 3,
+    "obj": "3.4",
+    "topic": "High availability",
+    "diff": 3,
+    "type": "single",
+    "q": "Which configuration describes an active/passive high availability pair?",
+    "opts": [
+      "One node handles all traffic while a synchronized standby takes over on failure",
+      "Both nodes process traffic simultaneously and share the load",
+      "Both nodes are powered off until a disaster is declared",
+      "Traffic alternates between nodes every 24 hours"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Active/passive keeps a ready standby that assumes the workload when the primary fails, which is simpler but leaves capacity idle. Active/active shares load across nodes, powered-off nodes describe a cold standby, and scheduled alternation is not a standard HA model.",
+    "tip": "Active/active gives capacity plus redundancy but requires state synchronization and can mask capacity shortfalls until one node fails."
+  },
+  {
+    "id": "3-081",
+    "d": 3,
+    "obj": "3.3",
+    "topic": "Data loss prevention",
+    "diff": 3,
+    "type": "single",
+    "q": "Which control BEST detects and blocks an employee attempting to email a spreadsheet of Social Security numbers to a personal address?",
+    "opts": [
+      "A data loss prevention policy inspecting outbound mail for sensitive data patterns",
+      "A host-based firewall rule blocking port 25",
+      "A quarterly access review of the file share",
+      "Full-disk encryption on the employee's laptop"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "DLP inspects content and context to detect and block sensitive data leaving approved channels. Blocking port 25 does not stop webmail or the corporate mail client, access reviews are periodic and retrospective, and FDE protects only against device loss.",
+    "tip": "DLP operates at three points: endpoint, network, and cloud/SaaS (via API or CASB). Classification labels make it far more accurate."
+  },
+  {
+    "id": "3-082",
+    "d": 3,
+    "obj": "3.4",
+    "topic": "Backup frequency",
+    "diff": 3,
+    "type": "single",
+    "q": "A system's RPO is one hour, but backups run nightly at midnight. What is the consequence?",
+    "opts": [
+      "Up to 24 hours of data could be lost, which fails the stated RPO",
+      "The RTO is automatically satisfied",
+      "Backups will consume less storage than required",
+      "The RPO becomes irrelevant once backups are encrypted"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Backup frequency must be at least as granular as the RPO, so nightly backups cannot satisfy a one-hour objective; more frequent backups, log shipping, or replication is needed. RTO is a separate measure, and encryption does not affect data-loss tolerance.",
+    "tip": "Exam trap: mismatch between stated RPO and actual backup interval. Always compare the two numbers."
+  },
+  {
+    "id": "3-083",
+    "d": 3,
+    "obj": "3.3",
+    "topic": "Data classification roles",
+    "diff": 3,
+    "type": "single",
+    "q": "Who is normally responsible for assigning a classification level to a data set?",
+    "opts": [
+      "The data owner, a senior business role accountable for the data",
+      "The data custodian who administers the storage systems",
+      "The end user who created the file",
+      "The external auditor reviewing controls"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "The data owner holds accountability for classification, acceptable use, and access approval, while custodians implement and maintain controls. Users must follow handling rules rather than set classification, and auditors assess rather than assign.",
+    "tip": "Owner (accountable, classifies) → steward (data quality/definitions) → custodian (technical implementation) → processor (acts on the owner's behalf)."
+  },
+  {
+    "id": "3-084",
+    "d": 3,
+    "obj": "3.4",
+    "topic": "Resilience",
+    "diff": 2,
+    "type": "single",
+    "q": "Which of the following BEST demonstrates resilience rather than simple redundancy?",
+    "opts": [
+      "A system that automatically detects component failure, reroutes work, and continues serving requests in a degraded but functional state",
+      "A spare server stored in a closet",
+      "A second copy of a configuration file on the same disk",
+      "A documented list of vendor support phone numbers"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Resilience is the ability to absorb failure and keep delivering service, which requires detection and automated adaptation. A cold spare, a duplicate file on the same failure domain, and a contact list may support recovery but do not sustain service.",
+    "tip": "Redundancy provides spare capacity; resilience is what turns that capacity into continued service automatically."
+  },
+  {
+    "id": "3-085",
+    "d": 3,
+    "obj": "3.3",
+    "topic": "Encryption vs hashing",
+    "diff": 2,
+    "type": "single",
+    "q": "Which requirement calls for hashing rather than encryption?",
+    "opts": [
+      "Verifying that a downloaded firmware image was not altered",
+      "Protecting a database backup so it can be restored later",
+      "Securing a session between a browser and a web server",
+      "Storing a customer's shipping address for order fulfillment"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Integrity verification of a file needs a one-way hash that both parties can compute and compare. Restorable backups, live sessions, and usable addresses all require reversible protection or none at all.",
+    "tip": "Ask whether the original value must be recovered. If yes, encrypt or tokenize; if no, hash."
+  },
+  {
+    "id": "3-086",
+    "d": 3,
+    "obj": "3.4",
+    "topic": "Simulation testing",
+    "diff": 3,
+    "type": "single",
+    "q": "Which exercise type introduces realistic injects — such as a simulated ransomware note and mock media inquiries — while systems remain in production?",
+    "opts": [
+      "A simulation exercise",
+      "A parallel processing test",
+      "A full-interruption test",
+      "A configuration audit"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Simulations add realistic scenario injects and role-playing without impacting production systems, testing decision-making and communication. Parallel processing runs recovery systems alongside production, full interruption halts production, and a configuration audit reviews settings.",
+    "tip": "The value of simulations is testing communication and decision authority, which is where most real incidents break down."
+  },
+  {
+    "id": "3-087",
+    "d": 3,
+    "obj": "3.3",
+    "topic": "Data retention",
+    "diff": 3,
+    "type": "single",
+    "q": "A company keeps every customer email indefinitely \"just in case.\" Which risk does this practice increase MOST?",
+    "opts": [
+      "Larger breach impact and greater legal discovery exposure from unnecessary data retention",
+      "Reduced storage costs over time",
+      "Improved compliance with data minimization requirements",
+      "Lower likelihood of regulatory scrutiny"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Retaining data beyond need expands what can be stolen and what must be produced in litigation, and it conflicts with data minimization principles in privacy law. Storage costs rise, and regulatory exposure increases rather than decreases.",
+    "tip": "Data you no longer hold cannot be breached. Retention schedules with defined disposal are a security control, not just governance."
+  },
+  {
+    "id": "3-088",
+    "d": 3,
+    "obj": "3.4",
+    "topic": "Backup encryption",
+    "diff": 2,
+    "type": "single",
+    "q": "Backups are shipped to an offsite vault on portable drives. Which requirement is MOST important?",
+    "opts": [
+      "Encrypting the media and managing keys separately from the shipment",
+      "Labeling the drives with the systems they contain for easy identification",
+      "Using the largest available drive capacity",
+      "Shipping during business hours only"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Encryption with separately held keys protects data if media is lost or stolen in transit. Detailed labeling actually helps a thief, and capacity and shipping schedules do not address confidentiality.",
+    "tip": "Offsite media requires encryption, chain-of-custody documentation, and periodic restore testing to prove the copies are usable."
+  },
+  {
+    "id": "3-089",
+    "d": 3,
+    "obj": "3.3",
+    "topic": "Segmentation for data",
+    "diff": 3,
+    "type": "single",
+    "q": "Which approach BEST limits the amount of sensitive data an attacker can reach after compromising a single application server?",
+    "opts": [
+      "Segmenting data stores by sensitivity and granting each application only the specific data access it requires",
+      "Storing all data in one database for easier backup",
+      "Granting applications broad read access to simplify development",
+      "Relying on perimeter firewalls to keep attackers out"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Segmented data stores with narrowly scoped access limit lateral reach after a compromise. Consolidating data and broad permissions increase blast radius, and perimeter defenses assume the attacker never gets inside.",
+    "tip": "Assume breach: design so that owning one server does not equal owning all data."
+  },
+  {
+    "id": "3-090",
+    "d": 3,
+    "obj": "3.4",
+    "topic": "Recovery",
+    "diff": 3,
+    "type": "single",
+    "q": "Which activity provides the strongest evidence that backups are usable for recovery?",
+    "opts": [
+      "Periodic test restores validated against expected data and documented results",
+      "Successful completion messages from the backup software",
+      "A backup retention policy approved by management",
+      "Monitoring the size of nightly backup files"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Only a verified restore proves recoverability; job success messages, policy documents, and file size trends can all look healthy while restores fail. Testing also validates the runbook and staff familiarity.",
+    "tip": "The classic exam answer: backups are not verified until a restore has been tested and validated."
+  },
+  {
+    "id": "3-091",
+    "d": 3,
+    "obj": "3.2",
+    "topic": "Architecture controls",
+    "diff": 3,
+    "type": "single",
+    "q": "A design review must reduce the risk of an internet-facing API being abused by automated credential stuffing. Which control combination is MOST effective?",
+    "opts": [
+      "Rate limiting and bot detection at the API gateway plus MFA and breached-password screening on accounts",
+      "Increasing the API's TLS key size",
+      "Adding a CAPTCHA to the marketing website",
+      "Extending session lifetimes to reduce login frequency"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Throttling and bot detection blunt automated attempts, while MFA and breached-credential checks neutralize valid stolen passwords. Key size does not affect authentication abuse, CAPTCHA on an unrelated site is irrelevant, and longer sessions increase risk from stolen tokens.",
+    "tip": "Credential stuffing is not brute force: attackers use valid credentials from other breaches, so MFA and breach screening matter most."
+  },
+  {
+    "id": "3-092",
+    "d": 3,
+    "obj": "3.3",
+    "topic": "Geolocation",
+    "diff": 2,
+    "type": "single",
+    "q": "An administrative portal should be reachable only from countries where the company operates. Which control implements this?",
+    "opts": [
+      "Geolocation-based access restrictions at the edge, combined with explicit allow lists for known administrative sources",
+      "Blocking all TLS 1.2 connections",
+      "Requiring longer passwords for administrators",
+      "Disabling logging for foreign IP addresses"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Geographic filtering reduces exposure to opportunistic access from irrelevant regions, and source allow lists tighten it further. Protocol version changes and password rules do not restrict origin, and disabling logging removes visibility.",
+    "tip": "Geoblocking is a useful noise reducer but is bypassed with VPNs and proxies, so treat it as one layer rather than the control."
+  },
+  {
+    "id": "3-093",
+    "d": 3,
+    "obj": "3.4",
+    "topic": "Cost of availability",
+    "diff": 3,
+    "type": "single",
+    "q": "Management asks whether to build an active/active multi-region deployment for an internal reporting tool that tolerates a full day of downtime. What is the BEST recommendation?",
+    "opts": [
+      "Match the design to the business requirement using a lower-cost recovery approach and reserve multi-region investment for critical systems",
+      "Build the multi-region deployment because higher availability is always better",
+      "Eliminate backups for the tool since it is not critical",
+      "Move the tool to an unmanaged personal cloud account to reduce cost"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Availability investment should follow business impact analysis results; overbuilding for a tolerant workload wastes resources that critical systems need. Backups are still required, and unmanaged accounts introduce governance and security failures.",
+    "tip": "Let the BIA drive design: criticality determines RTO and RPO, which determine architecture and cost."
+  },
+  {
+    "id": "3-094",
+    "d": 3,
+    "obj": "3.2",
+    "topic": "Zones and placement",
+    "diff": 3,
+    "type": "single",
+    "q": "Where should a database containing regulated customer data be placed relative to an internet-facing application tier?",
+    "opts": [
+      "In a separate internal zone reachable only from the application tier on the specific required port",
+      "In the same subnet as the web servers to reduce latency",
+      "In the screened subnet alongside the web tier",
+      "Directly on the internet with strong database authentication"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Tiered zoning with narrowly permitted flows means compromising the web tier does not grant direct database access from the internet. Collapsing tiers or exposing the database removes that protection entirely.",
+    "tip": "Classic three-tier zoning: presentation in DMZ, application logic internal, data tier deepest with the tightest rules."
+  },
+  {
+    "id": "3-095",
+    "d": 3,
+    "obj": "3.4",
+    "topic": "Resilience planning",
+    "diff": 3,
+    "type": "multi",
+    "q": "Which THREE elements should a disaster recovery plan explicitly define to be actionable?",
+    "opts": [
+      "Recovery time and recovery point objectives per system",
+      "Named roles with authority to declare a disaster and initiate failover",
+      "Prioritized recovery order based on business impact and dependencies",
+      "The marketing department's preferred press release font"
+    ],
+    "a": [
+      0,
+      1,
+      2
+    ],
+    "exp": "Actionable plans specify measurable objectives, decision authority, and a dependency-aware recovery sequence. Document formatting preferences have no bearing on recovery execution.",
+    "tip": "Plans fail on authority and sequencing more often than technology. Know who declares the disaster and what comes back first."
+  }
+]

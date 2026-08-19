@@ -1,0 +1,1208 @@
+[
+  {
+    "id": "2-061",
+    "d": 2,
+    "obj": "2.5",
+    "topic": "Segmentation",
+    "diff": 2,
+    "type": "single",
+    "q": "After a worm spread freely across a flat corporate network, which mitigation would MOST effectively limit lateral movement in a future incident?",
+    "opts": [
+      "Network segmentation with enforced inter-VLAN filtering",
+      "Longer password complexity requirements",
+      "Increasing SIEM log retention",
+      "Deploying a second email gateway"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Segmentation with filtering between zones contains propagation by denying unnecessary east-west traffic. Password rules do not stop exploit-based worms, longer retention aids investigation but not containment, and a second mail gateway addresses a different vector.",
+    "tip": "'Lateral movement' in a question almost always pairs with segmentation or microsegmentation in the answer."
+  },
+  {
+    "id": "2-062",
+    "d": 2,
+    "obj": "2.5",
+    "topic": "Isolation",
+    "diff": 2,
+    "type": "single",
+    "q": "A workstation is confirmed to be running ransomware that is actively encrypting a mapped network share. What is the FIRST containment action?",
+    "opts": [
+      "Isolate the host from the network while leaving it powered on",
+      "Power the host off immediately to stop encryption",
+      "Run a full antivirus scan and wait for results",
+      "Restore the file share from backup right away"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Isolating the host stops further damage to network resources while preserving volatile memory that may hold keys and forensic evidence. Powering off destroys memory artifacts, scanning first wastes time while encryption continues, and restoring before containment risks re-encryption.",
+    "tip": "Containment order of thinking: isolate/quarantine, preserve evidence, then eradicate and recover."
+  },
+  {
+    "id": "2-063",
+    "d": 2,
+    "obj": "2.5",
+    "topic": "Least privilege",
+    "diff": 2,
+    "type": "single",
+    "q": "An audit finds that 300 users hold local administrator rights on their laptops \"for convenience.\" Which mitigation technique should be applied?",
+    "opts": [
+      "Enforce least privilege by removing standing local admin rights and granting elevation only when justified",
+      "Require quarterly password changes for those users",
+      "Install a second endpoint protection agent",
+      "Add a warning banner about misuse of admin rights"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Least privilege removes unnecessary standing rights, which blocks most malware installation and persistence. Password rotation, extra agents, and banners do not reduce the excessive authority itself.",
+    "tip": "Least privilege plus just-in-time elevation is the exam's preferred answer to 'too many admins'."
+  },
+  {
+    "id": "2-064",
+    "d": 2,
+    "obj": "2.5",
+    "topic": "Configuration enforcement",
+    "diff": 3,
+    "type": "single",
+    "q": "Endpoints repeatedly drift from the approved security baseline because users disable the host firewall. Which mitigation technique addresses this?",
+    "opts": [
+      "Configuration enforcement that automatically reapplies and locks the baseline",
+      "Monthly manual spot checks by the help desk",
+      "Adding a note to the acceptable use policy",
+      "Rotating device names quarterly"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Configuration enforcement continuously validates and reapplies required settings, preventing drift regardless of user action. Manual checks are slow and incomplete, policy text alone does not enforce anything, and device naming is irrelevant.",
+    "tip": "Configuration enforcement is the SY0-701 term for tooling that keeps hosts on baseline (GPO, MDM, Ansible, Intune policy)."
+  },
+  {
+    "id": "2-065",
+    "d": 2,
+    "obj": "2.5",
+    "topic": "Decommissioning",
+    "diff": 2,
+    "type": "single",
+    "q": "A retired database server still holds customer records and remains powered on in a rack with an active network port. Which mitigation should be performed?",
+    "opts": [
+      "Formal decommissioning including data sanitization, certificate revocation, and removal from the network",
+      "Renaming the server to indicate it is unused",
+      "Disabling one of its two network interfaces",
+      "Moving it to a different rack in the same VLAN"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Decommissioning requires sanitizing data, revoking credentials and certificates, updating asset inventory, and physically removing network connectivity. Renaming, partially disabling interfaces, and relocating leave an unmanaged, unpatched system reachable.",
+    "tip": "Decommissioning steps: back up if needed, sanitize/destroy media, revoke accounts and certs, update inventory and diagrams."
+  },
+  {
+    "id": "2-066",
+    "d": 2,
+    "obj": "2.5",
+    "topic": "Hardening",
+    "diff": 2,
+    "type": "single",
+    "q": "Which set of actions BEST represents host hardening as defined by SY0-701?",
+    "opts": [
+      "Disable unused ports and protocols, remove unnecessary software, change default passwords, and install host-based firewall and EDR",
+      "Increase disk size, add RAM, and enable jumbo frames",
+      "Rotate the server's IP address weekly and hide its hostname",
+      "Purchase cyber insurance and document the residual risk"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Hardening reduces exposure through baseline configuration: closing unneeded services, removing software, replacing defaults, and adding host protections. Performance tuning, obscurity tactics, and insurance are not hardening.",
+    "tip": "Memorize the SY0-701 hardening list: EDR, host-based firewall, HIPS, disable ports/protocols, default password changes, remove unnecessary software."
+  },
+  {
+    "id": "2-067",
+    "d": 2,
+    "obj": "2.5",
+    "topic": "EDR",
+    "diff": 3,
+    "type": "single",
+    "q": "Which capability distinguishes endpoint detection and response from traditional signature-based antivirus?",
+    "opts": [
+      "Behavioral telemetry with investigation and remote response actions such as host isolation and process termination",
+      "A larger virus signature database updated more often",
+      "The ability to encrypt the local disk",
+      "Automatic operating system patch deployment"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "EDR records endpoint behavior, detects anomalies without signatures, and lets analysts hunt and respond remotely. Signature databases are the legacy antivirus model, disk encryption is a separate control, and patch deployment is a configuration management function.",
+    "tip": "EDR = detection + response on the host. XDR extends correlation across email, identity, cloud, and network."
+  },
+  {
+    "id": "2-068",
+    "d": 2,
+    "obj": "2.5",
+    "topic": "HIPS",
+    "diff": 3,
+    "type": "single",
+    "q": "Which control actively blocks a malicious action on the host itself rather than only reporting it?",
+    "opts": [
+      "Host-based intrusion prevention system",
+      "Host-based intrusion detection system",
+      "SIEM correlation rule",
+      "Vulnerability scanner"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "A HIPS inspects activity and blocks it inline on the host. A HIDS detects and alerts without blocking. SIEM rules generate alerts from collected data, and vulnerability scanners identify weaknesses rather than block behavior.",
+    "tip": "The P in IPS means prevent (blocks inline). The D in IDS means detect (alerts only)."
+  },
+  {
+    "id": "2-069",
+    "d": 2,
+    "obj": "2.5",
+    "topic": "Patching",
+    "diff": 2,
+    "type": "single",
+    "q": "A critical remote code execution vulnerability in a public web server is being actively exploited. The vendor patch requires a 20-minute restart, and the next maintenance window is 12 days away. What is the BEST course of action?",
+    "opts": [
+      "Invoke the emergency change process to patch now, using a WAF virtual patch or access restriction until the restart occurs",
+      "Wait for the scheduled maintenance window to avoid unplanned downtime",
+      "Disable logging on the server to reduce noise while waiting",
+      "Rely on the antivirus product to detect exploitation"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Actively exploited internet-facing RCE warrants emergency change handling, with temporary compensating controls to shrink exposure until the patch is applied. Waiting 12 days accepts near-certain compromise, disabling logging destroys visibility, and antivirus does not reliably stop exploitation of a server vulnerability.",
+    "tip": "Emergency change processes still require documentation and post-implementation review — they are expedited, not skipped."
+  },
+  {
+    "id": "2-070",
+    "d": 2,
+    "obj": "2.5",
+    "topic": "Access control",
+    "diff": 2,
+    "type": "single",
+    "q": "A shared project folder must be readable by the whole department but writable only by three team leads. Which mitigation technique implements this?",
+    "opts": [
+      "File system permissions and access control lists",
+      "Full-disk encryption on the file server",
+      "A host-based intrusion prevention policy",
+      "Network segmentation of the file server VLAN"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "ACLs and permissions define who may read, write, or modify specific resources. FDE protects against physical theft, HIPS blocks malicious host behavior, and segmentation restricts network reachability rather than per-file rights.",
+    "tip": "Permissions answer 'who can do what to this object'. Segmentation answers 'who can reach this system at all'."
+  },
+  {
+    "id": "2-071",
+    "d": 2,
+    "obj": "2.5",
+    "topic": "Monitoring",
+    "diff": 2,
+    "type": "single",
+    "q": "Which mitigation technique is MOST directly aimed at shortening the time between compromise and discovery?",
+    "opts": [
+      "Continuous monitoring with centralized log aggregation and alerting",
+      "Annual policy review",
+      "Longer password history requirements",
+      "Adding a second firewall in series"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Continuous monitoring reduces dwell time by surfacing indicators quickly. Policy review is governance, password history limits reuse, and duplicate firewalls add filtering depth without improving detection speed.",
+    "tip": "Metrics to associate with monitoring: mean time to detect (MTTD) and mean time to respond (MTTR)."
+  },
+  {
+    "id": "2-072",
+    "d": 2,
+    "obj": "2.4",
+    "topic": "Resource consumption",
+    "diff": 2,
+    "type": "single",
+    "q": "A workstation's CPU sits at 98 percent overnight, its fans run constantly, and outbound connections to a mining pool are observed. Which indicator and activity are present?",
+    "opts": [
+      "Abnormal resource consumption caused by cryptojacking malware",
+      "Resource inaccessibility caused by ransomware",
+      "Out-of-cycle logging caused by clock drift",
+      "Account lockout caused by password spraying"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Sustained high utilization plus mining pool traffic indicates cryptojacking, which manifests as abnormal resource consumption. Resource inaccessibility means data or services cannot be reached, out-of-cycle logging concerns unusual event timing, and lockouts stem from failed authentications.",
+    "tip": "Cryptojacking indicators: CPU/GPU spikes, thermal issues, higher cloud bills, and connections to mining pools on odd ports."
+  },
+  {
+    "id": "2-073",
+    "d": 2,
+    "obj": "2.4",
+    "topic": "Out-of-cycle logging",
+    "diff": 3,
+    "type": "single",
+    "q": "A payroll batch job that normally runs at 02:00 on the first of the month shows executions at 21:40 on three random weekdays. Which indicator of malicious activity does this represent?",
+    "opts": [
+      "Out-of-cycle logging",
+      "Missing logs",
+      "Blocked content",
+      "Concurrent session usage"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Activity recorded outside expected schedules is out-of-cycle logging and often reveals unauthorized use of a process or account. Missing logs indicate deletion, blocked content refers to prevented access attempts, and concurrent sessions indicate credential sharing or theft.",
+    "tip": "Baselines make this indicator usable — you must know normal timing before abnormal timing means anything."
+  },
+  {
+    "id": "2-074",
+    "d": 2,
+    "obj": "2.4",
+    "topic": "Blocked content",
+    "diff": 2,
+    "type": "single",
+    "q": "A user's endpoint repeatedly attempts to reach a domain that the secure web gateway categorizes as command and control, and each attempt is denied. Which indicator does the gateway log represent?",
+    "opts": [
+      "Blocked content indicating a possible existing infection",
+      "Impossible travel indicating credential theft",
+      "Resource inaccessibility indicating hardware failure",
+      "Missing logs indicating anti-forensics"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Repeated blocked requests to malicious infrastructure signal that something on the host is already trying to call out, so the host should be investigated rather than treated as safe. The other indicators describe unrelated conditions.",
+    "tip": "A blocked outbound connection is a win for the control and an alarm for the endpoint. Always investigate the source host."
+  },
+  {
+    "id": "2-075",
+    "d": 2,
+    "obj": "2.4",
+    "topic": "RFID cloning",
+    "diff": 2,
+    "type": "single",
+    "q": "An attacker stands near an employee in an elevator with a concealed reader, then fabricates a working badge from the captured data. Which attack is this, and which control mitigates it?",
+    "opts": [
+      "RFID cloning; adopt cryptographically authenticated smart cards and shielded badge holders",
+      "Bluesnarfing; disable Bluetooth pairing",
+      "Tailgating; install an access control vestibule",
+      "Vishing; train staff on caller verification"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Low-frequency proximity cards can be read and duplicated, so mitigation requires cards using mutual cryptographic authentication and physical shielding. Bluesnarfing targets Bluetooth data, tailgating is following someone through a door, and vishing is a phone-based social engineering attack.",
+    "tip": "Physical attacks in SY0-701: brute force (forcing a door or lock), RFID cloning, and environmental attacks."
+  },
+  {
+    "id": "2-076",
+    "d": 2,
+    "obj": "2.4",
+    "topic": "Environmental attack",
+    "diff": 3,
+    "type": "single",
+    "q": "An attacker deliberately disables the HVAC in a small server room, causing thermal shutdown of production systems. Which category of physical attack is this?",
+    "opts": [
+      "Environmental attack",
+      "Brute-force physical attack",
+      "Logic bomb",
+      "Amplified DDoS"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Manipulating environmental controls such as cooling, power, or fire suppression to disrupt operations is an environmental attack. Physical brute force means forcing entry, a logic bomb is conditional malicious code, and DDoS is a network flood.",
+    "tip": "Environmental controls to protect: HVAC, power (UPS/generator), fire suppression, humidity, and hot/cold aisle containment."
+  },
+  {
+    "id": "2-077",
+    "d": 2,
+    "obj": "2.4",
+    "topic": "Malicious code indicators",
+    "diff": 3,
+    "type": "single",
+    "q": "A scheduled task on a server runs a base64-encoded PowerShell command that downloads a payload from a pastebin URL. Which indicator category does this represent?",
+    "opts": [
+      "Malicious code execution using obfuscated scripting",
+      "Blocked content",
+      "Resource inaccessibility",
+      "RFID cloning"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Encoded interpreter commands that retrieve remote payloads are classic malicious code indicators, often used to bypass simple content inspection and persist via scheduled tasks. The other indicators describe unrelated observable conditions.",
+    "tip": "Red flags in command lines: -enc/-EncodedCommand, -w hidden, -nop, certutil downloads, and rundll32 with odd arguments."
+  },
+  {
+    "id": "2-078",
+    "d": 2,
+    "obj": "2.4",
+    "topic": "Account lockout",
+    "diff": 2,
+    "type": "single",
+    "q": "The help desk receives 60 lockout calls in one hour from users across multiple departments, all with recent failed logins from a single external IP. What is the MOST likely cause?",
+    "opts": [
+      "An automated credential attack triggering mass lockouts",
+      "A password policy change that reset all accounts",
+      "Users forgetting passwords after a holiday weekend",
+      "A time synchronization failure on the domain controller"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Mass lockouts correlated to one external source indicate an automated password attack, whose side effect is a denial of service against users. A policy change or holiday would not correlate to a single attacking IP, and time drift typically produces Kerberos errors rather than password failures from one address.",
+    "tip": "Lockout storms can themselves be the attack goal — a cheap denial of service against an entire directory."
+  },
+  {
+    "id": "2-079",
+    "d": 2,
+    "obj": "2.3",
+    "topic": "Cloud vulnerabilities",
+    "diff": 3,
+    "type": "single",
+    "q": "An attacker obtains a long-lived cloud access key committed to a public code repository and uses it to enumerate storage buckets. Which combination of mitigations is BEST?",
+    "opts": [
+      "Use short-lived federated credentials, secret scanning in CI, and automated key rotation",
+      "Increase the key length to 4096 bits",
+      "Move the repository to a different hosting provider",
+      "Require complex passwords for the cloud console"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Replacing static keys with temporary role-based credentials removes the value of a leaked secret, while secret scanning and rotation limit exposure windows. Key length is not the issue, relocating the repository does not prevent leaks, and console password policy does not affect programmatic keys.",
+    "tip": "Best practice ladder for cloud identity: no static keys → short-lived tokens → workload identity federation."
+  },
+  {
+    "id": "2-080",
+    "d": 2,
+    "obj": "2.3",
+    "topic": "Web vulnerabilities",
+    "diff": 3,
+    "type": "single",
+    "q": "A banking application lets an authenticated user change another customer's address by editing the account ID in the request URL. Which vulnerability is this?",
+    "opts": [
+      "Insecure direct object reference enabling horizontal privilege escalation",
+      "Cross-site scripting",
+      "Buffer overflow",
+      "Cryptographic downgrade"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "The application authenticates the user but fails to authorize the requested object, letting one user act on another's data at the same privilege level. XSS injects script, buffer overflow corrupts memory, and downgrade attacks weaken cryptography.",
+    "tip": "Broken access control questions: the fix is server-side authorization checks on every object reference, never client-side hiding."
+  },
+  {
+    "id": "2-081",
+    "d": 2,
+    "obj": "2.2",
+    "topic": "Human vectors",
+    "diff": 2,
+    "type": "single",
+    "q": "An attacker follows an employee through a badge-controlled door while carrying two coffee cups and asking for help with the handle. Which technique is used, and which control stops it?",
+    "opts": [
+      "Tailgating; install an access control vestibule and train staff not to hold doors",
+      "Pretexting; require email signatures",
+      "Smishing; block shortened URLs",
+      "Watering hole; filter third-party websites"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Tailgating exploits courtesy to bypass physical access control, and vestibules plus awareness training address it. Pretexting is the false backstory element (present here but not the physical technique), while smishing and watering hole attacks are digital vectors.",
+    "tip": "Piggybacking = the employee knowingly lets them in. Tailgating = the employee is unaware or manipulated."
+  },
+  {
+    "id": "2-082",
+    "d": 2,
+    "obj": "2.2",
+    "topic": "Phishing variants",
+    "diff": 3,
+    "type": "single",
+    "q": "A single, highly customized email is sent only to the CFO, referencing a real board meeting and a genuine vendor relationship. Which attack term BEST describes this?",
+    "opts": [
+      "Whaling",
+      "Generic phishing",
+      "Smishing",
+      "Shoulder surfing"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Whaling is spear phishing aimed at a high-value executive. Generic phishing is broad and untargeted, smishing arrives by text message, and shoulder surfing is direct observation of a screen or keypad.",
+    "tip": "Phishing → spear phishing (targeted group/person) → whaling (executive target). Detail and personalization increase down the chain."
+  },
+  {
+    "id": "2-083",
+    "d": 2,
+    "obj": "2.5",
+    "topic": "Application allow list",
+    "diff": 3,
+    "type": "multi",
+    "q": "Users keep executing macro-enabled documents that launch scripting interpreters. Which two mitigations MOST directly reduce this risk? (Choose two.)",
+    "opts": [
+      "Block macros from files originating on the internet by policy",
+      "Restrict script interpreters through an application allow list",
+      "Require quarterly password rotation",
+      "Increase mailbox storage quotas"
+    ],
+    "a": [
+      0,
+      1
+    ],
+    "exp": "Blocking internet-sourced macros removes the initial execution path, and allow listing interpreters prevents the follow-on stage from running. Password rotation and mailbox quotas have no effect on macro execution.",
+    "tip": "Macro attacks are a favorite exam scenario. Answer set: block macros by policy, allow list, disable Windows Script Host, and use EDR."
+  },
+  {
+    "id": "2-084",
+    "d": 2,
+    "obj": "2.5",
+    "topic": "Encryption as mitigation",
+    "diff": 2,
+    "type": "single",
+    "q": "A backup tape is lost in transit to an offsite facility. Which control would have made the loss a non-event from a confidentiality standpoint?",
+    "opts": [
+      "Encrypting the backup media with keys stored separately",
+      "Labeling the tape as confidential",
+      "Using a courier with tracking numbers",
+      "Compressing the backup before writing it"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Encrypted media without the key is unreadable, so a lost tape does not disclose data. Labeling only informs handlers, tracking helps locate the shipment but does not protect content, and compression is not a security control.",
+    "tip": "Data at rest on portable media should always be encrypted, with keys managed separately from the media."
+  },
+  {
+    "id": "2-085",
+    "d": 2,
+    "obj": "2.4",
+    "topic": "Wireless attacks",
+    "diff": 3,
+    "type": "single",
+    "q": "Clients on a corporate wireless network are repeatedly disconnected, and a capture shows a flood of 802.11 deauthentication frames. What is the attacker MOST likely doing?",
+    "opts": [
+      "Forcing clients to reconnect so they associate with a rogue access point or expose handshake material",
+      "Performing SQL injection against the wireless controller",
+      "Cloning employee RFID badges",
+      "Exploiting a race condition in the DHCP server"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Deauthentication floods deny service and drive reassociation, which supports evil twin attacks and handshake capture for offline cracking. The other options describe unrelated attack techniques.",
+    "tip": "802.11w (management frame protection) mitigates deauthentication attacks; WPA3 requires it."
+  },
+  {
+    "id": "2-086",
+    "d": 2,
+    "obj": "2.4",
+    "topic": "Credential replay",
+    "diff": 3,
+    "type": "multi",
+    "q": "An attacker steals a session cookie via a cross-site scripting flaw and uses it to access the application without ever knowing the password. Which mitigations directly reduce this risk? (Choose two.)",
+    "opts": [
+      "Set cookies as HttpOnly and Secure",
+      "Bind sessions to client attributes and expire them quickly",
+      "Increase password minimum length to 16 characters",
+      "Enable ICMP redirects on the load balancer"
+    ],
+    "a": [
+      0,
+      1
+    ],
+    "exp": "HttpOnly prevents script access to the cookie and Secure keeps it off cleartext channels, while short-lived, bound sessions limit the value of a stolen token. Password length does not matter when the password is bypassed, and ICMP redirects are unrelated and generally undesirable.",
+    "tip": "Session theft mitigations: HttpOnly, Secure, SameSite, short expiry, rotation on privilege change, and CSP to reduce XSS."
+  },
+  {
+    "id": "2-087",
+    "d": 2,
+    "obj": "2.3",
+    "topic": "Operating system vulnerabilities",
+    "diff": 2,
+    "type": "single",
+    "q": "A vulnerability scan reports that a server is missing 43 operating system patches, several rated critical. Which action addresses the ROOT cause of the finding?",
+    "opts": [
+      "Implement and monitor an automated patch management process with defined SLAs",
+      "Manually patch the server this week and close the ticket",
+      "Add the server to a deny list on the perimeter firewall",
+      "Reduce the scan frequency to quarterly to lower noise"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Recurring patch gaps indicate a missing process; automation with measurable service levels prevents recurrence. One-off manual patching fixes today's symptom, firewall changes do not remediate host vulnerabilities, and scanning less often only hides the problem.",
+    "tip": "Exam pattern: when a finding repeats, the correct answer is a process or automation fix, not a one-time action."
+  },
+  {
+    "id": "2-088",
+    "d": 2,
+    "obj": "2.5",
+    "topic": "Disable ports and protocols",
+    "diff": 2,
+    "type": "single",
+    "q": "A hardening standard requires eliminating cleartext administrative protocols. Which change satisfies it?",
+    "opts": [
+      "Disable Telnet and FTP, and require SSH and SFTP instead",
+      "Change the Telnet port from 23 to 2323",
+      "Require longer passwords for FTP accounts",
+      "Enable FTP passive mode"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "SSH and SFTP encrypt credentials and data, whereas Telnet and FTP transmit them in cleartext regardless of port or password length. Port changes are obscurity, and passive mode only alters connection behavior.",
+    "tip": "Cleartext to secure swaps: Telnet→SSH, FTP→SFTP/FTPS, HTTP→HTTPS, SNMPv1/2c→SNMPv3, LDAP→LDAPS."
+  },
+  {
+    "id": "2-089",
+    "d": 2,
+    "obj": "2.1",
+    "topic": "Threat actor motivation",
+    "diff": 3,
+    "type": "single",
+    "q": "A former contractor whose access was never revoked deletes several production dashboards after a contract dispute. Which actor and motivation pairing applies?",
+    "opts": [
+      "Insider threat motivated by revenge",
+      "Nation-state motivated by war",
+      "Unskilled attacker motivated by chaos",
+      "Organized crime motivated by financial gain"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "A person with legitimate (though stale) access acting from a grievance is an insider threat motivated by revenge. No state interest, no ransom demand, and no reliance on borrowed tooling is described.",
+    "tip": "This scenario doubles as an offboarding failure — access review and prompt deprovisioning are the mitigations."
+  },
+  {
+    "id": "2-090",
+    "d": 2,
+    "obj": "2.2",
+    "topic": "Voice call vector",
+    "diff": 2,
+    "type": "single",
+    "q": "An attacker spoofs the internal help desk's caller ID and convinces a user to install a \"support tool\" that is actually a remote access trojan. Which two elements are combined?",
+    "opts": [
+      "Voice-call threat vector and impersonation",
+      "Removable device vector and jailbreaking",
+      "Image-based vector and steganography",
+      "Supply chain vector and malicious update"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "The delivery channel is a voice call (vishing) and the technique is impersonating a trusted internal function. No physical media, image parsing flaw, or vendor software channel is involved.",
+    "tip": "Caller ID is trivially spoofed. Verification must happen through a known-good channel the user initiates."
+  },
+  {
+    "id": "2-091",
+    "d": 2,
+    "obj": "2.5",
+    "topic": "Mitigation selection",
+    "diff": 3,
+    "type": "single",
+    "q": "Following a breach that began with a stolen VPN password, which single mitigation would have MOST likely prevented the initial access?",
+    "opts": [
+      "Phishing-resistant multifactor authentication on remote access",
+      "A longer VPN pre-shared key",
+      "Increasing log retention to one year",
+      "Weekly vulnerability scanning of internal hosts"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "MFA blocks use of a stolen password by itself, and phishing-resistant factors also defeat real-time relay attacks. Pre-shared key length does not protect user credentials, and retention and scanning do not prevent authentication with valid credentials.",
+    "tip": "For remote access, the exam's expected controls are MFA, device posture checks, and least-privilege access rather than full network tunnels."
+  },
+  {
+    "id": "2-092",
+    "d": 2,
+    "obj": "2.4",
+    "topic": "Virus",
+    "diff": 2,
+    "type": "single",
+    "q": "Which characteristic distinguishes a virus from a worm?",
+    "opts": [
+      "A virus requires a host file or user action to execute and replicate, while a worm self-propagates",
+      "A virus only affects Linux, while a worm only affects Windows",
+      "A virus encrypts files, while a worm steals credentials",
+      "A virus operates in kernel mode, while a worm operates in user mode"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "The distinction is propagation: viruses attach to files or programs and need execution, whereas worms spread autonomously across networks. Platform, payload, and privilege level vary independently of the classification.",
+    "tip": "Classify malware by two axes: how it spreads and what its payload does."
+  },
+  {
+    "id": "2-093",
+    "d": 2,
+    "obj": "2.3",
+    "topic": "Malicious update",
+    "diff": 3,
+    "type": "single",
+    "q": "An organization's update server is compromised, and attackers publish a signed-looking but malicious agent update to 2,000 endpoints. Which control would MOST likely have detected the tampering before deployment?",
+    "opts": [
+      "Verifying vendor code signatures and hashes against an out-of-band source before distribution",
+      "Deploying updates faster to reduce exposure windows",
+      "Increasing endpoint disk encryption strength",
+      "Allowing endpoints to update directly from the internet"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Independent verification of signatures and published hashes catches substituted packages before they are pushed. Faster deployment spreads the malicious update sooner, encryption does not validate software authenticity, and direct internet updates simply move the trust problem.",
+    "tip": "Supply chain integrity controls: signature verification, reproducible builds, SBOM review, and staged canary deployment."
+  },
+  {
+    "id": "2-094",
+    "d": 2,
+    "obj": "2.4",
+    "topic": "Resource inaccessibility",
+    "diff": 2,
+    "type": "single",
+    "q": "Users report that a critical share is unreachable, and monitoring shows the storage array's LUNs offline shortly after a suspicious administrative login. Which indicator category applies?",
+    "opts": [
+      "Resource inaccessibility",
+      "Impossible travel",
+      "Out-of-cycle logging",
+      "Concurrent session usage"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Resources becoming unavailable is the resource inaccessibility indicator, frequently caused by destructive action or ransomware. Impossible travel concerns geography, out-of-cycle logging concerns timing of events, and concurrent sessions concern simultaneous identity use.",
+    "tip": "Pair indicators with likely causes so you can pick between similar answers quickly on the exam."
+  },
+  {
+    "id": "2-095",
+    "d": 2,
+    "obj": "2.2",
+    "topic": "Unsecure networks",
+    "diff": 3,
+    "type": "single",
+    "q": "A sales team must access internal applications from hotel and airport wireless networks. Which control set BEST protects the sessions?",
+    "opts": [
+      "Always-on VPN or zero trust network access with certificate-based device authentication",
+      "Instructing users to prefer networks without a captive portal",
+      "Requiring users to change their password after each trip",
+      "Disabling wireless adapters and using hotel wired ports instead"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Encrypted tunnels with device authentication protect traffic on untrusted networks regardless of the local environment. Choosing networks by portal behavior is not a security property, post-trip password changes do not protect the session in progress, and hotel wired networks are equally untrusted.",
+    "tip": "Untrusted network questions: VPN/ZTNA, TLS everywhere, DNS protection, and no reliance on the local network's security."
+  },
+  {
+    "id": "2-096",
+    "d": 2,
+    "obj": "2.3",
+    "topic": "Application vulnerabilities",
+    "diff": 3,
+    "type": "single",
+    "q": "An API accepts a signed JWT but does not verify the signature algorithm, allowing an attacker to submit a token with \"alg\": \"none\". Which vulnerability class is this?",
+    "opts": [
+      "Cryptographic implementation vulnerability leading to authentication bypass",
+      "Buffer overflow",
+      "Race condition",
+      "Resource reuse"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Failing to enforce expected algorithms is a cryptographic implementation flaw that lets an attacker forge tokens. No memory corruption, timing window, or uncleared resource is involved.",
+    "tip": "Token security checklist: enforce algorithm allow list, validate issuer and audience, verify expiry, and reject unsigned tokens."
+  },
+  {
+    "id": "2-097",
+    "d": 2,
+    "obj": "2.5",
+    "topic": "Mitigation layering",
+    "diff": 3,
+    "type": "multi",
+    "q": "An organization wants defense in depth against ransomware. Which THREE measures contribute MOST directly to recovery and containment?",
+    "opts": [
+      "Immutable or offline backups tested by periodic restores",
+      "Network segmentation limiting SMB between user subnets",
+      "Least privilege with no standing domain administrator sessions on workstations",
+      "Publishing the incident response plan on the public website"
+    ],
+    "a": [
+      0,
+      1,
+      2
+    ],
+    "exp": "Immutable backups enable recovery even when production is encrypted, segmentation limits spread, and eliminating standing high-privilege sessions blocks the credential theft path attackers use to deploy ransomware enterprise-wide. Publishing the response plan publicly provides attackers with useful reconnaissance and no defensive benefit.",
+    "tip": "For ransomware, the exam rewards backups plus segmentation plus privileged access control — technology alone is never the whole answer."
+  },
+  {
+    "id": "2-098",
+    "d": 2,
+    "obj": "2.4",
+    "topic": "Injection attacks",
+    "diff": 3,
+    "type": "single",
+    "q": "A web form that pings a hostname allows input of 8.8.8.8; whoami, and the response includes the web server's service account name. Which attack is this?",
+    "opts": [
+      "Command injection",
+      "SQL injection",
+      "Cross-site scripting",
+      "Directory traversal"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Chained shell metacharacters that execute operating system commands indicate command injection. SQL injection targets database syntax, XSS executes script in a browser, and directory traversal reads files outside the intended path.",
+    "tip": "Command injection fixes: avoid shelling out, use language APIs, strict allow-list validation, and never pass user input to a shell."
+  },
+  {
+    "id": "2-099",
+    "d": 2,
+    "obj": "2.4",
+    "topic": "Forgery",
+    "diff": 3,
+    "type": "single",
+    "q": "A logged-in user visits a malicious page that silently submits a form to the banking application, transferring funds using the user's existing session. Which attack is this, and which control prevents it?",
+    "opts": [
+      "Cross-site request forgery; require unpredictable anti-CSRF tokens and SameSite cookies",
+      "Cross-site scripting; encode all output",
+      "Replay attack; extend session lifetime",
+      "Privilege escalation; remove local admin rights"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "CSRF abuses the victim's authenticated session to perform unintended state-changing requests, and per-request tokens plus SameSite cookie restrictions defeat it. Output encoding addresses XSS, longer sessions worsen the risk, and local admin rights are unrelated.",
+    "tip": "XSS steals or acts within the browser via injected script; CSRF makes the browser act using its existing credentials."
+  },
+  {
+    "id": "2-100",
+    "d": 2,
+    "obj": "2.2",
+    "topic": "Message-based vectors",
+    "diff": 2,
+    "type": "single",
+    "q": "Which control set MOST reduces successful email-based attacks reaching users?",
+    "opts": [
+      "Enforce SPF, DKIM, and DMARC, plus attachment sandboxing and URL rewriting at the gateway",
+      "Increase mailbox quotas and enable auto-forwarding",
+      "Require users to read email in plain text only",
+      "Disable spam filtering to prevent false positives"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Authentication of sending domains combined with dynamic analysis of attachments and links blocks most spoofing and malicious payloads. Larger quotas and auto-forwarding increase risk, plain text alone does not stop credential phishing links, and disabling filtering removes protection.",
+    "tip": "Know the trio: SPF authorizes sending IPs, DKIM signs messages, DMARC sets policy and reporting when SPF/DKIM fail alignment."
+  },
+  {
+    "id": "2-101",
+    "d": 2,
+    "obj": "2.3",
+    "topic": "Hardware vulnerabilities",
+    "diff": 3,
+    "type": "single",
+    "q": "A vulnerability allows a malicious peripheral to read system memory over a high-speed external interface before the OS loads protections. Which vulnerability category does this belong to?",
+    "opts": [
+      "Hardware and firmware vulnerability",
+      "Web application vulnerability",
+      "Cloud misconfiguration",
+      "Social engineering vector"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Direct memory access attacks through hardware interfaces stem from platform firmware and hardware design, mitigated by IOMMU protections, disabling unused interfaces, and firmware updates. The other categories describe entirely different layers.",
+    "tip": "Firmware protections to name: Secure Boot, measured boot with a TPM, signed firmware updates, and disabling unused hardware interfaces."
+  },
+  {
+    "id": "2-102",
+    "d": 2,
+    "obj": "2.5",
+    "topic": "Hardening baselines",
+    "diff": 3,
+    "type": "single",
+    "q": "A team must harden 200 new Linux servers consistently and prove compliance monthly. Which approach is BEST?",
+    "opts": [
+      "Apply a recognized benchmark as code and scan continuously against it",
+      "Have each administrator harden servers using personal checklists",
+      "Harden the first server and clone it, never scanning again",
+      "Rely on the cloud provider's default image as sufficient"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Codified benchmarks (such as CIS Benchmarks or DISA STIGs) applied automatically and verified by recurring scans give consistency and evidence. Personal checklists drift, clone-and-forget ignores post-deployment drift and new findings, and provider defaults are not hardened baselines.",
+    "tip": "Baseline lifecycle: establish, deploy, enforce, monitor for drift, and revise."
+  },
+  {
+    "id": "2-103",
+    "d": 2,
+    "obj": "2.4",
+    "topic": "Password attacks",
+    "diff": 3,
+    "type": "single",
+    "q": "An attacker who has stolen a database of unsalted password hashes uses a precomputed lookup table to recover plaintext passwords quickly. Which attack is this?",
+    "opts": [
+      "Rainbow table attack",
+      "Password spraying",
+      "Credential replay",
+      "Downgrade attack"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Rainbow tables are precomputed hash-to-plaintext mappings that work only when hashes lack unique salts. Spraying guesses passwords online, credential replay reuses captured authentication material, and downgrade attacks weaken protocol negotiation.",
+    "tip": "Salting defeats rainbow tables; key stretching defeats fast offline cracking. You need both."
+  },
+  {
+    "id": "2-104",
+    "d": 2,
+    "obj": "2.2",
+    "topic": "Supply chain",
+    "diff": 3,
+    "type": "multi",
+    "q": "Which contractual and technical controls BEST reduce third-party vendor risk for a critical SaaS provider? (Choose two.)",
+    "opts": [
+      "Right-to-audit clause with defined security requirements and breach notification timelines",
+      "Least-privilege, MFA-protected, individually attributable vendor accounts with time-bound access",
+      "A verbal assurance from the vendor's sales representative",
+      "Shared administrator credentials so the vendor can respond quickly"
+    ],
+    "a": [
+      0,
+      1
+    ],
+    "exp": "Contract language creates enforceable obligations and visibility, while scoped, attributable, time-bound vendor access limits abuse and enables accountability. Verbal assurances are unenforceable, and shared credentials destroy attribution and violate least privilege.",
+    "tip": "Vendor risk answers cluster around due diligence, contract terms (SLA, right to audit, notification), and least-privilege access."
+  },
+  {
+    "id": "2-105",
+    "d": 2,
+    "obj": "2.4",
+    "topic": "Physical brute force",
+    "diff": 2,
+    "type": "single",
+    "q": "An intruder pries open a server room door with a crowbar, defeating the strike plate. Which attack category is this, and which control would MOST directly resist it?",
+    "opts": [
+      "Physical brute force; install reinforced doors and frames with high-security locks and door contacts",
+      "Environmental attack; add redundant HVAC",
+      "Credential replay; rotate badge encryption keys",
+      "Vishing; add caller verification procedures"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Forcing a physical barrier is a brute-force physical attack, resisted by hardened doors, frames, and locks, and detected by contacts and alarms. Environmental attacks target facility systems, and the remaining options are digital and social techniques.",
+    "tip": "Physical security answers layer: deter, delay, detect, and respond. A door only needs to hold long enough for response."
+  },
+  {
+    "id": "2-106",
+    "d": 2,
+    "obj": "2.3",
+    "topic": "Virtualization",
+    "diff": 3,
+    "type": "single",
+    "q": "Which practice MOST reduces the risk that a compromised virtual machine affects other tenants on the same host?",
+    "opts": [
+      "Keep the hypervisor patched and separate workloads of differing trust levels onto distinct hosts or clusters",
+      "Increase each VM's allocated memory",
+      "Enable nested virtualization on all guests",
+      "Store all VM disk files on a single shared datastore"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Hypervisor patching closes escape vulnerabilities, and separating trust levels limits the impact if isolation fails. Memory allocation, nested virtualization, and shared datastores do not improve tenant isolation, and the latter two can increase risk.",
+    "tip": "Virtualization risks: VM escape, VM sprawl, resource reuse, and snapshot data leakage."
+  },
+  {
+    "id": "2-107",
+    "d": 2,
+    "obj": "2.4",
+    "topic": "Birthday attack",
+    "diff": 3,
+    "type": "single",
+    "q": "Which statement BEST describes the significance of the birthday attack in cryptography?",
+    "opts": [
+      "Because of probability, collisions in an n-bit hash can be found in roughly 2^(n/2) attempts, so hash output length must be generous",
+      "It proves that longer passwords are unnecessary",
+      "It allows recovery of an AES key from a single ciphertext block",
+      "It permits forging a digital signature without any hash weakness"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "The birthday paradox shows collisions appear far sooner than brute-forcing the full output space, which is why 128-bit hashes are inadequate and SHA-256 or larger is preferred. It says nothing about password length, does not break AES, and does not forge signatures absent a collision weakness.",
+    "tip": "Birthday attack = collision math. It explains why hash length matters more than intuition suggests."
+  },
+  {
+    "id": "2-108",
+    "d": 2,
+    "obj": "2.5",
+    "topic": "Monitoring and response",
+    "diff": 3,
+    "type": "single",
+    "q": "A SOC receives 4,000 low-value alerts daily and misses a genuine intrusion. Which improvement addresses the underlying problem MOST effectively?",
+    "opts": [
+      "Tune detection rules and prioritize alerts by asset criticality and confidence, automating triage of known-benign patterns",
+      "Hire additional analysts to read every alert",
+      "Disable the noisiest detection sources entirely",
+      "Increase log retention so missed alerts can be found later"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Alert fatigue is solved by tuning, enrichment, prioritization, and automation so analysts see meaningful signals. More staff does not fix a signal-to-noise problem, blanket disabling creates blind spots, and longer retention only helps after the fact.",
+    "tip": "Detection engineering beats brute-force staffing. Expect answers involving tuning, correlation, and automation (SOAR)."
+  },
+  {
+    "id": "2-109",
+    "d": 2,
+    "obj": "2.2",
+    "topic": "Attack surface",
+    "diff": 3,
+    "type": "multi",
+    "q": "An external assessment finds a forgotten staging web application exposed to the internet with test credentials. Which two mitigations should be prioritized? (Choose two.)",
+    "opts": [
+      "Remove internet exposure and restrict access to authorized networks",
+      "Decommission the staging application or rebuild it with unique, strong credentials",
+      "Add a copyright notice to the login page",
+      "Increase the application's session timeout"
+    ],
+    "a": [
+      0,
+      1
+    ],
+    "exp": "Eliminating public exposure and either retiring the system or removing default test credentials directly removes the risk. Copyright text is irrelevant, and longer session timeouts increase exposure.",
+    "tip": "Non-production systems are a recurring exam theme: they must never carry production data, default credentials, or public exposure."
+  },
+  {
+    "id": "2-110",
+    "d": 2,
+    "obj": "2.4",
+    "topic": "Indicators correlation",
+    "diff": 3,
+    "type": "single",
+    "q": "Which combination of observations MOST strongly suggests an active credential-based intrusion rather than a user error?",
+    "opts": [
+      "Successful authentication from a new country, immediate mailbox rule creation, and mass file downloads within minutes",
+      "A single failed login followed by a successful login from the user's usual device",
+      "A password reset request submitted through the self-service portal",
+      "A user reporting that a legitimate site was blocked by the web filter"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Anomalous geography combined with persistence (mailbox rules) and bulk data access is a coherent attack chain. The other observations are common benign events without corroborating indicators.",
+    "tip": "Real detections come from correlated indicators, not single events. Look for the chain: access, persistence, collection, exfiltration."
+  },
+  {
+    "id": "2-111",
+    "d": 2,
+    "obj": "2.3",
+    "topic": "Legacy systems",
+    "diff": 2,
+    "type": "single",
+    "q": "A manufacturing line depends on software that runs only on an unsupported OS version and cannot be virtualized or upgraded for 18 months. Which combination BEST manages the risk in the interim?",
+    "opts": [
+      "Segment and isolate the host, restrict traffic to required flows, monitor closely, and record a formal risk acceptance with an expiration date",
+      "Accept the risk silently and revisit it after the replacement project",
+      "Expose the host to the internet so vendors can support it remotely",
+      "Uninstall the endpoint agent to avoid compatibility issues"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Compensating controls plus documented, time-bounded risk acceptance is the defensible approach when remediation is genuinely delayed. Silent acceptance lacks governance, internet exposure increases risk sharply, and removing endpoint protection reduces the little visibility available.",
+    "tip": "Risk acceptance must be documented, owned, and time-limited — otherwise it becomes permanent negligence."
+  },
+  {
+    "id": "2-112",
+    "d": 2,
+    "obj": "2.5",
+    "topic": "Access control mitigation",
+    "diff": 3,
+    "type": "single",
+    "q": "A file server audit shows that a group named Everyone has Modify rights to the finance folder. Which principle was violated, and what is the correct remediation?",
+    "opts": [
+      "Least privilege; replace broad group access with role-based permissions granted only to finance staff",
+      "Non-repudiation; enable digital signatures on all documents",
+      "Availability; add a second file server",
+      "Separation of duties; require two approvals for file deletion"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Granting broad modify rights violates least privilege, and the remediation is scoping access to the roles that need it. Digital signatures address integrity and attribution, redundancy addresses availability, and separation of duties concerns splitting sensitive tasks.",
+    "tip": "Broad groups (Everyone, Authenticated Users, Domain Users) on sensitive data are an automatic audit finding."
+  },
+  {
+    "id": "2-113",
+    "d": 2,
+    "obj": "2.4",
+    "topic": "Malware analysis",
+    "diff": 3,
+    "type": "single",
+    "q": "An analyst must determine what a suspicious binary does without risking the production environment. Which approach is MOST appropriate?",
+    "opts": [
+      "Execute it in an isolated, instrumented sandbox with network simulation",
+      "Run it on a spare production workstation with antivirus enabled",
+      "Open it in a text editor on the file server",
+      "Email it to the vendor and wait for a response before acting"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Sandboxed dynamic analysis reveals behavior safely while capturing network and host activity. A spare production host is still on the production network, text inspection of a binary yields little, and waiting on a vendor delays response.",
+    "tip": "Static analysis inspects without running (strings, hashes, imports). Dynamic analysis runs it in a sandbox to observe behavior."
+  },
+  {
+    "id": "2-114",
+    "d": 2,
+    "obj": "2.2",
+    "topic": "Threat vectors",
+    "diff": 2,
+    "type": "single",
+    "q": "Which of the following is the BEST example of an agentless attack surface concern?",
+    "opts": [
+      "An internet-facing management interface reachable without any endpoint software installed on the attacker's side",
+      "A corporate laptop missing its EDR agent",
+      "A phishing email opened by a user",
+      "A stolen backup tape"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Agentless exposure refers to services and interfaces that can be reached and attacked directly over the network without deploying anything on the target's endpoints. A missing agent is a monitoring gap, phishing is a human vector, and a stolen tape is a physical media risk.",
+    "tip": "SY0-701 contrasts client-based (agent installed) with agentless approaches for both attacks and vulnerability assessment."
+  },
+  {
+    "id": "2-115",
+    "d": 2,
+    "obj": "2.5",
+    "topic": "Mitigation prioritization",
+    "diff": 3,
+    "type": "single",
+    "q": "Given limited resources, which vulnerability should be remediated FIRST?",
+    "opts": [
+      "An internet-facing server with a critical, actively exploited remote code execution flaw",
+      "An internal test server with a medium-severity information disclosure flaw",
+      "A workstation with an outdated media player",
+      "A printer with an unpatched web interface on an isolated VLAN"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Prioritization combines severity, exposure, and exploitation activity; an internet-facing, actively exploited critical RCE is the clear top priority. The others are lower severity, less exposed, or already contained.",
+    "tip": "Risk-based prioritization on the exam: exploitability in the wild + internet exposure + asset criticality beat raw CVSS score alone."
+  },
+  {
+    "id": "2-116",
+    "d": 2,
+    "obj": "2.4",
+    "topic": "Rootkit persistence",
+    "diff": 3,
+    "type": "single",
+    "q": "After reimaging a laptop, the same malicious network beacon returns within hours with no user activity. Which possibility should the analyst investigate FIRST?",
+    "opts": [
+      "Firmware or UEFI-level persistence surviving the reimage",
+      "A weak user password",
+      "An expired TLS certificate",
+      "Insufficient disk space on the new image"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Malware that survives a clean OS installation typically persists below the OS in firmware, UEFI, or an attached device, or is re-infecting from another compromised host. Password strength, certificate validity, and disk space do not explain reappearance after reimaging.",
+    "tip": "Bootkit/UEFI persistence indicators: reinfection after reimage. Remediation may require firmware reflash or hardware replacement."
+  },
+  {
+    "id": "2-117",
+    "d": 2,
+    "obj": "2.1",
+    "topic": "Threat actors",
+    "diff": 3,
+    "type": "single",
+    "q": "Which threat actor is characterized as internal, with authorized access, and highly variable sophistication?",
+    "opts": [
+      "Insider threat",
+      "Nation-state",
+      "Hacktivist",
+      "Unskilled attacker"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Insider threats are internal by definition, hold legitimate access, and range from careless employees to skilled administrators. The other actors are external, and their sophistication profiles are more predictable.",
+    "tip": "Insiders can be malicious or unintentional — both appear in exam scenarios, and unintentional insiders are more common."
+  },
+  {
+    "id": "2-118",
+    "d": 2,
+    "obj": "2.5",
+    "topic": "Mitigation techniques",
+    "diff": 2,
+    "type": "single",
+    "q": "Which mitigation technique best describes placing a compromised system in a restricted environment where it can be studied without touching production?",
+    "opts": [
+      "Isolation",
+      "Patching",
+      "Encryption",
+      "Configuration enforcement"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Isolation confines a system or process so it cannot interact with other resources. Patching remediates vulnerabilities, encryption protects data confidentiality, and configuration enforcement maintains baselines.",
+    "tip": "Segmentation divides the network by design; isolation removes a specific system from communication, often during incident response."
+  },
+  {
+    "id": "2-119",
+    "d": 2,
+    "obj": "2.4",
+    "topic": "Indicators",
+    "diff": 3,
+    "type": "single",
+    "q": "A domain controller's security log shows a successful logon for a service account at 03:12 followed by creation of a new account added to Domain Admins at 03:14. What should the analyst conclude?",
+    "opts": [
+      "Likely privilege escalation and persistence by an attacker, requiring immediate incident response",
+      "Routine maintenance that should be documented next quarter",
+      "A benign replication artifact between domain controllers",
+      "A false positive caused by clock skew"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Off-hours service account authentication followed immediately by creation of a privileged account is a strong attack chain indicating escalation and persistence. Routine maintenance would follow change control, replication does not create privileged accounts, and clock skew does not fabricate account creation events.",
+    "tip": "High-value detections: new members of privileged groups, new accounts, disabled logging, and new scheduled tasks or services."
+  },
+  {
+    "id": "2-120",
+    "d": 2,
+    "obj": "2.5",
+    "topic": "Defense in depth",
+    "diff": 3,
+    "type": "single",
+    "q": "Which statement BEST expresses why layered mitigations are preferred over a single strong control?",
+    "opts": [
+      "Any single control can fail or be bypassed, so overlapping controls preserve protection and detection",
+      "Layered controls eliminate the need for monitoring",
+      "Multiple controls always cost less than one strong control",
+      "Layering guarantees that no incident can occur"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Defense in depth assumes individual control failure and provides redundancy across prevention, detection, and response. Monitoring remains essential, layering usually costs more, and no architecture guarantees the absence of incidents.",
+    "tip": "Expect 'defense in depth' as the justification answer whenever a scenario shows one control being bypassed."
+  }
+]

@@ -1,0 +1,904 @@
+[
+  {
+    "id": "5-046",
+    "d": 5,
+    "obj": "5.4",
+    "topic": "Consequences of non-compliance",
+    "diff": 2,
+    "type": "single",
+    "q": "A healthcare provider fails to protect patient records as required by regulation. Which consequences are MOST directly applicable?",
+    "opts": [
+      "Regulatory fines, sanctions, reputational damage, and potential loss of operating licensure",
+      "An automatic increase in customer trust",
+      "Reduced audit frequency going forward",
+      "Exemption from future assessments"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Non-compliance consequences include monetary penalties, sanctions, contractual impacts, reputational harm, and in severe cases loss of license. Failures increase scrutiny rather than reducing it.",
+    "tip": "Memorize the consequence list: fines, sanctions, reputational damage, loss of license, and contractual impacts."
+  },
+  {
+    "id": "5-047",
+    "d": 5,
+    "obj": "5.4",
+    "topic": "Due care vs due diligence",
+    "diff": 3,
+    "type": "single",
+    "q": "Which statement correctly distinguishes due diligence from due care?",
+    "opts": [
+      "Due diligence is the investigation and ongoing assessment of risk; due care is acting reasonably on what that assessment reveals",
+      "Due care is research and due diligence is action",
+      "Both terms refer only to financial audits",
+      "Due diligence applies only to vendors and due care only to employees"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Due diligence is the investigative work of understanding risk, while due care is the prudent action taken in response. The terms are not limited to financial contexts or to specific parties.",
+    "tip": "Memory aid: diligence = discover, care = correct. Both are needed to demonstrate reasonable conduct."
+  },
+  {
+    "id": "5-048",
+    "d": 5,
+    "obj": "5.4",
+    "topic": "Attestation",
+    "diff": 2,
+    "type": "single",
+    "q": "New employees must read the security policy and click to confirm they understand it. Which compliance activity does this represent?",
+    "opts": [
+      "Acknowledgement and attestation of policy",
+      "Independent third-party audit",
+      "Penetration testing",
+      "Business impact analysis"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Acknowledgement records that individuals received and accepted policy requirements, supporting enforceability and demonstrating a compliance control. Audits, penetration tests, and BIAs are entirely different activities.",
+    "tip": "Without documented acknowledgement, enforcing policy violations becomes difficult in HR and legal proceedings."
+  },
+  {
+    "id": "5-049",
+    "d": 5,
+    "obj": "5.4",
+    "topic": "Privacy - right to be forgotten",
+    "diff": 3,
+    "type": "single",
+    "q": "A customer in a jurisdiction with strong privacy law requests deletion of all personal data the company holds about them. What must the organization determine FIRST?",
+    "opts": [
+      "Where the data resides across all systems and backups, and which legal bases require retention despite the request",
+      "Whether the customer is likely to return as a client",
+      "How much revenue the customer generated",
+      "Whether deletion would inconvenience the marketing team"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Honoring erasure requests requires a complete data inventory and analysis of overriding legal retention obligations such as financial or tax record requirements. Commercial and convenience considerations do not determine legal obligations.",
+    "tip": "Right to be forgotten is not absolute — legal, contractual, and regulatory retention obligations can override it."
+  },
+  {
+    "id": "5-050",
+    "d": 5,
+    "obj": "5.4",
+    "topic": "Data inventory",
+    "diff": 2,
+    "type": "single",
+    "q": "Why is a data inventory foundational to privacy compliance?",
+    "opts": [
+      "An organization cannot honor access, correction, or deletion requests for data it cannot locate",
+      "It reduces the cost of storage hardware",
+      "It replaces the need for encryption",
+      "It eliminates the need for a privacy policy"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Data subject rights require knowing what personal data exists, where it resides, why it is held, and how long it is kept. Inventory does not substitute for technical protections or published privacy notices.",
+    "tip": "Data inventory plus retention schedule plus classification is the backbone of any privacy program."
+  },
+  {
+    "id": "5-051",
+    "d": 5,
+    "obj": "5.4",
+    "topic": "Compliance monitoring",
+    "diff": 3,
+    "type": "single",
+    "q": "Which approach MOST efficiently maintains continuous evidence of compliance across hundreds of cloud resources?",
+    "opts": [
+      "Automated compliance monitoring that continuously evaluates configuration against control requirements and records results",
+      "A manual annual sampling review by one analyst",
+      "Requesting screenshots from engineers each quarter",
+      "Assuming compliance unless an auditor reports otherwise"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Automation provides continuous coverage and durable evidence at a scale manual methods cannot match. Annual sampling, screenshot collection, and assumed compliance leave long periods unverified.",
+    "tip": "Continuous control monitoring turns compliance from a periodic scramble into an ongoing measurable state."
+  },
+  {
+    "id": "5-052",
+    "d": 5,
+    "obj": "5.4",
+    "topic": "Internal vs external reporting",
+    "diff": 2,
+    "type": "single",
+    "q": "Which is an example of EXTERNAL compliance reporting?",
+    "opts": [
+      "Submitting a required breach notification to a regulator within the mandated timeframe",
+      "Sending monthly patch metrics to the internal IT director",
+      "Presenting security KPIs to the internal steering committee",
+      "Emailing a team status update to the SOC manager"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "External reporting goes to regulators, customers, auditors, or the public, whereas the other examples are internal management communications.",
+    "tip": "Know that notification deadlines vary by regulation and jurisdiction — the exam tests the concept, not exact hour counts."
+  },
+  {
+    "id": "5-053",
+    "d": 5,
+    "obj": "5.5",
+    "topic": "Audit types",
+    "diff": 2,
+    "type": "single",
+    "q": "Which assessment provides the greatest independence and credibility to external stakeholders?",
+    "opts": [
+      "An independent third-party audit",
+      "An internal self-assessment",
+      "A departmental peer review",
+      "A vendor's own product certification claim"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Independent third-party audits carry the most weight with customers and regulators because the assessor has no stake in the outcome. Self-assessments and peer reviews are useful internally but lack independence, and vendor claims are self-reported.",
+    "tip": "Independence is the differentiator: internal audit reports to the audit committee; external audit is fully independent."
+  },
+  {
+    "id": "5-054",
+    "d": 5,
+    "obj": "5.5",
+    "topic": "Audit committee",
+    "diff": 3,
+    "type": "single",
+    "q": "Why should the internal audit function report to an audit committee rather than to the CIO?",
+    "opts": [
+      "Reporting outside the operational chain preserves objectivity and prevents management from suppressing findings",
+      "The CIO lacks the technical background to read audit reports",
+      "Audit committees perform the testing themselves",
+      "It reduces the cost of the audit function"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Independence from the functions being audited protects the integrity of findings. The reasoning is structural rather than about individual competence, committees provide oversight rather than perform testing, and cost is not the driver.",
+    "tip": "Any question about audit independence resolves to organizational separation from the area under review."
+  },
+  {
+    "id": "5-055",
+    "d": 5,
+    "obj": "5.5",
+    "topic": "Penetration test types",
+    "diff": 3,
+    "type": "single",
+    "q": "A tester attempts to enter a facility by tailgating, cloning a badge, and picking a server room lock. Which type of penetration test is this?",
+    "opts": [
+      "Physical penetration test",
+      "Defensive assessment",
+      "Unknown environment network test",
+      "Passive reconnaissance exercise"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Physical penetration testing evaluates facility controls such as doors, badges, locks, and guard procedures. Defensive assessments evaluate detection and response capability, network testing targets systems, and passive reconnaissance gathers information without interaction.",
+    "tip": "Physical tests need explicit written authorization and a get-out-of-jail letter carried by the tester at all times."
+  },
+  {
+    "id": "5-056",
+    "d": 5,
+    "obj": "5.5",
+    "topic": "Reconnaissance",
+    "diff": 3,
+    "type": "single",
+    "q": "A tester reviews the target's public DNS records, employee LinkedIn profiles, job postings, and code repositories without sending traffic to the target's systems. Which activity is this?",
+    "opts": [
+      "Passive reconnaissance",
+      "Active reconnaissance",
+      "Exploitation",
+      "Post-exploitation persistence"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Passive reconnaissance gathers intelligence from third-party and public sources without touching target systems, so it is undetectable by the target. Active reconnaissance interacts directly (scanning, enumeration), and exploitation and persistence occur later in the engagement.",
+    "tip": "Passive = no packets to the target. Active = scanning, banner grabbing, and enumeration that the target can detect."
+  },
+  {
+    "id": "5-057",
+    "d": 5,
+    "obj": "5.5",
+    "topic": "Offensive vs defensive",
+    "diff": 3,
+    "type": "single",
+    "q": "In a security exercise, which team is responsible for defending the environment and improving detection and response?",
+    "opts": [
+      "The blue team, performing defensive activities",
+      "The red team, performing offensive activities",
+      "The white team, performing exercise control",
+      "The purple team, performing procurement"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Blue teams defend, red teams attack, and white teams referee and set rules. Purple team refers to collaboration between red and blue to improve detections, not procurement.",
+    "tip": "Integrated (purple) exercises produce the most improvement because attackers and defenders share findings in real time."
+  },
+  {
+    "id": "5-058",
+    "d": 5,
+    "obj": "5.5",
+    "topic": "Assessment scope",
+    "diff": 3,
+    "type": "single",
+    "q": "A regulator schedules an examination of a bank's information security program against specific statutory requirements. Which assessment type is this?",
+    "opts": [
+      "An external regulatory examination",
+      "An internal self-assessment",
+      "A bug bounty program",
+      "A tabletop exercise"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Regulatory examinations are external reviews conducted by a government or supervisory authority against legal requirements. Self-assessments are internal, bug bounties involve external researchers testing systems, and tabletop exercises rehearse incident response.",
+    "tip": "Examinations often carry enforcement authority, unlike voluntary audits — findings can lead directly to sanctions."
+  },
+  {
+    "id": "5-059",
+    "d": 5,
+    "obj": "5.6",
+    "topic": "Phishing campaigns",
+    "diff": 2,
+    "type": "single",
+    "q": "What is the PRIMARY purpose of running internal simulated phishing campaigns?",
+    "opts": [
+      "Measure susceptibility, deliver targeted training, and increase reporting rates over time",
+      "Identify employees to terminate",
+      "Satisfy a technical control requirement for email filtering",
+      "Test the mail server's throughput capacity"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Simulations measure human risk, direct training where it is needed, and build the reporting habit that shortens detection time. Punitive use suppresses reporting, and simulations are not a substitute for technical email controls or load testing.",
+    "tip": "The most valuable phishing metric is the report rate, not the click rate — reporting is the behavior that helps the SOC."
+  },
+  {
+    "id": "5-060",
+    "d": 5,
+    "obj": "5.6",
+    "topic": "Reporting suspicious messages",
+    "diff": 2,
+    "type": "single",
+    "q": "An employee receives a suspicious email requesting urgent payment. What is the BEST action?",
+    "opts": [
+      "Report it using the organization's reporting mechanism without clicking links or replying",
+      "Forward it to colleagues to warn them",
+      "Reply asking the sender to verify their identity",
+      "Delete it silently so nobody else is affected"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Reporting through the sanctioned channel gets the message to the security team so they can hunt for other recipients and block infrastructure. Forwarding spreads the payload, replying confirms the address is live, and silent deletion leaves colleagues exposed.",
+    "tip": "Train one clear action: report, do not interact. Then make reporting a single click."
+  },
+  {
+    "id": "5-061",
+    "d": 5,
+    "obj": "5.6",
+    "topic": "Anomalous behavior",
+    "diff": 3,
+    "type": "single",
+    "q": "An employee begins downloading large volumes of client files at unusual hours shortly after submitting a resignation notice. Which category of anomalous behavior does this represent?",
+    "opts": [
+      "Risky behavior warranting investigation as a potential insider threat",
+      "Unintentional behavior requiring only refresher training",
+      "Expected behavior consistent with normal offboarding",
+      "Behavior that should be ignored to avoid privacy concerns"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Bulk data access outside normal patterns near a departure is classic risky behavior requiring investigation, balanced with appropriate privacy and HR involvement. It is neither accidental nor expected, and ignoring it forfeits the chance to prevent data theft.",
+    "tip": "SY0-701 categorizes anomalous behavior as risky, unexpected, and unintentional. Departures are a documented high-risk window."
+  },
+  {
+    "id": "5-062",
+    "d": 5,
+    "obj": "5.6",
+    "topic": "Training topics",
+    "diff": 2,
+    "type": "single",
+    "q": "Which training topic MOST directly reduces the risk of employees plugging in unknown USB devices found in public areas?",
+    "opts": [
+      "Removable media and cable handling awareness",
+      "Password management best practices",
+      "Business continuity planning",
+      "Change management procedures"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Removable media and malicious cable awareness addresses this specific behavior. Password practices, continuity planning, and change management target different risks.",
+    "tip": "Malicious cables and USB drops are explicitly in the SY0-701 awareness topic list alongside social engineering and operational security."
+  },
+  {
+    "id": "5-063",
+    "d": 5,
+    "obj": "5.6",
+    "topic": "Operational security",
+    "diff": 3,
+    "type": "single",
+    "q": "An engineer posts a screenshot of a production dashboard on social media, revealing internal hostnames and software versions. Which awareness topic does this violate?",
+    "opts": [
+      "Operational security, which limits disclosure of information useful to adversaries",
+      "Physical security, which controls facility access",
+      "Business continuity, which sustains operations during disruption",
+      "Change management, which governs system modifications"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Operational security involves controlling seemingly harmless information that helps attackers with reconnaissance and targeting. The other topics address facilities, continuity, and modification processes.",
+    "tip": "OPSEC failures are a favorite scenario: conference talks, job postings, public repositories, and social media screenshots."
+  },
+  {
+    "id": "5-064",
+    "d": 5,
+    "obj": "5.6",
+    "topic": "Hybrid work",
+    "diff": 2,
+    "type": "single",
+    "q": "Which guidance is MOST relevant for employees working from public spaces such as cafes and airports?",
+    "opts": [
+      "Use a VPN, apply a privacy screen, avoid sensitive calls in public, and never leave devices unattended",
+      "Disable device encryption to improve battery life",
+      "Connect to any open Wi-Fi with the strongest signal",
+      "Share credentials with a colleague in case of connectivity issues"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Remote and hybrid work guidance addresses untrusted networks, visual and audio eavesdropping, and device theft. The other options each introduce serious risk.",
+    "tip": "Remote work risks span three areas: network trust, physical device security, and visual or audible exposure."
+  },
+  {
+    "id": "5-065",
+    "d": 5,
+    "obj": "5.6",
+    "topic": "Training cadence",
+    "diff": 2,
+    "type": "single",
+    "q": "Which awareness program structure is MOST effective?",
+    "opts": [
+      "Initial training at onboarding plus recurring training and continuous reinforcement tailored to roles",
+      "A single comprehensive session at hire with no follow-up",
+      "Annual training delivered only to the IT department",
+      "Ad hoc training after each incident only"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Initial plus recurring, role-relevant training with ongoing reinforcement sustains behavior change. One-time sessions fade, IT-only training ignores the largest attack surface, and purely reactive training leaves gaps between incidents.",
+    "tip": "The SY0-701 awareness lifecycle: development, execution, reporting and monitoring (initial and recurring), then improvement."
+  },
+  {
+    "id": "5-066",
+    "d": 5,
+    "obj": "5.6",
+    "topic": "Insider threat awareness",
+    "diff": 3,
+    "type": "single",
+    "q": "Which program element MOST improves early identification of insider risk while respecting employee privacy?",
+    "opts": [
+      "Clear policy, targeted monitoring of sensitive data access, and a confidential reporting channel with HR and legal involvement",
+      "Reading all employee personal email accounts",
+      "Publicly posting a list of employees under investigation",
+      "Installing keyloggers on all personal devices"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Effective insider risk programs combine transparent policy, proportionate monitoring focused on sensitive assets, and confidential reporting with cross-functional governance. The other options are invasive, legally risky, and damaging to trust.",
+    "tip": "Insider threat programs require HR, legal, and privacy involvement — a security-only approach creates legal exposure."
+  },
+  {
+    "id": "5-067",
+    "d": 5,
+    "obj": "5.6",
+    "topic": "Situational awareness",
+    "diff": 3,
+    "type": "single",
+    "q": "A finance employee receives a call from someone claiming to be a new CFO, demanding an urgent transfer and discouraging verification \"because the deal is confidential.\" Which awareness behavior is MOST important?",
+    "opts": [
+      "Verify the request through an independently known channel before acting, regardless of claimed urgency or authority",
+      "Comply quickly because executives outrank finance staff",
+      "Ask the caller to email confirmation from the address they provide",
+      "Complete the transfer and report it afterward"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Out-of-band verification using known contact details defeats urgency and authority pressure, which are the core levers of social engineering. Deference, in-band confirmation from attacker-supplied addresses, and acting first all fail.",
+    "tip": "Urgency plus authority plus secrecy is the classic social engineering triad — treat it as a stop signal, not a reason to hurry."
+  },
+  {
+    "id": "5-068",
+    "d": 5,
+    "obj": "5.4",
+    "topic": "Privacy roles",
+    "diff": 3,
+    "type": "single",
+    "q": "An individual whose personal data is being processed submits a request to access their records. What is this person called under privacy frameworks?",
+    "opts": [
+      "The data subject",
+      "The data controller",
+      "The data processor",
+      "The data custodian"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "The data subject is the natural person the data describes and holds rights such as access, correction, and erasure. Controllers determine processing purposes, processors act on instructions, and custodians maintain technical safeguards.",
+    "tip": "Know the rights commonly tested: access, rectification, erasure, portability, and objection to processing."
+  },
+  {
+    "id": "5-069",
+    "d": 5,
+    "obj": "5.4",
+    "topic": "Data ownership",
+    "diff": 3,
+    "type": "single",
+    "q": "A company migrates customer data to a SaaS platform. Who retains ownership of that data?",
+    "opts": [
+      "The customer organization that collected it, with the provider acting as processor under contract",
+      "The SaaS provider, since the data resides on its infrastructure",
+      "Whichever party holds the encryption keys",
+      "The cloud data center operator"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Ownership and accountability remain with the organization that collected the data, and contract terms should state this explicitly along with return and deletion obligations at termination. Physical location, key custody, and infrastructure operation do not confer ownership.",
+    "tip": "Check contracts for data ownership, portability, return format, and deletion certification at contract end."
+  },
+  {
+    "id": "5-070",
+    "d": 5,
+    "obj": "5.5",
+    "topic": "Known environment testing",
+    "diff": 3,
+    "type": "single",
+    "q": "An organization gives penetration testers full network diagrams, source code, and administrative credentials to maximize coverage in a limited timeframe. Which testing approach is this?",
+    "opts": [
+      "Known environment (white box) testing",
+      "Unknown environment (black box) testing",
+      "Partially known environment (gray box) testing",
+      "Passive reconnaissance only"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Known environment testing provides complete information so testers spend time on depth rather than discovery. Unknown environment testing withholds information, partially known testing provides limited details, and passive reconnaissance involves no interaction.",
+    "tip": "Known environment testing gives the best coverage per dollar; unknown environment testing best simulates an outsider's experience."
+  },
+  {
+    "id": "5-071",
+    "d": 5,
+    "obj": "5.4",
+    "topic": "Compliance automation",
+    "diff": 3,
+    "type": "single",
+    "q": "Which benefit does compliance automation provide beyond reducing manual effort?",
+    "opts": [
+      "Consistent, timestamped evidence collection that shows control operation continuously rather than at a single point in time",
+      "Elimination of the need for policies",
+      "Guaranteed passing of every external audit",
+      "Removal of the requirement for management oversight"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Automated evidence demonstrates continuous control operation, which is stronger than periodic sampling. Policies remain the foundation, no automation guarantees audit outcomes, and management oversight is still required.",
+    "tip": "Auditors increasingly accept automated evidence — but they still test whether the automation itself is trustworthy."
+  },
+  {
+    "id": "5-072",
+    "d": 5,
+    "obj": "5.1",
+    "topic": "Playbooks vs policy",
+    "diff": 2,
+    "type": "single",
+    "q": "Which statement correctly describes the relationship between policies and procedures?",
+    "opts": [
+      "Policies state mandatory intent and requirements; procedures specify the steps to satisfy them",
+      "Procedures set direction and policies list the steps",
+      "Policies and procedures are both optional guidance",
+      "Procedures must be approved by regulators before use"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Policies establish binding direction, and procedures operationalize them with specific steps. The other statements invert the roles, mischaracterize their authority, or invent an approval requirement.",
+    "tip": "Document hierarchy: policy → standard → procedure → guideline. Know which level a scenario is describing."
+  },
+  {
+    "id": "5-073",
+    "d": 5,
+    "obj": "5.6",
+    "topic": "Password management training",
+    "diff": 2,
+    "type": "single",
+    "q": "Which user guidance BEST reduces the impact of credential reuse across sites?",
+    "opts": [
+      "Use a password manager to generate and store a unique credential for every service, protected by MFA",
+      "Use one strong password everywhere so it is easy to remember",
+      "Rotate a base password by adding an incrementing number",
+      "Write passwords in a notebook kept in a desk drawer"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Unique generated credentials in a manager eliminate cross-site reuse, which is what makes breach data valuable to attackers. Universal reuse and predictable increments both fail against credential stuffing, and unsecured written records create physical exposure.",
+    "tip": "Credential stuffing succeeds because of reuse — password managers plus MFA are the expected exam answer."
+  },
+  {
+    "id": "5-074",
+    "d": 5,
+    "obj": "5.3",
+    "topic": "Vendor termination",
+    "diff": 3,
+    "type": "single",
+    "q": "Which contractual provision is MOST important to include for the end of a cloud vendor relationship?",
+    "opts": [
+      "Data return in a usable format and certified deletion of all copies within a defined period",
+      "A discount on the final month's invoice",
+      "A commitment to provide marketing references",
+      "An option to extend the contract automatically"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Exit provisions ensure the organization recovers its data and that the vendor no longer retains copies, which is essential to privacy and confidentiality obligations. Pricing, references, and automatic renewal do not address data risk.",
+    "tip": "Plan the exit before signing: data portability, deletion certification, transition support, and defined timelines."
+  },
+  {
+    "id": "5-075",
+    "d": 5,
+    "obj": "5.5",
+    "topic": "Self-assessment",
+    "diff": 2,
+    "type": "single",
+    "q": "What is the PRIMARY value of an internal self-assessment despite its lack of independence?",
+    "opts": [
+      "It identifies and corrects gaps early, before an independent audit or a real incident exposes them",
+      "It can be presented to regulators in place of an external audit",
+      "It guarantees a clean external audit result",
+      "It eliminates the need for continuous monitoring"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Self-assessments are a cost-effective way to find and fix issues proactively. They cannot substitute for independent assurance to regulators, do not guarantee audit outcomes, and do not replace ongoing monitoring.",
+    "tip": "Use self-assessments to prepare, not to prove. Independence is what gives external stakeholders confidence."
+  },
+  {
+    "id": "5-076",
+    "d": 5,
+    "obj": "5.4",
+    "topic": "Jurisdictional privacy",
+    "diff": 3,
+    "type": "single",
+    "q": "A global company must comply with different privacy requirements in each region where it operates. Which approach is MOST sustainable?",
+    "opts": [
+      "Adopt a baseline meeting the strictest applicable requirements, with regional additions where local law demands more",
+      "Apply the least restrictive jurisdiction's rules globally for simplicity",
+      "Handle each request individually without a documented standard",
+      "Store all data in one country and ignore other jurisdictions' laws"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "A high-water-mark baseline with regional overlays produces consistent, defensible practice across jurisdictions. Adopting the weakest standard, ad hoc handling, and ignoring foreign law all create legal exposure.",
+    "tip": "Privacy law applies based on where data subjects are, not only where the company is headquartered."
+  },
+  {
+    "id": "5-077",
+    "d": 5,
+    "obj": "5.6",
+    "topic": "Awareness effectiveness",
+    "diff": 3,
+    "type": "single",
+    "q": "Which metric BEST indicates that a security awareness program is improving organizational resilience?",
+    "opts": [
+      "An increasing rate of suspicious messages reported by employees combined with a declining click rate over time",
+      "The number of training slides delivered",
+      "The percentage of employees who completed training within the deadline",
+      "The length of the annual training video"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Behavioral outcomes — more reporting and fewer clicks — demonstrate genuine change. Content volume, completion rates, and duration measure activity rather than effectiveness.",
+    "tip": "Distinguish activity metrics (completion) from outcome metrics (behavior change). The exam prefers outcomes."
+  },
+  {
+    "id": "5-078",
+    "d": 5,
+    "obj": "5.3",
+    "topic": "Independent assessment",
+    "diff": 3,
+    "type": "single",
+    "q": "A vendor declines to share its penetration test report, citing confidentiality. What is a reasonable alternative to obtain assurance?",
+    "opts": [
+      "Request an executive summary or attestation letter confirming scope, methodology, severity counts, and remediation status",
+      "Accept the refusal without any further assurance",
+      "Demand full administrative access to the vendor's production environment",
+      "Cancel all contracts with any vendor that protects report details"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Summaries and attestation letters balance the vendor's confidentiality with the customer's need for assurance. Accepting no assurance leaves risk unassessed, demanding production access is unrealistic and dangerous, and blanket cancellation ignores the availability of reasonable alternatives.",
+    "tip": "Practical assurance evidence: SOC 2 reports, ISO 27001 certificates with scope statements, penetration test summaries, and remediation attestations."
+  },
+  {
+    "id": "5-079",
+    "d": 5,
+    "obj": "5.1",
+    "topic": "Change management policy",
+    "diff": 2,
+    "type": "single",
+    "q": "Which governance document requires that all production modifications be requested, assessed, approved, and documented?",
+    "opts": [
+      "The change management policy and its associated procedure",
+      "The acceptable use policy",
+      "The incident response playbook",
+      "The vendor NDA"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Change management governance mandates the request, assessment, approval, and documentation cycle for modifications. The AUP addresses user conduct, playbooks address incident steps, and NDAs address confidentiality.",
+    "tip": "Unapproved changes are a leading cause of outages and of audit findings — the exam treats change control as a security control."
+  },
+  {
+    "id": "5-080",
+    "d": 5,
+    "obj": "5.2",
+    "topic": "Quantitative analysis",
+    "diff": 3,
+    "type": "single",
+    "q": "Which value must be known to calculate single loss expectancy?",
+    "opts": [
+      "Asset value and exposure factor",
+      "Annualized rate of occurrence and risk appetite",
+      "Mean time between failures and recovery time objective",
+      "Control cost and vendor pricing"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "SLE equals asset value multiplied by exposure factor. ARO converts SLE into ALE, while MTBF, RTO, control costs, and appetite are separate inputs to different decisions.",
+    "tip": "Keep the chain straight: AV × EF = SLE; SLE × ARO = ALE; compare ALE to annual control cost."
+  },
+  {
+    "id": "5-081",
+    "d": 5,
+    "obj": "5.4",
+    "topic": "Contractual impacts",
+    "diff": 3,
+    "type": "single",
+    "q": "A supplier's failure to meet contractually required security controls results in the customer terminating the contract and seeking damages. Which non-compliance consequence category is this?",
+    "opts": [
+      "Contractual impacts",
+      "Regulatory fines",
+      "Loss of professional license",
+      "Criminal prosecution of the customer"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Breach of security obligations in a contract produces contractual consequences such as termination, damages, or indemnification claims. Regulatory fines come from authorities, license loss applies to regulated activities, and the customer is not the offending party here.",
+    "tip": "Contractual security requirements are enforceable even when no regulation applies — a common vendor risk exam angle."
+  },
+  {
+    "id": "5-082",
+    "d": 5,
+    "obj": "5.6",
+    "topic": "Social engineering training",
+    "diff": 2,
+    "type": "single",
+    "q": "Which indicator should employees be trained to recognize as a likely phishing signal?",
+    "opts": [
+      "Unexpected urgency combined with a request to bypass normal process, and a mismatch between display name and actual sender address",
+      "An email arriving during business hours",
+      "A message containing the company logo",
+      "An email with more than three recipients"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Manufactured urgency, process bypass requests, and sender address mismatches are reliable phishing indicators. Timing, branding, and recipient counts are normal characteristics that attackers replicate easily.",
+    "tip": "Teach employees to inspect the actual sender address and hover over links — display names are trivially forged."
+  },
+  {
+    "id": "5-083",
+    "d": 5,
+    "obj": "5.5",
+    "topic": "Attestation",
+    "diff": 3,
+    "type": "single",
+    "q": "In an assessment context, what does attestation mean?",
+    "opts": [
+      "A formal declaration, often by an independent party, that specified controls or statements are accurate",
+      "An automated vulnerability scan of external systems",
+      "An informal verbal confirmation from a manager",
+      "A marketing claim published on a website"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Attestation is a formal, documented assertion regarding the accuracy of statements or control operation, typically supported by evidence and often issued by an independent assessor. Scans, verbal confirmations, and marketing claims lack that formality and independence.",
+    "tip": "Attestation appears in two exam contexts: access attestation (certifying entitlements) and audit attestation (certifying control statements)."
+  },
+  {
+    "id": "5-084",
+    "d": 5,
+    "obj": "5.2",
+    "topic": "Risk owner",
+    "diff": 2,
+    "type": "single",
+    "q": "What is the role of a risk owner in the risk register?",
+    "opts": [
+      "The accountable individual who monitors the risk, drives treatment, and decides on acceptance within their authority",
+      "The analyst who first documented the risk",
+      "The vendor whose product introduced the risk",
+      "The auditor who discovered the risk"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "The risk owner is accountable for managing that risk to a defined conclusion within their authority. Documenters, vendors, and auditors identify or contribute to risks but do not own treatment decisions.",
+    "tip": "Every register entry needs a named individual — 'IT' or 'Security' as an owner is an audit finding."
+  },
+  {
+    "id": "5-085",
+    "d": 5,
+    "obj": "5.1",
+    "topic": "Governance overall",
+    "diff": 3,
+    "type": "single",
+    "q": "Which statement BEST describes the purpose of security governance?",
+    "opts": [
+      "Align security activity with business objectives and legal obligations through defined authority, accountability, and oversight",
+      "Ensure the security team can operate without management involvement",
+      "Guarantee that no security incidents will occur",
+      "Replace technical controls with documentation"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Governance provides direction, accountability, and oversight so security supports business objectives and legal duties. It requires management involvement, cannot guarantee incident-free operation, and complements rather than replaces technical controls.",
+    "tip": "Governance answers who decides, who is accountable, and how oversight occurs — management, by contrast, is the doing."
+  },
+  {
+    "id": "5-086",
+    "d": 5,
+    "obj": "5.4",
+    "topic": "Breach notification",
+    "diff": 3,
+    "type": "single",
+    "q": "Which factor MOST determines whether an organization must notify regulators and affected individuals after a security incident?",
+    "opts": [
+      "Whether personal or regulated data was compromised, and the thresholds and deadlines defined by applicable law",
+      "Whether the security team considers the incident embarrassing",
+      "Whether the attacker has been identified",
+      "Whether the affected systems have been restored"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Notification duties are triggered by the nature of the data involved and statutory thresholds and timelines in the applicable jurisdictions. Attribution, restoration status, and reputational discomfort do not determine legal obligations.",
+    "tip": "Involve legal counsel early: notification thresholds, deadlines, and recipients differ by jurisdiction and data type."
+  },
+  {
+    "id": "5-087",
+    "d": 5,
+    "obj": "5.3",
+    "topic": "Third-party risk overall",
+    "diff": 3,
+    "type": "multi",
+    "q": "Which THREE practices constitute effective third-party risk management?",
+    "opts": [
+      "Risk-tiered due diligence before onboarding, proportional to the vendor's access and criticality",
+      "Contractual security requirements including breach notification timelines and a right to audit",
+      "Ongoing monitoring with periodic reassessment and defined exit provisions",
+      "Granting all vendors standing administrative access to simplify support"
+    ],
+    "a": [
+      0,
+      1,
+      2
+    ],
+    "exp": "Effective programs assess before onboarding based on risk tier, encode requirements contractually, and monitor continuously with a planned exit. Standing administrative access for all vendors violates least privilege and creates a major attack path.",
+    "tip": "Third-party lifecycle: due diligence → contract → onboarding with least privilege → monitoring → offboarding with data deletion."
+  },
+  {
+    "id": "5-088",
+    "d": 5,
+    "obj": "5.6",
+    "topic": "Program development",
+    "diff": 3,
+    "type": "single",
+    "q": "When developing a security awareness program, what should drive the selection of topics?",
+    "opts": [
+      "The organization's actual risk profile, incident history, and role-specific responsibilities",
+      "Whatever topics the training vendor bundles by default",
+      "The preferences of the most senior executive",
+      "The topics that require the least time to deliver"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Content should target the behaviors that actually create risk for that organization, informed by incidents, threat intelligence, and role duties. Vendor defaults, executive preference, and brevity do not reflect real exposure.",
+    "tip": "Role-based training matters: developers, finance staff, executives, and administrators face different attack patterns."
+  },
+  {
+    "id": "5-089",
+    "d": 5,
+    "obj": "5.4",
+    "topic": "Retention and privacy",
+    "diff": 3,
+    "type": "single",
+    "q": "Which practice BEST supports both privacy compliance and breach risk reduction?",
+    "opts": [
+      "Collect only necessary data and delete it on a defined schedule once its purpose is fulfilled",
+      "Retain all data indefinitely in case it becomes useful",
+      "Duplicate production data into multiple analytics environments for convenience",
+      "Store personal data in shared spreadsheets for accessibility"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Data minimization and disciplined retention reduce both regulatory exposure and the volume of data at risk in a breach. Indefinite retention, uncontrolled duplication, and unmanaged storage all increase exposure.",
+    "tip": "Minimization is a security control as well as a privacy principle — the data you never collect cannot be stolen."
+  },
+  {
+    "id": "5-090",
+    "d": 5,
+    "obj": "5.5",
+    "topic": "Assessment follow-through",
+    "diff": 3,
+    "type": "single",
+    "q": "An external audit produces 22 findings. Which response demonstrates effective governance?",
+    "opts": [
+      "Create a remediation plan with owners, priorities, and target dates, and track progress through management review",
+      "Dispute all findings to protect the organization's reputation",
+      "Address only the findings that are inexpensive to fix",
+      "File the report and wait for the next audit cycle"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Governance requires a tracked corrective action plan with accountability and oversight, escalating any findings that cannot be remediated for formal risk acceptance. Blanket disputes, cost-only triage, and inaction all leave known risk unmanaged.",
+    "tip": "Repeat findings in a subsequent audit are treated as a governance failure, not merely a technical one."
+  }
+]

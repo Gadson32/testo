@@ -1,0 +1,1004 @@
+[
+  {
+    "id": "4-051",
+    "d": 4,
+    "obj": "4.4",
+    "topic": "SIEM",
+    "diff": 2,
+    "type": "single",
+    "q": "What is the PRIMARY function of a SIEM platform?",
+    "opts": [
+      "Aggregate and correlate log and event data from many sources to generate prioritized alerts and support investigation",
+      "Encrypt data at rest on endpoints",
+      "Replace the need for endpoint protection",
+      "Automatically patch vulnerable systems"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "SIEM centralizes, normalizes, and correlates telemetry to produce actionable alerts and provide an investigative record. It does not encrypt data, replace endpoint controls, or deploy patches.",
+    "tip": "SIEM value depends on log source coverage, parsing quality, synchronized time, and tuned correlation rules."
+  },
+  {
+    "id": "4-052",
+    "d": 4,
+    "obj": "4.4",
+    "topic": "Alert tuning",
+    "diff": 3,
+    "type": "single",
+    "q": "A detection rule fires 200 times per day, and analysts confirm all instances are legitimate administrative activity. What is the BEST action?",
+    "opts": [
+      "Tune the rule with context-aware exclusions and validate that true positives would still trigger",
+      "Delete the rule entirely to eliminate the noise",
+      "Leave the rule as is and instruct analysts to ignore it",
+      "Route the alerts to a mailbox nobody monitors"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Tuning preserves detection capability while removing known-benign patterns, and testing confirms the rule still catches real activity. Deleting the rule creates a blind spot, and instructing analysts to ignore alerts or hiding them guarantees a missed detection.",
+    "tip": "Tune with narrow, documented exclusions (specific accounts, hosts, and processes), never by disabling the whole detection."
+  },
+  {
+    "id": "4-053",
+    "d": 4,
+    "obj": "4.4",
+    "topic": "Log aggregation",
+    "diff": 2,
+    "type": "single",
+    "q": "Why should logs be forwarded to a central platform rather than retained only on the originating host?",
+    "opts": [
+      "An attacker who compromises the host cannot delete the forwarded copies, and correlation across sources becomes possible",
+      "Central storage uses less total disk space than local storage",
+      "Local logs cannot record security events",
+      "Central logging removes the need for time synchronization"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Centralization protects log integrity against anti-forensic deletion and enables cross-source correlation. Central storage generally uses more space, hosts can log locally, and accurate time synchronization becomes even more important when correlating sources.",
+    "tip": "Send logs off-host in near real time to append-only or write-once storage — this is a favorite exam and audit control."
+  },
+  {
+    "id": "4-054",
+    "d": 4,
+    "obj": "4.4",
+    "topic": "NetFlow",
+    "diff": 3,
+    "type": "single",
+    "q": "Which data source shows which hosts communicated, on which ports, and how much data moved, without capturing packet payloads?",
+    "opts": [
+      "NetFlow or IPFIX flow records",
+      "A full packet capture",
+      "Windows Security event logs",
+      "SNMP device inventory polling"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Flow data summarizes conversations and volumes, making it efficient for long retention and exfiltration detection while omitting content. Full packet capture includes payloads at high storage cost, Windows security logs record host-level events, and SNMP polling retrieves device status.",
+    "tip": "Flow data is ideal for spotting beaconing and large outbound transfers; packet capture is needed when you must see content."
+  },
+  {
+    "id": "4-055",
+    "d": 4,
+    "obj": "4.4",
+    "topic": "SNMP traps",
+    "diff": 2,
+    "type": "single",
+    "q": "Which mechanism allows a network device to notify a monitoring system immediately when a threshold or failure condition occurs?",
+    "opts": [
+      "SNMP traps sent from the device to the manager",
+      "Scheduled SNMP polling by the manager only",
+      "Manual review of device console output",
+      "A weekly configuration backup job"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Traps are unsolicited notifications pushed by the device when an event occurs, providing lower latency than polling intervals. Polling detects conditions only at each interval, and manual review or configuration backups are not alerting mechanisms.",
+    "tip": "Use SNMPv3 for authentication and encryption; v1 and v2c send community strings in cleartext."
+  },
+  {
+    "id": "4-056",
+    "d": 4,
+    "obj": "4.4",
+    "topic": "SCAP",
+    "diff": 3,
+    "type": "single",
+    "q": "Which standard allows automated tools to exchange configuration checklists and vulnerability data in a common format for compliance scanning?",
+    "opts": [
+      "Security Content Automation Protocol",
+      "Simple Mail Transfer Protocol",
+      "Secure Shell",
+      "Session Initiation Protocol"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "SCAP standardizes formats and identifiers (including CVE, CPE, CCE, and CVSS) so tools can consistently assess configuration and vulnerability state. The other protocols handle email, remote administration, and voice signaling.",
+    "tip": "SCAP-validated tools evaluate benchmarks such as CIS or DISA STIGs automatically and produce comparable results."
+  },
+  {
+    "id": "4-057",
+    "d": 4,
+    "obj": "4.4",
+    "topic": "Quarantine",
+    "diff": 2,
+    "type": "single",
+    "q": "An EDR platform detects credential-dumping behavior on a workstation. Which immediate automated response BEST limits damage while preserving investigation options?",
+    "opts": [
+      "Network-isolate the host while keeping it powered on and collecting telemetry",
+      "Immediately reimage the host",
+      "Shut the host down and unplug it",
+      "Delete the suspicious process binary and take no further action"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Network quarantine halts lateral movement and command and control while retaining volatile evidence and continued telemetry. Reimaging destroys evidence, shutdown loses memory artifacts, and deleting a binary leaves the intrusion unexamined.",
+    "tip": "Automated containment is high value, but define exclusions so critical servers are not isolated without human review."
+  },
+  {
+    "id": "4-058",
+    "d": 4,
+    "obj": "4.4",
+    "topic": "Archiving",
+    "diff": 3,
+    "type": "single",
+    "q": "A regulation requires that security logs remain available for three years, but the SIEM retains only 90 days of searchable data. What should be implemented?",
+    "opts": [
+      "Archive older logs to lower-cost immutable storage with a documented retrieval process",
+      "Reduce logging verbosity so 90 days covers three years",
+      "Delete logs after 90 days and document the limitation",
+      "Store archives on the same SIEM indexers to simplify search"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Tiered retention with immutable archive storage satisfies long-term requirements economically while keeping recent data searchable. Reducing verbosity loses evidence, deletion violates the requirement, and consolidating everything on primary indexers is costly and does not address immutability.",
+    "tip": "Know the difference: retention (how long you keep it), archiving (where it lives long-term), and preservation (legal hold overrides both)."
+  },
+  {
+    "id": "4-059",
+    "d": 4,
+    "obj": "4.5",
+    "topic": "Web filtering",
+    "diff": 2,
+    "type": "single",
+    "q": "Which web filtering approach protects users who are off the corporate network without backhauling traffic to headquarters?",
+    "opts": [
+      "Agent-based filtering on the endpoint or a cloud-delivered secure web gateway",
+      "A centralized on-premises proxy requiring VPN for all traffic",
+      "Perimeter firewall URL rules only",
+      "A hosts-file blocklist maintained manually"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Endpoint agents and cloud gateways enforce policy wherever the user connects. On-premises proxies require tunneling all traffic back, perimeter rules only see traffic crossing that perimeter, and manual hosts files are unmanageable and easily bypassed.",
+    "tip": "Web filter features to know: URL scanning, content categorization, reputation scoring, and block rules."
+  },
+  {
+    "id": "4-060",
+    "d": 4,
+    "obj": "4.5",
+    "topic": "DNS filtering",
+    "diff": 2,
+    "type": "single",
+    "q": "Which control blocks resolution of known malicious domains before a connection is even attempted?",
+    "opts": [
+      "Protective DNS filtering with a threat-intelligence-driven sinkhole",
+      "An inline TLS-decrypting proxy only",
+      "A host-based antivirus signature update",
+      "An outbound firewall rule permitting all port 443 traffic"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "DNS filtering prevents resolution of malicious names, stopping many attacks early and cheaply, and the sinkhole reveals which hosts attempted the lookup. Proxies and antivirus act later in the chain, and permissive firewall rules provide no protection.",
+    "tip": "Enforce internal DNS use and block external resolvers and DoH bypass, or clients can evade DNS filtering entirely."
+  },
+  {
+    "id": "4-061",
+    "d": 4,
+    "obj": "4.5",
+    "topic": "Email security",
+    "diff": 3,
+    "type": "single",
+    "q": "Which DNS-based mechanism specifies what receiving servers should do with messages that fail authentication checks and provides reporting to the domain owner?",
+    "opts": [
+      "DMARC",
+      "SPF",
+      "DKIM",
+      "MX records"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "DMARC publishes policy (none, quarantine, or reject) based on SPF and DKIM alignment and enables aggregate and forensic reporting. SPF authorizes sending hosts, DKIM cryptographically signs messages, and MX records designate mail servers.",
+    "tip": "SPF = who may send. DKIM = signature proving integrity and origin. DMARC = policy plus alignment plus reporting."
+  },
+  {
+    "id": "4-062",
+    "d": 4,
+    "obj": "4.5",
+    "topic": "Email security",
+    "diff": 3,
+    "type": "single",
+    "q": "An organization publishes SPF and DKIM but still receives spoofed messages that appear to come from its own domain. Which configuration is MOST likely missing?",
+    "opts": [
+      "A DMARC policy set to quarantine or reject with alignment enforced",
+      "A longer DKIM key",
+      "An additional MX record",
+      "A second outbound mail relay"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Without an enforcing DMARC policy, receivers have no instruction to reject unaligned mail even when SPF and DKIM exist. Key length, MX records, and relay counts do not determine handling of spoofed mail.",
+    "tip": "Roll out DMARC gradually: p=none to gather reports, then quarantine, then reject once legitimate senders are aligned."
+  },
+  {
+    "id": "4-063",
+    "d": 4,
+    "obj": "4.5",
+    "topic": "IDS signatures and trends",
+    "diff": 3,
+    "type": "single",
+    "q": "Which detection approach identifies previously unknown attacks by flagging deviations from established normal behavior?",
+    "opts": [
+      "Anomaly and trend-based detection",
+      "Signature-based detection",
+      "Hash-based blocklisting",
+      "Static port-based filtering"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Anomaly and trend analysis compares observed activity against a baseline, enabling detection of novel attacks at the cost of more false positives. Signatures and hashes detect only known patterns, and port filtering makes no behavioral judgment.",
+    "tip": "Signature detection: precise, low false positives, blind to new attacks. Anomaly detection: catches novelty, needs a good baseline."
+  },
+  {
+    "id": "4-064",
+    "d": 4,
+    "obj": "4.5",
+    "topic": "Group Policy and SELinux",
+    "diff": 3,
+    "type": "single",
+    "q": "Which pairing correctly matches an operating system security mechanism to its platform?",
+    "opts": [
+      "Group Policy for Windows domain configuration enforcement; SELinux for mandatory access control on Linux",
+      "Group Policy for Linux kernel modules; SELinux for Windows registry settings",
+      "Both mechanisms apply only to network appliances",
+      "Both mechanisms are legacy antivirus engines"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Group Policy centrally enforces Windows configuration in a domain, while SELinux implements mandatory access control policy on Linux by confining processes. The other pairings misattribute platforms and purposes.",
+    "tip": "SELinux enforces labels regardless of file permissions — a process confined by policy cannot exceed it even as root."
+  },
+  {
+    "id": "4-065",
+    "d": 4,
+    "obj": "4.5",
+    "topic": "NAC",
+    "diff": 3,
+    "type": "single",
+    "q": "A device connects to the corporate LAN with outdated antivirus and missing patches. Which technology can place it in a remediation VLAN until it complies?",
+    "opts": [
+      "Network access control with posture assessment",
+      "A web application firewall",
+      "A DNS sinkhole",
+      "A load balancer health check"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "NAC evaluates device posture at connection time and can grant, deny, or quarantine access pending remediation. WAFs inspect web requests, DNS sinkholes block malicious resolution, and load balancer health checks assess server availability.",
+    "tip": "NAC decisions can combine identity (802.1X), device certificate, and posture (patch level, AV status, encryption state)."
+  },
+  {
+    "id": "4-066",
+    "d": 4,
+    "obj": "4.5",
+    "topic": "UBA",
+    "diff": 3,
+    "type": "single",
+    "q": "Which capability builds behavioral profiles for each user and alerts when activity deviates significantly, such as a payroll clerk suddenly querying engineering repositories at 2 a.m.?",
+    "opts": [
+      "User and entity behavior analytics",
+      "Antivirus signature scanning",
+      "Port security",
+      "Certificate pinning"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "UEBA baselines normal behavior per identity and entity, then scores deviations to detect insider threats and compromised accounts. Signature scanning finds known malware, port security limits MAC addresses, and pinning validates certificates.",
+    "tip": "UEBA is the go-to answer for insider threat and compromised-credential detection scenarios."
+  },
+  {
+    "id": "4-067",
+    "d": 4,
+    "obj": "4.5",
+    "topic": "Firewall rules",
+    "diff": 3,
+    "type": "single",
+    "q": "An analyst must allow a partner to reach only an internal SFTP server on port 22 from one source address. Which rule is correct and MOST restrictive?",
+    "opts": [
+      "Permit TCP from the partner's specific source IP to the SFTP server's IP on port 22, then deny all else",
+      "Permit TCP from any source to the SFTP server on any port",
+      "Permit TCP from the partner's subnet to the internal network on ports 1-1024",
+      "Permit all traffic from the partner and log it for review"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Least privilege in firewall terms means specifying source, destination, protocol, and port as narrowly as possible with an explicit deny after. The alternatives grant unnecessary breadth in source, destination, or port range.",
+    "tip": "Rule specificity checklist: source, destination, protocol, port, direction, and time restrictions where supported."
+  },
+  {
+    "id": "4-068",
+    "d": 4,
+    "obj": "4.6",
+    "topic": "Provisioning",
+    "diff": 2,
+    "type": "single",
+    "q": "Which practice MOST reduces the risk of orphaned accounts after employees leave?",
+    "opts": [
+      "Automated deprovisioning triggered by HR system events, with periodic reconciliation reviews",
+      "A monthly email reminder to managers to report departures",
+      "Requiring departing employees to delete their own accounts",
+      "Disabling accounts only after the next annual audit"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Integrating identity lifecycle with the authoritative HR record removes accounts promptly and consistently, and reconciliation catches gaps. Manual reminders, self-service deletion, and annual cleanup all leave active credentials for extended periods.",
+    "tip": "Joiner-mover-leaver automation is the expected answer for account lifecycle questions."
+  },
+  {
+    "id": "4-069",
+    "d": 4,
+    "obj": "4.6",
+    "topic": "Access control models",
+    "diff": 3,
+    "type": "single",
+    "q": "A government system assigns every file a classification label and every user a clearance, and the operating system enforces access strictly by these labels regardless of the file owner's wishes. Which access control model is this?",
+    "opts": [
+      "Mandatory access control",
+      "Discretionary access control",
+      "Role-based access control",
+      "Attribute-based access control"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "MAC enforces system-wide labeling and clearance rules that users cannot override. DAC lets owners grant access at their discretion, RBAC assigns rights via job roles, and ABAC evaluates multiple attributes in policy expressions.",
+    "tip": "MAC = labels and clearances, no owner discretion. It is the model in classified and SELinux-style environments."
+  },
+  {
+    "id": "4-070",
+    "d": 4,
+    "obj": "4.6",
+    "topic": "Access control models",
+    "diff": 3,
+    "type": "single",
+    "q": "An access policy grants entry if the user is in the Finance department, on a managed device, connecting during business hours, from an approved country. Which model does this represent?",
+    "opts": [
+      "Attribute-based access control",
+      "Role-based access control",
+      "Discretionary access control",
+      "Mandatory access control"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "ABAC evaluates multiple attributes of subject, resource, action, and environment in a policy decision. RBAC would consider role membership alone, DAC relies on owner-granted permissions, and MAC uses labels and clearances.",
+    "tip": "ABAC is the model behind conditional access and Zero Trust policy engines — expect it in modern scenarios."
+  },
+  {
+    "id": "4-071",
+    "d": 4,
+    "obj": "4.6",
+    "topic": "RBAC",
+    "diff": 2,
+    "type": "single",
+    "q": "A hospital grants permissions by job function — nurse, physician, billing clerk — and moving an employee to a new role automatically changes their access. Which model is in use?",
+    "opts": [
+      "Role-based access control",
+      "Rule-based access control",
+      "Discretionary access control",
+      "Mandatory access control"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "RBAC binds permissions to roles rather than individuals, so role changes update access consistently. Rule-based control applies conditional rules such as ACL criteria, DAC is owner-driven, and MAC uses labels and clearances.",
+    "tip": "RBAC scales well and simplifies audits, but watch for role explosion and users accumulating multiple roles."
+  },
+  {
+    "id": "4-072",
+    "d": 4,
+    "obj": "4.6",
+    "topic": "MFA factors",
+    "diff": 2,
+    "type": "single",
+    "q": "Which combination represents true multifactor authentication?",
+    "opts": [
+      "A password and a hardware security key",
+      "A password and a PIN",
+      "A fingerprint and a retina scan",
+      "Two different passwords stored in a password manager"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "MFA requires factors from different categories: something you know plus something you have. A password and PIN are both knowledge factors, two biometrics are both inherence factors, and multiple passwords remain a single category.",
+    "tip": "Categories: something you know, something you have, something you are, and somewhere you are (location)."
+  },
+  {
+    "id": "4-073",
+    "d": 4,
+    "obj": "4.6",
+    "topic": "MFA strength",
+    "diff": 3,
+    "type": "single",
+    "q": "Which second factor is MOST resistant to real-time phishing proxy attacks?",
+    "opts": [
+      "A FIDO2/WebAuthn security key bound to the site's origin",
+      "An SMS one-time code",
+      "A push notification with approve or deny",
+      "A TOTP code from an authenticator app"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "FIDO2 credentials are cryptographically bound to the relying party origin, so a proxy site cannot use them. SMS codes and TOTP values can be relayed by an attacker-in-the-middle site, and push approvals are vulnerable to fatigue attacks.",
+    "tip": "Phishing-resistant MFA on the exam means FIDO2/WebAuthn security keys, passkeys, or certificate-based authentication."
+  },
+  {
+    "id": "4-074",
+    "d": 4,
+    "obj": "4.6",
+    "topic": "Biometrics",
+    "diff": 3,
+    "type": "single",
+    "q": "A fingerprint reader is tuned so that fewer unauthorized people are accepted, but authorized users are rejected more often. Which metrics changed?",
+    "opts": [
+      "False acceptance rate decreased while false rejection rate increased",
+      "Both false acceptance and false rejection rates decreased",
+      "The crossover error rate is now zero",
+      "Only the enrollment time changed"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Tightening a biometric threshold trades convenience for security: FAR falls while FRR rises. Both rates cannot fall simultaneously by threshold adjustment alone, and the crossover error rate is the point where they are equal rather than zero.",
+    "tip": "CER (crossover error rate) is the standard accuracy comparison: lower CER means a better biometric system."
+  },
+  {
+    "id": "4-075",
+    "d": 4,
+    "obj": "4.6",
+    "topic": "SSO protocols",
+    "diff": 3,
+    "type": "single",
+    "q": "Which protocol uses XML-based assertions to convey authentication and attribute statements between an identity provider and a service provider for web SSO?",
+    "opts": [
+      "SAML",
+      "OAuth 2.0",
+      "RADIUS",
+      "Kerberos"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "SAML exchanges XML assertions for federated web single sign-on. OAuth 2.0 is an authorization framework issuing access tokens (with OpenID Connect layering authentication on top), RADIUS provides network AAA, and Kerberos uses tickets within a realm.",
+    "tip": "SAML = enterprise web SSO with XML. OAuth = delegated authorization. OIDC = authentication built on OAuth with JSON/JWT."
+  },
+  {
+    "id": "4-076",
+    "d": 4,
+    "obj": "4.6",
+    "topic": "OAuth vs OIDC",
+    "diff": 3,
+    "type": "single",
+    "q": "An application needs to verify who the user is and receive standardized identity claims from a provider. Which technology is appropriate?",
+    "opts": [
+      "OpenID Connect, which layers authentication and ID tokens on OAuth 2.0",
+      "OAuth 2.0 alone, which is designed for authorization",
+      "LDAP bind operations over the internet",
+      "SNMPv3 authentication"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "OIDC adds an authentication layer and ID tokens containing identity claims to OAuth 2.0. OAuth alone delegates authorization without asserting identity, internet-exposed LDAP is inappropriate, and SNMPv3 authenticates device management sessions.",
+    "tip": "Misusing OAuth access tokens as proof of identity is a classic design flaw — the exam expects OIDC for authentication."
+  },
+  {
+    "id": "4-077",
+    "d": 4,
+    "obj": "4.6",
+    "topic": "Federation",
+    "diff": 3,
+    "type": "single",
+    "q": "A university lets students use their campus credentials to access a third-party library service without creating new accounts. Which concept enables this?",
+    "opts": [
+      "Federation with a trust relationship between identity provider and service provider",
+      "Credential sharing through a common password",
+      "Local account replication to the vendor's database",
+      "Anonymous guest access"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Federation establishes trust so one organization's identity provider authenticates users for another's service without duplicating credentials. Shared passwords and replicated account databases increase risk and administrative burden, and anonymous access provides no identity.",
+    "tip": "Federation reduces password sprawl but concentrates risk in the identity provider — protect it with strong MFA and monitoring."
+  },
+  {
+    "id": "4-078",
+    "d": 4,
+    "obj": "4.6",
+    "topic": "Attestation",
+    "diff": 3,
+    "type": "single",
+    "q": "Quarterly, each manager reviews a report of their team's system entitlements and formally confirms or revokes each one. What is this process called?",
+    "opts": [
+      "Access review and attestation",
+      "Identity proofing",
+      "Provisioning",
+      "Federation"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Attestation is the periodic certification of access rights by an accountable reviewer, correcting entitlement creep. Identity proofing verifies who a person is during enrollment, provisioning creates accounts, and federation extends trust between organizations.",
+    "tip": "Attestation catches accumulated permissions from role changes and temporary projects — a standard audit requirement."
+  },
+  {
+    "id": "4-079",
+    "d": 4,
+    "obj": "4.6",
+    "topic": "Identity proofing",
+    "diff": 2,
+    "type": "single",
+    "q": "Before issuing credentials to a new remote employee, the organization validates a government ID and performs a live video verification. Which process is this?",
+    "opts": [
+      "Identity proofing",
+      "Attestation",
+      "Authorization",
+      "Accounting"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Identity proofing establishes that a person is who they claim to be before credentials are issued. Attestation reviews existing access, authorization determines permissions, and accounting records activity.",
+    "tip": "Weak enrollment undermines every downstream control — including the help desk reset process, a common attack target."
+  },
+  {
+    "id": "4-080",
+    "d": 4,
+    "obj": "4.6",
+    "topic": "PAM",
+    "diff": 3,
+    "type": "single",
+    "q": "An organization wants administrators to hold no standing privileged rights, instead requesting elevation that is granted for 60 minutes with full session recording. Which capability is this?",
+    "opts": [
+      "Just-in-time privileged access management",
+      "Password vaulting only",
+      "Discretionary access control",
+      "Single sign-on"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Just-in-time access grants time-bound privileges on request, eliminating standing rights that attackers target. Password vaulting stores and rotates credentials but may still allow persistent access, DAC is an access model, and SSO addresses authentication convenience.",
+    "tip": "PAM components: vaulting, credential rotation, session recording, JIT elevation, and ephemeral credentials."
+  },
+  {
+    "id": "4-081",
+    "d": 4,
+    "obj": "4.6",
+    "topic": "Password policy",
+    "diff": 3,
+    "type": "single",
+    "q": "Which password policy BEST reflects current guidance?",
+    "opts": [
+      "Require long passphrases, screen against known-breached passwords, and avoid mandatory periodic expiration without evidence of compromise",
+      "Require exactly eight characters with mandatory monthly changes",
+      "Require complex passwords changed every 30 days with three-character minimum differences",
+      "Require users to write passwords down and store them at their desk"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Modern guidance (NIST SP 800-63B) emphasizes length, breached-password screening, and MFA over forced rotation and byzantine complexity rules, which drive predictable patterns. Short passwords, aggressive expiration, and physical notes weaken security.",
+    "tip": "Rotate immediately on suspected compromise. Otherwise, prefer length, breach screening, MFA, and a password manager."
+  },
+  {
+    "id": "4-082",
+    "d": 4,
+    "obj": "4.6",
+    "topic": "Passwordless",
+    "diff": 3,
+    "type": "single",
+    "q": "Which approach BEST describes passwordless authentication?",
+    "opts": [
+      "Authenticating with a possession or biometric factor bound to the device, such as a passkey, with no shared secret transmitted",
+      "Using a very long password stored in a manager",
+      "Emailing a one-time password to the user each login",
+      "Allowing anonymous access to non-sensitive resources"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Passwordless authentication relies on cryptographic credentials held on the device (often unlocked by biometrics), so no reusable secret is transmitted or stored on the server. Managed passwords and emailed codes still involve shared secrets, and anonymous access is not authentication.",
+    "tip": "Passkeys are phishing-resistant and eliminate credential reuse — the direction modern guidance favors."
+  },
+  {
+    "id": "4-083",
+    "d": 4,
+    "obj": "4.6",
+    "topic": "Time-of-day restrictions",
+    "diff": 2,
+    "type": "single",
+    "q": "A manufacturing plant restricts shop-floor accounts to their assigned shifts. Which control is being applied, and what benefit does it provide?",
+    "opts": [
+      "Time-of-day restrictions, which shrink the window in which stolen credentials can be used",
+      "Mandatory access control, which enforces classification labels",
+      "Federation, which extends trust to partners",
+      "Accounting, which records user activity"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Time-based restrictions limit when authentication is permitted, reducing off-hours misuse and making anomalies more visible. MAC concerns labels, federation extends identity trust, and accounting records rather than restricts activity.",
+    "tip": "Pair time restrictions with alerting: an attempt outside allowed hours is a high-quality detection signal."
+  },
+  {
+    "id": "4-084",
+    "d": 4,
+    "obj": "4.6",
+    "topic": "Permission implications",
+    "diff": 3,
+    "type": "single",
+    "q": "A user is a member of two groups: one granting Read on a folder and another denying Write. The user also has an explicit Allow Write permission on the folder. In a typical Windows environment, what is the effective outcome?",
+    "opts": [
+      "The explicit deny on Write takes precedence, so writing is blocked",
+      "The explicit allow overrides the group deny, so writing is permitted",
+      "Permissions cancel out and access is fully denied",
+      "The user receives Full Control by default"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Deny permissions generally take precedence over allow permissions in Windows NTFS evaluation, so an applicable deny blocks the action. Permissions do not cancel to a total denial, and Full Control is never granted implicitly.",
+    "tip": "Rule of thumb: deny overrides allow; effective permissions are cumulative otherwise, and share plus NTFS yields the most restrictive result."
+  },
+  {
+    "id": "4-085",
+    "d": 4,
+    "obj": "4.5",
+    "topic": "DLP implementation",
+    "diff": 3,
+    "type": "single",
+    "q": "A DLP deployment blocks so many legitimate business emails that staff begin using personal accounts. What is the BEST corrective approach?",
+    "opts": [
+      "Tune policies with accurate classification and approved exception workflows, starting in monitor mode before blocking",
+      "Disable DLP entirely to restore productivity",
+      "Block all outbound email attachments permanently",
+      "Ignore the personal email usage since DLP is working as designed"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Overly broad DLP drives users to unmonitored channels, which is worse than the original risk; tuning with classification and sanctioned exception paths restores balance. Disabling DLP removes protection, blanket blocking worsens workarounds, and ignoring shadow channels leaves data uncontrolled.",
+    "tip": "Roll out DLP in monitor mode first to measure false positives, then enforce progressively on the highest-confidence rules."
+  },
+  {
+    "id": "4-086",
+    "d": 4,
+    "obj": "4.5",
+    "topic": "EDR vs XDR",
+    "diff": 3,
+    "type": "single",
+    "q": "Which statement BEST distinguishes XDR from EDR?",
+    "opts": [
+      "XDR correlates telemetry across endpoints, identity, email, network, and cloud, while EDR focuses on endpoint telemetry",
+      "XDR runs only on network appliances and ignores endpoints",
+      "EDR provides broader coverage than XDR",
+      "XDR is a legacy antivirus technology"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "XDR extends detection and response by correlating signals from multiple domains, providing broader attack-chain visibility than endpoint-only EDR. The other statements invert or misstate the relationship.",
+    "tip": "MDR is different again: a managed service where a provider operates detection and response on your behalf."
+  },
+  {
+    "id": "4-087",
+    "d": 4,
+    "obj": "4.4",
+    "topic": "Agent vs agentless monitoring",
+    "diff": 3,
+    "type": "single",
+    "q": "Which trade-off correctly describes agent-based versus agentless monitoring?",
+    "opts": [
+      "Agents provide deeper, continuous host visibility but add deployment and resource overhead; agentless is easier to deploy but depends on reachability and credentials",
+      "Agents cannot collect data when a host is offline from the corporate network, while agentless can",
+      "Agentless monitoring always provides more detail than agents",
+      "Agents eliminate the need for network monitoring entirely"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Agents see local detail continuously and report from anywhere, at the cost of management overhead; agentless approaches avoid installation but need network access and credentials at scan time. Agents actually work better off-network, and network monitoring remains necessary for unmanaged devices.",
+    "tip": "Most mature programs use both: agents on managed endpoints and agentless discovery to find what has no agent."
+  },
+  {
+    "id": "4-088",
+    "d": 4,
+    "obj": "4.5",
+    "topic": "Secure protocol selection",
+    "diff": 3,
+    "type": "single",
+    "q": "An application must transfer files to a partner with confidentiality, integrity, and server authentication. Which protocol and port combination is appropriate?",
+    "opts": [
+      "SFTP over TCP 22",
+      "FTP over TCP 21",
+      "TFTP over UDP 69",
+      "HTTP over TCP 80"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "SFTP runs within an SSH session on port 22, providing encryption, integrity, and host authentication. FTP and TFTP are cleartext protocols without integrity protection, and HTTP is unencrypted.",
+    "tip": "SFTP (SSH-based, port 22) differs from FTPS (FTP over TLS, ports 989/990). Both are secure; know which one the question describes."
+  },
+  {
+    "id": "4-089",
+    "d": 4,
+    "obj": "4.4",
+    "topic": "Alert response",
+    "diff": 3,
+    "type": "single",
+    "q": "After an alert is triaged and remediated, which step ensures the response actually worked?",
+    "opts": [
+      "Validation, such as confirming the malicious process is gone, the host is clean, and the indicator no longer appears",
+      "Closing the ticket immediately after remediation is attempted",
+      "Deleting the alert from the SIEM",
+      "Reporting the incident count in the monthly metrics only"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Validation confirms remediation effectiveness before closure, catching persistence mechanisms and reinfection. Immediate closure, deleting alerts, and metric reporting do not verify the outcome.",
+    "tip": "Alert handling cycle: detect → triage → investigate → contain/remediate → validate → tune → document."
+  },
+  {
+    "id": "4-090",
+    "d": 4,
+    "obj": "4.6",
+    "topic": "Service accounts",
+    "diff": 3,
+    "type": "single",
+    "q": "Which practice BEST secures service accounts used by automated processes?",
+    "opts": [
+      "Restrict them to non-interactive logon, scope permissions narrowly, vault and rotate credentials, and monitor for anomalous use",
+      "Grant them domain administrator rights to avoid permission errors",
+      "Use one shared service account across all applications",
+      "Set their passwords to never expire and document them in a shared spreadsheet"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Non-interactive restriction, least privilege, managed rotation, and monitoring contain service account risk, which is a common lateral movement path. Excessive rights, account sharing, and spreadsheet-documented static passwords are all high-risk antipatterns.",
+    "tip": "Prefer managed identities or group managed service accounts where the platform handles rotation automatically."
+  },
+  {
+    "id": "4-091",
+    "d": 4,
+    "obj": "4.5",
+    "topic": "Screened subnet",
+    "diff": 2,
+    "type": "single",
+    "q": "Which firewall design element places internet-facing services in a network segment that can be reached from the internet but has tightly restricted access into the internal network?",
+    "opts": [
+      "A screened subnet",
+      "A flat single-zone network",
+      "An air-gapped network",
+      "A guest wireless SSID"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "A screened subnet (DMZ) is bounded by filtering so external clients reach published services while inbound access to internal networks stays restricted. A flat network provides no separation, an air gap allows no connectivity at all, and guest wireless serves untrusted clients rather than published services.",
+    "tip": "Screened subnet rules should permit only the specific ports the published service needs, in both directions."
+  },
+  {
+    "id": "4-092",
+    "d": 4,
+    "obj": "4.4",
+    "topic": "Antivirus and reporting",
+    "diff": 2,
+    "type": "single",
+    "q": "An antivirus console shows 40 endpoints with definitions more than 30 days old. What is the MOST significant risk?",
+    "opts": [
+      "Those endpoints cannot detect recently identified malware, creating a coverage gap",
+      "The console will run out of storage",
+      "Those endpoints will lose network connectivity",
+      "Definition age has no security relevance"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Stale definitions leave known threats undetected on those hosts, and the reporting gap may also indicate agents that have stopped communicating entirely. Console storage and connectivity are unrelated, and definition currency clearly matters for signature-based detection.",
+    "tip": "Track agent health as a metric: installed, running, current, and reporting. Any of those failing means unmonitored assets."
+  },
+  {
+    "id": "4-093",
+    "d": 4,
+    "obj": "4.6",
+    "topic": "Least privilege",
+    "diff": 3,
+    "type": "single",
+    "q": "A developer needs to read production logs to troubleshoot but currently holds full production database write access. Which change applies least privilege MOST precisely?",
+    "opts": [
+      "Grant read-only access limited to the specific log data required, time-bound and audited",
+      "Leave access unchanged but require a change ticket for each use",
+      "Remove all production access and rely on screenshots from operations staff",
+      "Grant read-only access to the entire production environment"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Least privilege scopes access to the specific resource and action needed, with time limits and auditing. Ticket requirements without access reduction leave excessive rights, complete removal impedes legitimate work, and environment-wide read access is broader than necessary.",
+    "tip": "Least privilege has three dimensions: which resources, which actions, and for how long."
+  },
+  {
+    "id": "4-094",
+    "d": 4,
+    "obj": "4.5",
+    "topic": "File integrity monitoring",
+    "diff": 3,
+    "type": "single",
+    "q": "Which scenario BEST justifies deploying file integrity monitoring?",
+    "opts": [
+      "Detecting unauthorized modification of web server content and system binaries on regulated payment systems",
+      "Improving web server response time under load",
+      "Encrypting customer records at rest",
+      "Distributing traffic across application servers"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "FIM detects unauthorized changes to critical files and is explicitly required by standards such as PCI DSS. Performance, encryption, and load distribution are handled by other technologies.",
+    "tip": "FIM answers the integrity half of CIA and is one of the few controls that catches web defacement and backdoored binaries quickly."
+  },
+  {
+    "id": "4-095",
+    "d": 4,
+    "obj": "4.6",
+    "topic": "SSO and LDAP",
+    "diff": 3,
+    "type": "single",
+    "q": "Which protocol is a directory access protocol commonly used to query user and group information, and which port secures it?",
+    "opts": [
+      "LDAP, secured as LDAPS on TCP 636",
+      "SAML, secured on TCP 443 only",
+      "Kerberos, secured on TCP 88 with TLS",
+      "RADIUS, secured on UDP 1812 with TLS"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "LDAP queries directory objects and is protected as LDAPS on TCP 636 (or via StartTLS on 389). SAML is an assertion protocol rather than a directory service, Kerberos uses port 88 without requiring TLS for its ticket exchange, and RADIUS on 1812 traditionally uses its own shared-secret protection.",
+    "tip": "Ports worth memorizing for this domain: 389 LDAP, 636 LDAPS, 88 Kerberos, 1812/1813 RADIUS, 49 TACACS+."
+  },
+  {
+    "id": "4-096",
+    "d": 4,
+    "obj": "4.4",
+    "topic": "Scanning as monitoring",
+    "diff": 2,
+    "type": "single",
+    "q": "Which monitoring activity would FIRST reveal that a new server was deployed without the approved security baseline?",
+    "opts": [
+      "Automated configuration compliance scanning against the baseline",
+      "Reviewing employee training completion records",
+      "Checking the office badge access logs",
+      "Reading the quarterly financial statement"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Compliance scanning compares actual configuration to the required baseline and flags deviations quickly. Training records, badge logs, and financial reports contain no configuration state.",
+    "tip": "Pair compliance scanning with deployment automation so new systems start compliant rather than being corrected later."
+  },
+  {
+    "id": "4-097",
+    "d": 4,
+    "obj": "4.5",
+    "topic": "IPS placement and tuning",
+    "diff": 3,
+    "type": "single",
+    "q": "A newly deployed inline IPS blocks a critical business application because a signature matches its unusual traffic pattern. What is the BEST response?",
+    "opts": [
+      "Create a narrowly scoped exception for that specific application traffic and report the false positive to the vendor",
+      "Switch the IPS to detection-only mode for all traffic permanently",
+      "Remove the IPS from the network path",
+      "Instruct users to retry until the traffic passes"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Targeted exceptions preserve protection elsewhere while restoring the business function, and vendor feedback improves the signature. Globally disabling prevention or removing the device sacrifices protection broadly, and retrying does not address a deterministic block.",
+    "tip": "Inline prevention requires a tuning period. Start in detection mode, baseline the false positives, then enable blocking progressively."
+  },
+  {
+    "id": "4-098",
+    "d": 4,
+    "obj": "4.6",
+    "topic": "Token types",
+    "diff": 2,
+    "type": "single",
+    "q": "Which authentication token type generates codes on a dedicated physical device that has no network connectivity?",
+    "opts": [
+      "A hard token such as a key fob OTP generator",
+      "A soft token app on a smartphone",
+      "An SMS message containing a code",
+      "An email link for magic-link sign-in"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Hard tokens are dedicated hardware devices generating codes offline, which resists malware on general-purpose devices. Soft tokens run on phones, and SMS and email deliver codes over interceptable channels.",
+    "tip": "Security keys (FIDO2) are a hardware token variant that also resists phishing because they verify the site origin."
+  },
+  {
+    "id": "4-099",
+    "d": 4,
+    "obj": "4.4",
+    "topic": "Dashboards and reporting",
+    "diff": 2,
+    "type": "single",
+    "q": "Which reporting practice MOST improves security operations effectiveness?",
+    "opts": [
+      "Dashboards showing detection coverage, alert volumes by outcome, and mean time to detect and respond, reviewed on a cadence",
+      "Emailing raw log excerpts to executives weekly",
+      "Publishing every alert to a company-wide channel",
+      "Reporting only the number of blocked spam messages"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Operationally meaningful metrics reviewed regularly drive improvement in coverage and response speed. Raw logs are unusable for decision-making, company-wide alert broadcasts create noise and disclosure risk, and single vanity metrics do not reflect capability.",
+    "tip": "Useful SOC metrics: MTTD, MTTR, true-positive rate, coverage by log source and MITRE technique, and backlog age."
+  },
+  {
+    "id": "4-100",
+    "d": 4,
+    "obj": "4.6",
+    "topic": "Access control combined",
+    "diff": 3,
+    "type": "multi",
+    "q": "Which THREE controls together provide the strongest protection for administrative access to critical infrastructure?",
+    "opts": [
+      "Phishing-resistant MFA on all administrative authentication",
+      "Just-in-time elevation with session recording through a privileged access gateway",
+      "Separate administrative accounts distinct from daily-use accounts",
+      "Shared administrator credentials stored in a team wiki for availability"
+    ],
+    "a": [
+      0,
+      1,
+      2
+    ],
+    "exp": "Strong authentication, time-bound audited elevation, and separation of administrative from routine accounts each close a distinct attack path. Shared documented credentials eliminate attribution and are a severe weakness.",
+    "tip": "Privileged access answers cluster on: separate admin accounts, MFA, jump/bastion access, JIT elevation, and session recording."
+  }
+]

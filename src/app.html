@@ -1,0 +1,1105 @@
+<title>Security+ Range</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chivo:wght@700;900&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+
+<style>
+:root{
+  --paper:#EEF1EE; --surface:#FFFFFF; --raised:#F6F8F5; --line:#D3DAD6;
+  --ink:#12171B; --body:#2C3A3E; --muted:#5C6A6E;
+  --signal:#B14A16; --signal-soft:#F3E3D8;
+  --deep:#12464F;
+  --ok:#256F4C; --ok-soft:#DDEDE3;
+  --bad:#A3352A; --bad-soft:#F6E0DC;
+  --warn:#8A6212;
+  --shadow:0 1px 2px rgba(18,23,27,.06), 0 8px 24px -12px rgba(18,23,27,.18);
+  --r:10px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#0C1215; --surface:#141D21; --raised:#1A252A; --line:#2A383D;
+    --ink:#E7EDEA; --body:#C8D4D2; --muted:#8CA0A2;
+    --signal:#E8814B; --signal-soft:#2E1E15;
+    --deep:#7FC9D4;
+    --ok:#57B98A; --ok-soft:#12291F;
+    --bad:#E2796A; --bad-soft:#2C1714;
+    --warn:#D2A24A;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 30px -14px rgba(0,0,0,.7);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0C1215; --surface:#141D21; --raised:#1A252A; --line:#2A383D;
+  --ink:#E7EDEA; --body:#C8D4D2; --muted:#8CA0A2;
+  --signal:#E8814B; --signal-soft:#2E1E15;
+  --deep:#7FC9D4;
+  --ok:#57B98A; --ok-soft:#12291F;
+  --bad:#E2796A; --bad-soft:#2C1714;
+  --warn:#D2A24A;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 30px -14px rgba(0,0,0,.7);
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--paper); color:var(--body);
+  font-family:"IBM Plex Sans", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  font-size:16px; line-height:1.55; -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3{font-family:"Chivo", ui-sans-serif, system-ui, sans-serif; color:var(--ink); margin:0; text-wrap:balance; letter-spacing:-.01em}
+h1{font-size:1.35rem; font-weight:900}
+h2{font-size:1.15rem; font-weight:700}
+h3{font-size:.95rem; font-weight:700}
+p{margin:0}
+button{font:inherit; color:inherit; cursor:pointer; border:none; background:none}
+:focus-visible{outline:2px solid var(--signal); outline-offset:2px; border-radius:4px}
+.mono{font-family:"IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace; font-variant-numeric:tabular-nums}
+.eyebrow{font-family:"IBM Plex Mono",monospace; font-size:.68rem; letter-spacing:.14em; text-transform:uppercase; color:var(--muted)}
+
+/* ---------- shell ---------- */
+.app{display:grid; grid-template-columns:236px minmax(0,1fr); min-height:100vh}
+.rail{
+  border-right:1px solid var(--line); background:var(--surface);
+  padding:20px 16px; display:flex; flex-direction:column; gap:22px;
+  position:sticky; top:0; height:100vh; overflow-y:auto;
+}
+.brand{display:flex; flex-direction:column; gap:2px}
+.brand .mark{display:flex; align-items:center; gap:8px}
+.mark svg{flex:none}
+.brand .sub{font-size:.72rem; color:var(--muted); font-family:"IBM Plex Mono",monospace; letter-spacing:.04em}
+nav{display:flex; flex-direction:column; gap:2px}
+.navbtn{
+  display:flex; align-items:center; gap:10px; width:100%; text-align:left;
+  padding:9px 10px; border-radius:8px; color:var(--body); font-size:.9rem; font-weight:500;
+}
+.navbtn:hover{background:var(--raised)}
+.navbtn[aria-current="true"]{background:var(--signal-soft); color:var(--signal); font-weight:600}
+.navbtn .k{margin-left:auto; font-size:.68rem; color:var(--muted); font-family:"IBM Plex Mono",monospace}
+.railfoot{margin-top:auto; display:flex; flex-direction:column; gap:10px; font-size:.75rem; color:var(--muted)}
+.railfoot button{font-size:.75rem; color:var(--muted); text-decoration:underline; text-underline-offset:3px; text-align:left}
+
+main{padding:26px 28px 80px; max-width:920px; width:100%}
+.page{display:none}
+.page.on{display:block; animation:fade .25s ease}
+@keyframes fade{from{opacity:0; transform:translateY(4px)}to{opacity:1; transform:none}}
+@media (prefers-reduced-motion:reduce){*{animation:none !important; transition:none !important}}
+
+.head{display:flex; align-items:flex-end; justify-content:space-between; gap:16px; margin-bottom:20px; flex-wrap:wrap}
+.card{background:var(--surface); border:1px solid var(--line); border-radius:var(--r); box-shadow:var(--shadow)}
+.pad{padding:18px}
+
+/* ---------- dashboard ---------- */
+.grid{display:grid; gap:14px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.stat .n{font-family:"Chivo",sans-serif; font-weight:900; font-size:1.9rem; color:var(--ink); line-height:1.1; font-variant-numeric:tabular-nums}
+.stat .l{font-size:.75rem; color:var(--muted); margin-top:2px}
+.gauge{display:flex; align-items:center; gap:18px}
+.gauge svg{flex:none}
+.gauge .big{font-family:"Chivo",sans-serif; font-weight:900; font-size:2.4rem; color:var(--ink); line-height:1}
+.verdict{font-size:.8rem; font-weight:600; margin-top:4px}
+.dom{display:flex; flex-direction:column; gap:11px; margin-top:4px}
+.domrow{display:grid; grid-template-columns:1fr auto; gap:4px 10px; align-items:baseline}
+.domrow .nm{font-size:.85rem; color:var(--ink); font-weight:500}
+.domrow .pct{font-size:.78rem; color:var(--muted); font-family:"IBM Plex Mono",monospace}
+.bar{grid-column:1/-1; height:7px; border-radius:99px; background:var(--raised); border:1px solid var(--line); overflow:hidden; position:relative}
+.bar i{display:block; height:100%; background:var(--signal); border-radius:99px}
+.bar i.good{background:var(--ok)}
+.bar i.mid{background:var(--warn)}
+.bar .tick{position:absolute; top:-3px; bottom:-3px; width:1px; background:var(--muted); opacity:.5}
+.weaklist{display:flex; flex-wrap:wrap; gap:6px; margin-top:10px}
+.chip{
+  font-size:.75rem; padding:4px 9px; border-radius:99px;
+  background:var(--raised); border:1px solid var(--line); color:var(--body);
+}
+.chip b{color:var(--bad); font-weight:600}
+
+/* ---------- controls ---------- */
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:8px;
+  padding:11px 18px; border-radius:8px; font-weight:600; font-size:.9rem;
+  background:var(--signal); color:#fff; border:1px solid transparent; transition:filter .15s;
+}
+.btn:hover{filter:brightness(1.08)}
+.btn.ghost{background:transparent; color:var(--body); border-color:var(--line)}
+.btn.ghost:hover{background:var(--raised); filter:none}
+.btn:disabled{opacity:.45; cursor:not-allowed}
+.btnrow{display:flex; gap:10px; flex-wrap:wrap; margin-top:16px}
+label.opt{display:flex; align-items:center; gap:8px; font-size:.87rem; padding:6px 0; cursor:pointer}
+input[type=checkbox],input[type=radio]{accent-color:var(--signal); width:16px; height:16px}
+select,input[type=number]{
+  font:inherit; font-size:.87rem; padding:8px 10px; border-radius:7px;
+  border:1px solid var(--line); background:var(--surface); color:var(--ink);
+}
+fieldset{border:none; padding:0; margin:0 0 16px}
+legend{padding:0; margin-bottom:8px}
+
+/* ---------- quiz ---------- */
+.qbar{display:flex; align-items:center; gap:14px; margin-bottom:14px; flex-wrap:wrap}
+.qprog{flex:1; min-width:140px; height:5px; background:var(--raised); border-radius:99px; border:1px solid var(--line); overflow:hidden}
+.qprog i{display:block; height:100%; background:var(--deep); transition:width .3s}
+.timer{font-family:"IBM Plex Mono",monospace; font-size:.9rem; font-weight:600; color:var(--ink); padding:3px 9px; border-radius:6px; background:var(--raised); border:1px solid var(--line)}
+.timer.low{color:var(--bad); border-color:var(--bad)}
+.qmeta{display:flex; gap:8px; align-items:center; flex-wrap:wrap; margin-bottom:12px}
+.tag{font-family:"IBM Plex Mono",monospace; font-size:.68rem; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); border:1px solid var(--line); border-radius:5px; padding:2px 7px}
+.tag.d{color:var(--deep); border-color:currentColor}
+.tag.hard{color:var(--signal); border-color:currentColor}
+.qtext{font-size:1.06rem; color:var(--ink); font-weight:500; line-height:1.5; margin:2px 0 16px; max-width:66ch}
+.opts{display:flex; flex-direction:column; gap:8px}
+.optbtn{
+  display:flex; gap:12px; align-items:flex-start; text-align:left; width:100%;
+  padding:13px 14px; border:1px solid var(--line); border-radius:9px; background:var(--surface);
+  transition:border-color .12s, background .12s;
+}
+.optbtn:hover:not(:disabled){border-color:var(--signal); background:var(--raised)}
+.optbtn .ltr{
+  flex:none; width:24px; height:24px; border-radius:6px; border:1px solid var(--line);
+  display:grid; place-items:center; font-family:"IBM Plex Mono",monospace; font-size:.78rem; font-weight:600; color:var(--muted);
+}
+.optbtn .txt{font-size:.93rem; line-height:1.45}
+.optbtn.sel{border-color:var(--signal); background:var(--signal-soft)}
+.optbtn.sel .ltr{background:var(--signal); color:#fff; border-color:var(--signal)}
+.optbtn.right{border-color:var(--ok); background:var(--ok-soft)}
+.optbtn.right .ltr{background:var(--ok); color:#fff; border-color:var(--ok)}
+.optbtn.wrong{border-color:var(--bad); background:var(--bad-soft)}
+.optbtn.wrong .ltr{background:var(--bad); color:#fff; border-color:var(--bad)}
+.optbtn:disabled{cursor:default}
+
+.exp{margin-top:16px; border-left:3px solid var(--line); padding:2px 0 2px 14px; display:flex; flex-direction:column; gap:10px}
+.exp.right{border-color:var(--ok)}
+.exp.wrong{border-color:var(--bad)}
+.exp .verd{font-family:"Chivo",sans-serif; font-weight:700; font-size:.9rem}
+.exp .verd.right{color:var(--ok)}
+.exp .verd.wrong{color:var(--bad)}
+.exp p{font-size:.9rem; max-width:70ch}
+.tipbox{background:var(--raised); border:1px solid var(--line); border-radius:8px; padding:10px 12px; font-size:.85rem}
+.tipbox b{font-family:"IBM Plex Mono",monospace; font-size:.68rem; letter-spacing:.12em; text-transform:uppercase; color:var(--signal); display:block; margin-bottom:3px}
+
+.actions{display:flex; gap:10px; align-items:center; margin-top:20px; flex-wrap:wrap}
+.actions .spacer{flex:1}
+.flagbtn{font-size:.82rem; color:var(--muted); padding:8px 10px; border-radius:7px; border:1px solid var(--line)}
+.flagbtn.on{color:var(--warn); border-color:var(--warn)}
+.hint{font-size:.72rem; color:var(--muted); font-family:"IBM Plex Mono",monospace}
+
+/* ---------- results ---------- */
+.score{display:flex; align-items:baseline; gap:12px; flex-wrap:wrap}
+.score .pct{font-family:"Chivo",sans-serif; font-weight:900; font-size:3rem; line-height:1; color:var(--ink)}
+.score .of{color:var(--muted); font-size:.9rem}
+.pill{display:inline-block; padding:4px 11px; border-radius:99px; font-size:.78rem; font-weight:600}
+.pill.pass{background:var(--ok-soft); color:var(--ok)}
+.pill.fail{background:var(--bad-soft); color:var(--bad)}
+.revitem{border-top:1px solid var(--line); padding:14px 0}
+.revitem:first-child{border-top:none}
+.revq{font-size:.92rem; color:var(--ink); font-weight:500; margin-bottom:6px}
+.revline{font-size:.85rem; margin:3px 0}
+.revline .k{font-family:"IBM Plex Mono",monospace; font-size:.7rem; text-transform:uppercase; letter-spacing:.08em; color:var(--muted); margin-right:6px}
+.ok{color:var(--ok)} .no{color:var(--bad)}
+details.rev summary{cursor:pointer; font-size:.85rem; color:var(--signal); font-weight:600; padding:6px 0}
+.empty{color:var(--muted); font-size:.9rem; padding:24px 0; text-align:center}
+
+table{width:100%; border-collapse:collapse; font-size:.85rem}
+th,td{text-align:left; padding:8px 10px; border-bottom:1px solid var(--line)}
+th{font-family:"IBM Plex Mono",monospace; font-size:.68rem; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); font-weight:500}
+td.num{text-align:right; font-variant-numeric:tabular-nums; font-family:"IBM Plex Mono",monospace}
+.scroll{overflow-x:auto}
+
+/* ---------- responsive ---------- */
+@media (max-width:820px){
+  .app{grid-template-columns:1fr}
+  .rail{
+    position:sticky; top:0; height:auto; z-index:20; flex-direction:row; align-items:center;
+    padding:10px 12px; gap:10px; border-right:none; border-bottom:1px solid var(--line); overflow-x:auto;
+  }
+  .brand .sub, .railfoot, .navbtn .k{display:none}
+  nav{flex-direction:row; gap:4px}
+  .navbtn{padding:7px 10px; font-size:.82rem; white-space:nowrap}
+  main{padding:18px 16px 60px}
+  .qtext{font-size:1rem}
+}
+</style>
+
+<div class="app">
+  <aside class="rail">
+    <div class="brand">
+      <div class="mark">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M12 2.5 20 6v6.2c0 4.6-3.2 8.2-8 9.3-4.8-1.1-8-4.7-8-9.3V6l8-3.5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" style="color:var(--signal)"/>
+          <path d="m8.4 12 2.6 2.6 4.6-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="color:var(--deep)"/>
+        </svg>
+        <h1>Security+ Range</h1>
+      </div>
+      <span class="sub">SY0-701 · 520 items</span>
+    </div>
+
+    <nav id="nav">
+      <button class="navbtn" data-go="home" aria-current="true">Dashboard <span class="k">1</span></button>
+      <button class="navbtn" data-go="practice">Practice <span class="k">2</span></button>
+      <button class="navbtn" data-go="exam">Exam sim <span class="k">3</span></button>
+      <button class="navbtn" data-go="drill">Weak drill <span class="k">4</span></button>
+      <button class="navbtn" data-go="flagged">Flagged <span class="k">5</span></button>
+      <button class="navbtn" data-go="history">History <span class="k">6</span></button>
+      <button class="navbtn" data-go="settings">Settings <span class="k">7</span></button>
+    </nav>
+
+    <div class="railfoot">
+      <span>Progress is stored in this browser only. Export it before switching devices.</span>
+    </div>
+  </aside>
+
+  <main>
+    <!-- ============ DASHBOARD ============ -->
+    <section class="page on" id="page-home">
+      <div class="head">
+        <div>
+          <span class="eyebrow">CompTIA Security+ · SY0-701</span>
+          <h2 id="greet">Readiness</h2>
+        </div>
+        <button class="btn" id="quickStart">Start 20-question set</button>
+      </div>
+
+      <div class="grid g2">
+        <div class="card pad">
+          <div class="gauge">
+            <svg width="104" height="104" viewBox="0 0 104 104" aria-hidden="true">
+              <circle cx="52" cy="52" r="44" fill="none" stroke="var(--line)" stroke-width="10"/>
+              <circle id="gaugeArc" cx="52" cy="52" r="44" fill="none" stroke="var(--signal)" stroke-width="10"
+                      stroke-linecap="round" stroke-dasharray="276.5" stroke-dashoffset="276.5"
+                      transform="rotate(-90 52 52)"/>
+            </svg>
+            <div>
+              <div class="big mono" id="readyPct">0%</div>
+              <div class="l" style="font-size:.75rem;color:var(--muted)">estimated readiness</div>
+              <div class="verdict" id="verdict">Not enough data yet</div>
+            </div>
+          </div>
+          <p style="font-size:.8rem;color:var(--muted);margin-top:14px">
+            Blends accuracy with coverage per domain, weighted exactly like the real exam.
+            Aim for 85%+ with every domain above 80% before test day.
+          </p>
+        </div>
+
+        <div class="card pad">
+          <span class="eyebrow">Domain mastery</span>
+          <div class="dom" id="domList"></div>
+        </div>
+      </div>
+
+      <div class="grid g3" style="margin-top:14px">
+        <div class="card pad stat"><div class="n mono" id="sSeen">0</div><div class="l">questions attempted</div></div>
+        <div class="card pad stat"><div class="n mono" id="sAcc">—</div><div class="l">lifetime accuracy</div></div>
+        <div class="card pad stat"><div class="n mono" id="sStreak">0</div><div class="l">day streak</div></div>
+        <div class="card pad stat"><div class="n mono" id="sQueue">0</div><div class="l">in weak-drill queue</div></div>
+      </div>
+
+      <div class="card pad" style="margin-top:14px">
+        <span class="eyebrow">Weakest topics</span>
+        <div class="weaklist" id="weakList"><span class="empty" style="padding:8px 0">Answer some questions and your weak spots show up here.</span></div>
+      </div>
+    </section>
+
+    <!-- ============ PRACTICE SETUP ============ -->
+    <section class="page" id="page-practice">
+      <div class="head"><div><span class="eyebrow">Instant feedback after every answer</span><h2>Practice set</h2></div></div>
+      <div class="card pad">
+        <fieldset>
+          <legend class="eyebrow">Domains</legend>
+          <div id="domPicks" class="grid" style="gap:0"></div>
+        </fieldset>
+        <fieldset>
+          <legend class="eyebrow">Selection</legend>
+          <label class="opt"><input type="radio" name="pmode" value="smart" checked> Smart — prioritize unseen and previously missed</label>
+          <label class="opt"><input type="radio" name="pmode" value="random"> Random across selected domains</label>
+          <label class="opt"><input type="radio" name="pmode" value="hard"> Hard items only (difficulty 3)</label>
+        </fieldset>
+        <fieldset style="margin-bottom:0">
+          <legend class="eyebrow">Length</legend>
+          <select id="pCount">
+            <option>10</option><option selected>20</option><option>30</option><option>50</option><option>75</option>
+          </select>
+        </fieldset>
+        <div class="btnrow">
+          <button class="btn" id="startPractice">Start practice</button>
+          <span class="hint" id="poolInfo"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ EXAM SETUP ============ -->
+    <section class="page" id="page-exam">
+      <div class="head"><div><span class="eyebrow">No feedback until you finish · 90 minutes</span><h2>Exam simulation</h2></div></div>
+      <div class="card pad">
+        <p style="font-size:.9rem">
+          90 questions drawn in the real objective weighting — 11 from Domain 1, 20 from Domain 2,
+          16 from Domain 3, 25 from Domain 4, and 18 from Domain 5. The timer runs down from 90:00
+          and the set auto-submits at zero. Passing on the real exam is 750/900 scaled; this sim
+          uses 83% correct as the pass line, which is deliberately stricter than the real cut score.
+        </p>
+        <div class="btnrow">
+          <button class="btn" id="startExam">Begin exam</button>
+          <button class="btn ghost" id="startExam45">Half exam (45 Q / 45 min)</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ DRILL ============ -->
+    <section class="page" id="page-drill">
+      <div class="head"><div><span class="eyebrow">Spaced repetition on everything you missed</span><h2>Weak drill</h2></div></div>
+      <div class="card pad">
+        <p style="font-size:.9rem" id="drillInfo"></p>
+        <p style="font-size:.82rem;color:var(--muted);margin-top:10px">
+          Missed questions enter box 1 and come back immediately. Each correct answer promotes them
+          a box and pushes them further out; a miss sends them straight back to box 1. Items leave
+          the queue after box 4.
+        </p>
+        <div class="btnrow"><button class="btn" id="startDrill">Start drill</button></div>
+      </div>
+    </section>
+
+    <!-- ============ FLAGGED ============ -->
+    <section class="page" id="page-flagged">
+      <div class="head"><div><span class="eyebrow">Questions you marked for another look</span><h2>Flagged</h2></div></div>
+      <div class="card pad">
+        <p style="font-size:.9rem" id="flagInfo"></p>
+        <div class="btnrow"><button class="btn" id="startFlagged">Review flagged</button>
+        <button class="btn ghost" id="clearFlags">Clear all flags</button></div>
+      </div>
+    </section>
+
+    <!-- ============ HISTORY ============ -->
+    <section class="page" id="page-history">
+      <div class="head"><div><span class="eyebrow">Every completed set</span><h2>History</h2></div></div>
+      <div class="card pad scroll" id="histWrap"></div>
+    </section>
+
+    <!-- ============ SETTINGS ============ -->
+    <section class="page" id="page-settings">
+      <div class="head"><div><span class="eyebrow">This device</span><h2>Settings</h2></div></div>
+      <div class="card pad">
+        <h3>Appearance</h3>
+        <div class="btnrow"><button class="btn ghost" id="themeBtn">Toggle light / dark</button></div>
+      </div>
+      <div class="card pad" style="margin-top:14px">
+        <h3>Progress</h3>
+        <p style="font-size:.88rem;margin-top:6px">
+          Everything — answer history, flags, the drill queue, and exam results — lives in this
+          browser's local storage. Export copies it to your clipboard so you can move it to a
+          phone or another browser.
+        </p>
+        <div class="btnrow">
+          <button class="btn ghost" id="exportBtn">Export progress</button>
+          <button class="btn ghost" id="importBtn">Import progress</button>
+          <button class="btn ghost" id="resetBtn">Reset progress</button>
+        </div>
+      </div>
+      <div class="card pad" style="margin-top:14px">
+        <h3>About this bank</h3>
+        <div class="scroll" style="margin-top:8px"><table id="aboutTable"></table></div>
+        <p style="font-size:.82rem;color:var(--muted);margin-top:12px">
+          Written against the SY0-701 objectives (the live exam version until SY0-801 reaches
+          general availability). Every item is original, scenario-driven, and carries a full
+          explanation plus the reasoning that rules out the distractors.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============ QUIZ ============ -->
+    <section class="page" id="page-quiz">
+      <div class="qbar">
+        <span class="mono" id="qCount" style="font-size:.85rem;font-weight:600">1 / 20</span>
+        <div class="qprog"><i id="qProg" style="width:0%"></i></div>
+        <span class="timer" id="qTimer" hidden>90:00</span>
+        <span class="mono" id="qScore" style="font-size:.82rem;color:var(--muted)"></span>
+        <button class="flagbtn" id="quitBtn">End set</button>
+      </div>
+
+      <div class="card pad">
+        <div class="qmeta" id="qMeta"></div>
+        <p class="qtext" id="qText"></p>
+        <div class="opts" id="qOpts"></div>
+        <div id="qExp" aria-live="polite"></div>
+        <div class="actions">
+          <button class="btn" id="submitBtn">Submit</button>
+          <button class="btn" id="nextBtn" hidden>Next</button>
+          <button class="flagbtn" id="flagBtn">⚑ Flag</button>
+          <span class="spacer"></span>
+          <span class="hint">1–6 pick · Enter submit/next · F flag</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ RESULTS ============ -->
+    <section class="page" id="page-result">
+      <div class="head"><div><span class="eyebrow" id="rKind">Set complete</span><h2>Results</h2></div></div>
+      <div class="card pad">
+        <div class="score">
+          <span class="pct mono" id="rPct">0%</span>
+          <span class="of mono" id="rOf">0 / 0 correct</span>
+          <span class="pill" id="rPill"></span>
+          <span class="of mono" id="rTime"></span>
+        </div>
+        <div class="dom" id="rDoms" style="margin-top:18px"></div>
+        <div class="btnrow">
+          <button class="btn" id="rAgain">New set</button>
+          <button class="btn ghost" id="rMissed">Drill the misses</button>
+          <button class="btn ghost" id="rHome">Dashboard</button>
+        </div>
+      </div>
+      <div class="card pad" style="margin-top:14px">
+        <span class="eyebrow">Question review</span>
+        <div id="rReview" style="margin-top:8px"></div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script>
+const BANK = /*__BANK__*/[];
+
+const DOMAINS = {
+  1:{name:"General Security Concepts", w:12},
+  2:{name:"Threats, Vulnerabilities & Mitigations", w:22},
+  3:{name:"Security Architecture", w:18},
+  4:{name:"Security Operations", w:28},
+  5:{name:"Program Management & Oversight", w:20}
+};
+const EXAM_MIX = {1:11, 2:20, 3:16, 4:25, 5:18};
+const LTR = ["A","B","C","D","E","F"];
+const KEY = "secplus.range.v1";
+
+/* ---------------- state ---------------- */
+const blank = () => ({stats:{}, flags:[], exams:[], days:{}});
+let S = load();
+function load(){
+  try{
+    const raw = JSON.parse(localStorage.getItem(KEY));
+    if(!raw || typeof raw !== "object") return blank();
+    return Object.assign(blank(), raw);
+  }catch(e){ return blank(); }
+}
+function save(){ try{ localStorage.setItem(KEY, JSON.stringify(S)); }catch(e){} }
+function stat(id){
+  if(!S.stats[id]) S.stats[id] = {seen:0, right:0, wrong:0, box:0, last:0};
+  return S.stats[id];
+}
+function markDay(){
+  const d = new Date().toISOString().slice(0,10);
+  S.days[d] = (S.days[d]||0) + 1;
+}
+function streak(){
+  let n = 0;
+  const day = new Date();
+  // allow today to be missing without breaking a streak earned yesterday
+  if(!S.days[day.toISOString().slice(0,10)]) day.setDate(day.getDate()-1);
+  for(;;){
+    if(S.days[day.toISOString().slice(0,10)]){ n++; day.setDate(day.getDate()-1); }
+    else break;
+  }
+  return n;
+}
+
+/* ---------------- scoring ---------------- */
+function domainScore(d){
+  const qs = BANK.filter(q => q.d === d);
+  let att = 0, right = 0, seen = 0;
+  for(const q of qs){
+    const s = S.stats[q.id];
+    if(!s || !s.seen) continue;
+    seen++; att += s.seen; right += s.right;
+  }
+  const acc = att ? right/att : 0;
+  const coverage = qs.length ? seen/qs.length : 0;
+  // full credit for accuracy once you have covered 60% of the domain's items
+  return {acc, coverage, seen, total:qs.length, score: acc * Math.min(1, coverage/0.6)};
+}
+function readiness(){
+  let total = 0;
+  for(const d of Object.keys(DOMAINS)) total += DOMAINS[d].w * domainScore(+d).score;
+  return Math.round(total);
+}
+function weakTopics(limit=12){
+  const by = {};
+  for(const q of BANK){
+    const s = S.stats[q.id];
+    if(!s || !s.seen) continue;
+    const t = by[q.topic] || (by[q.topic] = {right:0, seen:0, d:q.d});
+    t.right += s.right; t.seen += s.seen;
+  }
+  return Object.entries(by)
+    .filter(([,t]) => t.seen >= 1 && t.right/t.seen < 0.75)
+    .sort((a,b) => (a[1].right/a[1].seen) - (b[1].right/b[1].seen))
+    .slice(0, limit);
+}
+function drillQueue(){
+  const now = Date.now();
+  const gapDays = [0, 0, 1, 3, 7];
+  return BANK.filter(q => {
+    const s = S.stats[q.id];
+    if(!s || s.box <= 0 || s.box > 4) return false;
+    const due = s.last + gapDays[s.box]*86400000;
+    return now >= due;
+  });
+}
+
+/* ---------------- selection ---------------- */
+const shuffle = a => { const r = a.slice(); for(let i=r.length-1;i>0;i--){ const j = Math.floor(Math.random()*(i+1)); [r[i],r[j]] = [r[j],r[i]]; } return r; };
+
+function pick(pool, n, mode){
+  if(mode === "hard") pool = pool.filter(q => q.diff === 3);
+  if(mode !== "smart") return shuffle(pool).slice(0, n);
+  const score = q => {
+    const s = S.stats[q.id];
+    if(!s || !s.seen) return 3;                       // never seen — highest value
+    if(s.right/s.seen < 0.6) return 2 + Math.random(); // struggling
+    if(s.box > 0) return 1.5;                          // still in the queue
+    return Math.random() * 0.9;                        // known — occasional refresh
+  };
+  return pool.map(q => [score(q) + Math.random()*0.4, q])
+             .sort((a,b) => b[0]-a[0]).slice(0, n).map(x => x[1]);
+}
+
+/* ---------------- quiz engine ---------------- */
+let Q = null; // {items, i, picked, answers, mode, revealed, timer, endsAt, startedAt}
+
+function startQuiz(items, opts={}){
+  if(!items.length){ alert("No questions match that selection."); return; }
+  Q = {
+    items: items.map(q => ({q, order: shuffle(q.opts.map((_,i) => i))})),
+    i: 0, picked: [], answers: [], revealed: false,
+    mode: opts.mode || "practice", label: opts.label || "Practice set",
+    limitMs: opts.limitMs || 0, startedAt: Date.now(), endsAt: opts.limitMs ? Date.now()+opts.limitMs : 0,
+    timer: null
+  };
+  go("quiz");
+  const t = document.getElementById("qTimer");
+  t.hidden = !Q.limitMs;
+  if(Q.limitMs){
+    tick();
+    Q.timer = setInterval(tick, 1000);
+  }
+  document.getElementById("qScore").textContent = Q.mode === "exam" ? "" : "0 correct";
+  render();
+}
+function tick(){
+  const left = Math.max(0, Q.endsAt - Date.now());
+  const el = document.getElementById("qTimer");
+  const m = Math.floor(left/60000), s = Math.floor(left/1000)%60;
+  el.textContent = m + ":" + String(s).padStart(2,"0");
+  el.classList.toggle("low", left < 5*60000);
+  if(left <= 0){ clearInterval(Q.timer); finish(); }
+}
+
+function render(){
+  const {q, order} = Q.items[Q.i];
+  const multi = q.type === "multi";
+  document.getElementById("qCount").textContent = (Q.i+1) + " / " + Q.items.length;
+  document.getElementById("qProg").style.width = ((Q.i)/Q.items.length*100) + "%";
+
+  const meta = document.getElementById("qMeta");
+  meta.innerHTML = "";
+  meta.append(
+    tag("D" + q.d + " · " + DOMAINS[q.d].name, "d"),
+    tag("Obj " + q.obj),
+    tag(q.topic),
+    tag(["", "core", "applied", "hard"][q.diff] || "applied", q.diff === 3 ? "hard" : "")
+  );
+  if(multi) meta.append(tag("select " + q.a.length, "hard"));
+
+  document.getElementById("qText").textContent = q.q;
+
+  const wrap = document.getElementById("qOpts");
+  wrap.innerHTML = "";
+  order.forEach((origIdx, pos) => {
+    const b = document.createElement("button");
+    b.className = "optbtn";
+    b.type = "button";
+    b.dataset.idx = origIdx;
+    b.innerHTML = '<span class="ltr">' + LTR[pos] + '</span><span class="txt"></span>';
+    b.querySelector(".txt").textContent = q.opts[origIdx];
+    b.onclick = () => choose(origIdx, multi);
+    wrap.append(b);
+  });
+
+  Q.picked = [];
+  Q.revealed = false;
+  document.getElementById("qExp").innerHTML = "";
+  document.getElementById("submitBtn").hidden = false;
+  document.getElementById("submitBtn").disabled = true;
+  document.getElementById("nextBtn").hidden = true;
+  document.getElementById("nextBtn").textContent = Q.i === Q.items.length-1 ? "Finish" : "Next";
+  const fb = document.getElementById("flagBtn");
+  fb.classList.toggle("on", S.flags.includes(q.id));
+  fb.textContent = S.flags.includes(q.id) ? "⚑ Flagged" : "⚑ Flag";
+}
+function tag(text, cls){
+  const s = document.createElement("span");
+  s.className = "tag " + (cls||"");
+  s.textContent = text;
+  return s;
+}
+function choose(idx, multi){
+  if(Q.revealed) return;
+  if(multi){
+    const at = Q.picked.indexOf(idx);
+    if(at > -1) Q.picked.splice(at,1); else Q.picked.push(idx);
+  } else {
+    Q.picked = [idx];
+  }
+  document.querySelectorAll("#qOpts .optbtn").forEach(b => {
+    b.classList.toggle("sel", Q.picked.includes(+b.dataset.idx));
+  });
+  document.getElementById("submitBtn").disabled = Q.picked.length === 0;
+}
+
+function submit(){
+  if(Q.revealed || !Q.picked.length) return;
+  const {q} = Q.items[Q.i];
+  const correct = q.a.length === Q.picked.length && q.a.every(a => Q.picked.includes(a));
+  Q.answers.push({id:q.id, picked:Q.picked.slice(), correct, d:q.d});
+  Q.revealed = true;
+
+  const s = stat(q.id);
+  s.seen++; s.last = Date.now();
+  if(correct){ s.right++; if(s.box > 0) s.box++; }
+  else { s.wrong++; s.box = 1; }
+  markDay(); save();
+
+  if(Q.mode !== "exam"){
+    document.querySelectorAll("#qOpts .optbtn").forEach(b => {
+      const i = +b.dataset.idx;
+      b.disabled = true;
+      if(q.a.includes(i)) b.classList.add("right");
+      else if(Q.picked.includes(i)) b.classList.add("wrong");
+      b.classList.remove("sel");
+    });
+    showExp(q, correct);
+    const got = Q.answers.filter(a => a.correct).length;
+    document.getElementById("qScore").textContent = got + " correct";
+  }
+  document.getElementById("submitBtn").hidden = true;
+  document.getElementById("nextBtn").hidden = false;
+  document.getElementById("nextBtn").focus();
+  if(Q.mode === "exam") next();
+}
+function showExp(q, correct){
+  const box = document.getElementById("qExp");
+  box.innerHTML = "";
+  const d = document.createElement("div");
+  d.className = "exp " + (correct ? "right" : "wrong");
+  const v = document.createElement("div");
+  v.className = "verd " + (correct ? "right" : "wrong");
+  v.textContent = correct ? "Correct" : "Not quite — the answer is " + q.a.map(i => "“"+q.opts[i]+"”").join(" and ");
+  const p = document.createElement("p");
+  p.textContent = q.exp;
+  d.append(v, p);
+  if(q.tip){
+    const t = document.createElement("div");
+    t.className = "tipbox";
+    t.innerHTML = "<b>Exam tip</b>";
+    const tp = document.createElement("span");
+    tp.textContent = q.tip;
+    t.append(tp);
+    d.append(t);
+  }
+  box.append(d);
+}
+function next(){
+  if(Q.i >= Q.items.length-1){ finish(); return; }
+  Q.i++;
+  render();
+  window.scrollTo({top:0, behavior:"instant"});
+}
+function finish(){
+  if(Q.timer) clearInterval(Q.timer);
+  const total = Q.items.length;
+  const answered = Q.answers.length;
+  const got = Q.answers.filter(a => a.correct).length;
+  const pct = total ? Math.round(got/total*100) : 0;
+  const elapsed = Date.now() - Q.startedAt;
+
+  const rec = {
+    at: Date.now(), label: Q.label, mode: Q.mode,
+    total, answered, correct: got, pct, ms: elapsed,
+    doms: {}
+  };
+  for(const a of Q.answers){
+    const r = rec.doms[a.d] || (rec.doms[a.d] = {n:0, c:0});
+    r.n++; if(a.correct) r.c++;
+  }
+  S.exams.unshift(rec);
+  S.exams = S.exams.slice(0, 50);
+  save();
+
+  // results page
+  document.getElementById("rKind").textContent = Q.label + " · " + new Date().toLocaleString();
+  document.getElementById("rPct").textContent = pct + "%";
+  document.getElementById("rOf").textContent = got + " / " + total + " correct" + (answered < total ? " (" + (total-answered) + " unanswered)" : "");
+  const mm = Math.floor(elapsed/60000), ss = Math.floor(elapsed/1000)%60;
+  document.getElementById("rTime").textContent = mm + "m " + String(ss).padStart(2,"0") + "s";
+  const pill = document.getElementById("rPill");
+  const passed = pct >= 83;
+  pill.className = "pill " + (passed ? "pass" : "fail");
+  pill.textContent = passed ? "At or above target" : "Below 83% target";
+
+  const dl = document.getElementById("rDoms");
+  dl.innerHTML = "";
+  Object.keys(DOMAINS).forEach(d => {
+    const r = rec.doms[d];
+    if(!r) return;
+    dl.append(bar(DOMAINS[d].name, r.c, r.n));
+  });
+
+  const rev = document.getElementById("rReview");
+  rev.innerHTML = "";
+  const missed = Q.answers.filter(a => !a.correct);
+  const mk = list => {
+    const frag = document.createDocumentFragment();
+    list.forEach(a => {
+      const item = Q.items.find(it => it.q.id === a.id);
+      if(item) frag.append(reviewItem(item.q, a));
+    });
+    return frag;
+  };
+  if(missed.length){
+    const h = document.createElement("h3");
+    h.textContent = "Missed (" + missed.length + ")";
+    h.style.margin = "6px 0 8px";
+    rev.append(h, mk(missed));
+  }
+  const rights = Q.answers.filter(a => a.correct);
+  if(rights.length){
+    const det = document.createElement("details");
+    det.className = "rev";
+    const sum = document.createElement("summary");
+    sum.textContent = "Show the " + rights.length + " you got right";
+    det.append(sum);
+    const inner = document.createElement("div");
+    inner.append(mk(rights));
+    det.append(inner);
+    rev.append(det);
+  }
+  if(!Q.answers.length) rev.innerHTML = '<p class="empty">No questions answered.</p>';
+
+  document.getElementById("rMissed").hidden = missed.length === 0;
+  Q.missedIds = missed.map(m => m.id);
+  go("result");
+  window.scrollTo({top:0});
+}
+function reviewItem(q, a){
+  const wrap = document.createElement("div");
+  wrap.className = "revitem";
+  const meta = document.createElement("div");
+  meta.className = "qmeta";
+  meta.append(tag("D"+q.d+" · Obj "+q.obj, "d"), tag(q.topic));
+  const qt = document.createElement("div");
+  qt.className = "revq";
+  qt.textContent = q.q;
+  wrap.append(meta, qt);
+  const yours = document.createElement("div");
+  yours.className = "revline";
+  yours.innerHTML = '<span class="k">You</span>';
+  const ys = document.createElement("span");
+  ys.className = a.correct ? "ok" : "no";
+  ys.textContent = a.picked.length ? a.picked.map(i => q.opts[i]).join(" · ") : "no answer";
+  yours.append(ys);
+  const ans = document.createElement("div");
+  ans.className = "revline";
+  ans.innerHTML = '<span class="k">Answer</span>';
+  const as = document.createElement("span");
+  as.className = "ok";
+  as.textContent = q.a.map(i => q.opts[i]).join(" · ");
+  ans.append(as);
+  const ex = document.createElement("p");
+  ex.className = "revline";
+  ex.style.color = "var(--muted)";
+  ex.textContent = q.exp;
+  wrap.append(yours, ans, ex);
+  if(q.tip){
+    const t = document.createElement("div");
+    t.className = "tipbox";
+    t.style.marginTop = "8px";
+    t.innerHTML = "<b>Exam tip</b>";
+    const sp = document.createElement("span");
+    sp.textContent = q.tip;
+    t.append(sp);
+    wrap.append(t);
+  }
+  return wrap;
+}
+function bar(name, c, n){
+  const pct = n ? Math.round(c/n*100) : 0;
+  const row = document.createElement("div");
+  row.className = "domrow";
+  const nm = document.createElement("span");
+  nm.className = "nm"; nm.textContent = name;
+  const p = document.createElement("span");
+  p.className = "pct"; p.textContent = pct + "%  (" + c + "/" + n + ")";
+  const b = document.createElement("div");
+  b.className = "bar";
+  const i = document.createElement("i");
+  i.style.width = pct + "%";
+  i.className = pct >= 80 ? "good" : pct >= 60 ? "mid" : "";
+  b.append(i);
+  row.append(nm, p, b);
+  return row;
+}
+
+/* ---------------- pages ---------------- */
+function go(name){
+  document.querySelectorAll(".page").forEach(p => p.classList.toggle("on", p.id === "page-"+name));
+  document.querySelectorAll(".navbtn").forEach(b => b.setAttribute("aria-current", String(b.dataset.go === name)));
+  if(name === "home") drawHome();
+  if(name === "practice") drawPractice();
+  if(name === "drill") drawDrill();
+  if(name === "flagged") drawFlagged();
+  if(name === "history") drawHistory();
+  if(name === "settings") drawAbout();
+}
+function drawAbout(){
+  const t = document.getElementById("aboutTable");
+  let h = "<thead><tr><th>Domain</th><th>Questions</th><th>Exam weight</th><th>Your coverage</th></tr></thead><tbody>";
+  for(const d of Object.keys(DOMAINS)){
+    const s = domainScore(+d);
+    h += "<tr><td>D" + d + " " + escapeHtml(DOMAINS[d].name) + "</td>"
+      + '<td class="num">' + s.total + "</td>"
+      + '<td class="num">' + DOMAINS[d].w + "%</td>"
+      + '<td class="num">' + s.seen + " (" + Math.round(s.coverage*100) + "%)</td></tr>";
+  }
+  h += '<tr><td><b>Total</b></td><td class="num"><b>' + BANK.length + "</b></td><td class=\"num\">100%</td><td class=\"num\"></td></tr>";
+  t.innerHTML = h + "</tbody>";
+}
+function drawHome(){
+  const r = readiness();
+  document.getElementById("readyPct").textContent = r + "%";
+  const arc = document.getElementById("gaugeArc");
+  const C = 2*Math.PI*44;
+  arc.style.strokeDashoffset = C * (1 - r/100);
+  arc.style.stroke = r >= 85 ? "var(--ok)" : r >= 65 ? "var(--warn)" : "var(--signal)";
+  const v = document.getElementById("verdict");
+  const attempts = Object.values(S.stats).reduce((n,s) => n+s.seen, 0);
+  if(attempts < 40){ v.textContent = "Answer ~40 questions for a meaningful estimate"; v.style.color = "var(--muted)"; }
+  else if(r >= 85){ v.textContent = "Tracking well — hold this and keep drilling misses"; v.style.color = "var(--ok)"; }
+  else if(r >= 65){ v.textContent = "Close — push weak domains above 80%"; v.style.color = "var(--warn)"; }
+  else { v.textContent = "Keep grinding — coverage and accuracy both need work"; v.style.color = "var(--signal)"; }
+
+  const dl = document.getElementById("domList");
+  dl.innerHTML = "";
+  Object.keys(DOMAINS).forEach(d => {
+    const s = domainScore(+d);
+    const row = document.createElement("div");
+    row.className = "domrow";
+    const nm = document.createElement("span");
+    nm.className = "nm";
+    nm.textContent = "D" + d + " " + DOMAINS[d].name;
+    const p = document.createElement("span");
+    p.className = "pct";
+    p.textContent = (s.seen ? Math.round(s.acc*100) + "%" : "—") + " · " + s.seen + "/" + s.total + " seen · " + DOMAINS[d].w + "% of exam";
+    const b = document.createElement("div");
+    b.className = "bar";
+    const i = document.createElement("i");
+    const pct = Math.round(s.score*100);
+    i.style.width = pct + "%";
+    i.className = pct >= 80 ? "good" : pct >= 60 ? "mid" : "";
+    const tk = document.createElement("span");
+    tk.className = "tick"; tk.style.left = "80%";
+    b.append(i, tk);
+    row.append(nm, p, b);
+    dl.append(row);
+  });
+
+  const totals = Object.values(S.stats).reduce((a,s) => ({n:a.n+s.seen, c:a.c+s.right}), {n:0,c:0});
+  document.getElementById("sSeen").textContent = totals.n;
+  document.getElementById("sAcc").textContent = totals.n ? Math.round(totals.c/totals.n*100) + "%" : "—";
+  document.getElementById("sStreak").textContent = streak();
+  document.getElementById("sQueue").textContent = drillQueue().length;
+
+  const wl = document.getElementById("weakList");
+  const weak = weakTopics();
+  wl.innerHTML = "";
+  if(!weak.length){ wl.innerHTML = '<span class="empty" style="padding:8px 0">Nothing flagged as weak yet.</span>'; }
+  else weak.forEach(([topic,t]) => {
+    const c = document.createElement("span");
+    c.className = "chip";
+    c.innerHTML = "D" + t.d + " · " + escapeHtml(topic) + " <b>" + Math.round(t.right/t.seen*100) + "%</b>";
+    wl.append(c);
+  });
+}
+function escapeHtml(s){ return String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
+
+function drawPractice(){
+  const box = document.getElementById("domPicks");
+  if(!box.dataset.built){
+    Object.keys(DOMAINS).forEach(d => {
+      const l = document.createElement("label");
+      l.className = "opt";
+      l.innerHTML = '<input type="checkbox" value="' + d + '" checked>';
+      const sp = document.createElement("span");
+      sp.textContent = "D" + d + " — " + DOMAINS[d].name + " (" + BANK.filter(q => q.d === +d).length + ")";
+      l.append(sp);
+      l.querySelector("input").onchange = updatePool;
+      box.append(l);
+    });
+    box.dataset.built = "1";
+  }
+  updatePool();
+}
+function selectedDomains(){
+  return [...document.querySelectorAll("#domPicks input:checked")].map(i => +i.value);
+}
+function updatePool(){
+  const ds = selectedDomains();
+  const mode = document.querySelector('input[name=pmode]:checked').value;
+  let pool = BANK.filter(q => ds.includes(q.d));
+  if(mode === "hard") pool = pool.filter(q => q.diff === 3);
+  document.getElementById("poolInfo").textContent = pool.length + " questions available";
+}
+function drawDrill(){
+  const q = drillQueue();
+  document.getElementById("drillInfo").textContent = q.length
+    ? q.length + " question" + (q.length===1?"":"s") + " due right now."
+    : "Nothing due. Miss a question in practice or an exam and it lands here automatically.";
+  document.getElementById("startDrill").disabled = !q.length;
+}
+function drawFlagged(){
+  const n = S.flags.length;
+  document.getElementById("flagInfo").textContent = n
+    ? n + " flagged question" + (n===1?"":"s") + " waiting."
+    : "Nothing flagged. Hit F or the flag button during a set to save a question here.";
+  document.getElementById("startFlagged").disabled = !n;
+}
+function drawHistory(){
+  const w = document.getElementById("histWrap");
+  if(!S.exams.length){ w.innerHTML = '<p class="empty">No completed sets yet.</p>'; return; }
+  let h = "<table><thead><tr><th>When</th><th>Set</th><th>Score</th><th>Correct</th><th>Time</th></tr></thead><tbody>";
+  for(const e of S.exams){
+    const mm = Math.floor(e.ms/60000), ss = Math.floor(e.ms/1000)%60;
+    h += "<tr><td>" + new Date(e.at).toLocaleString() + "</td><td>" + escapeHtml(e.label) + "</td>"
+      + '<td class="num" style="color:' + (e.pct>=83?"var(--ok)":e.pct>=70?"var(--warn)":"var(--bad)") + '">' + e.pct + "%</td>"
+      + '<td class="num">' + e.correct + "/" + e.total + "</td>"
+      + '<td class="num">' + mm + "m " + String(ss).padStart(2,"0") + "s</td></tr>";
+  }
+  w.innerHTML = h + "</tbody></table>";
+}
+
+/* ---------------- wiring ---------------- */
+document.getElementById("nav").onclick = e => {
+  const b = e.target.closest("[data-go]");
+  if(b) go(b.dataset.go);
+};
+document.getElementById("quickStart").onclick = () => {
+  startQuiz(pick(BANK, 20, "smart"), {label:"Quick 20"});
+};
+document.querySelectorAll('input[name=pmode]').forEach(r => r.onchange = updatePool);
+document.getElementById("startPractice").onclick = () => {
+  const ds = selectedDomains();
+  if(!ds.length){ alert("Pick at least one domain."); return; }
+  const mode = document.querySelector('input[name=pmode]:checked').value;
+  const n = +document.getElementById("pCount").value;
+  startQuiz(pick(BANK.filter(q => ds.includes(q.d)), n, mode),
+            {label:"Practice · D" + ds.join("/") + " · " + mode});
+};
+function examSet(scale){
+  let items = [];
+  for(const d of Object.keys(EXAM_MIX)){
+    const n = Math.round(EXAM_MIX[d] * scale);
+    items = items.concat(shuffle(BANK.filter(q => q.d === +d)).slice(0, n));
+  }
+  return shuffle(items);
+}
+document.getElementById("startExam").onclick = () => {
+  startQuiz(examSet(1), {mode:"exam", label:"Exam simulation (90)", limitMs:90*60000});
+};
+document.getElementById("startExam45").onclick = () => {
+  startQuiz(examSet(0.5), {mode:"exam", label:"Half exam (45)", limitMs:45*60000});
+};
+document.getElementById("startDrill").onclick = () => {
+  startQuiz(shuffle(drillQueue()).slice(0, 40), {label:"Weak drill"});
+};
+document.getElementById("startFlagged").onclick = () => {
+  startQuiz(shuffle(BANK.filter(q => S.flags.includes(q.id))), {label:"Flagged review"});
+};
+document.getElementById("clearFlags").onclick = () => {
+  if(!S.flags.length || !confirm("Clear all flags?")) return;
+  S.flags = []; save(); drawFlagged();
+};
+document.getElementById("submitBtn").onclick = submit;
+document.getElementById("nextBtn").onclick = next;
+document.getElementById("flagBtn").onclick = () => {
+  const id = Q.items[Q.i].q.id;
+  const at = S.flags.indexOf(id);
+  if(at > -1) S.flags.splice(at,1); else S.flags.push(id);
+  save();
+  const on = S.flags.includes(id);
+  const b = document.getElementById("flagBtn");
+  b.classList.toggle("on", on);
+  b.textContent = on ? "⚑ Flagged" : "⚑ Flag";
+};
+document.getElementById("quitBtn").onclick = () => {
+  if(Q && Q.answers.length && confirm("End this set and score what you have answered?")) finish();
+  else if(Q && !Q.answers.length){ if(Q.timer) clearInterval(Q.timer); go("home"); }
+};
+document.getElementById("rAgain").onclick = () => go("practice");
+document.getElementById("rHome").onclick = () => go("home");
+document.getElementById("rMissed").onclick = () => {
+  const ids = Q.missedIds || [];
+  startQuiz(BANK.filter(q => ids.includes(q.id)), {label:"Missed-question drill"});
+};
+
+document.getElementById("themeBtn").onclick = () => {
+  const cur = document.documentElement.getAttribute("data-theme");
+  const dark = cur ? cur === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+  document.documentElement.setAttribute("data-theme", dark ? "light" : "dark");
+  try{ localStorage.setItem(KEY + ".theme", dark ? "light" : "dark"); }catch(e){}
+};
+(function(){
+  try{
+    const t = localStorage.getItem(KEY + ".theme");
+    if(t) document.documentElement.setAttribute("data-theme", t);
+  }catch(e){}
+})();
+document.getElementById("resetBtn").onclick = () => {
+  if(confirm("Erase all progress, flags, and history on this device?")){
+    S = blank(); save(); go("home");
+  }
+};
+document.getElementById("exportBtn").onclick = () => {
+  const txt = JSON.stringify(S);
+  navigator.clipboard?.writeText(txt).then(
+    () => alert("Progress JSON copied to the clipboard. Paste it somewhere safe, or into Import on another device."),
+    () => prompt("Copy your progress JSON:", txt)
+  );
+};
+document.getElementById("importBtn").onclick = () => {
+  const txt = prompt("Paste progress JSON:");
+  if(!txt) return;
+  try{
+    const obj = JSON.parse(txt);
+    if(!obj || typeof obj !== "object" || !obj.stats) throw new Error("bad shape");
+    S = Object.assign(blank(), obj);
+    save(); go("home");
+    alert("Progress imported.");
+  }catch(e){ alert("That did not look like exported progress."); }
+};
+
+addEventListener("keydown", e => {
+  if(e.target.matches("input,select,textarea")) return;
+  const quizOn = document.getElementById("page-quiz").classList.contains("on");
+  if(quizOn && Q){
+    if(/^[1-6]$/.test(e.key)){
+      const btns = document.querySelectorAll("#qOpts .optbtn");
+      const b = btns[+e.key - 1];
+      if(b && !b.disabled){ b.click(); e.preventDefault(); }
+      return;
+    }
+    if(e.key === "Enter"){
+      const sb = document.getElementById("submitBtn"), nb = document.getElementById("nextBtn");
+      if(!sb.hidden && !sb.disabled) sb.click();
+      else if(!nb.hidden) nb.click();
+      e.preventDefault(); return;
+    }
+    if(e.key.toLowerCase() === "f"){ document.getElementById("flagBtn").click(); return; }
+  } else if(/^[1-7]$/.test(e.key)){
+    const order = ["home","practice","exam","drill","flagged","history","settings"];
+    if(order[+e.key - 1]) go(order[+e.key - 1]);
+  }
+});
+
+drawHome();
+</script>

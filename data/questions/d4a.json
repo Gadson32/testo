@@ -1,0 +1,1004 @@
+[
+  {
+    "id": "4-001",
+    "d": 4,
+    "obj": "4.1",
+    "topic": "Secure baselines",
+    "diff": 2,
+    "type": "single",
+    "q": "Which sequence correctly describes the lifecycle of a secure baseline?",
+    "opts": [
+      "Establish the baseline, deploy it to systems, then maintain it as threats and requirements change",
+      "Deploy first, then establish documentation, then discard it after audit",
+      "Maintain existing configurations, then establish a baseline only after a breach",
+      "Establish the baseline once and never revise it to preserve consistency"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "SY0-701 defines baseline activities as establish, deploy, and maintain. Deploying before defining produces inconsistency, waiting for a breach is reactive, and freezing a baseline forever leaves it obsolete as vulnerabilities and requirements evolve.",
+    "tip": "Maintenance is the step organizations skip. A baseline that is never updated becomes a documented list of outdated settings."
+  },
+  {
+    "id": "4-002",
+    "d": 4,
+    "obj": "4.1",
+    "topic": "Hardening",
+    "diff": 2,
+    "type": "single",
+    "q": "Which action is part of hardening a network switch?",
+    "opts": [
+      "Disable unused physical ports and unnecessary management services, and restrict management access to a dedicated VLAN",
+      "Enable Telnet for faster troubleshooting",
+      "Configure all ports as trunk ports for flexibility",
+      "Leave the default SNMP community strings for compatibility"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Disabling unused ports and services and confining management to a protected VLAN reduce attack surface. Telnet transmits credentials in cleartext, universal trunking invites VLAN hopping, and default SNMP community strings are publicly known.",
+    "tip": "Switch hardening: disable unused ports, set ports to access mode explicitly, change default credentials, use SSH and SNMPv3, and enable port security."
+  },
+  {
+    "id": "4-003",
+    "d": 4,
+    "obj": "4.1",
+    "topic": "Wireless site survey",
+    "diff": 3,
+    "type": "single",
+    "q": "Before deploying access points in a new warehouse, engineers walk the facility measuring signal strength and interference, producing a coverage map. What are these activities called?",
+    "opts": [
+      "A site survey producing a heat map",
+      "A vulnerability scan producing a risk register",
+      "A penetration test producing an executive summary",
+      "A tabletop exercise producing an after-action report"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Site surveys measure real-world RF conditions and produce heat maps that guide access point placement, channel selection, and power settings. The other activities assess vulnerabilities, simulate attacks, or exercise plans rather than map coverage.",
+    "tip": "Site survey deliverables: heat map, channel plan, AP placement, and identification of interference sources and rogue APs."
+  },
+  {
+    "id": "4-004",
+    "d": 4,
+    "obj": "4.1",
+    "topic": "WPA3",
+    "diff": 3,
+    "type": "single",
+    "q": "Which improvement does WPA3-Personal provide over WPA2-Personal?",
+    "opts": [
+      "Simultaneous Authentication of Equals replaces the pre-shared key handshake, preventing offline dictionary attacks on captured handshakes",
+      "It removes the need for any passphrase",
+      "It reduces the key length to improve performance on IoT devices",
+      "It disables management frame protection to improve compatibility"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "WPA3 uses SAE (Dragonfly), so capturing the handshake does not permit offline password cracking, and it also mandates protected management frames. A passphrase is still used, key strength increased rather than decreased, and management frame protection is required rather than disabled.",
+    "tip": "WPA3-Enterprise adds 192-bit security suites; WPA3-Personal's headline feature is SAE replacing the WPA2 4-way handshake weakness."
+  },
+  {
+    "id": "4-005",
+    "d": 4,
+    "obj": "4.1",
+    "topic": "Wireless enterprise auth",
+    "diff": 3,
+    "type": "single",
+    "q": "A company must authenticate each wireless user individually with centralized policy and per-user session keys. Which configuration is required?",
+    "opts": [
+      "WPA2/WPA3-Enterprise with 802.1X and a RADIUS server",
+      "WPA3-Personal with a strong shared passphrase",
+      "Open authentication with a captive portal terms page",
+      "MAC address filtering with a hidden SSID"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Enterprise mode with 802.1X and RADIUS authenticates each identity separately and derives unique keys per session. A shared passphrase cannot distinguish users, an open network with a terms page provides no authentication, and MAC filtering with SSID hiding is trivially defeated.",
+    "tip": "Hidden SSIDs and MAC filtering are not security controls on this exam — they appear as attractive wrong answers."
+  },
+  {
+    "id": "4-006",
+    "d": 4,
+    "obj": "4.1",
+    "topic": "MDM",
+    "diff": 2,
+    "type": "single",
+    "q": "Which capability is central to a mobile device management platform in a BYOD environment?",
+    "opts": [
+      "Enforcing policy on a managed work profile, including encryption, screen lock, and selective remote wipe of corporate data",
+      "Full remote wipe of the entire personal device without consent as the only option",
+      "Blocking all use of personal applications on the device",
+      "Replacing the device operating system with a custom build"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "In BYOD, containerization with a managed work profile lets the organization enforce controls and wipe corporate data selectively while leaving personal content untouched. Full-device wipe without consent, blanket app bans, and OS replacement are impractical or legally problematic for personally owned devices.",
+    "tip": "Deployment models: BYOD (user-owned), COPE (corporate-owned, personally enabled), CYOD (choose your own device from an approved list)."
+  },
+  {
+    "id": "4-007",
+    "d": 4,
+    "obj": "4.1",
+    "topic": "Mobile deployment models",
+    "diff": 3,
+    "type": "single",
+    "q": "An organization purchases devices, retains ownership and full management rights, and permits limited personal use. Which deployment model is this?",
+    "opts": [
+      "COPE",
+      "BYOD",
+      "CYOD",
+      "Air-gapped provisioning"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Corporate-owned, personally enabled devices are company property under full management with permitted personal use. BYOD devices are user-owned, CYOD lets users select from an approved corporate-purchased list, and air-gapped provisioning is not a mobile deployment model.",
+    "tip": "Control ranks COPE > CYOD > BYOD; privacy concerns rank inversely."
+  },
+  {
+    "id": "4-008",
+    "d": 4,
+    "obj": "4.1",
+    "topic": "Application security",
+    "diff": 2,
+    "type": "single",
+    "q": "Which practice is the MOST fundamental defense against injection vulnerabilities in a web application?",
+    "opts": [
+      "Server-side input validation combined with parameterized queries and contextual output encoding",
+      "Client-side JavaScript validation of form fields",
+      "Obfuscating the application's JavaScript bundle",
+      "Renaming database tables to non-obvious values"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Validation and encoding must occur server-side because clients are fully controlled by the attacker. Client-side checks improve usability but are bypassed with a proxy, and obfuscation or naming tricks are security through obscurity.",
+    "tip": "Never trust client-side controls. Any validation that matters must be enforced on the server."
+  },
+  {
+    "id": "4-009",
+    "d": 4,
+    "obj": "4.1",
+    "topic": "Secure cookies",
+    "diff": 3,
+    "type": "single",
+    "q": "Which cookie attribute combination BEST protects a session identifier?",
+    "opts": [
+      "Secure, HttpOnly, and SameSite",
+      "Domain, Path, and Expires",
+      "Max-Age and Version",
+      "Comment and Port"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Secure restricts the cookie to HTTPS, HttpOnly prevents script access to limit XSS impact, and SameSite mitigates cross-site request forgery. The remaining attributes control scope and lifetime rather than security posture.",
+    "tip": "Session security also requires regenerating the identifier at login and invalidating it server-side at logout."
+  },
+  {
+    "id": "4-010",
+    "d": 4,
+    "obj": "4.1",
+    "topic": "Static vs dynamic analysis",
+    "diff": 3,
+    "type": "single",
+    "q": "A security team wants to find vulnerabilities in source code before compilation, during each pull request. Which technique should be used?",
+    "opts": [
+      "Static application security testing",
+      "Dynamic application security testing",
+      "Fuzzing the production endpoint",
+      "Penetration testing after release"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "SAST analyzes source or bytecode without execution and integrates naturally into code review pipelines. DAST tests a running application, fuzzing production risks outages, and post-release penetration testing finds issues far later and at higher cost.",
+    "tip": "SAST = white box, no execution, early. DAST = black box, running app, later. Both find different defect classes."
+  },
+  {
+    "id": "4-011",
+    "d": 4,
+    "obj": "4.1",
+    "topic": "Code signing",
+    "diff": 2,
+    "type": "single",
+    "q": "Why should an organization require code signing for internally developed applications distributed to endpoints?",
+    "opts": [
+      "Endpoints can verify publisher identity and detect tampering before execution",
+      "Signed code runs measurably faster",
+      "Signing encrypts the application so competitors cannot read it",
+      "Signing eliminates the need for vulnerability scanning"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Code signatures provide authenticity and integrity verification at execution time. Signing does not improve performance, does not encrypt the binary, and does not identify vulnerabilities in the code.",
+    "tip": "Protect signing keys in an HSM. A stolen code-signing key lets an attacker publish trusted malware."
+  },
+  {
+    "id": "4-012",
+    "d": 4,
+    "obj": "4.1",
+    "topic": "Sandboxing",
+    "diff": 2,
+    "type": "single",
+    "q": "An email gateway opens attachments in an isolated instrumented environment to observe behavior before delivery. Which technique is this?",
+    "opts": [
+      "Sandboxing",
+      "Hashing",
+      "Tokenization",
+      "Load balancing"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Sandboxing executes untrusted content in isolation to observe malicious behavior without risking production. Hashing verifies integrity, tokenization substitutes sensitive values, and load balancing distributes traffic.",
+    "tip": "Evasive malware may detect sandboxes and stay dormant, so sandboxing complements rather than replaces endpoint detection."
+  },
+  {
+    "id": "4-013",
+    "d": 4,
+    "obj": "4.2",
+    "topic": "Asset inventory",
+    "diff": 2,
+    "type": "single",
+    "q": "Why is a complete and accurate asset inventory considered foundational to security operations?",
+    "opts": [
+      "Controls, patching, and monitoring can only be applied to assets the organization knows exist",
+      "It reduces the cost of hardware purchases",
+      "It replaces the need for vulnerability scanning",
+      "It satisfies all regulatory requirements by itself"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Unknown assets are unpatched, unmonitored, and unprotected by definition, which is why inventory underpins every other control. Inventory may inform purchasing but does not primarily reduce cost, does not replace scanning, and does not by itself achieve compliance.",
+    "tip": "Asset management steps: acquisition/procurement, assignment and ownership, classification, tracking/enumeration, and disposal."
+  },
+  {
+    "id": "4-014",
+    "d": 4,
+    "obj": "4.2",
+    "topic": "Sanitization",
+    "diff": 3,
+    "type": "single",
+    "q": "A company must dispose of SSDs that contained regulated data and requires documented assurance the data is unrecoverable. Which approach is BEST?",
+    "opts": [
+      "Cryptographic erase or vendor-validated sanitization followed by physical destruction, with a certificate of destruction retained",
+      "A single-pass file deletion and emptying the recycle bin",
+      "Reformatting the drives with a quick format",
+      "Degaussing the SSDs with a magnetic field"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "SSD wear leveling makes overwrite-based methods unreliable, so cryptographic erase or validated sanitization plus destruction is used, with certification for audit evidence. Deletion and quick formats leave data recoverable, and degaussing works on magnetic media but not on flash.",
+    "tip": "Sanitization ladder: clear (overwrite), purge (crypto erase, secure erase), destroy (shred, incinerate). Match to data sensitivity and get certificates."
+  },
+  {
+    "id": "4-015",
+    "d": 4,
+    "obj": "4.2",
+    "topic": "Decommissioning",
+    "diff": 2,
+    "type": "single",
+    "q": "Which step is REQUIRED when decommissioning a server that held sensitive data, in addition to sanitizing storage?",
+    "opts": [
+      "Revoke its certificates and service accounts, and remove it from inventory, monitoring, and DNS",
+      "Leave its DNS records in place for historical reference",
+      "Keep its Active Directory account enabled in case it is needed later",
+      "Retain its firewall rules to simplify a future rebuild"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Decommissioning must remove the system's identities, trust artifacts, and network references so orphaned credentials and stale rules cannot be abused. Retaining DNS entries, enabled accounts, and firewall rules creates exploitable remnants.",
+    "tip": "Stale DNS records enable subdomain takeover; orphaned service accounts and firewall rules are recurring audit findings."
+  },
+  {
+    "id": "4-016",
+    "d": 4,
+    "obj": "4.2",
+    "topic": "Data retention",
+    "diff": 3,
+    "type": "single",
+    "q": "Legal requires that email for employees involved in pending litigation be preserved, while the standard retention policy deletes email after two years. What must happen?",
+    "opts": [
+      "A legal hold must suspend routine deletion for the affected accounts",
+      "The retention policy must be applied uniformly regardless of litigation",
+      "All email older than two years must be deleted immediately for consistency",
+      "The affected employees should archive messages to personal storage"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "A legal hold overrides normal retention and deletion for relevant data; failing to honor it risks spoliation sanctions. Uniform deletion, accelerated deletion, and personal archiving all jeopardize evidence integrity and defensibility.",
+    "tip": "Legal hold suspends destruction. E-discovery is the process of identifying, collecting, and producing that data."
+  },
+  {
+    "id": "4-017",
+    "d": 4,
+    "obj": "4.2",
+    "topic": "Procurement",
+    "diff": 3,
+    "type": "single",
+    "q": "Which security activity belongs in the acquisition and procurement phase of asset management?",
+    "opts": [
+      "Evaluating vendor security posture, support lifecycle, and patch commitments before purchase",
+      "Sanitizing the device's storage media",
+      "Recording the asset's disposal certificate",
+      "Assigning the device to a departing employee"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Security requirements must be evaluated before purchase, including supportability, patch cadence, and end-of-life dates, because these decisions constrain the asset's entire lifecycle. Sanitization and disposal certification occur at end of life.",
+    "tip": "Ask at purchase time: how long is it supported, how are patches delivered, and can it meet our baseline?"
+  },
+  {
+    "id": "4-018",
+    "d": 4,
+    "obj": "4.3",
+    "topic": "CVE and CVSS",
+    "diff": 2,
+    "type": "single",
+    "q": "What is the difference between a CVE identifier and a CVSS score?",
+    "opts": [
+      "CVE uniquely identifies a specific vulnerability; CVSS provides a numeric severity rating for it",
+      "CVE rates severity; CVSS assigns the identifier",
+      "Both are proprietary vendor scoring systems",
+      "CVE measures exploitability while CVSS lists affected products"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "CVE is the catalog identifier for a known vulnerability, while CVSS is the scoring framework expressing severity from base, temporal, and environmental metrics. Neither is vendor-proprietary in the way described, and the roles in the wrong answers are reversed.",
+    "tip": "CVSS base score alone is not risk. Combine it with exploitability in the wild, exposure, and asset criticality."
+  },
+  {
+    "id": "4-019",
+    "d": 4,
+    "obj": "4.3",
+    "topic": "False positives",
+    "diff": 3,
+    "type": "single",
+    "q": "A scanner reports a critical vulnerability on a server, but manual verification shows the affected component is not installed. What is this finding, and what should be done?",
+    "opts": [
+      "A false positive; document the validation, suppress the finding with justification, and tune the scanner",
+      "A false negative; increase the scan frequency",
+      "A true positive; patch immediately",
+      "An exception; accept the risk permanently without documentation"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "A reported vulnerability that does not actually exist is a false positive; the correct handling is documented verification, justified suppression, and scanner tuning to reduce noise. A false negative is a missed real vulnerability, and undocumented permanent acceptance is poor governance.",
+    "tip": "False positive = alarm with no fire. False negative = fire with no alarm, and it is the more dangerous of the two."
+  },
+  {
+    "id": "4-020",
+    "d": 4,
+    "obj": "4.3",
+    "topic": "Penetration testing",
+    "diff": 3,
+    "type": "single",
+    "q": "Which engagement type gives testers no prior knowledge of the environment, simulating an external attacker's perspective?",
+    "opts": [
+      "Unknown environment (black box) testing",
+      "Known environment (white box) testing",
+      "Partially known environment (gray box) testing",
+      "A configuration review"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Unknown-environment testing withholds internal details so the tester must perform discovery like an outsider. Known-environment testing provides full documentation and access, partially known testing provides limited information, and a configuration review inspects settings without adversarial simulation.",
+    "tip": "Also know the rules of engagement: scope, timing, allowed techniques, escalation contacts, and written authorization."
+  },
+  {
+    "id": "4-021",
+    "d": 4,
+    "obj": "4.3",
+    "topic": "Bug bounty",
+    "diff": 2,
+    "type": "single",
+    "q": "A company publishes a policy inviting external researchers to report vulnerabilities safely and offers rewards for valid findings. What is this called?",
+    "opts": [
+      "A responsible disclosure program with a bug bounty",
+      "A penetration test",
+      "A red team exercise",
+      "A vulnerability scan"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Responsible disclosure programs, often paired with bug bounties, provide legal safe harbor and incentives for external reporting. Penetration tests and red team exercises are scoped, contracted engagements, and scans are automated assessments.",
+    "tip": "Bug bounty benefits: continuous, diverse testing at scale. Requirement: a clear scope, safe harbor language, and a triage process."
+  },
+  {
+    "id": "4-022",
+    "d": 4,
+    "obj": "4.3",
+    "topic": "Threat feeds",
+    "diff": 3,
+    "type": "single",
+    "q": "Which threat intelligence source is BEST described as freely available information gathered from public sources such as vendor advisories, blogs, and social media?",
+    "opts": [
+      "Open-source intelligence (OSINT)",
+      "Proprietary commercial threat feed",
+      "Dark web monitoring",
+      "Internal SIEM telemetry"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "OSINT is publicly available intelligence. Proprietary feeds are paid and curated, dark web monitoring targets criminal marketplaces and forums, and SIEM telemetry is internally generated data.",
+    "tip": "Also know information-sharing organizations (ISACs) — sector-specific communities that exchange threat data among members."
+  },
+  {
+    "id": "4-023",
+    "d": 4,
+    "obj": "4.3",
+    "topic": "Prioritization",
+    "diff": 3,
+    "type": "single",
+    "q": "Two vulnerabilities both score CVSS 9.8. One affects an internet-facing payment API; the other affects an isolated lab workstation with no sensitive data. What determines remediation order?",
+    "opts": [
+      "Environmental variables and business impact, which prioritize the internet-facing payment API",
+      "The alphabetical order of the CVE identifiers",
+      "The age of the affected hardware",
+      "Whichever system the scanner listed first"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Identical base scores are differentiated by environmental context: exposure, data sensitivity, and business impact. Arbitrary ordering criteria have no bearing on risk.",
+    "tip": "CVSS environmental metrics exist precisely to adjust base scores for your environment — use them or apply equivalent business context."
+  },
+  {
+    "id": "4-024",
+    "d": 4,
+    "obj": "4.3",
+    "topic": "Exposure factor",
+    "diff": 3,
+    "type": "single",
+    "q": "In risk analysis, what does exposure factor represent?",
+    "opts": [
+      "The percentage of an asset's value lost when a specific threat is realized",
+      "The number of systems affected by a vulnerability",
+      "The frequency with which a threat occurs annually",
+      "The total cost of implementing a control"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Exposure factor is the proportional loss to an asset from a realized threat, used with asset value to compute single loss expectancy. Occurrence frequency is the annualized rate of occurrence, and control cost is a separate input to cost-benefit analysis.",
+    "tip": "SLE = asset value × exposure factor. ALE = SLE × ARO. Expect at least one calculation-style question."
+  },
+  {
+    "id": "4-025",
+    "d": 4,
+    "obj": "4.3",
+    "topic": "Remediation validation",
+    "diff": 2,
+    "type": "single",
+    "q": "After patching 200 servers, what is the appropriate way to confirm the vulnerabilities are actually resolved?",
+    "opts": [
+      "Rescan the systems and verify the findings are no longer reported, documenting the results",
+      "Trust the patch management console's deployment success status",
+      "Wait for the next quarterly audit to confirm",
+      "Ask system administrators to confirm verbally"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Rescanning independently validates remediation, catching patches that failed to apply, required a pending reboot, or were rolled back. Deployment status, delayed audits, and verbal confirmation are weaker evidence.",
+    "tip": "Validation methods on SY0-701: rescanning, audit, and verification. Reporting closes the loop."
+  },
+  {
+    "id": "4-026",
+    "d": 4,
+    "obj": "4.3",
+    "topic": "Exceptions and exemptions",
+    "diff": 3,
+    "type": "single",
+    "q": "A business-critical application cannot be patched for six months due to vendor incompatibility. What is the correct governance step?",
+    "opts": [
+      "Document a formal, time-bound exception with compensating controls and an approving risk owner",
+      "Silently mark the finding as a false positive",
+      "Delete the finding from the vulnerability management system",
+      "Disable scanning of the affected host"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Legitimate delays are handled through documented exceptions with compensating controls, an expiry date, and accountable approval. Mislabeling, deleting findings, and excluding hosts from scans conceal risk rather than manage it.",
+    "tip": "Every exception needs four things: justification, compensating controls, an owner, and an expiration date."
+  },
+  {
+    "id": "4-027",
+    "d": 4,
+    "obj": "4.3",
+    "topic": "Package monitoring",
+    "diff": 3,
+    "type": "single",
+    "q": "A development team must be alerted when any third-party library in their application has a newly published vulnerability. Which capability provides this?",
+    "opts": [
+      "Software composition analysis with continuous package and dependency monitoring",
+      "Network intrusion detection signatures",
+      "A quarterly external penetration test",
+      "Endpoint antivirus scanning of the build server"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Software composition analysis inventories dependencies and continuously matches them against vulnerability databases. Network signatures, periodic penetration tests, and antivirus scanning do not track library versions in the codebase.",
+    "tip": "SBOM (software bill of materials) plus continuous package monitoring is the expected answer for dependency risk."
+  },
+  {
+    "id": "4-028",
+    "d": 4,
+    "obj": "4.3",
+    "topic": "Audits",
+    "diff": 2,
+    "type": "single",
+    "q": "Which activity BEST describes a system or process audit in vulnerability management?",
+    "opts": [
+      "An independent review verifying that controls and procedures are implemented and operating as documented",
+      "An automated scan for missing patches",
+      "An attempt to exploit a discovered weakness",
+      "A vendor's marketing assessment of product features"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Audits independently verify design and operating effectiveness of controls and processes. Scanning identifies technical findings, exploitation is penetration testing, and vendor assessments are not independent verification.",
+    "tip": "Internal audit reports to management or the board; external audit provides third-party assurance to customers and regulators."
+  },
+  {
+    "id": "4-029",
+    "d": 4,
+    "obj": "4.1",
+    "topic": "Cloud hardening",
+    "diff": 3,
+    "type": "single",
+    "q": "Which action MOST improves the security baseline of a cloud account?",
+    "opts": [
+      "Enforce MFA on all identities, remove standing privileged access, and enable centralized logging and configuration monitoring",
+      "Create one shared administrator account for the team",
+      "Disable region restrictions so workloads can deploy anywhere",
+      "Store access keys in the application source repository"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Identity hardening, elimination of standing privilege, and comprehensive logging address the most common cloud compromise paths. Shared accounts destroy attribution, unrestricted regions expand exposure and complicate residency, and keys in repositories leak constantly.",
+    "tip": "Cloud baseline essentials: MFA everywhere, no root/owner daily use, least-privilege roles, logging enabled in every region, and posture monitoring."
+  },
+  {
+    "id": "4-030",
+    "d": 4,
+    "obj": "4.1",
+    "topic": "Server hardening",
+    "diff": 2,
+    "type": "single",
+    "q": "Which change reduces the attack surface of a newly deployed Linux web server?",
+    "opts": [
+      "Remove unnecessary packages and services, disable root SSH login, and use key-based authentication",
+      "Enable password authentication for root over SSH for convenience",
+      "Install a graphical desktop environment for easier administration",
+      "Grant the web service account sudo privileges"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Removing unneeded software, blocking direct root login, and using keys eliminates common exploitation and brute-force paths. Root password SSH, unnecessary desktop packages, and privileged service accounts all increase risk.",
+    "tip": "Linux hardening extras: SELinux or AppArmor enforcing, host firewall, minimal listening services, and separate non-privileged service accounts."
+  },
+  {
+    "id": "4-031",
+    "d": 4,
+    "obj": "4.1",
+    "topic": "Workstation hardening",
+    "diff": 2,
+    "type": "single",
+    "q": "Which combination BEST hardens corporate workstations against common malware delivery?",
+    "opts": [
+      "Remove local administrator rights, block macros from the internet, enable EDR, and enforce patching",
+      "Install two antivirus products and disable Windows updates",
+      "Grant users local admin so they can remove malware themselves",
+      "Disable the host firewall to avoid application issues"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Privilege reduction, macro controls, behavioral detection, and timely patching address the dominant infection chains. Duplicate antivirus products conflict, disabling updates and firewalls removes protection, and granting admin rights amplifies malware impact.",
+    "tip": "Standard user rights alone break a large share of malware and most privilege-dependent persistence techniques."
+  },
+  {
+    "id": "4-032",
+    "d": 4,
+    "obj": "4.1",
+    "topic": "IoT and ICS hardening",
+    "diff": 3,
+    "type": "single",
+    "q": "Which hardening approach is MOST appropriate for ICS devices that cannot run security agents and tolerate no unplanned downtime?",
+    "opts": [
+      "Network-level protection: segmentation, strict allow-listed flows, passive monitoring, and vendor-coordinated patch windows",
+      "Install EDR agents on all controllers immediately",
+      "Enable automatic firmware updates on every device",
+      "Place controllers on the corporate user VLAN for centralized management"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "When host-based controls are impossible, protection shifts to the network with segmentation, tight flow control, and passive monitoring, plus patching coordinated with the vendor and process schedule. Agent installation and automatic updates risk instability, and flat placement with user systems increases exposure.",
+    "tip": "For OT, remember the Purdue model concept: layered zones with controlled conduits between IT and OT."
+  },
+  {
+    "id": "4-033",
+    "d": 4,
+    "obj": "4.3",
+    "topic": "Scan types",
+    "diff": 3,
+    "type": "single",
+    "q": "A credentialed vulnerability scan finds significantly more issues than an uncredentialed scan of the same hosts. Why?",
+    "opts": [
+      "Authenticated scans inspect installed software, patch levels, and configuration from inside the host rather than inferring from network responses",
+      "Uncredentialed scans are always misconfigured",
+      "Credentialed scans intentionally report false positives to be thorough",
+      "Uncredentialed scans only work on Linux systems"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Credentialed scans read the actual system state, producing more complete and accurate results with fewer false positives. Uncredentialed scans see only exposed services, which limits both depth and accuracy regardless of platform.",
+    "tip": "Credentialed scanning is more accurate but requires protected scan accounts — a common exam consideration for least privilege."
+  },
+  {
+    "id": "4-034",
+    "d": 4,
+    "obj": "4.3",
+    "topic": "Risk tolerance",
+    "diff": 3,
+    "type": "single",
+    "q": "Two similar companies apply different remediation deadlines to the same vulnerability severity. Which concept explains this difference?",
+    "opts": [
+      "Differing organizational risk tolerance and appetite",
+      "Differing CVSS base score calculations",
+      "Differing CVE identifiers for the same flaw",
+      "Differing scanner vendor licensing"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Risk tolerance reflects how much risk an organization is willing to carry, which shapes remediation SLAs and exception policies. Base scores and CVE identifiers are standardized, and scanner licensing does not set deadlines.",
+    "tip": "Risk appetite is the strategic willingness to take risk; risk tolerance is the acceptable variance around it in practice."
+  },
+  {
+    "id": "4-035",
+    "d": 4,
+    "obj": "4.1",
+    "topic": "Router hardening",
+    "diff": 3,
+    "type": "single",
+    "q": "Which configuration change hardens an edge router?",
+    "opts": [
+      "Disable unused services, apply anti-spoofing filters on ingress, and use authenticated routing protocol updates",
+      "Enable ICMP redirects and directed broadcasts for troubleshooting",
+      "Allow SNMP v1 from any source for monitoring",
+      "Turn off logging to conserve CPU"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Reducing services, filtering spoofed source addresses, and authenticating routing updates prevent common network-layer attacks. Redirects and directed broadcasts enable abuse, SNMPv1 from anywhere exposes device data, and disabling logging removes detection capability.",
+    "tip": "Anti-spoofing (BCP 38) on ingress prevents your network from sourcing forged traffic used in reflected DDoS attacks."
+  },
+  {
+    "id": "4-036",
+    "d": 4,
+    "obj": "4.2",
+    "topic": "Asset ownership",
+    "diff": 2,
+    "type": "single",
+    "q": "Why does asset management require an assigned owner for each system?",
+    "opts": [
+      "An accountable owner makes risk decisions, approves access, and ensures patching and lifecycle actions occur",
+      "Ownership records reduce hardware depreciation",
+      "Owners physically maintain the hardware themselves",
+      "Ownership eliminates the need for classification"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Assigned ownership creates accountability for risk acceptance, access approval, and lifecycle management, without which systems become orphaned. Depreciation is a financial matter, physical maintenance belongs to operations, and classification remains necessary.",
+    "tip": "Orphaned assets are the most likely to be unpatched and forgotten — a recurring theme in breach case studies."
+  },
+  {
+    "id": "4-037",
+    "d": 4,
+    "obj": "4.3",
+    "topic": "Vulnerability response",
+    "diff": 3,
+    "type": "single",
+    "q": "Which response option is appropriate when a vulnerability cannot be patched and compensating controls cannot fully mitigate the risk, but the system is required for operations?",
+    "opts": [
+      "Formally accept the residual risk at the appropriate management level, with documentation and periodic review",
+      "Ignore the finding until the next scan cycle",
+      "Remove the system from the asset inventory",
+      "Transfer responsibility to the help desk"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Residual risk that cannot be remediated or mitigated must be accepted through documented governance at an authority level matching the impact. Ignoring findings, removing inventory entries, and reassigning to an unrelated team are avoidance behaviors, not risk management.",
+    "tip": "Four responses to risk: mitigate, transfer, avoid, accept. Insurance is transfer; segmentation is mitigation."
+  },
+  {
+    "id": "4-038",
+    "d": 4,
+    "obj": "4.1",
+    "topic": "Monitoring computing resources",
+    "diff": 2,
+    "type": "single",
+    "q": "Which monitoring approach BEST detects unauthorized configuration changes on critical servers?",
+    "opts": [
+      "File integrity monitoring with alerting on changes to system binaries and configuration files",
+      "Weekly review of disk space utilization",
+      "Monthly user satisfaction surveys",
+      "Quarterly license compliance reports"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "File integrity monitoring detects unauthorized modification of critical files and is often required by compliance frameworks. Capacity metrics, surveys, and license reports do not detect tampering.",
+    "tip": "FIM generates noise during legitimate patching, so integrate it with change management to correlate approved changes."
+  },
+  {
+    "id": "4-039",
+    "d": 4,
+    "obj": "4.3",
+    "topic": "Reporting",
+    "diff": 3,
+    "type": "single",
+    "q": "Which metric is MOST useful in a vulnerability management report to executives?",
+    "opts": [
+      "Mean time to remediate critical vulnerabilities and the count of overdue exceptions on internet-facing assets",
+      "The total number of scan jobs executed",
+      "The size in gigabytes of the scan result database",
+      "The number of scanner plugins updated"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Executives need outcome metrics tied to risk exposure and accountability, such as remediation speed and overdue high-risk items. Operational activity counts and storage statistics do not describe risk reduction.",
+    "tip": "Report trends and time-to-remediate, not raw finding counts — counts fluctuate with scan coverage and tell leadership little."
+  },
+  {
+    "id": "4-040",
+    "d": 4,
+    "obj": "4.1",
+    "topic": "Mobile connection methods",
+    "diff": 3,
+    "type": "single",
+    "q": "Which mobile connection method poses the greatest risk of an on-path attack against corporate data in a public setting?",
+    "opts": [
+      "Public Wi-Fi without a VPN",
+      "Cellular data with an always-on VPN",
+      "Bluetooth in non-discoverable mode paired only with a known headset",
+      "NFC tap-to-pay with tokenized credentials"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Open or attacker-controlled Wi-Fi allows interception and evil twin attacks when traffic is not tunneled. Cellular with a VPN is well protected, restricted Bluetooth pairing has a very short range and limited exposure, and NFC requires proximity and uses tokenized values.",
+    "tip": "Mobile policy essentials: always-on VPN, certificate-based Wi-Fi, disable auto-join to open networks, and restrict Bluetooth discoverability."
+  },
+  {
+    "id": "4-041",
+    "d": 4,
+    "obj": "4.2",
+    "topic": "Enumeration",
+    "diff": 3,
+    "type": "single",
+    "q": "A security team compares DHCP leases, switch MAC tables, endpoint agent check-ins, and cloud inventories to find devices missing from the CMDB. What is this activity called?",
+    "opts": [
+      "Asset enumeration to reconcile inventory gaps",
+      "Penetration testing",
+      "Data classification",
+      "Change management review"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Enumeration discovers and reconciles actual devices against recorded inventory, exposing unmanaged assets. Penetration testing simulates attacks, classification labels data, and change review evaluates proposed modifications.",
+    "tip": "Multiple discovery sources beat one: agents miss unmanaged hosts, and network discovery misses powered-off or cloud-only assets."
+  },
+  {
+    "id": "4-042",
+    "d": 4,
+    "obj": "4.1",
+    "topic": "Input validation",
+    "diff": 3,
+    "type": "single",
+    "q": "Which input validation strategy is MOST secure for a field that should contain only a five-digit ZIP code?",
+    "opts": [
+      "Allow-list validation accepting exactly five digits and rejecting everything else",
+      "Deny-list validation blocking known SQL keywords",
+      "Trimming whitespace and truncating to 20 characters",
+      "Escaping single quotes before storage"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Allow-list (positive) validation defines exactly what is acceptable and rejects all other input, which is far more robust than trying to enumerate bad patterns. Deny lists miss encodings and novel payloads, truncation does not constrain content, and escaping alone is not validation.",
+    "tip": "Prefer allow-list validation with strict types, lengths, formats, and ranges — and always enforce it server-side."
+  },
+  {
+    "id": "4-043",
+    "d": 4,
+    "obj": "4.3",
+    "topic": "Threat intelligence use",
+    "diff": 3,
+    "type": "single",
+    "q": "How should indicators of compromise from a threat feed be operationalized MOST effectively?",
+    "opts": [
+      "Ingest them into detection and blocking tools automatically, with context and expiration, then hunt retrospectively in historical logs",
+      "Email the indicator list to all employees weekly",
+      "Store the indicators in a spreadsheet for annual review",
+      "Block every indicator permanently without review or expiry"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Automated ingestion with context and aging keeps detections current, and retrospective hunting reveals past compromise. Emailing users, static spreadsheets, and permanent unmanaged blocklists produce stale indicators and operational breakage.",
+    "tip": "Indicators expire. Infrastructure gets reassigned, so unmanaged permanent blocks eventually break legitimate services."
+  },
+  {
+    "id": "4-044",
+    "d": 4,
+    "obj": "4.1",
+    "topic": "Baseline deviation",
+    "diff": 3,
+    "type": "single",
+    "q": "A configuration scan shows that 30 of 500 servers deviate from the approved baseline. What is the MOST appropriate response?",
+    "opts": [
+      "Investigate whether deviations are approved exceptions or drift, remediate unauthorized changes, and strengthen automated enforcement",
+      "Update the baseline to match the 30 servers so the report is clean",
+      "Exclude those servers from future scans",
+      "Rebuild all 500 servers immediately"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Deviations must be triaged into approved exceptions versus unauthorized drift, then corrected with enforcement improved to prevent recurrence. Rewriting the baseline to match drift defeats its purpose, exclusions hide risk, and mass rebuilds are disproportionate.",
+    "tip": "Configuration drift is inevitable without enforcement. The exam favors automated remediation over repeated manual cleanup."
+  },
+  {
+    "id": "4-045",
+    "d": 4,
+    "obj": "4.3",
+    "topic": "Dynamic analysis",
+    "diff": 3,
+    "type": "single",
+    "q": "A tester submits malformed and random inputs to a running API to discover crashes and unexpected behavior. Which technique is being used?",
+    "opts": [
+      "Fuzzing as part of dynamic analysis",
+      "Static code analysis",
+      "Manual code review",
+      "Software composition analysis"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Fuzzing sends malformed or random input to a running target to uncover input-handling flaws, which is a dynamic technique. Static analysis and code review inspect code without execution, and composition analysis examines dependency versions.",
+    "tip": "Fuzzing finds crashes and memory-safety bugs that code review often misses; run it in a non-production environment."
+  },
+  {
+    "id": "4-046",
+    "d": 4,
+    "obj": "4.2",
+    "topic": "Destruction certification",
+    "diff": 2,
+    "type": "single",
+    "q": "A third-party vendor shreds decommissioned drives. What should the organization obtain and retain as evidence?",
+    "opts": [
+      "A certificate of destruction listing serial numbers, method, date, and responsible party",
+      "A verbal confirmation from the vendor's driver",
+      "A photograph of the truck leaving the facility",
+      "The vendor's marketing brochure describing their services"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Documented certificates with asset identifiers create an auditable chain of accountability for media destruction. Verbal confirmation, incidental photos, and marketing material are not evidence of specific asset destruction.",
+    "tip": "Chain of custody applies to disposal too: track media from removal to destruction with signatures at each handoff."
+  },
+  {
+    "id": "4-047",
+    "d": 4,
+    "obj": "4.1",
+    "topic": "Secure protocols in baselines",
+    "diff": 2,
+    "type": "single",
+    "q": "A hardening baseline for web servers should require which of the following?",
+    "opts": [
+      "TLS 1.2 or higher with strong cipher suites, HSTS enabled, and legacy protocol versions disabled",
+      "SSLv3 support for older clients",
+      "HTTP available alongside HTTPS with no redirect",
+      "Directory listing enabled for troubleshooting"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Modern TLS with strong suites plus HSTS prevents downgrade and cleartext exposure. SSLv3 is broken, unredirected HTTP invites interception, and directory listing discloses site structure.",
+    "tip": "HSTS forces browsers to use HTTPS for a defined period, mitigating SSL-stripping attacks."
+  },
+  {
+    "id": "4-048",
+    "d": 4,
+    "obj": "4.3",
+    "topic": "Vulnerability classification",
+    "diff": 3,
+    "type": "single",
+    "q": "Which classification distinguishes a vulnerability that requires local access from one exploitable across the network?",
+    "opts": [
+      "The attack vector metric within CVSS",
+      "The CVE publication year",
+      "The vendor's support tier",
+      "The asset's depreciation schedule"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "CVSS attack vector (network, adjacent, local, physical) expresses how the vulnerability can be reached, materially affecting priority. Publication year, support tier, and depreciation are irrelevant to exploitability.",
+    "tip": "Other CVSS base metrics to know: attack complexity, privileges required, user interaction, and the CIA impact subscores."
+  },
+  {
+    "id": "4-049",
+    "d": 4,
+    "obj": "4.1",
+    "topic": "Embedded and RTOS hardening",
+    "diff": 3,
+    "type": "single",
+    "q": "Which control is MOST practical for hardening embedded medical devices that receive vendor firmware updates twice a year?",
+    "opts": [
+      "Isolate them on a dedicated segment with allow-listed communication, monitor passively, and apply vendor firmware promptly when released",
+      "Install a full endpoint protection suite on each device",
+      "Enable automatic updates from any available source",
+      "Grant clinical staff administrative access for faster troubleshooting"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Segmentation, tight flow control, passive monitoring, and disciplined vendor patching fit devices that cannot host security software or accept arbitrary updates. Agents may be unsupported or void certification, arbitrary update sources add supply chain risk, and broad admin access increases exposure.",
+    "tip": "Medical and industrial devices are often certified for a specific configuration — unauthorized changes can void certification or safety approval."
+  },
+  {
+    "id": "4-050",
+    "d": 4,
+    "obj": "4.3",
+    "topic": "Vulnerability management program",
+    "diff": 3,
+    "type": "multi",
+    "q": "Which THREE elements are essential to a functioning vulnerability management program?",
+    "opts": [
+      "Regular authenticated scanning with complete asset coverage",
+      "Risk-based prioritization with defined remediation SLAs",
+      "Validation of remediation through rescanning and reporting",
+      "A policy stating that no vulnerabilities are acceptable in any system"
+    ],
+    "a": [
+      0,
+      1,
+      2
+    ],
+    "exp": "Coverage, prioritization with deadlines, and verified closure form the operational core of vulnerability management. A zero-vulnerability policy is unachievable and drives concealment rather than remediation.",
+    "tip": "Program maturity signals: full asset coverage, authenticated scans, SLAs by severity and exposure, verified closure, and trend reporting."
+  }
+]

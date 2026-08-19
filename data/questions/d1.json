@@ -1,0 +1,1404 @@
+[
+  {
+    "id": "1-001",
+    "d": 1,
+    "obj": "1.1",
+    "topic": "Control types",
+    "diff": 2,
+    "type": "single",
+    "q": "A company installs a sign at the parking lot entrance reading \"Warning: 24-hour armed patrol and video recording in progress.\" Which control type does the sign BEST represent?",
+    "opts": [
+      "Deterrent",
+      "Detective",
+      "Compensating",
+      "Corrective"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "A deterrent control discourages an attacker from attempting the act; warning signage is the textbook example. Detective controls identify an event after it starts (the cameras themselves). Compensating controls substitute for a required control that cannot be implemented. Corrective controls fix damage after an incident (restoring from backup).",
+    "tip": "Signs, lighting, and visible guards = deterrent. The camera that records = detective. The same object can be both, so read what the question emphasizes."
+  },
+  {
+    "id": "1-002",
+    "d": 1,
+    "obj": "1.1",
+    "topic": "Control categories",
+    "diff": 2,
+    "type": "single",
+    "q": "An organization publishes an acceptable use policy and requires annual security awareness training. In CompTIA's control taxonomy, these are examples of which control CATEGORY?",
+    "opts": [
+      "Managerial",
+      "Technical",
+      "Physical",
+      "Operational"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Managerial (administrative) controls are the policies, procedures, risk assessments, and governance decisions that direct behavior. Technical controls are implemented in systems (firewalls, encryption). Operational controls are day-to-day activities performed by people (guard rotations, log review). Physical controls protect tangible assets (fences, locks). Policy and training are managerial/directive in nature.",
+    "tip": "Category = who/what implements it (managerial, technical, operational, physical). Type = what it does (preventive, deterrent, detective, corrective, compensating, directive)."
+  },
+  {
+    "id": "1-003",
+    "d": 1,
+    "obj": "1.1",
+    "topic": "Compensating control",
+    "diff": 3,
+    "type": "single",
+    "q": "A legacy manufacturing controller cannot support the required agent-based endpoint protection. Security places the controller on an isolated VLAN with strict ACLs and continuous IDS monitoring until it is replaced. What BEST describes the VLAN isolation and monitoring?",
+    "opts": [
+      "Compensating control",
+      "Corrective control",
+      "Directive control",
+      "Deterrent control"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "A compensating control provides an alternative safeguard when the primary required control cannot be applied. The requirement (endpoint protection) is unmet, so isolation plus monitoring compensates for the gap. Corrective controls remediate after an incident, directive controls instruct behavior, and deterrent controls discourage attempts.",
+    "tip": "Keyword pattern: 'cannot support / not feasible … so we do X instead' = compensating."
+  },
+  {
+    "id": "1-004",
+    "d": 1,
+    "obj": "1.2",
+    "topic": "CIA triad",
+    "diff": 1,
+    "type": "single",
+    "q": "A ransomware outbreak encrypts a hospital's scheduling database. Patient records are not stolen, but staff cannot open the system for eight hours. Which element of the CIA triad was MOST directly harmed?",
+    "opts": [
+      "Availability",
+      "Confidentiality",
+      "Integrity",
+      "Non-repudiation"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Data was inaccessible to authorized users, which is an availability loss. Confidentiality was not harmed because nothing was disclosed. Integrity concerns unauthorized modification — the data is unaltered once decrypted. Non-repudiation is the inability to deny an action, which is unrelated here.",
+    "tip": "Ransomware without exfiltration = availability. Add data theft ('double extortion') and confidentiality is hit too."
+  },
+  {
+    "id": "1-005",
+    "d": 1,
+    "obj": "1.2",
+    "topic": "Non-repudiation",
+    "diff": 2,
+    "type": "single",
+    "q": "A finance manager denies approving a wire transfer. The approval email carries a valid digital signature created with the manager's private key. Which security concept prevents the denial from succeeding?",
+    "opts": [
+      "Non-repudiation",
+      "Confidentiality",
+      "Availability",
+      "Authorization"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Only the holder of the private key can generate a signature that validates with the matching public key, so the signer cannot credibly deny the action — that is non-repudiation. Confidentiality would require encryption of the message body. Availability concerns access, and authorization concerns permissions rather than proof of action.",
+    "tip": "Digital signature = integrity + authentication + non-repudiation. Encryption = confidentiality."
+  },
+  {
+    "id": "1-006",
+    "d": 1,
+    "obj": "1.2",
+    "topic": "AAA",
+    "diff": 2,
+    "type": "single",
+    "q": "A network administrator logs into a switch with a username, password, and TOTP code, then is granted read-only privileges, and every command she runs is written to a central log. Which AAA components are represented, in order?",
+    "opts": [
+      "Authentication, authorization, accounting",
+      "Authorization, authentication, auditing",
+      "Identification, authentication, authorization",
+      "Authentication, accounting, authorization"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Proving identity with credentials is authentication; being granted read-only rights is authorization; recording the commands is accounting (auditing). Identification is merely presenting the claim (the username) and is not one of the three A's in the sequence described.",
+    "tip": "Accounting answers 'what did they do?' — logging, session duration, and command history."
+  },
+  {
+    "id": "1-007",
+    "d": 1,
+    "obj": "1.2",
+    "topic": "Authenticating systems",
+    "diff": 3,
+    "type": "single",
+    "q": "An enterprise wants only corporate-owned laptops to connect to the internal wireless network, with no user interaction at connect time. Which approach BEST authenticates the system rather than the user?",
+    "opts": [
+      "Deploy device certificates and use EAP-TLS",
+      "Require a WPA3 pre-shared key rotated monthly",
+      "Use captive-portal authentication with LDAP credentials",
+      "Enable MAC address filtering on the wireless controller"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Machine certificates issued by the corporate CA authenticate the device itself, and EAP-TLS validates them without prompting a user. A PSK is shared by everyone and does not identify a device. A captive portal authenticates a person. MAC filtering is trivially spoofed and is not real authentication.",
+    "tip": "'Authenticate the system, not the human' almost always points to certificates (EAP-TLS, 802.1X machine auth)."
+  },
+  {
+    "id": "1-008",
+    "d": 1,
+    "obj": "1.2",
+    "topic": "Gap analysis",
+    "diff": 2,
+    "type": "single",
+    "q": "Before pursuing ISO 27001 certification, a company documents every required control, records which controls it currently operates, and lists the differences with remediation owners. What is this activity called?",
+    "opts": [
+      "Gap analysis",
+      "Penetration test",
+      "Business impact analysis",
+      "Attestation of compliance"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Comparing the current state against a required or desired state and enumerating the differences is a gap analysis. A penetration test actively probes for exploitable weaknesses. A BIA identifies critical processes and downtime impacts. An attestation is a formal statement of compliance issued after assessment.",
+    "tip": "Gap analysis = 'where we are' vs 'where we must be', plus the list of deltas."
+  },
+  {
+    "id": "1-009",
+    "d": 1,
+    "obj": "1.2",
+    "topic": "Zero Trust control plane",
+    "diff": 3,
+    "type": "single",
+    "q": "In a Zero Trust architecture, which component evaluates policy and decides whether a specific request should be permitted?",
+    "opts": [
+      "Policy Decision Point",
+      "Policy Enforcement Point",
+      "Implicit trust zone",
+      "Subject/system"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "The Policy Decision Point — comprising the policy engine and policy administrator — evaluates the request against policy and issues the verdict. The Policy Enforcement Point sits in the data plane and allows, blocks, or terminates the session based on that verdict. An implicit trust zone is the area behind the PEP, and the subject is the requester.",
+    "tip": "PDP = brain (control plane). PEP = muscle (data plane). Policy engine decides; policy administrator establishes/kills the session."
+  },
+  {
+    "id": "1-010",
+    "d": 1,
+    "obj": "1.2",
+    "topic": "Zero Trust data plane",
+    "diff": 3,
+    "type": "single",
+    "q": "Which Zero Trust element resides in the DATA plane and is responsible for actually allowing or terminating a connection?",
+    "opts": [
+      "Policy Enforcement Point",
+      "Policy engine",
+      "Policy administrator",
+      "Threat scope reduction"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "The PEP is the data-plane gatekeeper that enforces the decision on the traffic itself. The policy engine and policy administrator are control-plane functions. Threat scope reduction is a goal of Zero Trust (limiting blast radius), not a component.",
+    "tip": "Memorize the split: control plane = adaptive identity, threat scope reduction, policy-driven access control, policy administrator, policy engine. Data plane = subject, system, PEP, implicit trust zones."
+  },
+  {
+    "id": "1-011",
+    "d": 1,
+    "obj": "1.2",
+    "topic": "Adaptive identity",
+    "diff": 3,
+    "type": "single",
+    "q": "A user who normally signs in from the Dallas office attempts access from an unmanaged device on a foreign IP range at 3 a.m. The platform grants read-only access and forces a step-up MFA challenge. Which Zero Trust concept is being applied?",
+    "opts": [
+      "Adaptive identity",
+      "Implicit trust zone",
+      "Least privilege by role",
+      "Federation"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Adaptive identity (risk-based, context-aware authentication) weighs signals such as device posture, geolocation, and time to modify the access decision in real time. An implicit trust zone is an area where traffic is not re-inspected. Role-based least privilege is static rather than contextual. Federation lets one identity provider vouch for a user across organizations.",
+    "tip": "Watch for 'context', 'behavior', 'risk score', 'step-up' — that's adaptive identity."
+  },
+  {
+    "id": "1-012",
+    "d": 1,
+    "obj": "1.2",
+    "topic": "Physical security",
+    "diff": 2,
+    "type": "single",
+    "q": "A data center requires that only one person at a time pass through a two-door interlocked entry, with the second door opening only after the first has closed and the occupant is verified. What is this control called?",
+    "opts": [
+      "Access control vestibule",
+      "Bollard array",
+      "Faraday cage",
+      "Turnstile bypass"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "An access control vestibule (mantrap) uses interlocked doors so only one verified person passes at a time, which defeats tailgating and piggybacking. Bollards stop vehicles, a Faraday cage blocks electromagnetic emissions, and 'turnstile bypass' is not a control.",
+    "tip": "Anti-tailgating question? Answer is almost always access control vestibule."
+  },
+  {
+    "id": "1-013",
+    "d": 1,
+    "obj": "1.2",
+    "topic": "Physical security",
+    "diff": 2,
+    "type": "single",
+    "q": "A pharmaceutical company must prevent a vehicle from being driven into its lobby entrance while keeping the walkway open to pedestrians. Which control is MOST appropriate?",
+    "opts": [
+      "Bollards",
+      "Chain-link fencing with barbed wire",
+      "An access control vestibule",
+      "Pressure sensors in the sidewalk"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Bollards are short vertical posts designed to stop vehicles while allowing people to walk between them. Fencing would obstruct pedestrian access to the entrance, a vestibule controls people rather than vehicles, and pressure sensors detect but do not stop anything.",
+    "tip": "Vehicle ramming, but pedestrians must pass = bollards."
+  },
+  {
+    "id": "1-014",
+    "d": 1,
+    "obj": "1.2",
+    "topic": "Sensors",
+    "diff": 3,
+    "type": "single",
+    "q": "A secure storage room must detect a person's presence at night without being triggered by air movement from the HVAC system. Which sensor type is BEST suited?",
+    "opts": [
+      "Infrared",
+      "Ultrasonic",
+      "Microwave",
+      "Pressure"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Passive infrared sensors detect the heat signature of a body and ignore moving air. Ultrasonic and microwave sensors detect changes in reflected waves and are more prone to false positives from moving objects and air currents. Pressure sensors only trigger on weight applied to a specific surface, so they can be walked around.",
+    "tip": "Infrared = heat. Pressure = weight. Ultrasonic = sound reflection. Microwave = radio reflection."
+  },
+  {
+    "id": "1-015",
+    "d": 1,
+    "obj": "1.2",
+    "topic": "Deception",
+    "diff": 2,
+    "type": "single",
+    "q": "A security team places a decoy file named payroll_2026_final.xlsx on a file share. The file has no business value, and any read of it fires a high-severity alert. What is this called?",
+    "opts": [
+      "Honeyfile",
+      "Honeynet",
+      "Honeypot",
+      "Honeytoken"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "A honeyfile is bait data whose only purpose is to generate an alert when accessed. A honeypot is a decoy host or service, a honeynet is a network of decoy systems, and a honeytoken is a traceable fake credential or record (such as a fake API key) planted to reveal misuse.",
+    "tip": "File = honeyfile. System = honeypot. Network = honeynet. Credential/record = honeytoken."
+  },
+  {
+    "id": "1-016",
+    "d": 1,
+    "obj": "1.2",
+    "topic": "Deception",
+    "diff": 3,
+    "type": "single",
+    "q": "A researcher deploys several intentionally vulnerable, instrumented servers on an isolated segment to study attacker tooling and capture malware samples. What has been built?",
+    "opts": [
+      "Honeynet",
+      "Honeyfile",
+      "Sandbox for static analysis",
+      "Air-gapped backup network"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Multiple decoy systems deployed together as a fake network form a honeynet. A honeyfile is a single bait document. Static analysis inspects code without executing it, whereas this deployment observes live attacker behavior. An air-gapped backup network stores data offline and is not a deception technology.",
+    "tip": "Plural decoy systems on their own segment = honeynet."
+  },
+  {
+    "id": "1-017",
+    "d": 1,
+    "obj": "1.3",
+    "topic": "Change management",
+    "diff": 2,
+    "type": "single",
+    "q": "A change request to upgrade a core router's firmware is submitted. Which element of the change management process documents the steps to return the router to its previous state if the upgrade fails?",
+    "opts": [
+      "Backout plan",
+      "Impact analysis",
+      "Maintenance window",
+      "Test results"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "A backout (rollback) plan defines how to restore the prior known-good state. Impact analysis predicts what the change may affect, the maintenance window is the approved time to perform it, and test results demonstrate the change works in a non-production environment.",
+    "tip": "Backout plan is the single most commonly tested change-management artifact. 'What if it fails?' = backout plan."
+  },
+  {
+    "id": "1-018",
+    "d": 1,
+    "obj": "1.3",
+    "topic": "Change management",
+    "diff": 2,
+    "type": "single",
+    "q": "Which change management concept identifies the individual accountable for a proposed change from submission through post-implementation review?",
+    "opts": [
+      "Ownership",
+      "Stakeholders",
+      "Approval process",
+      "Standard operating procedure"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Ownership assigns a specific accountable person to the change. Stakeholders are the parties affected or consulted. The approval process is the workflow through which the change is authorized. An SOP is the documented repeatable procedure for performing recurring work.",
+    "tip": "Ownership = one accountable name. Stakeholders = everyone who cares about the outcome."
+  },
+  {
+    "id": "1-019",
+    "d": 1,
+    "obj": "1.3",
+    "topic": "Change management",
+    "diff": 3,
+    "type": "single",
+    "q": "An administrator wants to patch a database server that a legacy billing application depends on. Which technical implication of the change should be evaluated FIRST?",
+    "opts": [
+      "Dependencies of the legacy application on the current database version",
+      "The color of the change ticket priority label",
+      "Whether the change requires an SOP rewrite",
+      "The number of stakeholders on the distribution list"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Dependencies determine whether patching the database will break the legacy application, which is the core technical risk. Ticket labeling is administrative, SOP updates follow the change rather than gate it, and stakeholder counts do not change technical feasibility.",
+    "tip": "Legacy application in the scenario? Look for a dependency or compatibility answer."
+  },
+  {
+    "id": "1-020",
+    "d": 1,
+    "obj": "1.3",
+    "topic": "Change management",
+    "diff": 2,
+    "type": "single",
+    "q": "After an emergency firewall rule change resolved an outage, the network diagram was never updated. Six months later a troubleshooting effort takes twice as long as it should. Which change management practice was neglected?",
+    "opts": [
+      "Updating documentation and diagrams",
+      "Version control of source code",
+      "Defining a maintenance window",
+      "Restricted activities approval"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Keeping diagrams and documentation current is an explicit part of change management, and skipping it produces exactly this cost. Version control tracks code, not network topology. A maintenance window governs when work is performed, and restricted activities are those requiring extra authorization.",
+    "tip": "'Nobody knew the current state' points to documentation/diagram updates."
+  },
+  {
+    "id": "1-021",
+    "d": 1,
+    "obj": "1.3",
+    "topic": "Change management",
+    "diff": 2,
+    "type": "single",
+    "q": "A change requires taking an authentication service offline for 20 minutes. Which change management consideration MOST directly addresses scheduling that interruption?",
+    "opts": [
+      "Maintenance window",
+      "Backout plan",
+      "Allow list update",
+      "Impact analysis"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "The maintenance window is the pre-approved period during which service interruption is acceptable. A backout plan handles failure, an allow list controls which applications may run, and impact analysis assesses consequences rather than scheduling them.",
+    "tip": "Scheduling downtime = maintenance window. Predicting consequences = impact analysis."
+  },
+  {
+    "id": "1-022",
+    "d": 1,
+    "obj": "1.3",
+    "topic": "Allow and deny lists",
+    "diff": 2,
+    "type": "single",
+    "q": "A hardened kiosk must run only four approved applications; anything else, known or unknown, must be blocked from executing. Which approach should be configured?",
+    "opts": [
+      "Application allow list",
+      "Application deny list",
+      "Host-based firewall egress rules",
+      "Signature-based antivirus"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "An allow list permits only explicitly approved software and denies everything else by default, which is the only option that blocks unknown binaries. A deny list blocks known-bad items and misses novel ones. Egress firewall rules control network traffic, not execution. Signature-based antivirus cannot detect never-before-seen malware.",
+    "tip": "'Only these may run' = allow list (default deny). 'Everything except these' = deny list."
+  },
+  {
+    "id": "1-023",
+    "d": 1,
+    "obj": "1.4",
+    "topic": "Symmetric vs asymmetric",
+    "diff": 2,
+    "type": "single",
+    "q": "Which statement about symmetric and asymmetric cryptography is accurate?",
+    "opts": [
+      "Symmetric encryption is faster and better suited to bulk data; asymmetric is used for key exchange and signatures",
+      "Asymmetric encryption is faster because keys are shorter",
+      "Symmetric encryption provides non-repudiation",
+      "Asymmetric encryption uses one shared secret between both parties"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Symmetric ciphers such as AES are computationally efficient and encrypt bulk data, while asymmetric algorithms such as RSA and ECDH handle key exchange, digital signatures, and certificate trust. Asymmetric keys are much longer and slower. Symmetric keys are shared, so they cannot prove which party acted, meaning no non-repudiation. A single shared secret describes symmetric, not asymmetric.",
+    "tip": "TLS uses both: asymmetric to agree on a key, symmetric (AES) to move the data."
+  },
+  {
+    "id": "1-024",
+    "d": 1,
+    "obj": "1.4",
+    "topic": "Key exchange",
+    "diff": 3,
+    "type": "single",
+    "q": "Two servers must agree on a shared session key over an untrusted network without ever transmitting the key itself, and past sessions must remain unreadable if a long-term private key is later compromised. Which combination BEST meets this requirement?",
+    "opts": [
+      "Ephemeral Diffie-Hellman (DHE/ECDHE) providing perfect forward secrecy",
+      "RSA key transport with a static server key",
+      "AES-256 in ECB mode with a pre-shared key",
+      "SHA-384 hashing of a shared password"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Ephemeral Diffie-Hellman derives a unique session key per connection and discards it, so compromise of the long-term key does not decrypt captured past traffic — that is perfect forward secrecy. Static RSA key transport lacks forward secrecy. ECB is a mode of a symmetric cipher, not a key exchange, and is insecure for repeated blocks. Hashing cannot establish a key.",
+    "tip": "Perfect forward secrecy always maps to ephemeral (E) key exchange: DHE, ECDHE."
+  },
+  {
+    "id": "1-025",
+    "d": 1,
+    "obj": "1.4",
+    "topic": "Levels of encryption",
+    "diff": 2,
+    "type": "single",
+    "q": "A hospital must ensure that if a laptop is stolen, no data on the internal drive — including the operating system, page file, and temporary files — can be read. Which solution is MOST appropriate?",
+    "opts": [
+      "Full-disk encryption",
+      "File-level encryption of the documents folder",
+      "Database transparent data encryption",
+      "Transport encryption with TLS 1.3"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Full-disk encryption protects the entire volume including OS artifacts, swap, and temp data that file-level encryption misses. File encryption leaves system files and remnants exposed. Database TDE only protects database files. TLS protects data in transit, not data at rest on a stolen device.",
+    "tip": "Stolen or lost device = FDE. Selective protection of a few sensitive files on a shared server = file-level."
+  },
+  {
+    "id": "1-026",
+    "d": 1,
+    "obj": "1.4",
+    "topic": "Record-level encryption",
+    "diff": 3,
+    "type": "single",
+    "q": "An application must ensure that database administrators can perform maintenance and run backups but cannot read customers' Social Security numbers stored in one column. Which control BEST achieves this?",
+    "opts": [
+      "Application-layer encryption of that column with keys held outside the database",
+      "Full-disk encryption on the database server",
+      "Transparent data encryption enabled at the instance level",
+      "Requiring TLS for all client connections"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Encrypting the field in the application with keys the DBA cannot access means the ciphertext is meaningless to anyone querying the table. FDE and TDE decrypt transparently for any authorized database session, so a DBA still sees plaintext. TLS protects the connection only.",
+    "tip": "'Protect data from the administrator of the platform' = encrypt above the platform, keys held elsewhere (or tokenize)."
+  },
+  {
+    "id": "1-027",
+    "d": 1,
+    "obj": "1.4",
+    "topic": "TPM",
+    "diff": 2,
+    "type": "single",
+    "q": "Which component is a hardware chip on the motherboard that stores keys, measures boot integrity, and seals the disk encryption key to the platform state?",
+    "opts": [
+      "Trusted Platform Module",
+      "Hardware security module",
+      "Key management system",
+      "Secure enclave"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "A TPM is a per-device chip used for boot attestation and to seal keys to a known hardware/firmware state, which is how BitLocker detects tampering. An HSM is a dedicated, often network-attached appliance for high-volume key operations across many systems. A KMS is a management service for key lifecycle. A secure enclave is an isolated processor region for sensitive operations, common on mobile SoCs.",
+    "tip": "One device = TPM. Enterprise-wide, tamper-resistant, high performance, often FIPS-validated = HSM."
+  },
+  {
+    "id": "1-028",
+    "d": 1,
+    "obj": "1.4",
+    "topic": "HSM",
+    "diff": 2,
+    "type": "single",
+    "q": "A payment processor must generate and store the private keys for thousands of transactions per second in tamper-resistant, FIPS 140-3 validated hardware that never exports the keys. What should be deployed?",
+    "opts": [
+      "Hardware security module",
+      "Trusted Platform Module in each web server",
+      "Software key vault on the application server",
+      "Self-signed certificate store"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "An HSM provides high-throughput cryptographic operations with keys that never leave the tamper-resistant boundary. A TPM is oriented to platform integrity for a single host and is not built for that transaction volume. A software vault lacks hardware tamper resistance. Certificate stores hold certificates, not protected key operations at scale.",
+    "tip": "Look for 'thousands per second', 'tamper-resistant', 'FIPS' — that is an HSM."
+  },
+  {
+    "id": "1-029",
+    "d": 1,
+    "obj": "1.4",
+    "topic": "Key escrow",
+    "diff": 2,
+    "type": "single",
+    "q": "A company must be able to decrypt an employee's encrypted files after that employee leaves unexpectedly. Which practice makes this possible?",
+    "opts": [
+      "Key escrow",
+      "Key stretching",
+      "Perfect forward secrecy",
+      "Certificate pinning"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Key escrow stores a copy of keys with a trusted party so the organization can recover data when the key holder is unavailable. Key stretching strengthens weak passwords into keys. Perfect forward secrecy deliberately destroys session keys. Certificate pinning binds a host to an expected certificate.",
+    "tip": "Escrow = third-party copy for recovery. It trades some confidentiality for availability."
+  },
+  {
+    "id": "1-030",
+    "d": 1,
+    "obj": "1.4",
+    "topic": "Salting",
+    "diff": 2,
+    "type": "single",
+    "q": "A developer stores user passwords as SHA-256 hashes. An auditor notes that identical passwords produce identical hashes, letting an attacker use precomputed rainbow tables. Which change directly fixes this?",
+    "opts": [
+      "Add a unique random salt per password before hashing",
+      "Increase the hash output to SHA-512",
+      "Encrypt the hash database with AES-256",
+      "Require passwords to be changed every 30 days"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "A unique salt per user makes identical passwords hash differently and renders precomputed tables useless. A longer hash does not stop rainbow tables built for that algorithm. Encrypting the store adds protection but does not address hash equality once the store is decrypted or leaked. Frequent rotation does not change how hashes are computed.",
+    "tip": "Rainbow tables → salt. Brute force speed → key stretching (bcrypt, PBKDF2, Argon2, scrypt)."
+  },
+  {
+    "id": "1-031",
+    "d": 1,
+    "obj": "1.4",
+    "topic": "Key stretching",
+    "diff": 3,
+    "type": "single",
+    "q": "Which algorithm is specifically designed to slow down offline password cracking by making each guess computationally expensive?",
+    "opts": [
+      "Argon2",
+      "SHA-1",
+      "AES-GCM",
+      "HMAC-MD5"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Argon2 is a memory-hard key derivation function built for password hashing, alongside bcrypt, scrypt, and PBKDF2. SHA-1 is a fast general-purpose hash and is deprecated for collision weaknesses. AES-GCM is authenticated symmetric encryption. HMAC-MD5 provides message authentication using a broken hash and is not a stretching function.",
+    "tip": "Password storage on the exam: bcrypt, PBKDF2, scrypt, Argon2 — plus a salt. Never a bare fast hash."
+  },
+  {
+    "id": "1-032",
+    "d": 1,
+    "obj": "1.4",
+    "topic": "Obfuscation",
+    "diff": 2,
+    "type": "single",
+    "q": "A retailer replaces stored credit card numbers with randomly generated surrogate values, keeping the mapping in a separate hardened vault so the card data never resides in the application database. What technique is this?",
+    "opts": [
+      "Tokenization",
+      "Data masking",
+      "Steganography",
+      "Hashing"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Tokenization substitutes a non-sensitive surrogate that has no mathematical relationship to the original, with the mapping held in a secured vault — a common PCI DSS scope-reduction technique. Data masking obscures portions of data for display. Steganography hides data inside other media. Hashing is one-way and cannot be reversed to process a payment.",
+    "tip": "Tokenization is reversible via the vault; hashing is not reversible at all. PCI scope reduction = tokenization."
+  },
+  {
+    "id": "1-033",
+    "d": 1,
+    "obj": "1.4",
+    "topic": "Data masking",
+    "diff": 2,
+    "type": "single",
+    "q": "A support portal displays a customer's account number as ****-****-****-4417 to agents. Which technique is in use?",
+    "opts": [
+      "Data masking",
+      "Tokenization",
+      "Symmetric encryption",
+      "Steganography"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Data masking obscures some or all of a value while preserving a usable format for display or testing. Tokenization replaces the entire value with an unrelated surrogate used in processing. Encryption renders the value unreadable without a key rather than partially visible. Steganography conceals data within other content.",
+    "tip": "Partially visible for human verification = masking."
+  },
+  {
+    "id": "1-034",
+    "d": 1,
+    "obj": "1.4",
+    "topic": "Steganography",
+    "diff": 2,
+    "type": "single",
+    "q": "An insider exfiltrates a design document by embedding it in the least significant bits of vacation photos uploaded to a public gallery. Which technique was used?",
+    "opts": [
+      "Steganography",
+      "Tokenization",
+      "Obfuscated key escrow",
+      "Salting"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Steganography hides the existence of a message inside another file such as an image, audio, or video. Tokenization substitutes values in a data store. Key escrow stores key copies. Salting adds randomness to password hashing.",
+    "tip": "Steganography hides that a message exists; encryption hides what the message says."
+  },
+  {
+    "id": "1-035",
+    "d": 1,
+    "obj": "1.4",
+    "topic": "Digital signature",
+    "diff": 3,
+    "type": "single",
+    "q": "Alice sends Bob a contract and wants Bob to verify both that it came from her and that it was not altered. Which keys are used to create and verify the digital signature?",
+    "opts": [
+      "Signed with Alice's private key, verified with Alice's public key",
+      "Signed with Bob's public key, verified with Bob's private key",
+      "Signed with Alice's public key, verified with Bob's private key",
+      "Signed and verified with a shared symmetric key"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "A signature is produced by hashing the message and encrypting the hash with the signer's private key; anyone can verify it with the signer's public key. Bob's key pair is used for confidentiality (encrypting to Bob), not for Alice's signature. A shared symmetric key gives integrity via MAC but not non-repudiation.",
+    "tip": "Signing uses the sender's PRIVATE key. Encrypting for confidentiality uses the recipient's PUBLIC key."
+  },
+  {
+    "id": "1-036",
+    "d": 1,
+    "obj": "1.4",
+    "topic": "Blockchain",
+    "diff": 2,
+    "type": "single",
+    "q": "Which property of a blockchain makes retroactive alteration of a recorded transaction detectable?",
+    "opts": [
+      "Each block contains the cryptographic hash of the previous block",
+      "Each block is encrypted with the miner's private key",
+      "Blocks are stored only on trusted central servers",
+      "Transactions are salted before broadcast"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Chaining blocks by including the previous block's hash means any modification changes all subsequent hashes, exposing tampering across the distributed ledger. Blocks are not encrypted to a miner's private key. Central storage would defeat the distributed ledger model. Salting relates to password hashing.",
+    "tip": "Blockchain on Security+ is mostly about the open public ledger and hash-chained integrity."
+  },
+  {
+    "id": "1-037",
+    "d": 1,
+    "obj": "1.4",
+    "topic": "Certificate authority",
+    "diff": 2,
+    "type": "single",
+    "q": "Which PKI entity verifies an applicant's identity and issues signed digital certificates?",
+    "opts": [
+      "Certificate authority",
+      "Registration authority",
+      "Certificate revocation list",
+      "Online Certificate Status Protocol responder"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "The CA issues and signs certificates and is the root of trust. A registration authority may validate identity and forward requests but does not sign the certificate. A CRL is a published list of revoked certificates, and an OCSP responder answers real-time status queries.",
+    "tip": "RA verifies, CA signs. CRL is a downloaded list; OCSP is a live query (OCSP stapling puts the response on the server)."
+  },
+  {
+    "id": "1-038",
+    "d": 1,
+    "obj": "1.4",
+    "topic": "CSR",
+    "diff": 2,
+    "type": "single",
+    "q": "An administrator needs a publicly trusted certificate for shop.example.com. Which item must be generated on the server and submitted to the certificate authority?",
+    "opts": [
+      "A certificate signing request containing the public key and subject information",
+      "The server's private key",
+      "A copy of the CA's root certificate",
+      "A certificate revocation list entry"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "The CSR carries the subject name, any subject alternative names, and the public key, and is signed by the corresponding private key to prove possession. The private key must never leave the server. The root certificate is already distributed in trust stores. CRL entries are created when revoking, not when requesting.",
+    "tip": "CSR contains the PUBLIC key. If an answer says 'send the private key', it is wrong."
+  },
+  {
+    "id": "1-039",
+    "d": 1,
+    "obj": "1.4",
+    "topic": "Wildcard certificate",
+    "diff": 2,
+    "type": "single",
+    "q": "A company hosts mail.corp.example.com, vpn.corp.example.com, and portal.corp.example.com and wants a single certificate that covers all current and future first-level subdomains of corp.example.com. Which certificate should be purchased?",
+    "opts": [
+      "A wildcard certificate for *.corp.example.com",
+      "Three separate self-signed certificates",
+      "An extended validation certificate for corp.example.com",
+      "A code signing certificate"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "A wildcard certificate secures any single-label subdomain at that level, so new hosts are covered without reissuance. Self-signed certificates are not publicly trusted and will produce browser errors. An EV certificate for the apex domain does not automatically cover subdomains. Code signing certificates sign software, not TLS sessions.",
+    "tip": "Wildcards cover one label deep: *.corp.example.com does NOT cover a.b.corp.example.com. Multiple distinct names = SAN certificate."
+  },
+  {
+    "id": "1-040",
+    "d": 1,
+    "obj": "1.4",
+    "topic": "Certificate revocation",
+    "diff": 3,
+    "type": "single",
+    "q": "A web server's private key is suspected stolen. After revoking the certificate, which mechanism lets clients check revocation status in real time with the least latency for the browser?",
+    "opts": [
+      "OCSP stapling",
+      "Downloading the full certificate revocation list on each connection",
+      "Certificate pinning",
+      "Shortening the certificate's key length"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "With OCSP stapling the server presents a recent, CA-signed status response during the handshake, so the client does not contact the responder itself. Downloading a full CRL per connection is slow and bandwidth-heavy. Pinning enforces an expected certificate but does not report revocation. Key length is unrelated to revocation checking.",
+    "tip": "CRL = bulk list, cached, can be stale. OCSP = per-certificate query. OCSP stapling = server does the query for the client."
+  },
+  {
+    "id": "1-041",
+    "d": 1,
+    "obj": "1.4",
+    "topic": "Self-signed certificates",
+    "diff": 2,
+    "type": "single",
+    "q": "An internal monitoring tool uses a self-signed certificate, and staff have been trained to click through the browser warning. What is the PRIMARY security risk of this practice?",
+    "opts": [
+      "Users become conditioned to ignore certificate warnings, so a real man-in-the-middle attack goes unnoticed",
+      "Self-signed certificates cannot encrypt traffic",
+      "Self-signed certificates expire immediately",
+      "Self-signed certificates disable TLS 1.3"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Self-signed certificates do encrypt, but they provide no third-party identity assurance, and habituating users to dismiss warnings destroys the ability to detect interception. They can carry long validity periods and support modern TLS versions. The correct enterprise fix is an internal CA whose root is distributed to managed devices.",
+    "tip": "For internal services, the exam answer is usually 'use a private/internal CA and push the root to endpoints', not 'accept the warning'."
+  },
+  {
+    "id": "1-042",
+    "d": 1,
+    "obj": "1.4",
+    "topic": "Root of trust",
+    "diff": 3,
+    "type": "single",
+    "q": "In a hierarchical PKI, why is the root CA typically kept offline while intermediate CAs issue end-entity certificates?",
+    "opts": [
+      "Compromise of an intermediate can be contained by revoking it, while a compromised root invalidates the entire trust chain",
+      "Offline roots issue certificates faster",
+      "Intermediate CAs do not require private keys",
+      "Root CAs cannot sign certificates"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Keeping the root offline protects the ultimate root of trust; if an intermediate is compromised, the root revokes that intermediate and issues a new one without replacing every trust store. Offline operation is slower, intermediates absolutely hold private keys, and roots can sign but are used sparingly to sign intermediates.",
+    "tip": "Root offline, intermediates online. This is a favorite 'why' question."
+  },
+  {
+    "id": "1-043",
+    "d": 1,
+    "obj": "1.4",
+    "topic": "Hashing vs encryption",
+    "diff": 2,
+    "type": "single",
+    "q": "A file integrity monitoring tool must detect any change to system binaries but never needs to recover the original content from stored values. Which cryptographic primitive fits?",
+    "opts": [
+      "A cryptographic hash such as SHA-256",
+      "AES-256 in CBC mode",
+      "RSA-4096 encryption",
+      "Diffie-Hellman key agreement"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Hashes are one-way fixed-length fingerprints ideal for integrity comparison. AES and RSA are reversible encryption, which is unnecessary and adds key management burden. Diffie-Hellman establishes shared keys and does not verify file integrity.",
+    "tip": "Integrity only, no recovery = hash. Confidentiality = encryption."
+  },
+  {
+    "id": "1-044",
+    "d": 1,
+    "obj": "1.4",
+    "topic": "Key length",
+    "diff": 2,
+    "type": "single",
+    "q": "Which pair of key sizes offers roughly comparable cryptographic strength?",
+    "opts": [
+      "ECC 256-bit and RSA 3072-bit",
+      "ECC 256-bit and RSA 512-bit",
+      "AES 128-bit and RSA 128-bit",
+      "SHA-256 and AES-256 keys"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Elliptic curve cryptography achieves equivalent security with far shorter keys — a 256-bit ECC key is comparable to roughly RSA 3072. RSA 512 is trivially breakable. RSA key sizes are not comparable to symmetric key sizes at the same number. SHA-256 is a hash length, not a key.",
+    "tip": "ECC's small keys make it the choice for mobile/IoT where CPU and battery are limited."
+  },
+  {
+    "id": "1-045",
+    "d": 1,
+    "obj": "1.4",
+    "topic": "Secure enclave",
+    "diff": 3,
+    "type": "single",
+    "q": "A smartphone stores biometric templates and cryptographic keys in an isolated coprocessor that the main OS cannot read, even if the OS is rooted. What is this feature generally called?",
+    "opts": [
+      "Secure enclave",
+      "Key escrow agent",
+      "Trusted Platform Module 1.2",
+      "Software-based cryptographic library"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "A secure enclave is a hardware-isolated execution environment that holds secrets outside the reach of the main operating system. Key escrow is a policy practice for key copies. TPM 1.2 is a legacy discrete platform chip specification rather than a mobile SoC enclave. A software library provides no hardware isolation.",
+    "tip": "Enclave = isolated processor region for secrets. Common in mobile and modern CPUs."
+  },
+  {
+    "id": "1-046",
+    "d": 1,
+    "obj": "1.2",
+    "topic": "Physical security",
+    "diff": 2,
+    "type": "single",
+    "q": "Which control provides the BEST evidence for after-the-fact investigation of who entered a restricted lab and when?",
+    "opts": [
+      "Badge reader logs correlated with video surveillance",
+      "A locked door with a mechanical key",
+      "A visitor sign-in clipboard at reception",
+      "A deterrent sign on the lab door"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Electronic access logs paired with video give an attributable, time-stamped record. A mechanical lock produces no record of who used a key. A paper log is easily bypassed or falsified. Signage deters but records nothing.",
+    "tip": "'Investigate after the fact' = detective controls that produce records: logs, video, audit trails."
+  },
+  {
+    "id": "1-047",
+    "d": 1,
+    "obj": "1.1",
+    "topic": "Control types",
+    "diff": 3,
+    "type": "single",
+    "q": "After a phishing incident, an organization restores affected mailboxes, removes malicious rules, and resets credentials. Which control TYPE do these actions represent?",
+    "opts": [
+      "Corrective",
+      "Preventive",
+      "Deterrent",
+      "Directive"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Corrective controls act after detection to limit damage and restore normal operations. Preventive controls stop the event beforehand (mail filtering, MFA). Deterrent controls discourage attempts. Directive controls instruct behavior through policy and training.",
+    "tip": "Timeline test: before = preventive/deterrent/directive, during = detective, after = corrective/compensating."
+  },
+  {
+    "id": "1-048",
+    "d": 1,
+    "obj": "1.3",
+    "topic": "Change management",
+    "diff": 3,
+    "type": "multi",
+    "q": "A change advisory board reviews a proposed migration of production authentication to a new provider. Which TWO items should be required before approval?",
+    "opts": [
+      "Documented test results from a non-production environment",
+      "A backout plan with defined rollback triggers",
+      "A list of employees who dislike the current provider",
+      "Confirmation that documentation will be updated after the migration succeeds only if time permits"
+    ],
+    "a": [
+      0,
+      1
+    ],
+    "exp": "Test results demonstrate the change works, and a backout plan defines how to revert if it does not — both are core change management prerequisites. Employee sentiment is not a change artifact, and treating documentation updates as optional violates change management requirements.",
+    "tip": "Multi-select questions on this exam are usually 'pick the two real artifacts among two obviously weak options'."
+  },
+  {
+    "id": "1-049",
+    "d": 1,
+    "obj": "1.4",
+    "topic": "Encryption in transit",
+    "diff": 2,
+    "type": "single",
+    "q": "A legacy internal application transmits credentials over HTTP. Rewriting it is not possible this quarter. Which measure protects the credentials in transit with the least application change?",
+    "opts": [
+      "Place the application behind a TLS-terminating reverse proxy and restrict direct HTTP access",
+      "Enable full-disk encryption on the application server",
+      "Hash the credentials in the database with bcrypt",
+      "Add a deny list of known malicious IP addresses"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "A reverse proxy provides TLS for clients without modifying application code, and blocking direct HTTP prevents bypass. FDE protects data at rest only. Hashing stored passwords is good practice but does not protect the network transmission. IP deny lists do not encrypt anything.",
+    "tip": "'Cannot change the app' + 'protect traffic' = TLS proxy/gateway, or a VPN/IPsec tunnel."
+  },
+  {
+    "id": "1-050",
+    "d": 1,
+    "obj": "1.2",
+    "topic": "Zero Trust",
+    "diff": 3,
+    "type": "single",
+    "q": "Which design change MOST directly accomplishes threat scope reduction in a Zero Trust deployment?",
+    "opts": [
+      "Microsegmenting workloads so each application communicates only with explicitly permitted peers",
+      "Increasing the VPN concentrator's bandwidth",
+      "Extending the password maximum age to one year",
+      "Allowing all internal subnets to route freely once a user authenticates at the perimeter"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Microsegmentation shrinks the blast radius by limiting lateral movement, which is precisely threat scope reduction. More VPN bandwidth is a capacity change. Longer password lifetimes weaken account security. Free internal routing after perimeter authentication is the implicit-trust model Zero Trust replaces.",
+    "tip": "Threat scope reduction ≈ limit the blast radius ≈ microsegmentation and least privilege."
+  },
+  {
+    "id": "1-051",
+    "d": 1,
+    "obj": "1.4",
+    "topic": "Certificates",
+    "diff": 3,
+    "type": "single",
+    "q": "A browser reports NET::ERR_CERT_COMMON_NAME_INVALID when a user visits https://www.example.com, though the certificate is valid and issued by a trusted CA. What is the MOST likely cause?",
+    "opts": [
+      "The certificate's subject alternative names do not include www.example.com",
+      "The certificate uses ECDSA instead of RSA",
+      "The certificate's key is 4096 bits",
+      "OCSP stapling is disabled on the server"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Modern clients match the hostname against the SAN extension; if www.example.com is absent, the name check fails even for an otherwise valid certificate. Algorithm choice and key size do not cause a name mismatch. Disabling OCSP stapling affects revocation checking, producing a different class of error.",
+    "tip": "Common name/SAN mismatch is the most frequently tested certificate error, alongside expiration and untrusted issuer."
+  },
+  {
+    "id": "1-052",
+    "d": 1,
+    "obj": "1.1",
+    "topic": "Control types",
+    "diff": 2,
+    "type": "single",
+    "q": "A SIEM correlation rule alerts the SOC when a user account authenticates from two countries within five minutes. Which control type is this?",
+    "opts": [
+      "Detective",
+      "Preventive",
+      "Corrective",
+      "Compensating"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Alerting on suspicious activity identifies events that have occurred, which is detective. Preventive controls would block the second login (conditional access). Corrective controls remediate afterward, such as disabling the account. Compensating controls substitute for an unavailable required control.",
+    "tip": "Alert = detective. Block = preventive. Clean up = corrective."
+  },
+  {
+    "id": "1-053",
+    "d": 1,
+    "obj": "1.4",
+    "topic": "Key management",
+    "diff": 3,
+    "type": "multi",
+    "q": "An auditor finds that the same AES key has protected database backups for six years and is stored in a spreadsheet on a file share. Which TWO practices should be implemented? (Choose two.)",
+    "opts": [
+      "Establish scheduled key rotation with documented crypto-periods",
+      "Store and manage the key in a hardware security module or managed KMS",
+      "Shorten the AES key to 128 bits for performance",
+      "Publish the key to the internal wiki so all DBAs can find it"
+    ],
+    "a": [
+      0,
+      1
+    ],
+    "exp": "Keys need defined crypto-periods with rotation, and they must be protected in an HSM or key management service with access control and auditing. Reducing key length does not address the exposure. Wider publication makes the problem worse.",
+    "tip": "Key management essentials: generation, secure storage, rotation, escrow/backup, and destruction."
+  },
+  {
+    "id": "1-054",
+    "d": 1,
+    "obj": "1.2",
+    "topic": "Physical security",
+    "diff": 2,
+    "type": "single",
+    "q": "A company must protect an outdoor generator yard from casual intrusion and provide clear visibility for camera coverage. Which fencing choice BEST balances these needs?",
+    "opts": [
+      "Tall chain-link fencing topped with barbed wire",
+      "A solid eight-foot privacy wall",
+      "Decorative hedges around the perimeter",
+      "A single locked gate with no fence"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Chain-link provides a physical barrier while remaining transparent so cameras and guards can observe activity on both sides. A solid wall blocks the sight lines the question requires. Hedges present a negligible barrier and conceal intruders. A gate without a fence provides no perimeter at all.",
+    "tip": "Fence questions hinge on trade-offs: transparency for surveillance versus privacy from observation."
+  },
+  {
+    "id": "1-055",
+    "d": 1,
+    "obj": "1.4",
+    "topic": "Encryption scope",
+    "diff": 3,
+    "type": "single",
+    "q": "A cloud team must encrypt only the volume that holds application logs on a Linux instance, leaving the boot volume unencrypted for a vendor-supported imaging process. Which level of encryption applies?",
+    "opts": [
+      "Volume encryption",
+      "Full-disk encryption",
+      "Record-level encryption",
+      "Transport encryption"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Volume (or partition) encryption protects a specific mounted volume rather than the entire physical disk. Full-disk encryption would include the boot volume the team must leave unencrypted. Record-level encryption applies within a database. Transport encryption protects data on the network.",
+    "tip": "Know the ladder: full disk → partition/volume → file → database → record. The question tells you the scope."
+  },
+  {
+    "id": "1-056",
+    "d": 1,
+    "obj": "1.2",
+    "topic": "AAA and 802.1X",
+    "diff": 3,
+    "type": "single",
+    "q": "Which protocol is MOST commonly used to carry authentication requests from a wireless controller to a central identity store, providing AAA for 802.1X?",
+    "opts": [
+      "RADIUS",
+      "SNMPv3",
+      "SMTP",
+      "NTP"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "RADIUS is the standard AAA protocol for network access, and it is the authentication server component in 802.1X (with the supplicant and authenticator). SNMPv3 monitors and manages devices, SMTP transports mail, and NTP synchronizes time.",
+    "tip": "802.1X trio: supplicant (client), authenticator (switch/AP), authentication server (RADIUS)."
+  },
+  {
+    "id": "1-057",
+    "d": 1,
+    "obj": "1.3",
+    "topic": "Change management",
+    "diff": 3,
+    "type": "single",
+    "q": "A DevOps team must ensure that every modification to infrastructure-as-code templates is attributable, reviewable, and revertible. Which practice addresses this requirement?",
+    "opts": [
+      "Version control with peer-reviewed pull requests",
+      "A weekly maintenance window",
+      "An application allow list",
+      "A quarterly business impact analysis"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Version control records who changed what and when, enables review before merge, and supports reverting to any prior commit. A maintenance window governs timing. Allow lists control execution of software. A BIA assesses process criticality rather than tracking code changes.",
+    "tip": "Version control is listed as a change-management documentation practice on SY0-701."
+  },
+  {
+    "id": "1-058",
+    "d": 1,
+    "obj": "1.4",
+    "topic": "Open public ledger",
+    "diff": 2,
+    "type": "single",
+    "q": "Which characteristic distinguishes an open public ledger from a traditional centralized transaction database?",
+    "opts": [
+      "Records are distributed to many independent participants who can each verify the full history",
+      "Records are stored in a single authoritative location for efficiency",
+      "Records can be deleted by the administrator without trace",
+      "Records are protected only by physical security"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "An open public ledger replicates and exposes the transaction history to many participants, so verification does not depend on trusting one operator. Central storage, silent deletion, and reliance on physical security describe the traditional model the ledger is meant to replace.",
+    "tip": "Distributed + verifiable by anyone + append-only = open public ledger."
+  },
+  {
+    "id": "1-059",
+    "d": 1,
+    "obj": "1.1",
+    "topic": "Control categories",
+    "diff": 3,
+    "type": "single",
+    "q": "A company hires guards who walk the facility hourly and verify that badge holders match their photos. In CompTIA's taxonomy, which control CATEGORY do the guard patrols BEST fit?",
+    "opts": [
+      "Operational",
+      "Managerial",
+      "Technical",
+      "Directive"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Operational controls are carried out by people as part of ongoing operations, which describes patrols and manual verification. Managerial controls are governance artifacts such as policies. Technical controls are implemented by systems. Directive is a control type, not a category.",
+    "tip": "People doing the work day to day = operational. Paper telling them to = managerial."
+  },
+  {
+    "id": "1-060",
+    "d": 1,
+    "obj": "1.4",
+    "topic": "Digital certificates",
+    "diff": 2,
+    "type": "single",
+    "q": "A software vendor must let customers verify that a downloaded installer genuinely came from the vendor and was not modified in transit. Which certificate type is required?",
+    "opts": [
+      "Code signing certificate",
+      "Wildcard TLS certificate",
+      "Client authentication certificate",
+      "Extended validation TLS certificate"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Code signing certificates sign executables so the operating system and users can validate publisher identity and file integrity. Wildcard and EV TLS certificates secure web sessions. Client authentication certificates identify users or devices to a server.",
+    "tip": "Match certificate purpose to key usage: TLS server, TLS client, code signing, email (S/MIME)."
+  },
+  {
+    "id": "1-061",
+    "d": 1,
+    "obj": "1.2",
+    "topic": "Deception",
+    "diff": 3,
+    "type": "single",
+    "q": "A blue team plants a fake AWS access key in an internal wiki page. The key has no permissions, but any attempt to use it triggers an immediate alert identifying the source IP. What is this technique?",
+    "opts": [
+      "Honeytoken",
+      "Honeypot",
+      "Sinkhole",
+      "Canary build"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "A honeytoken is fake data — credentials, records, or API keys — whose use reveals unauthorized access. A honeypot is a decoy system. A DNS sinkhole redirects malicious domain lookups. A canary build is a staged software release, not a deception control.",
+    "tip": "Fake credential or fake database record = honeytoken. It detects both external attackers and insiders."
+  },
+  {
+    "id": "1-062",
+    "d": 1,
+    "obj": "1.1",
+    "topic": "Control types",
+    "diff": 3,
+    "type": "single",
+    "q": "An organization's security policy requires that all employees complete offboarding checklists when staff depart. Employees are formally instructed to follow it. Which control TYPE is the policy requirement itself?",
+    "opts": [
+      "Directive",
+      "Detective",
+      "Compensating",
+      "Corrective"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Directive controls instruct or mandate behavior, which is what a policy requirement does. Detective controls identify events, corrective controls remediate them, and compensating controls substitute for missing primary controls.",
+    "tip": "Directive = 'thou shalt'. It is the type most often forgotten in the list of six."
+  },
+  {
+    "id": "1-063",
+    "d": 1,
+    "obj": "1.4",
+    "topic": "Symmetric algorithms",
+    "diff": 2,
+    "type": "single",
+    "q": "Which cipher and mode should be selected for encrypting large volumes of data at rest with built-in integrity verification?",
+    "opts": [
+      "AES-256-GCM",
+      "AES-128-ECB",
+      "3DES-CBC",
+      "RC4"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "GCM is an authenticated encryption mode providing both confidentiality and integrity, and AES-256 offers a strong key length. ECB reveals patterns because identical plaintext blocks yield identical ciphertext. 3DES is deprecated and slow. RC4 is a broken stream cipher.",
+    "tip": "If you see ECB, RC4, DES, or 3DES in an answer, it is almost always the wrong choice."
+  },
+  {
+    "id": "1-064",
+    "d": 1,
+    "obj": "1.2",
+    "topic": "Physical security",
+    "diff": 2,
+    "type": "single",
+    "q": "Which physical control BEST prevents shoulder surfing of a receptionist's screen in a public lobby?",
+    "opts": [
+      "A privacy screen filter positioned on the monitor",
+      "A cable lock on the workstation",
+      "A motion sensor behind the desk",
+      "An access control vestibule at the entrance"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "A privacy filter narrows the viewing angle so only the seated user can read the display. A cable lock prevents theft of hardware, a motion sensor detects movement, and a vestibule controls entry — none of which stop visual eavesdropping at the desk.",
+    "tip": "Shoulder surfing countermeasures: privacy filters, screen positioning, clean desk policy, automatic screen locks."
+  },
+  {
+    "id": "1-065",
+    "d": 1,
+    "obj": "1.4",
+    "topic": "PKI trust",
+    "diff": 3,
+    "type": "single",
+    "q": "An organization deploys an internal CA and needs managed Windows endpoints to trust certificates it issues without warnings. What must be distributed?",
+    "opts": [
+      "The CA's root certificate to the Trusted Root Certification Authorities store via group policy",
+      "The CA's private key to each endpoint",
+      "A copy of each server's CSR to each endpoint",
+      "The CRL file to each user's desktop"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Trust is established by installing the CA root certificate in the endpoint trust store, which group policy can automate. A CA private key must never be distributed. CSRs are transient request artifacts. Endpoints retrieve CRLs from the published distribution point rather than receiving copies manually.",
+    "tip": "Internal CA rollout = push the root (and any intermediates) to trust stores. Never move private keys around."
+  },
+  {
+    "id": "1-066",
+    "d": 1,
+    "obj": "1.3",
+    "topic": "Change management",
+    "diff": 3,
+    "type": "single",
+    "q": "A change to a load balancer configuration will require restarting a dependent application service. Which change management consideration does this restart requirement fall under?",
+    "opts": [
+      "Application restart as a technical implication of the change",
+      "Ownership of the change record",
+      "Legacy application replacement",
+      "Stakeholder communication plan"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "SY0-701 lists service restart and application restart among the technical implications that must be identified during change planning. Ownership assigns accountability, legacy application replacement is a separate remediation project, and stakeholder communication is important but is not what the restart requirement itself represents.",
+    "tip": "Technical implications to memorize: allow/deny lists, restricted activities, downtime, service restart, application restart, legacy applications, dependencies."
+  },
+  {
+    "id": "1-067",
+    "d": 1,
+    "obj": "1.2",
+    "topic": "CIA triad",
+    "diff": 3,
+    "type": "single",
+    "q": "An attacker modifies a few values in a bank's transaction log without disrupting service or reading customer data. Which element of the CIA triad is primarily affected?",
+    "opts": [
+      "Integrity",
+      "Availability",
+      "Confidentiality",
+      "Accounting"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Unauthorized modification of data is an integrity violation. Service remained up, so availability holds. Nothing was disclosed, so confidentiality holds. Accounting is an AAA function, not part of the triad.",
+    "tip": "Integrity controls to remember: hashing, digital signatures, checksums, file integrity monitoring, write-once logging."
+  },
+  {
+    "id": "1-068",
+    "d": 1,
+    "obj": "1.4",
+    "topic": "Obfuscation",
+    "diff": 3,
+    "type": "single",
+    "q": "A development team needs realistic data in a test environment but must guarantee that no production customer can be re-identified. Which approach BEST satisfies both requirements?",
+    "opts": [
+      "Generate masked or synthetic data that preserves format but not real values",
+      "Copy the production database and rely on developer NDAs",
+      "Encrypt the production copy and give developers the key",
+      "Restrict the test environment to internal IP addresses only"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Masking or synthesizing data preserves testing utility while removing identifiable values. NDAs are administrative and do not prevent exposure. Giving developers the decryption key returns them to plaintext production data. Network restrictions limit access but leave real customer data in a lower-assurance environment.",
+    "tip": "Test/dev environments should never hold live sensitive data — mask, tokenize, or synthesize."
+  },
+  {
+    "id": "1-069",
+    "d": 1,
+    "obj": "1.1",
+    "topic": "Control selection",
+    "diff": 3,
+    "type": "single",
+    "q": "A risk assessment shows that stolen credentials are the most likely path to a breach. Which control provides the greatest PREVENTIVE value against that specific risk?",
+    "opts": [
+      "Phishing-resistant multifactor authentication",
+      "Quarterly awareness training",
+      "A SIEM alert on impossible travel",
+      "Annual password expiration"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Requiring a phishing-resistant second factor (such as FIDO2/WebAuthn hardware keys) prevents an attacker from using stolen passwords. Training reduces likelihood but does not stop reuse of leaked credentials. SIEM alerts and failed-login reviews are detective. Password expiration alone does little against credentials that are used immediately.",
+    "tip": "Credential theft: MFA is the preventive answer, and the exam favors phishing-resistant MFA over SMS or email codes."
+  },
+  {
+    "id": "1-070",
+    "d": 1,
+    "obj": "1.2",
+    "topic": "Zero Trust",
+    "diff": 3,
+    "type": "single",
+    "q": "Which statement BEST captures the core principle of Zero Trust?",
+    "opts": [
+      "Never trust implicitly; verify every request based on identity, device posture, and context regardless of network location",
+      "Trust all traffic that originates inside the corporate perimeter",
+      "Replace all firewalls with host-based agents",
+      "Authenticate users once per day and permit unrestricted access afterward"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Zero Trust removes implicit trust based on network position and continuously verifies each request. Trusting internal traffic is the legacy perimeter model. Zero Trust complements rather than eliminates network controls. Long-lived unrestricted sessions contradict continuous verification.",
+    "tip": "The phrase to recognize: 'assume breach, verify explicitly, least privilege access'."
+  }
+]

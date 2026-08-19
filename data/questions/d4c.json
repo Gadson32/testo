@@ -1,0 +1,904 @@
+[
+  {
+    "id": "4-101",
+    "d": 4,
+    "obj": "4.8",
+    "topic": "Incident response process",
+    "diff": 2,
+    "type": "single",
+    "q": "Which sequence correctly orders the incident response process as defined by SY0-701?",
+    "opts": [
+      "Preparation, detection, analysis, containment, eradication, recovery, lessons learned",
+      "Detection, preparation, recovery, containment, analysis, eradication, lessons learned",
+      "Containment, detection, preparation, eradication, analysis, recovery, lessons learned",
+      "Preparation, containment, detection, recovery, analysis, eradication, lessons learned"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "The exam's model runs preparation, detection, analysis, containment, eradication, recovery, and lessons learned. Preparation always comes first because plans, tooling, and training must exist before an incident, and lessons learned closes the loop by feeding improvements back into preparation.",
+    "tip": "Memorize the order — questions often ask 'what comes next?' after describing one phase."
+  },
+  {
+    "id": "4-102",
+    "d": 4,
+    "obj": "4.8",
+    "topic": "Containment",
+    "diff": 3,
+    "type": "single",
+    "q": "Malware is confirmed on 12 workstations, and the investigation is ongoing. Which action represents containment rather than eradication?",
+    "opts": [
+      "Isolating the affected workstations from the network to stop spread",
+      "Reimaging the workstations from a known-good build",
+      "Removing the malicious files and registry keys",
+      "Restoring user data from backup and returning systems to service"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Containment limits the incident's spread and impact while analysis proceeds. Reimaging and removing artifacts are eradication, and restoring data and returning systems to production is recovery.",
+    "tip": "Containment can be short-term (isolate now) and long-term (temporary controls that keep business running until eradication)."
+  },
+  {
+    "id": "4-103",
+    "d": 4,
+    "obj": "4.8",
+    "topic": "Lessons learned",
+    "diff": 2,
+    "type": "single",
+    "q": "What is the PRIMARY purpose of the lessons learned phase?",
+    "opts": [
+      "Identify improvements to controls, detection, and procedures, and assign owners for those actions",
+      "Determine which employee should be disciplined",
+      "Produce a press release describing the incident",
+      "Close the incident ticket as quickly as possible"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Lessons learned converts incident experience into concrete improvements with accountable owners. Blame-focused reviews suppress reporting, communications are a separate workstream, and rapid ticket closure is not the goal.",
+    "tip": "Blameless post-incident reviews produce more honest information and better fixes — expect this framing on the exam."
+  },
+  {
+    "id": "4-104",
+    "d": 4,
+    "obj": "4.8",
+    "topic": "Root cause analysis",
+    "diff": 3,
+    "type": "single",
+    "q": "An incident review determines the breach occurred because a public-facing server was missing patches for eight months, since it was never added to the patching inventory. What is the root cause?",
+    "opts": [
+      "A process gap in asset onboarding that excluded the server from vulnerability and patch management",
+      "The specific CVE exploited by the attacker",
+      "The attacker's choice of exploit tooling",
+      "The absence of cyber insurance coverage"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Root cause analysis looks past the immediate technical trigger to the process failure that allowed it to persist. The exploited CVE and attacker tooling are proximate details, and insurance addresses financial impact rather than causation.",
+    "tip": "Keep asking why until you reach a process or design decision you can actually change."
+  },
+  {
+    "id": "4-105",
+    "d": 4,
+    "obj": "4.8",
+    "topic": "Threat hunting",
+    "diff": 3,
+    "type": "single",
+    "q": "Which activity BEST describes threat hunting?",
+    "opts": [
+      "Proactively searching telemetry for signs of undetected compromise based on hypotheses and adversary behaviors",
+      "Waiting for SIEM alerts and triaging them",
+      "Running an authenticated vulnerability scan",
+      "Reviewing firewall change requests"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Threat hunting is hypothesis-driven and proactive, assuming existing detections may have missed something. Alert triage is reactive, scanning finds vulnerabilities rather than intrusions, and change review is a governance activity.",
+    "tip": "Hunts often start from a framework like MITRE ATT&CK: pick a technique, ask how it would look in your data, then go find it."
+  },
+  {
+    "id": "4-106",
+    "d": 4,
+    "obj": "4.8",
+    "topic": "Chain of custody",
+    "diff": 2,
+    "type": "single",
+    "q": "Why is chain of custody documentation essential when collecting digital evidence?",
+    "opts": [
+      "It records every person who handled the evidence and when, so its integrity and admissibility can be demonstrated",
+      "It speeds up the forensic imaging process",
+      "It encrypts the evidence automatically",
+      "It eliminates the need to hash the evidence"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Chain of custody proves continuous accountable control, which is required for evidence to be admissible and credible. It does not accelerate imaging, provide encryption, or replace hashing, which independently verifies integrity.",
+    "tip": "Evidence handling essentials: hash before and after acquisition, work from a copy, document every transfer, and store securely."
+  },
+  {
+    "id": "4-107",
+    "d": 4,
+    "obj": "4.8",
+    "topic": "Order of volatility",
+    "diff": 3,
+    "type": "single",
+    "q": "Following the order of volatility, which evidence should be collected FIRST from a running compromised system?",
+    "opts": [
+      "CPU cache, memory contents, and running process and network connection state",
+      "Data on the hard drive",
+      "Archived backups on tape",
+      "Printed documentation from the file room"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Volatile data such as memory and live connection state disappears on power loss and must be captured first. Disk data persists, and backups and paper records are the least volatile.",
+    "tip": "Order of volatility: registers/cache → RAM → network state → temp files → disk → remote logs → backups → printouts."
+  },
+  {
+    "id": "4-108",
+    "d": 4,
+    "obj": "4.8",
+    "topic": "Legal hold",
+    "diff": 3,
+    "type": "single",
+    "q": "A company anticipates litigation related to an incident. What must the security team do with relevant logs, images, and mailboxes?",
+    "opts": [
+      "Preserve them under legal hold, suspending automatic deletion and documenting preservation",
+      "Delete anything not needed for the technical investigation",
+      "Compress and archive them with no special handling",
+      "Allow normal retention policies to expire the data"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Legal hold suspends routine destruction for potentially relevant data; failing to preserve it can result in spoliation sanctions. Deletion, ordinary archiving without hold status, and letting retention expire all risk destroying evidence.",
+    "tip": "Legal hold is triggered by reasonable anticipation of litigation, not by the filing of a lawsuit."
+  },
+  {
+    "id": "4-109",
+    "d": 4,
+    "obj": "4.8",
+    "topic": "Acquisition",
+    "diff": 3,
+    "type": "single",
+    "q": "Which practice ensures a forensic disk image can be proven identical to the original media?",
+    "opts": [
+      "Use a write blocker during acquisition and record cryptographic hashes of the source and image",
+      "Copy files with the operating system's file explorer",
+      "Boot the original system normally and export data to a USB drive",
+      "Compress the drive contents into an archive with a password"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "A write blocker prevents modification of the source, and matching hashes prove the image is a faithful copy. File-level copies miss deleted data and slack space, booting the original alters it, and compression with a password does not establish integrity.",
+    "tip": "Always analyze the working copy, never the original, and verify hashes before and after each transfer."
+  },
+  {
+    "id": "4-110",
+    "d": 4,
+    "obj": "4.8",
+    "topic": "E-discovery",
+    "diff": 2,
+    "type": "single",
+    "q": "Which term describes the process of identifying, collecting, and producing electronically stored information for legal proceedings?",
+    "opts": [
+      "E-discovery",
+      "Threat hunting",
+      "Penetration testing",
+      "Vulnerability management"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "E-discovery governs the identification, preservation, collection, review, and production of electronically stored information for litigation or regulatory demands. The other activities are technical security operations functions.",
+    "tip": "E-discovery scope frequently includes email, chat, file shares, cloud storage, and mobile data — plan retention accordingly."
+  },
+  {
+    "id": "4-111",
+    "d": 4,
+    "obj": "4.8",
+    "topic": "IR testing",
+    "diff": 2,
+    "type": "single",
+    "q": "Which incident response testing method validates coordination and decision-making with the least operational risk?",
+    "opts": [
+      "A tabletop exercise",
+      "A full-interruption failover of production systems",
+      "A live red team operation without notice",
+      "Deploying real ransomware in a production segment"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Tabletop exercises test plans and decisions through discussion without touching systems. Full interruption carries real downtime risk, unannounced red team operations are valuable but higher risk and require careful authorization, and deploying real ransomware is never acceptable.",
+    "tip": "Test cadence matters more than test scale — quarterly tabletops beat one annual exercise nobody remembers."
+  },
+  {
+    "id": "4-112",
+    "d": 4,
+    "obj": "4.8",
+    "topic": "IR preparation",
+    "diff": 3,
+    "type": "single",
+    "q": "Which element of preparation MOST directly reduces confusion during a live incident?",
+    "opts": [
+      "A documented plan with defined roles, decision authority, escalation paths, and out-of-band communication methods",
+      "A larger SIEM license",
+      "More frequent vulnerability scans",
+      "A longer password policy"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Clear roles, authority, and communication channels prevent paralysis when systems and normal channels may be compromised. Tooling, scanning, and password policy contribute to security but do not resolve command-and-control confusion during response.",
+    "tip": "Plan for out-of-band communications: if email and chat are compromised, the response team needs a separate channel."
+  },
+  {
+    "id": "4-113",
+    "d": 4,
+    "obj": "4.9",
+    "topic": "Log sources",
+    "diff": 3,
+    "type": "single",
+    "q": "An analyst must determine which internal host initiated a connection to a known malicious IP address and when. Which data source is MOST directly useful?",
+    "opts": [
+      "Firewall or flow logs showing source and destination addresses, ports, and timestamps",
+      "The organization's data classification policy",
+      "Employee training completion records",
+      "The physical badge access log"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Firewall and flow logs record the network conversation details needed to attribute outbound connections. Policy documents, training records, and badge logs contain no network activity data.",
+    "tip": "Map questions to sources: who talked to whom = firewall/flow; what ran on the host = endpoint/EDR; who logged in = OS security logs."
+  },
+  {
+    "id": "4-114",
+    "d": 4,
+    "obj": "4.9",
+    "topic": "Endpoint logs",
+    "diff": 3,
+    "type": "single",
+    "q": "Which log source BEST shows the parent-child process relationship that launched a suspicious PowerShell command?",
+    "opts": [
+      "Endpoint process creation logs from EDR or Windows event ID 4688 with command line auditing",
+      "Router interface counters",
+      "DHCP lease history",
+      "SMTP gateway delivery logs"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Process creation events with command line details reveal execution lineage, such as a document application spawning a script interpreter. Interface counters, DHCP leases, and mail delivery logs do not contain process data.",
+    "tip": "Enable command line auditing and script block logging — without them, process events lack the detail investigations require."
+  },
+  {
+    "id": "4-115",
+    "d": 4,
+    "obj": "4.9",
+    "topic": "Packet capture",
+    "diff": 3,
+    "type": "single",
+    "q": "When is full packet capture MOST justified despite its storage cost?",
+    "opts": [
+      "When investigators must examine payload content, such as reconstructing exfiltrated data or protocol abuse",
+      "When counting how many devices are on the network",
+      "When verifying that backups completed",
+      "When checking user training compliance"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Packet capture provides payload-level detail needed for content reconstruction and deep protocol analysis. Device counts, backup status, and training compliance come from inventory, backup, and HR systems respectively.",
+    "tip": "Typical design: retain full capture briefly at key choke points, retain flow records far longer for historical analysis."
+  },
+  {
+    "id": "4-116",
+    "d": 4,
+    "obj": "4.9",
+    "topic": "Metadata",
+    "diff": 3,
+    "type": "single",
+    "q": "Which investigative question can email metadata answer without exposing message content?",
+    "opts": [
+      "Which accounts communicated, when, from which IP addresses, and through which servers",
+      "The exact wording of the confidential attachment",
+      "The recipient's opinion of the message",
+      "The financial impact of the incident"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Metadata reveals routing, timing, and participants, which often suffices to establish the shape of an incident while limiting content exposure. Message wording is content, and opinions and financial impact are not recorded in headers.",
+    "tip": "Metadata exists across sources: email headers, file properties, photo EXIF, and network flow records."
+  },
+  {
+    "id": "4-117",
+    "d": 4,
+    "obj": "4.9",
+    "topic": "Log correlation",
+    "diff": 3,
+    "type": "single",
+    "q": "Why is accurate time synchronization across systems critical to investigations?",
+    "opts": [
+      "Without consistent timestamps, events from different sources cannot be reliably ordered or correlated into a timeline",
+      "It reduces the storage required for logs",
+      "It encrypts log data in transit automatically",
+      "It eliminates the need for centralized logging"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Reconstructing an attack requires a coherent timeline, which depends on synchronized clocks and a consistent time zone convention (commonly UTC). Time sync does not compress, encrypt, or replace centralization.",
+    "tip": "Standardize on UTC for logging and use authenticated NTP sources — clock drift silently ruins correlation."
+  },
+  {
+    "id": "4-118",
+    "d": 4,
+    "obj": "4.9",
+    "topic": "IDS/IPS logs",
+    "diff": 2,
+    "type": "single",
+    "q": "An IPS log entry shows a signature match for an exploit attempt with an action of 'dropped'. What does this tell the analyst?",
+    "opts": [
+      "The attack attempt was blocked in transit, but the source and target should still be investigated",
+      "The target system is confirmed compromised",
+      "The signature is a false positive by definition",
+      "No further action is ever required for dropped events"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "A drop means that specific attempt was blocked, but it also confirms hostile activity aimed at your environment, which merits investigation of the source and any related traffic. It neither proves compromise nor guarantees a false positive, and dropped events can precede successful attempts through other paths.",
+    "tip": "Blocked events are still intelligence: repeated attempts often indicate targeting and may precede a successful technique."
+  },
+  {
+    "id": "4-119",
+    "d": 4,
+    "obj": "4.9",
+    "topic": "Application logs",
+    "diff": 3,
+    "type": "single",
+    "q": "A web application was abused to download other customers' invoices. Which log source will BEST show which records each session accessed?",
+    "opts": [
+      "Application logs recording authenticated user, resource identifier, and action per request",
+      "Switch port statistics",
+      "Antivirus quarantine reports",
+      "UPS battery event logs"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Application-level logging ties an authenticated identity to the specific objects accessed, which network and infrastructure logs cannot show. Switch counters, antivirus quarantine, and power events are unrelated.",
+    "tip": "Design applications to log security-relevant events: authentication, authorization failures, privilege changes, and sensitive data access."
+  },
+  {
+    "id": "4-120",
+    "d": 4,
+    "obj": "4.7",
+    "topic": "Automation use cases",
+    "diff": 2,
+    "type": "single",
+    "q": "Which task is an ideal candidate for security automation?",
+    "opts": [
+      "Provisioning and deprovisioning user accounts based on authoritative HR events",
+      "Deciding whether to accept a major business risk",
+      "Negotiating a vendor contract",
+      "Determining an organization's risk appetite"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Repetitive, rule-based, high-volume processes such as identity lifecycle automate well. Risk acceptance, contract negotiation, and appetite setting are judgment and governance decisions requiring human authority.",
+    "tip": "Automate the repeatable and deterministic; keep judgment, authority, and accountability with people."
+  },
+  {
+    "id": "4-121",
+    "d": 4,
+    "obj": "4.7",
+    "topic": "Guard rails",
+    "diff": 3,
+    "type": "single",
+    "q": "A cloud platform automatically prevents creation of storage buckets with public access and blocks deployments to unapproved regions. What are these automated policy controls called?",
+    "opts": [
+      "Guard rails enforcing secure-by-default configuration",
+      "Honeypots detecting misuse",
+      "Compensating controls replacing missing safeguards",
+      "Detective controls generating alerts only"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Guard rails are automated preventive policies that stop unsafe configurations at deployment time. Honeypots are deception assets, compensating controls substitute for unavailable primary controls, and detective controls only alert after the fact.",
+    "tip": "Guard rails scale security without gating every change through review — a core DevSecOps concept on this exam."
+  },
+  {
+    "id": "4-122",
+    "d": 4,
+    "obj": "4.7",
+    "topic": "Automation benefits",
+    "diff": 2,
+    "type": "single",
+    "q": "Which benefit of automation is described as allowing a small team to protect a much larger environment than manual effort would permit?",
+    "opts": [
+      "Workforce multiplier",
+      "Technical debt",
+      "Single point of failure",
+      "Ongoing supportability"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Acting as a workforce multiplier is an explicit benefit of automation in SY0-701, alongside efficiency, baseline enforcement, and faster reaction time. Technical debt, single points of failure, and supportability are considerations or drawbacks rather than benefits.",
+    "tip": "Benefits list: efficiency, baseline enforcement, standardized configuration, secure scaling, retention, reaction time, workforce multiplier."
+  },
+  {
+    "id": "4-123",
+    "d": 4,
+    "obj": "4.7",
+    "topic": "Automation risks",
+    "diff": 3,
+    "type": "single",
+    "q": "Which risk is MOST associated with heavy reliance on a single orchestration platform for security operations?",
+    "opts": [
+      "It becomes a single point of failure and a high-value target with broad privileges across systems",
+      "It eliminates the need for logging",
+      "It guarantees slower incident response",
+      "It prevents the use of APIs"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Orchestration platforms hold broad credentials and can act across the environment, so their failure or compromise has outsized impact. They increase logging importance, improve response speed, and depend heavily on APIs.",
+    "tip": "Protect automation platforms like domain controllers: MFA, least-privilege service credentials, code review, and change control."
+  },
+  {
+    "id": "4-124",
+    "d": 4,
+    "obj": "4.7",
+    "topic": "CI/CD security",
+    "diff": 3,
+    "type": "single",
+    "q": "Which control BEST prevents insecure code from reaching production in a CI/CD pipeline?",
+    "opts": [
+      "Automated security gates — SAST, dependency scanning, and secret detection — that fail the build on policy violations",
+      "A monthly manual code review after deployment",
+      "Allowing developers to bypass checks when deadlines are tight",
+      "Scanning only the production environment after release"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Enforced pipeline gates prevent violating code from being promoted, shifting detection left where remediation is cheapest. Post-deployment review, permitted bypasses, and production-only scanning all allow flawed code into production first.",
+    "tip": "Shift left, but keep runtime protection: pipeline gates plus production monitoring cover different failure modes."
+  },
+  {
+    "id": "4-125",
+    "d": 4,
+    "obj": "4.7",
+    "topic": "Ticket automation",
+    "diff": 2,
+    "type": "single",
+    "q": "A SOAR playbook enriches an alert with asset and user context, opens a ticket, and notifies the on-call analyst. Which benefit does this MOST directly provide?",
+    "opts": [
+      "Faster reaction time and consistent handling of every alert",
+      "Elimination of the need for detection rules",
+      "Guaranteed prevention of all incidents",
+      "Reduced requirement for asset inventory accuracy"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Automated enrichment and ticketing shorten time to action and standardize the process. Detection rules remain necessary, incidents cannot be entirely prevented, and enrichment quality actually depends on accurate asset inventory.",
+    "tip": "SOAR value comes from repeatable playbooks: enrich, decide, act, document — with human approval on high-impact steps."
+  },
+  {
+    "id": "4-126",
+    "d": 4,
+    "obj": "4.7",
+    "topic": "Automation considerations",
+    "diff": 3,
+    "type": "single",
+    "q": "A team builds dozens of custom scripts that only one engineer understands, with no documentation or tests. Which automation consideration does this illustrate?",
+    "opts": [
+      "Technical debt and ongoing supportability risk",
+      "Improved employee retention",
+      "Reduced complexity",
+      "Guaranteed cost savings"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Undocumented, untested, single-owner automation accrues technical debt and becomes unsupportable when that person leaves. It increases complexity and long-term cost rather than reducing them.",
+    "tip": "Treat automation as production code: version control, peer review, documentation, tests, and shared ownership."
+  },
+  {
+    "id": "4-127",
+    "d": 4,
+    "obj": "4.7",
+    "topic": "Resource provisioning",
+    "diff": 3,
+    "type": "single",
+    "q": "Which practice ensures new cloud workloads are deployed with required security settings every time?",
+    "opts": [
+      "Provision exclusively through approved infrastructure-as-code templates with policy validation in the pipeline",
+      "Allow engineers to click through the console and apply settings from memory",
+      "Apply security settings manually after the first vulnerability scan",
+      "Rely on the provider's defaults without review"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Templated provisioning with automated policy checks makes secure configuration the default and prevents drift at creation time. Manual console work is inconsistent, retroactive hardening leaves exposure windows, and provider defaults are not tailored baselines.",
+    "tip": "Secure by default beats secure by remediation — enforce at the point of creation."
+  },
+  {
+    "id": "4-128",
+    "d": 4,
+    "obj": "4.8",
+    "topic": "Incident classification",
+    "diff": 3,
+    "type": "single",
+    "q": "During analysis, the team determines that an alert reflects an employee legitimately using a new approved tool. What should happen next?",
+    "opts": [
+      "Close it as a false positive, document the finding, and tune the detection to reduce recurrence",
+      "Escalate it to a major incident for visibility",
+      "Preserve forensic images of all involved systems indefinitely",
+      "Notify regulators of a potential breach"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Confirmed benign activity is documented and used to improve detection accuracy. Escalation, indefinite preservation, and regulatory notification are disproportionate and, in the case of notification, potentially damaging and inaccurate.",
+    "tip": "Notification obligations attach to confirmed incidents meeting legal thresholds — never to unverified alerts."
+  },
+  {
+    "id": "4-129",
+    "d": 4,
+    "obj": "4.8",
+    "topic": "Recovery",
+    "diff": 3,
+    "type": "single",
+    "q": "Which action belongs to the recovery phase of incident response?",
+    "opts": [
+      "Restoring systems from validated clean backups and monitoring closely for signs of reinfection",
+      "Blocking the attacker's IP address at the firewall during the attack",
+      "Interviewing the analyst who first noticed the alert",
+      "Documenting improvements for the response plan"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Recovery restores normal operations with verification and heightened monitoring. Blocking attacker traffic is containment, interviewing responders supports analysis, and plan improvements belong to lessons learned.",
+    "tip": "Recovery is not complete at restoration: verify integrity, monitor intensively, and confirm the attacker's access is gone."
+  },
+  {
+    "id": "4-130",
+    "d": 4,
+    "obj": "4.8",
+    "topic": "Eradication",
+    "diff": 3,
+    "type": "single",
+    "q": "A rootkit with unknown persistence mechanisms is found on a server. What is the MOST reliable eradication approach?",
+    "opts": [
+      "Rebuild the system from trusted media and restore only validated data",
+      "Delete the identified malicious files and reboot",
+      "Run three different antivirus scanners until all report clean",
+      "Restore the most recent snapshot taken after the compromise date"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "When persistence is not fully understood — especially with rootkits — rebuilding from trusted sources is the only dependable eradication. Selective deletion and multiple scanners can miss hidden components, and a post-compromise snapshot may reintroduce the malware.",
+    "tip": "The exam consistently favors rebuild over clean when the compromise involves rootkits, kernel drivers, or unknown persistence."
+  },
+  {
+    "id": "4-131",
+    "d": 4,
+    "obj": "4.9",
+    "topic": "Vulnerability scan data",
+    "diff": 2,
+    "type": "single",
+    "q": "During an investigation, how can historical vulnerability scan data help?",
+    "opts": [
+      "It can show whether the exploited weakness was known and unpatched before the incident, supporting root cause analysis",
+      "It reveals the attacker's identity",
+      "It provides the chain of custody for evidence",
+      "It replaces the need for endpoint logs"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Scan history establishes whether the exploited flaw was previously detected and how long it remained unremediated, which is central to root cause analysis. It cannot attribute attackers, document custody, or substitute for host telemetry.",
+    "tip": "Correlate scan history with the incident timeline: 'known and unremediated' changes both the root cause and the accountability conversation."
+  },
+  {
+    "id": "4-132",
+    "d": 4,
+    "obj": "4.8",
+    "topic": "IR training",
+    "diff": 2,
+    "type": "single",
+    "q": "Which practice MOST improves the readiness of staff outside the security team during an incident?",
+    "opts": [
+      "Role-specific training and exercises covering how and when to report, escalate, and communicate",
+      "Publishing the full technical playbook to all employees",
+      "Requiring all staff to learn forensic imaging",
+      "Restricting incident information to the security team only"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Non-security staff need to know their specific responsibilities, especially reporting and escalation. Full playbook distribution creates disclosure risk, universal forensic training is unnecessary, and total information restriction leaves people unable to act appropriately.",
+    "tip": "The most valuable employee behavior in incident response is fast, blame-free reporting — train for that above all."
+  },
+  {
+    "id": "4-133",
+    "d": 4,
+    "obj": "4.9",
+    "topic": "Dashboards",
+    "diff": 2,
+    "type": "single",
+    "q": "Which data presentation BEST supports an analyst investigating a suspected account compromise?",
+    "opts": [
+      "A dashboard correlating that account's authentications, source locations, resource access, and privilege changes over time",
+      "A pie chart of total blocked emails this quarter",
+      "A list of all software licenses in use",
+      "A summary of help desk ticket volumes"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Investigation requires identity-centric correlation across authentication, access, and privilege events. Aggregate email statistics, license inventories, and ticket volumes do not support account-level analysis.",
+    "tip": "Build investigation views around pivots: by identity, by host, by IP address, and by time window."
+  },
+  {
+    "id": "4-134",
+    "d": 4,
+    "obj": "4.7",
+    "topic": "API integrations",
+    "diff": 3,
+    "type": "single",
+    "q": "Which practice BEST secures API integrations used by security automation?",
+    "opts": [
+      "Use scoped, least-privilege API credentials stored in a secret manager with rotation and audit logging",
+      "Use a single administrative API key shared across all integrations",
+      "Embed API keys directly in scripts stored in the repository",
+      "Disable logging on API calls to reduce noise"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Narrowly scoped, centrally managed, rotated credentials with logging limit the impact of exposure and preserve accountability. Shared administrative keys, embedded secrets, and disabled logging are all high-risk practices.",
+    "tip": "Secrets in code are among the most common breach entry points — use a secret manager and scan repositories continuously."
+  },
+  {
+    "id": "4-135",
+    "d": 4,
+    "obj": "4.8",
+    "topic": "Communication during incidents",
+    "diff": 3,
+    "type": "single",
+    "q": "During a confirmed intrusion where the attacker may have access to corporate email, which communication approach should the response team use?",
+    "opts": [
+      "A pre-established out-of-band channel not dependent on potentially compromised systems",
+      "Corporate email with a subject line marked confidential",
+      "The internal chat platform used by all employees",
+      "A public social media group for faster coordination"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "If corporate systems may be compromised, response coordination must occur out of band so the attacker cannot monitor the investigation. Email and internal chat may be observed, and public channels disclose sensitive information broadly.",
+    "tip": "Prepare out-of-band communications in advance — establishing them during an incident is too late."
+  },
+  {
+    "id": "4-136",
+    "d": 4,
+    "obj": "4.9",
+    "topic": "OS security logs",
+    "diff": 3,
+    "type": "single",
+    "q": "Which Windows event category would BEST reveal that an attacker added an account to the Domain Admins group?",
+    "opts": [
+      "Security log events for security group membership changes on a domain controller",
+      "System log entries for driver installation",
+      "Application log entries for a database service",
+      "Setup log entries from OS installation"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Directory service and security logs on domain controllers record privileged group membership changes. Driver, application, and setup logs do not track group membership.",
+    "tip": "High-value Windows events: 4624/4625 logons, 4672 special privileges, 4720 account creation, 4728/4732 group additions, 1102 log cleared."
+  },
+  {
+    "id": "4-137",
+    "d": 4,
+    "obj": "4.7",
+    "topic": "Automated escalation",
+    "diff": 3,
+    "type": "single",
+    "q": "An automation playbook disables a user account when impossible travel is detected. Which safeguard should be included?",
+    "opts": [
+      "Exception handling for executive and service accounts, with human approval and rapid rollback",
+      "Automatic deletion of the account after disabling it",
+      "Silent execution with no logging to avoid tipping off the attacker",
+      "Extension of the action to disable all accounts in the same department"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "High-impact automated actions need exclusions, approval paths, and reversibility to avoid self-inflicted outages, especially for critical identities. Deletion is destructive and irreversible, silent unlogged action prevents accountability, and mass disabling causes broad disruption.",
+    "tip": "Automate detection and enrichment aggressively; automate destructive response carefully and reversibly."
+  },
+  {
+    "id": "4-138",
+    "d": 4,
+    "obj": "4.8",
+    "topic": "Digital forensics reporting",
+    "diff": 3,
+    "type": "single",
+    "q": "What should a forensic report contain to be defensible?",
+    "opts": [
+      "Methodology, tools and versions used, evidence identifiers and hashes, findings, and clearly separated conclusions",
+      "Only the analyst's conclusions, to keep it concise",
+      "Speculation about the attacker's identity and motives",
+      "Recommendations for disciplinary action against employees"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Defensible reports document reproducible methodology and evidence integrity, keeping factual findings distinct from interpretation. Conclusions without method are unverifiable, attribution speculation undermines credibility, and personnel actions are an HR and legal matter.",
+    "tip": "Write forensic reports assuming an opposing expert will attempt to reproduce and challenge every step."
+  },
+  {
+    "id": "4-139",
+    "d": 4,
+    "obj": "4.9",
+    "topic": "Automated reports",
+    "diff": 2,
+    "type": "single",
+    "q": "Which is the PRIMARY investigative value of automated recurring reports?",
+    "opts": [
+      "They establish trends and baselines that make deviations visible and support historical comparison",
+      "They replace the need for real-time alerting",
+      "They guarantee regulatory compliance",
+      "They eliminate the need for analyst judgment"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Regular reporting builds the baseline against which anomalies stand out and supports retrospective analysis. Reports do not replace real-time alerting, produce compliance by themselves, or remove the need for expert interpretation.",
+    "tip": "Anomaly detection requires knowing normal — that is the quiet value of routine reporting."
+  },
+  {
+    "id": "4-140",
+    "d": 4,
+    "obj": "4.8",
+    "topic": "Incident severity",
+    "diff": 3,
+    "type": "single",
+    "q": "Which factor should MOST influence the initial severity assignment of a security incident?",
+    "opts": [
+      "The criticality of affected systems and the sensitivity of data potentially exposed",
+      "The number of alerts generated by the SIEM",
+      "The time of day the alert triggered",
+      "Which analyst was on shift"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Severity should reflect business impact — system criticality and data sensitivity — which drives escalation and resourcing. Alert volume, timing, and staffing are operational details rather than impact measures.",
+    "tip": "Define severity levels in advance with concrete criteria, so classification does not depend on who is on shift."
+  },
+  {
+    "id": "4-141",
+    "d": 4,
+    "obj": "4.9",
+    "topic": "Network logs",
+    "diff": 3,
+    "type": "single",
+    "q": "An analyst suspects data exfiltration over DNS. Which data source is MOST useful?",
+    "opts": [
+      "DNS query logs showing unusually long or high-volume queries to a single external domain",
+      "Printer spooler logs",
+      "Backup job completion reports",
+      "Badge reader entry logs"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "DNS tunneling shows up as abnormally long subdomain labels, high query volume, and repeated queries to one authoritative domain, all visible in DNS logs. Printer, backup, and physical access logs contain no relevant data.",
+    "tip": "DNS exfiltration indicators: excessive TXT or NULL record queries, long random subdomains, and one domain dominating query volume."
+  },
+  {
+    "id": "4-142",
+    "d": 4,
+    "obj": "4.7",
+    "topic": "Automation and access",
+    "diff": 2,
+    "type": "single",
+    "q": "Which automation use case reduces the window during which a departing employee retains access?",
+    "opts": [
+      "Event-driven disabling of accounts and revocation of tokens immediately upon HR termination entry",
+      "A weekly manual review of the termination list",
+      "A monthly audit of active directory accounts",
+      "An annual entitlement recertification"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Event-driven deprovisioning acts within minutes of the authoritative HR event. Weekly, monthly, and annual reviews leave access active for extended periods.",
+    "tip": "Do not forget session and token revocation — disabling an account does not always terminate existing sessions."
+  },
+  {
+    "id": "4-143",
+    "d": 4,
+    "obj": "4.8",
+    "topic": "Forensic preservation",
+    "diff": 3,
+    "type": "single",
+    "q": "A compromised virtual machine must be preserved for investigation while the business needs the service restored quickly. What is the BEST approach?",
+    "opts": [
+      "Snapshot and export the VM's disk and memory for forensic analysis, then rebuild a clean instance to restore service",
+      "Reboot the VM and continue using it while analysts watch",
+      "Delete the VM and restore from the most recent backup without preservation",
+      "Leave the VM running in production during the entire investigation"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Capturing disk and memory preserves evidence while a clean rebuild restores service promptly. Rebooting destroys volatile evidence, deletion eliminates the evidence entirely, and leaving a compromised system in production prolongs exposure.",
+    "tip": "Virtualization is a forensic advantage: memory and disk state can be captured quickly without physical acquisition."
+  },
+  {
+    "id": "4-144",
+    "d": 4,
+    "obj": "4.9",
+    "topic": "Data source selection",
+    "diff": 3,
+    "type": "multi",
+    "q": "Investigating a suspected compromise of a cloud administrator account, which THREE data sources are MOST relevant?",
+    "opts": [
+      "Cloud provider control-plane audit logs (API calls, console sign-ins)",
+      "Identity provider authentication and MFA event logs",
+      "Cloud resource configuration change history",
+      "Office printer usage statistics"
+    ],
+    "a": [
+      0,
+      1,
+      2
+    ],
+    "exp": "Control-plane audit logs reveal what the account did, identity provider logs show how and from where authentication occurred, and configuration history exposes changes made. Printer statistics are irrelevant.",
+    "tip": "Cloud investigations start with the control plane: who authenticated, from where, and which API calls followed."
+  },
+  {
+    "id": "4-145",
+    "d": 4,
+    "obj": "4.8",
+    "topic": "Incident response roles",
+    "diff": 3,
+    "type": "single",
+    "q": "During a major incident, who should have the authority to declare the incident and authorize disruptive containment actions such as taking a revenue-generating system offline?",
+    "opts": [
+      "A designated incident commander with pre-delegated authority defined in the response plan",
+      "Whichever analyst first noticed the activity",
+      "The vendor supplying the affected software",
+      "The employee whose account was compromised"
+    ],
+    "a": [
+      0
+    ],
+    "exp": "Pre-defined command authority prevents delay and confusion when disruptive decisions are required. Individual analysts lack the mandate, vendors have no organizational authority, and affected users should not direct the response.",
+    "tip": "Decision authority is the most common failure point in real incidents — settle it in the plan, not during the crisis."
+  }
+]
