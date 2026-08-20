@@ -75,8 +75,41 @@ if (errors.length) {
   process.exit(1);
 }
 
+// ---- 80/20 core: tag a capped, curated slice of the bank as high-yield ----
+const clusters = JSON.parse(readFileSync(join(root, "data", "high-yield.json"), "utf8"));
+const hyErrors = [];
+const byTopic = new Map();
+for (const q of questions) {
+  const key = q.d + "|" + q.topic;
+  if (!byTopic.has(key)) byTopic.set(key, []);
+  byTopic.get(key).push(q);
+}
+for (const c of clusters) {
+  const pool = [];
+  for (const t of c.topics) {
+    const hit = byTopic.get(c.d + "|" + t);
+    if (!hit) hyErrors.push(`${c.id}: topic "${t}" matches no question in domain ${c.d}`);
+    else pool.push(...hit);
+  }
+  // hardest first, then by id, so the core is deterministic and front-loads the
+  // questions most likely to expose a gap
+  pool.sort((a, b) => b.diff - a.diff || a.id.localeCompare(b.id));
+  if (pool.length < c.cap) hyErrors.push(`${c.id}: cap ${c.cap} exceeds available ${pool.length}`);
+  for (const q of pool.slice(0, c.cap)) q.hy = c.id;
+}
+if (hyErrors.length) {
+  console.error(`\n✗ ${hyErrors.length} problem(s) in the high-yield map:\n`);
+  for (const e of hyErrors) console.error("  - " + e);
+  process.exit(1);
+}
+
 const byDomain = {};
-for (const q of questions) byDomain[q.d] = (byDomain[q.d] || 0) + 1;
+const hyDomain = {};
+for (const q of questions) {
+  byDomain[q.d] = (byDomain[q.d] || 0) + 1;
+  if (q.hy) hyDomain[q.d] = (hyDomain[q.d] || 0) + 1;
+}
+const hyTotal = questions.filter((q) => q.hy).length;
 
 const html = readFileSync(template, "utf8");
 const marker = "/*__BANK__*/[]";
@@ -90,7 +123,14 @@ const inlined = JSON.stringify(questions)
   .replace(/</g, "\\u003C")
   .replace(/\u2028/g, "\\u2028")
   .replace(/\u2029/g, "\\u2029");
-const out = html.replace(marker, inlined);
+const hyMarker = "/*__HY__*/[]";
+if (!html.includes(hyMarker)) {
+  console.error(`✗ template is missing the ${hyMarker} injection marker`);
+  process.exit(1);
+}
+const out = html
+  .replace(marker, inlined)
+  .replace(hyMarker, JSON.stringify(clusters).replace(/</g, "\\u003C"));
 mkdirSync(outDir, { recursive: true });
 writeFileSync(join(outDir, "index.html"), out);
 
@@ -99,6 +139,8 @@ console.log(`✓ ${questions.length} questions validated from ${files.length} fi
 for (const d of Object.keys(DOMAINS)) {
   const n = byDomain[d] || 0;
   const share = ((n / questions.length) * 100).toFixed(1);
-  console.log(`   D${d} ${DOMAINS[d].name.padEnd(42)} ${String(n).padStart(3)}  ${share}% (exam ${DOMAINS[d].weight}%)`);
+  const hy = hyDomain[d] || 0;
+  console.log(`   D${d} ${DOMAINS[d].name.padEnd(42)} ${String(n).padStart(3)}  ${share}% (exam ${DOMAINS[d].weight}%)  core ${String(hy).padStart(2)}`);
 }
+console.log(`✓ 80/20 core: ${hyTotal} questions (${((hyTotal / questions.length) * 100).toFixed(1)}% of bank) across ${clusters.length} clusters`);
 console.log(`✓ wrote dist/index.html (${kb} KB)`);

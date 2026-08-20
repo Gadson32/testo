@@ -1,0 +1,156 @@
+[
+  {
+    "id": "c01", "d": 1, "name": "Control types & categories", "cap": 4,
+    "topics": ["Control types", "Control categories", "Compensating control", "Control selection"],
+    "why": "Almost every exam asks you to classify a control. Learn the six types (preventive, deterrent, detective, corrective, compensating, directive) and four categories (managerial, technical, operational, physical) and you answer these in seconds."
+  },
+  {
+    "id": "c02", "d": 1, "name": "Zero Trust planes", "cap": 2,
+    "topics": ["Zero Trust control plane", "Zero Trust data plane", "Adaptive identity", "Zero Trust"],
+    "why": "The PDP/PEP split is pure memorization that CompTIA tests directly. Control plane decides, data plane enforces."
+  },
+  {
+    "id": "c03", "d": 1, "name": "Change management", "cap": 3,
+    "topics": ["Change management", "Allow and deny lists"],
+    "why": "An entire objective (1.3) rides on a short list of artifacts. The backout plan is the single most-asked item in the domain."
+  },
+  {
+    "id": "c04", "d": 1, "name": "Crypto decision points", "cap": 3,
+    "topics": ["Symmetric vs asymmetric", "Salting", "Key stretching", "Digital signature", "Hashing vs encryption", "Levels of encryption"],
+    "why": "You rarely need the math — you need to pick the right primitive. Hash for integrity, encrypt for confidentiality, sign with the private key, salt plus stretch for passwords."
+  },
+  {
+    "id": "c05", "d": 1, "name": "PKI & certificates", "cap": 2,
+    "topics": ["Certificate revocation", "CSR", "Wildcard certificate", "Certificate authority", "Self-signed certificates", "Root of trust"],
+    "why": "Certificate questions repeat with small variations: CSR carries the public key, CRL is a list, OCSP is a query, wildcards cover one label deep."
+  },
+
+  {
+    "id": "c06", "d": 2, "name": "Social engineering families", "cap": 5,
+    "topics": ["Phishing", "Phishing variants", "Vishing", "Smishing", "Pretexting", "Business email compromise", "Watering hole", "Typosquatting", "Brand impersonation"],
+    "why": "The highest-frequency identification questions on the exam. The delivery channel names the attack — email, SMS, voice, look-alike domain, compromised third-party site."
+  },
+  {
+    "id": "c07", "d": 2, "name": "Threat actors & motivations", "cap": 3,
+    "topics": ["Threat actors", "Threat actor attributes", "Threat actor motivation", "Motivations", "Insider threat"],
+    "why": "Match resources plus sophistication plus motive and the actor falls out. Nation-state equals funding and stealth; organized crime equals money; hacktivist equals publicity; insider equals existing access."
+  },
+  {
+    "id": "c08", "d": 2, "name": "Malware identification", "cap": 4,
+    "topics": ["Ransomware indicators", "Worm", "Trojan", "Virus", "Rootkit", "Logic bomb", "Keylogger", "Spyware vs bloatware"],
+    "why": "Classify by how it spreads and what it does. Self-propagating equals worm, disguised equals trojan, condition-triggered equals logic bomb, hidden from the OS equals rootkit."
+  },
+  {
+    "id": "c09", "d": 2, "name": "Application attacks", "cap": 4,
+    "topics": ["SQL injection", "Cross-site scripting", "Directory traversal", "Buffer overflow", "Race condition", "Forgery", "Privilege escalation", "Injection attacks"],
+    "why": "Recognize the payload signature and name the fix. Parameterized queries, output encoding, path canonicalization, bounds checking, anti-CSRF tokens."
+  },
+  {
+    "id": "c10", "d": 2, "name": "Network attacks & indicators", "cap": 5,
+    "topics": ["On-path attack", "DDoS", "DNS attacks", "Wireless", "Impossible travel", "Missing logs", "Concurrent sessions", "Out-of-cycle logging", "Credential replay"],
+    "why": "Objective 2.4's indicator list is finite and gets asked verbatim. Learn what each indicator implies and which attack produces it."
+  },
+  {
+    "id": "c11", "d": 2, "name": "Password attacks", "cap": 2,
+    "topics": ["Password spraying", "Brute force", "Password attacks"],
+    "why": "Spraying versus brute force versus rainbow tables is a guaranteed distinction question, and the mitigation is always MFA plus rate limiting."
+  },
+  {
+    "id": "c12", "d": 2, "name": "Core mitigations", "cap": 3,
+    "topics": ["Segmentation", "Isolation", "Least privilege", "Patching", "Hardening", "EDR", "Application allow list"],
+    "why": "Objective 2.5 is a short list that answers dozens of scenario questions. Lateral movement equals segmentation; too many admins equals least privilege; unknown binaries equals allow list."
+  },
+
+  {
+    "id": "c13", "d": 3, "name": "Zones, segmentation & appliances", "cap": 6,
+    "topics": ["Network segmentation", "Security zones", "Zones and placement", "Jump server", "Proxy server", "Load balancer", "WAF", "NGFW", "IDS vs IPS", "Firewall rules", "Device placement"],
+    "why": "The densest scoring area in Domain 3. Know which box does what, where it sits, and that IDS detects while IPS blocks inline."
+  },
+  {
+    "id": "c14", "d": 3, "name": "Secure access & protocols", "cap": 4,
+    "topics": ["VPN types", "IPsec", "802.1X", "EAP methods", "Secure protocols", "SASE", "Remote access"],
+    "why": "Protocol swap questions are free points: Telnet to SSH, FTP to SFTP, LDAP to LDAPS. Add the 802.1X trio and ESP versus AH."
+  },
+  {
+    "id": "c15", "d": 3, "name": "Cloud responsibility & models", "cap": 3,
+    "topics": ["Shared responsibility", "Containerization", "Serverless", "Infrastructure as code", "Hybrid cloud"],
+    "why": "Shared responsibility appears in every cloud scenario. IaaS means you own the guest OS; SaaS means you still own identity and data."
+  },
+  {
+    "id": "c16", "d": 3, "name": "Data states & classification", "cap": 4,
+    "topics": ["Data states", "Data classification", "Data types", "Regulated data", "Data sovereignty", "Data at rest", "Data in transit", "Data loss prevention"],
+    "why": "Three states, one control set each: at rest equals disk or file encryption, in transit equals TLS or IPsec, in use equals enclaves. Classification then drives every handling answer."
+  },
+  {
+    "id": "c17", "d": 3, "name": "Backup & recovery objectives", "cap": 4,
+    "topics": ["Backup types", "Backups", "RTO and RPO", "Recovery sites", "Snapshots", "Replication vs backup", "High availability"],
+    "why": "RPO versus RTO and full versus differential versus incremental are near-certain questions, and hot/warm/cold sites map straight to cost and speed."
+  },
+
+  {
+    "id": "c18", "d": 4, "name": "Incident response process", "cap": 5,
+    "topics": ["Incident response process", "Containment", "Eradication", "Recovery", "Lessons learned", "Root cause analysis"],
+    "why": "The seven phases in order, and the ability to tell containment from eradication from recovery, answers a large block of Domain 4 by itself."
+  },
+  {
+    "id": "c19", "d": 4, "name": "Forensics handling", "cap": 4,
+    "topics": ["Chain of custody", "Order of volatility", "Acquisition", "Legal hold", "E-discovery"],
+    "why": "Order of volatility and chain of custody are memorization with guaranteed payoff. Memory before disk, document every handoff, hash before and after."
+  },
+  {
+    "id": "c20", "d": 4, "name": "Log sources & correlation", "cap": 4,
+    "topics": ["Log sources", "Endpoint logs", "OS security logs", "Network logs", "Packet capture", "NetFlow", "Log correlation", "Log aggregation"],
+    "why": "Objective 4.9 is entirely 'which data source answers this question'. Flow for who talked to whom, endpoint for what ran, packet capture only when you need content."
+  },
+  {
+    "id": "c21", "d": 4, "name": "Identity, access & MFA", "cap": 7,
+    "topics": ["Access control models", "RBAC", "MFA factors", "MFA strength", "SSO protocols", "OAuth vs OIDC", "Federation", "PAM", "Password policy", "Provisioning", "Attestation", "Least privilege"],
+    "why": "The single largest scoring cluster on the exam. Access control models, the MFA factor categories, SAML versus OAuth versus OIDC, and just-in-time privileged access."
+  },
+  {
+    "id": "c22", "d": 4, "name": "Vulnerability management", "cap": 5,
+    "topics": ["CVE and CVSS", "False positives", "Scan types", "Prioritization", "Remediation validation", "Exceptions and exemptions", "Penetration testing"],
+    "why": "CVE names it, CVSS scores it, context prioritizes it, a rescan proves it. False positive versus false negative shows up almost every time."
+  },
+  {
+    "id": "c23", "d": 4, "name": "Detection tooling", "cap": 5,
+    "topics": ["SIEM", "EDR vs XDR", "NAC", "UBA", "DLP implementation", "File integrity monitoring", "Email security", "DNS filtering", "Alert tuning"],
+    "why": "Tool-to-job matching is fast, reliable scoring. SIEM correlates, EDR responds on the host, DLP stops data leaving, NAC gates the port, SPF/DKIM/DMARC secure mail."
+  },
+  {
+    "id": "c24", "d": 4, "name": "Hardening & baselines", "cap": 3,
+    "topics": ["Secure baselines", "Server hardening", "Workstation hardening", "Cloud hardening", "WPA3", "Wireless enterprise auth", "MDM"],
+    "why": "The hardening checklist repeats across every platform: remove software, disable ports, change defaults, add EDR and a host firewall, enforce the baseline."
+  },
+
+  {
+    "id": "c25", "d": 5, "name": "Document hierarchy", "cap": 4,
+    "topics": ["Policy types", "Policy hierarchy", "Standards", "Procedures", "Playbooks vs policy"],
+    "why": "Policy, standard, procedure, guideline — distinguished by their verbs. 'Must' is mandatory, 'should' is advisory, numbered steps are a procedure."
+  },
+  {
+    "id": "c26", "d": 5, "name": "Risk math", "cap": 4,
+    "topics": ["Quantitative risk", "Quantitative calculation", "Quantitative analysis", "Qualitative risk"],
+    "why": "AV times EF equals SLE; SLE times ARO equals ALE. These are the only calculations on the exam and they are free points once drilled."
+  },
+  {
+    "id": "c27", "d": 5, "name": "Risk process & register", "cap": 5,
+    "topics": ["Risk register", "Risk strategies", "Risk appetite", "Risk tolerance vs appetite", "Risk owner", "Risk process order", "Residual risk", "BIA", "BIA metrics"],
+    "why": "Four strategies (mitigate, transfer, avoid, accept), a register with named owners, and the BIA metrics RTO, RPO, MTTR, MTBF."
+  },
+  {
+    "id": "c28", "d": 5, "name": "Agreements & third-party risk", "cap": 5,
+    "topics": ["Agreement types", "NDA", "Right to audit", "Vendor due diligence", "Supply chain analysis", "Rules of engagement", "Third-party risk overall"],
+    "why": "The acronym set is pure recall: SLA, MOU, MOA, MSA, SOW, NDA, BPA. Add right-to-audit and SOC 2 Type II and the objective is covered."
+  },
+  {
+    "id": "c29", "d": 5, "name": "Compliance & assessments", "cap": 4,
+    "topics": ["Consequences of non-compliance", "Due care vs due diligence", "Audit types", "Attestation", "Penetration test types", "Reconnaissance", "Known environment testing"],
+    "why": "Due diligence discovers, due care acts. Known versus unknown environment testing, and passive versus active reconnaissance, are reliable single-fact questions."
+  },
+  {
+    "id": "c30", "d": 5, "name": "Awareness essentials", "cap": 2,
+    "topics": ["Phishing campaigns", "Reporting suspicious messages", "Anomalous behavior"],
+    "why": "Objective 5.6 rewards one instinct: report through the sanctioned channel, never interact, and verify out of band."
+  }
+]
