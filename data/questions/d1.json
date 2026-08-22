@@ -248,10 +248,10 @@
     "type": "single",
     "q": "A pharmaceutical company must prevent a vehicle from being driven into its lobby entrance while keeping the walkway open to pedestrians. Which control is MOST appropriate?",
     "opts": [
-      "Bollards",
-      "Chain-link fencing with barbed wire",
+      "Bollards at the walkway edge",
+      "Chain-link fence with barbed wire",
       "An access control vestibule",
-      "Pressure sensors in the sidewalk"
+      "Pressure sensors in the walk"
     ],
     "a": [
       0
@@ -368,10 +368,10 @@
     "type": "single",
     "q": "An administrator wants to patch a database server that a legacy billing application depends on. Which technical implication of the change should be evaluated FIRST?",
     "opts": [
-      "Dependencies of the legacy application on the current database version",
-      "The color of the change ticket priority label",
-      "Whether the change requires an SOP rewrite",
-      "The number of stakeholders on the distribution list"
+      "Dependencies between the legacy application and the database version",
+      "Whether the standard operating procedure will need rewriting afterward",
+      "How many stakeholders appear on the change notification distribution list",
+      "Which maintenance window the change advisory board prefers this quarter"
     ],
     "a": [
       0
@@ -448,10 +448,10 @@
     "type": "single",
     "q": "Which statement about symmetric and asymmetric cryptography is accurate?",
     "opts": [
-      "Symmetric encryption is faster and better suited to bulk data; asymmetric is used for key exchange and signatures",
-      "Asymmetric encryption is faster because keys are shorter",
-      "Symmetric encryption provides non-repudiation",
-      "Asymmetric encryption uses one shared secret between both parties"
+      "Symmetric is faster for bulk data; asymmetric handles key exchange and signing",
+      "Asymmetric is faster for bulk data because its keys are mathematically shorter",
+      "Symmetric encryption provides non-repudiation because each party holds a key",
+      "Asymmetric encryption relies on one shared secret distributed to both parties"
     ],
     "a": [
       0
@@ -468,10 +468,10 @@
     "type": "single",
     "q": "Two servers must agree on a shared session key over an untrusted network without ever transmitting the key itself, and past sessions must remain unreadable if a long-term private key is later compromised. Which combination BEST meets this requirement?",
     "opts": [
-      "Ephemeral Diffie-Hellman (DHE/ECDHE) providing perfect forward secrecy",
-      "RSA key transport with a static server key",
-      "AES-256 in ECB mode with a pre-shared key",
-      "SHA-384 hashing of a shared password"
+      "Ephemeral Diffie-Hellman (ECDHE) key agreement",
+      "RSA key transport using the server's static long-term key pair",
+      "AES-256 in ECB mode with a rotated pre-shared key",
+      "SHA-384 hashing of a mutually known shared password"
     ],
     "a": [
       0
@@ -488,8 +488,8 @@
     "type": "single",
     "q": "A hospital must ensure that if a laptop is stolen, no data on the internal drive — including the operating system, page file, and temporary files — can be read. Which solution is MOST appropriate?",
     "opts": [
-      "Full-disk encryption",
-      "File-level encryption of the documents folder",
+      "Full-disk encryption of the drive",
+      "File-level encryption of documents",
       "Database transparent data encryption",
       "Transport encryption with TLS 1.3"
     ],
@@ -508,10 +508,10 @@
     "type": "single",
     "q": "An application must ensure that database administrators can perform maintenance and run backups but cannot read customers' Social Security numbers stored in one column. Which control BEST achieves this?",
     "opts": [
-      "Application-layer encryption of that column with keys held outside the database",
-      "Full-disk encryption on the database server",
-      "Transparent data encryption enabled at the instance level",
-      "Requiring TLS for all client connections"
+      "Application-layer encryption with keys held outside the database",
+      "Full-disk encryption on the database server's storage volumes",
+      "Transparent data encryption enabled at the database instance level",
+      "Requiring TLS 1.3 for all client connections to the database"
     ],
     "a": [
       0
@@ -708,10 +708,10 @@
     "type": "single",
     "q": "Which property of a blockchain makes retroactive alteration of a recorded transaction detectable?",
     "opts": [
-      "Each block contains the cryptographic hash of the previous block",
+      "Each block contains the previous block's hash",
       "Each block is encrypted with the miner's private key",
       "Blocks are stored only on trusted central servers",
-      "Transactions are salted before broadcast"
+      "Transactions are salted before being broadcast to peers"
     ],
     "a": [
       0
@@ -748,10 +748,10 @@
     "type": "single",
     "q": "An administrator needs a publicly trusted certificate for shop.example.com. Which item must be generated on the server and submitted to the certificate authority?",
     "opts": [
-      "A certificate signing request containing the public key and subject information",
-      "The server's private key",
-      "A copy of the CA's root certificate",
-      "A certificate revocation list entry"
+      "A certificate signing request (CSR)",
+      "The server's exported private key file",
+      "A copy of the certificate authority's root certificate",
+      "A certificate revocation list entry for the old certificate"
     ],
     "a": [
       0
@@ -808,10 +808,10 @@
     "type": "single",
     "q": "An internal monitoring tool uses a self-signed certificate, and staff have been trained to click through the browser warning. What is the PRIMARY security risk of this practice?",
     "opts": [
-      "Users become conditioned to ignore certificate warnings, so a real man-in-the-middle attack goes unnoticed",
-      "Self-signed certificates cannot encrypt traffic",
-      "Self-signed certificates expire immediately",
-      "Self-signed certificates disable TLS 1.3"
+      "Users learn to click through certificate warnings",
+      "Self-signed certificates cannot encrypt session traffic",
+      "Self-signed certificates expire within twenty-four hours",
+      "Self-signed certificates disable TLS 1.3 negotiation"
     ],
     "a": [
       0
@@ -828,10 +828,10 @@
     "type": "single",
     "q": "In a hierarchical PKI, why is the root CA typically kept offline while intermediate CAs issue end-entity certificates?",
     "opts": [
-      "Compromise of an intermediate can be contained by revoking it, while a compromised root invalidates the entire trust chain",
-      "Offline roots issue certificates faster",
-      "Intermediate CAs do not require private keys",
-      "Root CAs cannot sign certificates"
+      "A compromised intermediate can be revoked and reissued",
+      "Offline root authorities issue end-entity certificates faster",
+      "Intermediate authorities do not require their own private keys",
+      "Root authorities are technically unable to sign certificates"
     ],
     "a": [
       0
@@ -908,10 +908,10 @@
     "type": "single",
     "q": "Which control provides the BEST evidence for after-the-fact investigation of who entered a restricted lab and when?",
     "opts": [
-      "Badge reader logs correlated with video surveillance",
-      "A locked door with a mechanical key",
-      "A visitor sign-in clipboard at reception",
-      "A deterrent sign on the lab door"
+      "Badge reader logs correlated with video",
+      "A locked door secured with a mechanical key",
+      "A visitor sign-in clipboard kept at reception",
+      "A deterrent warning sign posted on the lab door"
     ],
     "a": [
       0
@@ -969,10 +969,10 @@
     "type": "single",
     "q": "A legacy internal application transmits credentials over HTTP. Rewriting it is not possible this quarter. Which measure protects the credentials in transit with the least application change?",
     "opts": [
-      "Place the application behind a TLS-terminating reverse proxy and restrict direct HTTP access",
+      "Put the app behind a TLS-terminating reverse proxy",
       "Enable full-disk encryption on the application server",
-      "Hash the credentials in the database with bcrypt",
-      "Add a deny list of known malicious IP addresses"
+      "Hash the stored credentials in the database with bcrypt",
+      "Add a deny list of known malicious source IP addresses"
     ],
     "a": [
       0
@@ -1009,10 +1009,10 @@
     "type": "single",
     "q": "A browser reports NET::ERR_CERT_COMMON_NAME_INVALID when a user visits https://www.example.com, though the certificate is valid and issued by a trusted CA. What is the MOST likely cause?",
     "opts": [
-      "The certificate's subject alternative names do not include www.example.com",
-      "The certificate uses ECDSA instead of RSA",
-      "The certificate's key is 4096 bits",
-      "OCSP stapling is disabled on the server"
+      "The certificate's SAN list omits www.example.com",
+      "The certificate was issued using ECDSA rather than RSA",
+      "The certificate's public key is 4096 bits long",
+      "OCSP stapling is disabled on the web server"
     ],
     "a": [
       0
@@ -1130,10 +1130,10 @@
     "type": "single",
     "q": "A DevOps team must ensure that every modification to infrastructure-as-code templates is attributable, reviewable, and revertible. Which practice addresses this requirement?",
     "opts": [
-      "Version control with peer-reviewed pull requests",
-      "A weekly maintenance window",
-      "An application allow list",
-      "A quarterly business impact analysis"
+      "Version control with peer-reviewed changes",
+      "A weekly scheduled maintenance window",
+      "An application allow list on each host",
+      "A quarterly business impact analysis review"
     ],
     "a": [
       0
@@ -1150,10 +1150,10 @@
     "type": "single",
     "q": "Which characteristic distinguishes an open public ledger from a traditional centralized transaction database?",
     "opts": [
-      "Records are distributed to many independent participants who can each verify the full history",
-      "Records are stored in a single authoritative location for efficiency",
-      "Records can be deleted by the administrator without trace",
-      "Records are protected only by physical security"
+      "Records are distributed to many independent verifiers",
+      "Records are stored in one authoritative location for efficiency",
+      "Records can be deleted by an administrator without trace",
+      "Records are protected only by data center physical security"
     ],
     "a": [
       0
@@ -1290,10 +1290,10 @@
     "type": "single",
     "q": "An organization deploys an internal CA and needs managed Windows endpoints to trust certificates it issues without warnings. What must be distributed?",
     "opts": [
-      "The CA's root certificate to the Trusted Root Certification Authorities store via group policy",
-      "The CA's private key to each endpoint",
-      "A copy of each server's CSR to each endpoint",
-      "The CRL file to each user's desktop"
+      "The CA's root certificate to each trust store",
+      "The CA's private key to each managed endpoint",
+      "A copy of each server's signing request to every endpoint",
+      "The published CRL file to each user's desktop"
     ],
     "a": [
       0
@@ -1310,10 +1310,10 @@
     "type": "single",
     "q": "A change to a load balancer configuration will require restarting a dependent application service. Which change management consideration does this restart requirement fall under?",
     "opts": [
-      "Application restart as a technical implication of the change",
+      "Application restart requirements",
       "Ownership of the change record",
-      "Legacy application replacement",
-      "Stakeholder communication plan"
+      "Legacy application replacement planning",
+      "The stakeholder communication plan"
     ],
     "a": [
       0
@@ -1350,10 +1350,10 @@
     "type": "single",
     "q": "A development team needs realistic data in a test environment but must guarantee that no production customer can be re-identified. Which approach BEST satisfies both requirements?",
     "opts": [
-      "Generate masked or synthetic data that preserves format but not real values",
-      "Copy the production database and rely on developer NDAs",
-      "Encrypt the production copy and give developers the key",
-      "Restrict the test environment to internal IP addresses only"
+      "Generate masked or synthetic test data",
+      "Copy the production database and rely on NDAs",
+      "Encrypt the production copy and give devs the key",
+      "Restrict the test environment to internal addresses"
     ],
     "a": [
       0
@@ -1370,9 +1370,9 @@
     "type": "single",
     "q": "A risk assessment shows that stolen credentials are the most likely path to a breach. Which control provides the greatest PREVENTIVE value against that specific risk?",
     "opts": [
-      "Phishing-resistant multifactor authentication",
+      "Phishing-resistant MFA on logins",
       "Quarterly awareness training",
-      "A SIEM alert on impossible travel",
+      "A SIEM alert for impossible travel",
       "Annual password expiration"
     ],
     "a": [
@@ -1390,10 +1390,10 @@
     "type": "single",
     "q": "Which statement BEST captures the core principle of Zero Trust?",
     "opts": [
-      "Never trust implicitly; verify every request based on identity, device posture, and context regardless of network location",
-      "Trust all traffic that originates inside the corporate perimeter",
-      "Replace all firewalls with host-based agents",
-      "Authenticate users once per day and permit unrestricted access afterward"
+      "Verify every request; never trust by network location",
+      "Trust all traffic originating inside the corporate perimeter",
+      "Replace all network firewalls with host-based agents",
+      "Authenticate once daily, then permit unrestricted access"
     ],
     "a": [
       0

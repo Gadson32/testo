@@ -70,6 +70,56 @@ The build tags matching questions with `hy` and fails if a listed topic matches 
 Keyboard: `1`–`6` select an answer, `Enter` submit/next, `F` flag. Outside a quiz, `1`–`8`
 switch pages.
 
+## Red-team findings
+
+The bank and the app were attacked deliberately. What that found, and what was done:
+
+**Answer-length bias (severe).** 72.3% of questions had the correct answer as the longest
+option, against a ~25% random baseline. A bot that never reads the question and always picks
+the longest option scored **74.6%** — just under the app's own 83% pass line, meaning every
+readiness number was inflated by a tell that has nothing to do with knowing security.
+
+313 questions were rewritten: bundled correct answers trimmed to their core claim, distractors
+made equally specific, and eight flippant throwaway options replaced. The first pass
+over-corrected (correct answers became the *shortest*, handing a shortest-option bot 52.9%), so
+a second pass of 83 questions rebalanced the option lengths.
+
+| Attacker | Before | After | Random baseline |
+|---|---:|---:|---:|
+| Always picks longest option | 74.6% | **24.0%** | ~25% |
+| Always picks shortest option | — | **40.0%** | ~25% |
+
+`build.mjs` now runs both bots on every build and fails if either exceeds 50%, so the bias
+cannot creep back in. **Known residual:** the shortest-option bot still sits at 40%. Correct
+answers are naturally more concise than distractors that need qualifying clauses to stay
+plausible; the remaining gaps are 7–8 characters, below what a reader treats as a signal.
+
+**Code defects found and fixed:**
+
+- A set's countdown timer kept running after navigating away, and could yank you to a results
+  screen from another page. Timers are now cleared on exit and on starting a new set.
+- Leaving a set mid-flight discarded it silently. It now warns and saves.
+- A refresh or crash mid-exam lost everything. In-progress sets persist and resume from the
+  dashboard, including the remaining time; an expired timer scores on resume.
+- Exam mode was forward-only. It now has back-navigation, changeable answers, and a review
+  grid that jumps to any question and flags what is unanswered — matching how the real exam
+  behaves. Grading and stat writes are deferred to submission, so revisiting costs nothing.
+- `.navpanel{display:grid}` silently overrode the `hidden` attribute, leaving an invisible
+  full-screen overlay that swallowed every click. `[hidden]{display:none !important}` now makes
+  `hidden` authoritative.
+- Finishing a set re-saved the session it had just cleared, resurrecting completed sets.
+- The "45-question" half exam actually built 46. Domain allocation now uses largest-remainder
+  and hits the target exactly at any size.
+- Options were plain buttons with no semantics. They now carry `radio`/`checkbox` roles with
+  `aria-checked`, and each question is announced through a live region.
+
+Results now also show an approximate CompTIA-style scaled score (100–900, 750 to pass),
+labelled as an estimate — the real exam weights items and includes unscored trial questions.
+
+**Still open:** no performance-based questions (the real exam's PBQs draw on the long tail this
+bank does not cover), and per-topic depth is thin — most topics carry a single question, so
+re-drilling a topic returns the same item.
+
 ## Readiness score
 
 The dashboard gauge blends accuracy with coverage, weighted by the real exam percentages:

@@ -75,6 +75,35 @@ if (errors.length) {
   process.exit(1);
 }
 
+// ---- answer-length bias guard ----
+// If the correct option is systematically the longest (or shortest), a student can
+// score without reading the question and every readiness number the app reports is
+// inflated. These bots must stay near the ~25% random baseline.
+function lengthBot(pickLongest) {
+  let hits = 0;
+  for (const q of questions) {
+    const lens = q.opts.map((o) => o.length);
+    const order = lens
+      .map((l, i) => [l, i])
+      .sort((a, b) => (pickLongest ? b[0] - a[0] : a[0] - b[0]))
+      .map((x) => x[1]);
+    const guess = order.slice(0, q.a.length).sort((a, b) => a - b);
+    const ans = [...q.a].sort((a, b) => a - b);
+    if (guess.length === ans.length && guess.every((v, i) => v === ans[i])) hits++;
+  }
+  return (hits / questions.length) * 100;
+}
+const longBot = lengthBot(true);
+const shortBot = lengthBot(false);
+const BIAS_FAIL = 50;
+if (longBot > BIAS_FAIL || shortBot > BIAS_FAIL) {
+  console.error(
+    `\n✗ answer-length bias too high (longest ${longBot.toFixed(1)}%, shortest ${shortBot.toFixed(1)}%).` +
+      `\n  A bot that never reads the question should score near 25%. Rebalance option lengths.`
+  );
+  process.exit(1);
+}
+
 // ---- 80/20 core: tag a capped, curated slice of the bank as high-yield ----
 const clusters = JSON.parse(readFileSync(join(root, "data", "high-yield.json"), "utf8"));
 const hyErrors = [];
@@ -142,5 +171,6 @@ for (const d of Object.keys(DOMAINS)) {
   const hy = hyDomain[d] || 0;
   console.log(`   D${d} ${DOMAINS[d].name.padEnd(42)} ${String(n).padStart(3)}  ${share}% (exam ${DOMAINS[d].weight}%)  core ${String(hy).padStart(2)}`);
 }
+console.log(`✓ length-bias bots: longest ${longBot.toFixed(1)}%, shortest ${shortBot.toFixed(1)}% (random ~25%)`);
 console.log(`✓ 80/20 core: ${hyTotal} questions (${((hyTotal / questions.length) * 100).toFixed(1)}% of bank) across ${clusters.length} clusters`);
 console.log(`✓ wrote dist/index.html (${kb} KB)`);

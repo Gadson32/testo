@@ -48,10 +48,10 @@
     "type": "single",
     "q": "Which document would specify that all remote access must use AES-256 encryption and phishing-resistant MFA?",
     "opts": [
-      "An encryption and access control standard",
+      "An encryption standard",
       "The acceptable use policy",
       "The business continuity plan",
-      "The vendor NDA"
+      "The vendor NDA template"
     ],
     "a": [
       0
@@ -88,7 +88,7 @@
     "type": "single",
     "q": "Which procedure MOST directly reduces the risk of former employees retaining access to systems?",
     "opts": [
-      "A documented offboarding procedure covering account disablement, credential revocation, and asset return",
+      "A documented offboarding procedure",
       "An annual acceptable use policy refresher",
       "A quarterly phishing simulation",
       "A software development lifecycle standard"
@@ -168,7 +168,7 @@
     "type": "single",
     "q": "A US-based retailer expands into the European Union and must now address additional requirements around personal data. Which external consideration is driving this?",
     "opts": [
-      "Regional and global regulatory requirements applicable where data subjects reside",
+      "Regional regulatory requirements",
       "Internal audit scheduling constraints",
       "The company's software development methodology",
       "The vendor's product roadmap"
@@ -188,7 +188,7 @@
     "type": "single",
     "q": "Why must security policies undergo scheduled review and revision?",
     "opts": [
-      "Threats, technology, business operations, and regulations change, and stale policies stop reflecting actual requirements",
+      "Threats and requirements change",
       "Auditors require the document creation date to change annually",
       "Revisions automatically improve employee compliance",
       "Policies expire legally after 12 months"
@@ -228,7 +228,7 @@
     "type": "single",
     "q": "A control costing $40,000 per year would reduce a risk with an ALE of $25,000 to nearly zero. What is the appropriate recommendation?",
     "opts": [
-      "Do not implement the control as designed, since its cost exceeds the expected annual loss; seek a cheaper mitigation or accept the risk",
+      "Do not implement it; the cost exceeds the loss",
       "Implement it immediately because eliminating risk is always worthwhile",
       "Implement it and increase the asset's valuation to justify the cost",
       "Transfer the risk and also implement the control"
@@ -248,7 +248,7 @@
     "type": "single",
     "q": "Which characteristic BEST describes qualitative risk analysis?",
     "opts": [
-      "It rates likelihood and impact using descriptive scales such as low, medium, and high, relying on expert judgment",
+      "It rates likelihood and impact on scales",
       "It produces precise monetary loss figures using historical data",
       "It requires an actuarial model to be valid",
       "It is only usable for physical security risks"
@@ -348,7 +348,7 @@
     "type": "single",
     "q": "Which pair of terms correctly describes formally documented deviations from a security requirement?",
     "opts": [
-      "An exemption permanently excludes something from a requirement, while an exception is a temporary approved deviation",
+      "Exemption is permanent; exception is temporary",
       "Both terms mean the same thing and are interchangeable in all frameworks",
       "An exception is permanent and an exemption is temporary",
       "Neither requires documentation or approval"
@@ -388,7 +388,7 @@
     "type": "single",
     "q": "What is the PRIMARY output of a business impact analysis?",
     "opts": [
-      "Identification of critical business processes with their dependencies, downtime tolerances, and recovery objectives",
+      "Critical processes and recovery objectives",
       "A list of technical vulnerabilities requiring patches",
       "The organization's marketing strategy",
       "A signed vendor contract"
@@ -428,7 +428,7 @@
     "type": "single",
     "q": "After implementing controls, some risk remains. Who should formally accept that remaining risk?",
     "opts": [
-      "The business risk owner with authority proportional to the potential impact",
+      "The business risk owner",
       "The security analyst who identified the risk",
       "The vendor supplying the affected system",
       "The external auditor"
@@ -448,10 +448,10 @@
     "type": "single",
     "q": "Which characteristic makes a risk report MOST useful to executive leadership?",
     "opts": [
-      "It expresses risks in business terms with impact, trend, ownership, and required decisions",
-      "It lists every CVE identified in the last scan cycle",
-      "It focuses on the technical configuration of security tools",
-      "It reports only the risks that have already been fully mitigated"
+      "It expresses risk in business terms",
+      "It lists every CVE from the last scan",
+      "It details security tool configuration",
+      "It reports only mitigated risks"
     ],
     "a": [
       0
@@ -468,7 +468,7 @@
     "type": "single",
     "q": "Which activity BEST supports systematic risk identification?",
     "opts": [
-      "Structured workshops, threat modeling, audit findings, incident history, and asset-based analysis",
+      "Workshops, threat modeling, and audits",
       "Waiting for incidents to reveal weaknesses",
       "Copying another organization's risk register verbatim",
       "Relying solely on the newest security product's dashboard"
@@ -488,7 +488,7 @@
     "type": "single",
     "q": "A risk register entry shows a KRI crossing its defined threshold. What should happen?",
     "opts": [
-      "Escalation to the risk owner for evaluation and a decision on additional treatment",
+      "Escalation to the risk owner",
       "Automatic closure of the risk entry",
       "Removal of the KRI to prevent further alerts",
       "Immediate termination of the responsible employee"
@@ -508,7 +508,7 @@
     "type": "single",
     "q": "A risk has very low likelihood but catastrophic impact, such as a data center fire destroying the primary site. Which treatment approach is MOST appropriate?",
     "opts": [
-      "Mitigate through suppression systems and transfer residual financial impact through insurance, with recovery capability at a separate site",
+      "Mitigate, transfer, and keep recovery",
       "Accept it because the likelihood is low",
       "Avoid it by ceasing all data center operations",
       "Ignore it since insurance alone resolves all consequences"
@@ -588,10 +588,10 @@
     "type": "single",
     "q": "Which evidence provides the STRONGEST independent assurance of a cloud vendor's control environment?",
     "opts": [
-      "A current SOC 2 Type II report from an independent auditor covering relevant trust services criteria",
-      "The vendor's completed self-assessment questionnaire",
-      "A marketing page describing the vendor's security commitment",
-      "A verbal assurance from the account executive"
+      "A current SOC 2 Type II report",
+      "The vendor's self-assessment",
+      "A security marketing page",
+      "A verbal account-team assurance"
     ],
     "a": [
       0
@@ -608,7 +608,7 @@
     "type": "single",
     "q": "A manufacturer requires that suppliers disclose their own subcontractors and component origins. Which risk management activity is this?",
     "opts": [
-      "Supply chain analysis extending due diligence beyond direct vendors",
+      "Supply chain analysis",
       "Penetration testing of the supplier's network",
       "Internal compliance reporting",
       "Data subject access request handling"
@@ -628,10 +628,10 @@
     "type": "single",
     "q": "During vendor selection, an evaluator discovers that their sibling is a senior executive at one bidding vendor. What should the evaluator do?",
     "opts": [
-      "Disclose the relationship and recuse themselves from the evaluation and decision",
-      "Continue participating but score that vendor lower to compensate",
-      "Say nothing, since family relationships are private",
-      "Award the contract to that vendor to reward the relationship"
+      "Disclose and recuse themselves",
+      "Score that vendor lower to offset",
+      "Say nothing; family is private",
+      "Award it to reward the relationship"
     ],
     "a": [
       0
@@ -648,10 +648,10 @@
     "type": "single",
     "q": "Why is ongoing vendor monitoring necessary after the initial assessment?",
     "opts": [
-      "A vendor's security posture, ownership, and subcontractors can change materially after onboarding",
-      "Contracts become invalid without monthly reviews",
-      "It replaces the need for contractual security requirements",
-      "Vendors are legally required to fail assessments periodically"
+      "A vendor's posture can change",
+      "Contracts lapse without reviews",
+      "It replaces contract requirements",
+      "Vendors must fail assessments"
     ],
     "a": [
       0
@@ -668,7 +668,7 @@
     "type": "single",
     "q": "What is the PRIMARY limitation of relying on vendor security questionnaires?",
     "opts": [
-      "Responses are self-reported and unverified unless supported by independent evidence",
+      "Responses are self-reported",
       "They take too long for vendors to complete",
       "They are legally binding contracts",
       "They only apply to hardware vendors"
@@ -708,7 +708,7 @@
     "type": "single",
     "q": "Which is a disadvantage of a highly centralized security governance model in a large multinational organization?",
     "opts": [
-      "Policies may not fit local regulatory or operational realities, and decisions can be slow to reach distant business units",
+      "Policies may not fit local realities",
       "Policy consistency becomes impossible to achieve",
       "Audit evidence cannot be collected centrally",
       "Security expertise cannot be concentrated"
@@ -768,7 +768,7 @@
     "type": "single",
     "q": "After purchasing cyber insurance, an executive states the organization no longer needs to invest in security controls. Why is this reasoning flawed?",
     "opts": [
-      "Insurance covers some financial loss but not operational disruption, reputational damage, regulatory penalties, or the underlying obligation to protect data",
+      "Insurance covers money, not the rest",
       "Insurance policies are not legally enforceable",
       "Insurance always costs more than any control",
       "Insurers implement security controls on the customer's behalf"
@@ -828,7 +828,7 @@
     "type": "single",
     "q": "Before sharing network architecture documentation with a prospective vendor during evaluation, what should be executed FIRST?",
     "opts": [
-      "A non-disclosure agreement covering the shared information",
+      "A non-disclosure agreement",
       "A statement of work",
       "A service level agreement",
       "A business continuity plan"
@@ -848,10 +848,10 @@
     "type": "single",
     "q": "Which statement correctly distinguishes risk appetite from risk tolerance?",
     "opts": [
-      "Appetite is the broad amount of risk an organization is willing to pursue; tolerance is the acceptable variation around specific risk objectives",
-      "Tolerance is set by regulators while appetite is set by auditors",
-      "They are identical concepts with different regional names",
-      "Appetite applies only to financial risk and tolerance only to cyber risk"
+      "Appetite is strategic; tolerance is specific",
+      "Regulators set tolerance; auditors set appetite",
+      "They are identical with regional names",
+      "Appetite is financial; tolerance is cyber"
     ],
     "a": [
       0
@@ -868,10 +868,10 @@
     "type": "single",
     "q": "Which policy establishes security requirements at each stage of software development, including design review, secure coding, and testing gates?",
     "opts": [
-      "The software development lifecycle policy",
+      "The SDLC policy",
       "The acceptable use policy",
       "The physical security standard",
-      "The vendor NDA"
+      "The vendor NDA template"
     ],
     "a": [
       0
@@ -888,10 +888,10 @@
     "type": "single",
     "q": "Which sequence correctly orders the risk management process?",
     "opts": [
-      "Identify risks, analyze likelihood and impact, evaluate against tolerance, select and implement treatment, then monitor and report",
-      "Implement controls, then identify which risks they addressed, then report",
-      "Accept all risks, then analyze them at year end",
-      "Purchase insurance, then identify risks that the policy covers"
+      "Identify, analyze, treat, then monitor",
+      "Implement, then identify, then report",
+      "Accept all, then analyze at year end",
+      "Insure first, then find covered risks"
     ],
     "a": [
       0

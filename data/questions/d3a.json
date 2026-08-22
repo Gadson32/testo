@@ -28,10 +28,10 @@
     "type": "single",
     "q": "A company adopts a SaaS CRM platform. Which security responsibility ALWAYS remains with the customer?",
     "opts": [
-      "Managing user identities, access rights, and data classification within the application",
-      "Patching the application servers",
-      "Securing the physical data center",
-      "Maintaining the platform's underlying database engine"
+      "Managing identities and data classification",
+      "Patching the underlying application servers",
+      "Securing the physical data center facility",
+      "Maintaining the platform's database engine"
     ],
     "a": [
       0
@@ -68,7 +68,7 @@
     "type": "single",
     "q": "Which benefit does software-defined networking provide that traditional per-device configuration does not?",
     "opts": [
-      "Centralized, programmatic control of forwarding policy across many devices",
+      "Centralized programmatic policy control",
       "Elimination of the need for any physical switches",
       "Automatic encryption of all traffic by default",
       "Guaranteed immunity to denial-of-service attacks"
@@ -88,7 +88,7 @@
     "type": "single",
     "q": "A cloud team defines all network and server configuration in version-controlled templates deployed through a pipeline. Which security benefit does this MOST directly provide?",
     "opts": [
-      "Consistent, reviewable, and repeatable configurations that reduce drift and misconfiguration",
+      "Reviewable, repeatable configuration",
       "Automatic detection of zero-day vulnerabilities",
       "Elimination of the need for identity and access management",
       "Guaranteed compliance with all regulations"
@@ -108,7 +108,7 @@
     "type": "single",
     "q": "Which statement about serverless (function as a service) architecture is accurate from a security standpoint?",
     "opts": [
-      "The provider manages the runtime and OS, so customer focus shifts to code security, permissions, and secrets management",
+      "Focus shifts to code, permissions, and secrets",
       "Serverless functions cannot be exploited because they are short-lived",
       "Serverless removes the need for logging and monitoring",
       "The customer must patch the underlying operating system"
@@ -128,10 +128,10 @@
     "type": "single",
     "q": "A monolithic application is refactored into 40 microservices communicating over HTTP APIs. Which new security concern becomes MOST significant?",
     "opts": [
-      "A large increase in east-west service-to-service traffic requiring authentication, authorization, and encryption between services",
-      "Loss of the ability to use TLS",
-      "Inability to log application events",
-      "Mandatory use of a single shared database credential"
+      "More east-west traffic to authenticate",
+      "Loss of the ability to use TLS at all",
+      "Inability to log any application events",
+      "Mandatory use of one shared database credential"
     ],
     "a": [
       0
@@ -148,10 +148,10 @@
     "type": "single",
     "q": "Which statement correctly compares containers to virtual machines?",
     "opts": [
-      "Containers share the host kernel, so isolation is weaker than VMs but startup and density are better",
-      "Containers each run a full guest operating system, making them heavier than VMs",
-      "Containers cannot be scanned for vulnerabilities",
-      "Containers provide stronger isolation than hardware-assisted virtualization"
+      "Containers share the host kernel",
+      "Containers each run a full guest OS",
+      "Containers cannot be scanned at all",
+      "Containers isolate better than a hypervisor"
     ],
     "a": [
       0
@@ -168,10 +168,10 @@
     "type": "single",
     "q": "A water treatment facility's SCADA systems cannot tolerate downtime and run protocols with no built-in authentication. Which architectural approach is MOST appropriate?",
     "opts": [
-      "Segment the OT network from IT, allow only brokered one-way or tightly filtered flows, and monitor passively",
-      "Place SCADA devices on the corporate VLAN so existing controls apply",
-      "Enable automatic operating system updates on all controllers",
-      "Expose the historian to the internet for vendor support"
+      "Segment OT from IT and monitor passively",
+      "Put SCADA on the corporate user VLAN",
+      "Enable automatic OS updates on controllers",
+      "Expose the historian for vendor support"
     ],
     "a": [
       0
@@ -188,10 +188,10 @@
     "type": "single",
     "q": "Which characteristic of a real-time operating system creates the greatest security constraint?",
     "opts": [
-      "Deterministic timing requirements make patching and heavyweight security agents difficult to introduce",
-      "RTOS platforms cannot use any form of encryption",
-      "RTOS devices always have unlimited compute resources",
-      "RTOS software is immune to buffer overflows"
+      "Timing requirements limit patching",
+      "An RTOS cannot use any encryption",
+      "RTOS devices have unlimited compute",
+      "RTOS code cannot overflow buffers"
     ],
     "a": [
       0
@@ -208,10 +208,10 @@
     "type": "single",
     "q": "A company deploys 500 IP cameras with default credentials and no update mechanism. Which mitigation should be implemented FIRST?",
     "opts": [
-      "Place the cameras on a dedicated segmented VLAN with no internet access and change all default credentials",
-      "Enable UPnP so the cameras can configure their own firewall rules",
-      "Assign each camera a public IP address for easier management",
-      "Rely on the vendor's cloud portal for security"
+      "Segment the VLAN and change defaults",
+      "Enable UPnP so cameras open their own ports",
+      "Give each camera a public IP address",
+      "Rely on the vendor's cloud portal"
     ],
     "a": [
       0
@@ -228,10 +228,10 @@
     "type": "single",
     "q": "Which trade-off BEST describes a centralized security architecture compared to a decentralized one?",
     "opts": [
-      "Consistent policy and simpler oversight, but the central component becomes a single point of failure and a high-value target",
-      "Lower consistency but automatic redundancy for every function",
-      "No need for change management because control is unified",
-      "Improved resilience because all decisions occur in one place"
+      "Consistency, but a single point of failure",
+      "Less consistency, but automatic redundancy",
+      "No change management is needed at all",
+      "Better resilience from central decisions"
     ],
     "a": [
       0
@@ -268,7 +268,7 @@
     "type": "single",
     "q": "Which security challenge is MOST characteristic of hybrid cloud environments?",
     "opts": [
-      "Maintaining consistent identity, policy, and visibility across on-premises and cloud platforms with different control sets",
+      "Consistent identity and policy across platforms",
       "The impossibility of encrypting data in transit between environments",
       "Complete loss of on-premises logging capability",
       "A regulatory prohibition on hybrid architectures"
@@ -288,10 +288,10 @@
     "type": "single",
     "q": "An architecture review flags a proprietary appliance whose vendor issues firmware updates only once per year and does not publish vulnerability details. Which consideration does this represent?",
     "opts": [
-      "Limited patch availability increasing exposure duration",
+      "Limited patch availability",
       "Excessive compute requirements",
       "Insufficient power redundancy",
-      "Lack of data sovereignty"
+      "A lack of data sovereignty controls"
     ],
     "a": [
       0
@@ -388,9 +388,9 @@
     "type": "single",
     "q": "Which capability distinguishes a next-generation firewall from a traditional layer 4 stateful firewall?",
     "opts": [
-      "Application awareness and user identity-based policy with integrated deep packet inspection",
-      "The ability to perform network address translation",
-      "Support for static routing",
+      "Application and user-aware policy",
+      "The ability to perform address translation",
+      "Support for static routing tables",
       "The ability to log denied packets"
     ],
     "a": [
@@ -488,7 +488,7 @@
     "type": "single",
     "q": "Which IPsec component provides confidentiality, and which provides only integrity and authentication?",
     "opts": [
-      "ESP provides confidentiality plus integrity; AH provides integrity and authentication without encryption",
+      "ESP encrypts; AH authenticates only",
       "AH provides confidentiality; ESP provides integrity only",
       "IKE provides confidentiality; ESP provides key exchange",
       "Both AH and ESP provide identical services"
@@ -508,10 +508,10 @@
     "type": "single",
     "q": "A remote user's laptop is configured so that only traffic destined for corporate subnets goes through the VPN while internet browsing goes directly out. Which configuration is this, and what is the main security concern?",
     "opts": [
-      "Split tunneling; the endpoint bypasses corporate inspection for internet traffic",
-      "Full tunneling; all traffic is inspected but bandwidth is consumed",
-      "Site-to-site tunneling; branch traffic is aggregated",
-      "Transport mode IPsec; only payloads are protected"
+      "Split tunneling; inspection is bypassed",
+      "Full tunneling; bandwidth is consumed",
+      "Site-to-site; branch traffic aggregates",
+      "Transport mode; only payloads protected"
     ],
     "a": [
       0
@@ -528,7 +528,7 @@
     "type": "single",
     "q": "A distributed workforce needs consistent security policy and low-latency access to cloud applications without backhauling all traffic to headquarters. Which architecture BEST fits?",
     "opts": [
-      "Secure access service edge combining SD-WAN with cloud-delivered security services",
+      "Secure access service edge (SASE)",
       "A single on-premises UTM appliance at headquarters",
       "Site-to-site IPsec tunnels from every home office to the data center",
       "A dial-up remote access server pool"
@@ -548,10 +548,10 @@
     "type": "single",
     "q": "Where should an internet-facing web server that must also query an internal database be placed?",
     "opts": [
-      "In a screened subnet (DMZ), with tightly restricted rules permitting only required database traffic inward",
-      "On the internal LAN with a public IP assigned directly",
-      "On the same subnet as domain controllers for performance",
-      "Outside the firewall with no filtering to simplify troubleshooting"
+      "In a screened subnet with narrow rules",
+      "On the internal LAN with a public IP",
+      "On the domain controller subnet",
+      "Outside the firewall, unfiltered"
     ],
     "a": [
       0
@@ -568,10 +568,10 @@
     "type": "single",
     "q": "An IDS sensor is deployed to detect attacks against internet-facing services before they reach internal networks. Where is the MOST effective placement?",
     "opts": [
-      "Monitoring traffic at the network perimeter between the internet edge and the screened subnet",
+      "At the internet edge perimeter",
       "On the guest wireless VLAN only",
-      "Inside a single application server's loopback interface",
-      "On an isolated lab network with no production traffic"
+      "On an application server's loopback interface",
+      "On an isolated lab network with no traffic"
     ],
     "a": [
       0
@@ -588,10 +588,10 @@
     "type": "single",
     "q": "Which switch feature prevents an attacker from connecting a rogue switch that floods the CAM table to force the switch into fail-open flooding behavior?",
     "opts": [
-      "Port security limiting the number of learned MAC addresses per port",
+      "Port security limiting learned MACs",
       "Enabling Spanning Tree Protocol only",
-      "Setting a static IP address on the switch",
-      "Increasing the switch's MTU"
+      "Setting a static IP on the switch",
+      "Increasing the switch MTU size"
     ],
     "a": [
       0
@@ -608,7 +608,7 @@
     "type": "single",
     "q": "Which design provides the HIGHEST availability for a critical customer-facing application?",
     "opts": [
-      "Active/active clustering across two geographically separate regions with automated failover and health-based traffic steering",
+      "Multi-region active/active with failover",
       "A single high-specification server with a redundant power supply",
       "Nightly backups to an offsite vault",
       "A warm standby server restored manually within eight hours"
@@ -648,7 +648,7 @@
     "type": "single",
     "q": "An organization deploys TLS interception at the perimeter. Which concern MUST be addressed for this to work without breaking client trust?",
     "opts": [
-      "The inspection appliance's issuing CA certificate must be trusted by managed endpoints, and exemptions are needed for pinned or sensitive traffic",
+      "Endpoints must trust the inspection CA",
       "TLS interception requires disabling all certificate validation on clients",
       "Interception eliminates the need for endpoint protection",
       "Interception works only with TLS 1.0"
@@ -668,7 +668,7 @@
     "type": "single",
     "q": "Which appliance is used to aggregate and normalize telemetry from many sources to support detection and investigation?",
     "opts": [
-      "A SIEM platform collecting logs and events from sensors and devices",
+      "A SIEM platform",
       "A layer 2 access switch",
       "A DHCP relay agent",
       "A network time server"
@@ -688,10 +688,10 @@
     "type": "single",
     "q": "What is the PRIMARY security-relevant benefit of a deliberate multi-cloud strategy?",
     "opts": [
-      "Reduced dependence on a single provider, limiting the impact of one provider's outage or compromise",
-      "Elimination of the shared responsibility model",
-      "A single native control plane for all environments",
-      "Automatic regulatory compliance in every jurisdiction"
+      "Less dependence on one provider",
+      "No more shared responsibility",
+      "One control plane for everything",
+      "Automatic compliance everywhere"
     ],
     "a": [
       0
@@ -708,7 +708,7 @@
     "type": "single",
     "q": "A company must prevent unmanaged personal devices from accessing internal applications while allowing corporate laptops. Which combination is MOST effective?",
     "opts": [
-      "Device certificate-based authentication with posture assessment through conditional access policies",
+      "Device certificates plus posture checks",
       "A shared VPN password distributed to employees",
       "Blocking access from non-corporate IP addresses only",
       "Requiring users to promise not to use personal devices"
@@ -748,10 +748,10 @@
     "type": "single",
     "q": "Which approach follows Zero Trust principles more closely than a traditional full-network VPN for third-party contractor access?",
     "opts": [
-      "Zero trust network access granting per-application access after continuous verification",
-      "A site-to-site IPsec tunnel to the contractor's office network",
-      "A shared remote desktop account with a strong password",
-      "Opening RDP to the contractor's static public IP address"
+      "Per-application zero trust access",
+      "A site-to-site tunnel to their office",
+      "A shared remote desktop account",
+      "RDP open to their static IP"
     ],
     "a": [
       0
@@ -768,7 +768,7 @@
     "type": "single",
     "q": "Which factor MOST often argues for keeping a workload on premises rather than migrating it to public cloud?",
     "opts": [
-      "Regulatory or contractual requirements that constrain data location and physical control",
+      "Data residency requirements",
       "A desire to reduce capital expenditure",
       "The need for rapid elastic scaling",
       "A preference for provider-managed patching"
@@ -808,7 +808,7 @@
     "type": "single",
     "q": "Which practice reduces the risk of unmanaged virtual machine sprawl?",
     "opts": [
-      "Enforce lifecycle policies with automated inventory, ownership tagging, and expiration of unused instances",
+      "Lifecycle policies with expiration",
       "Allow any developer to create VMs without approval to improve agility",
       "Disable logging on non-production VMs",
       "Use identical local administrator passwords across all VMs for consistency"
@@ -828,7 +828,7 @@
     "type": "single",
     "q": "Which statement correctly distinguishes an IDS from an IPS in a network deployment?",
     "opts": [
-      "An IDS detects and alerts, typically out of band; an IPS sits inline and can drop malicious traffic",
+      "IDS detects; IPS blocks inline",
       "An IDS blocks traffic while an IPS only logs it",
       "Both must be deployed inline to function",
       "An IPS cannot generate alerts"
@@ -848,9 +848,9 @@
     "type": "single",
     "q": "A security team must detect malicious activity in encrypted east-west traffic between application servers without decrypting it. Which approach is MOST practical?",
     "opts": [
-      "Deploy host-based sensors and EDR agents on the servers themselves",
+      "Host-based sensors and EDR",
       "Add a second perimeter firewall",
-      "Block all encrypted traffic between servers",
+      "Block all encrypted server traffic",
       "Rely solely on NetFlow volume totals"
     ],
     "a": [
@@ -868,7 +868,7 @@
     "type": "single",
     "q": "An architecture uses a single large database instance that all microservices depend on. Which resilience weakness does this create?",
     "opts": [
-      "A single point of failure whose loss disables every dependent service",
+      "A single point of failure",
       "Excessive geographic dispersion",
       "Insufficient logging capability",
       "Unavoidable data sovereignty violations"
@@ -888,7 +888,7 @@
     "type": "single",
     "q": "A hospital must keep medical imaging devices, guest Wi-Fi, and clinical workstations from communicating with each other. Which implementation BEST accomplishes this?",
     "opts": [
-      "Separate VLANs per zone with inter-VLAN traffic filtered by explicit firewall rules",
+      "Separate VLANs with filtered routing",
       "One flat VLAN with host-based firewalls only",
       "Assigning different DHCP scopes in the same broadcast domain",
       "Using unique hostnames per device category"
@@ -908,10 +908,10 @@
     "type": "single",
     "q": "Which protocol pairing correctly matches a secure alternative to its insecure counterpart?",
     "opts": [
-      "SNMPv3 replaces SNMPv1/v2c for encrypted, authenticated device management",
-      "TFTP replaces SFTP for secure file transfer",
-      "HTTP replaces HTTPS for secure web browsing",
-      "Telnet replaces SSH for encrypted administration"
+      "SNMPv3 replaces SNMPv1 and v2c",
+      "TFTP replaces SFTP for transfers",
+      "HTTP replaces HTTPS for browsing",
+      "Telnet replaces SSH for admin"
     ],
     "a": [
       0
@@ -928,7 +928,7 @@
     "type": "single",
     "q": "Which characteristic of embedded systems most complicates traditional vulnerability management?",
     "opts": [
-      "Long deployment lifecycles with limited or vendor-controlled update mechanisms",
+      "Long lifecycles with vendor-gated updates",
       "Standardized support for endpoint detection and response agents",
       "Frequent, automatic security patches from multiple sources",
       "Unlimited storage for security logs"
@@ -948,7 +948,7 @@
     "type": "single",
     "q": "A branch office has a single ISP circuit and loses all connectivity during a fiber cut. Which architectural change addresses this?",
     "opts": [
-      "Add a diverse secondary circuit from a different provider with automatic failover",
+      "Add a diverse secondary circuit",
       "Increase the bandwidth of the existing circuit",
       "Add a second firewall behind the existing one",
       "Enable quality of service on the router"
@@ -988,10 +988,10 @@
     "type": "single",
     "q": "Which architectural consideration is MOST relevant when deploying security agents to battery-powered field sensors?",
     "opts": [
-      "Limited power and compute budgets may make full agents impractical",
-      "Data sovereignty rules for sensor telemetry",
-      "The need for active/active clustering on each sensor",
-      "Requirements for TLS interception on the device"
+      "Limited power and compute budgets",
+      "Sovereignty rules for telemetry",
+      "Active/active clustering per sensor",
+      "TLS interception on the device"
     ],
     "a": [
       0

@@ -8,10 +8,10 @@
     "type": "single",
     "q": "After a worm spread freely across a flat corporate network, which mitigation would MOST effectively limit lateral movement in a future incident?",
     "opts": [
-      "Network segmentation with enforced inter-VLAN filtering",
+      "Segmentation with inter-VLAN filtering",
       "Longer password complexity requirements",
-      "Increasing SIEM log retention",
-      "Deploying a second email gateway"
+      "Increasing SIEM log retention windows",
+      "Deploying a second email security gateway"
     ],
     "a": [
       0
@@ -28,7 +28,7 @@
     "type": "single",
     "q": "A workstation is confirmed to be running ransomware that is actively encrypting a mapped network share. What is the FIRST containment action?",
     "opts": [
-      "Isolate the host from the network while leaving it powered on",
+      "Isolate the host but leave it powered on",
       "Power the host off immediately to stop encryption",
       "Run a full antivirus scan and wait for results",
       "Restore the file share from backup right away"
@@ -48,10 +48,10 @@
     "type": "single",
     "q": "An audit finds that 300 users hold local administrator rights on their laptops \"for convenience.\" Which mitigation technique should be applied?",
     "opts": [
-      "Enforce least privilege by removing standing local admin rights and granting elevation only when justified",
-      "Require quarterly password changes for those users",
+      "Remove standing local administrator rights",
+      "Require quarterly password changes for them",
       "Install a second endpoint protection agent",
-      "Add a warning banner about misuse of admin rights"
+      "Add a warning banner about admin rights misuse"
     ],
     "a": [
       0
@@ -68,10 +68,10 @@
     "type": "single",
     "q": "Endpoints repeatedly drift from the approved security baseline because users disable the host firewall. Which mitigation technique addresses this?",
     "opts": [
-      "Configuration enforcement that automatically reapplies and locks the baseline",
+      "Automated configuration enforcement",
       "Monthly manual spot checks by the help desk",
       "Adding a note to the acceptable use policy",
-      "Rotating device names quarterly"
+      "Rotating device names on a quarterly basis"
     ],
     "a": [
       0
@@ -88,7 +88,7 @@
     "type": "single",
     "q": "A retired database server still holds customer records and remains powered on in a rack with an active network port. Which mitigation should be performed?",
     "opts": [
-      "Formal decommissioning including data sanitization, certificate revocation, and removal from the network",
+      "Formal decommissioning and sanitization",
       "Renaming the server to indicate it is unused",
       "Disabling one of its two network interfaces",
       "Moving it to a different rack in the same VLAN"
@@ -108,10 +108,10 @@
     "type": "single",
     "q": "Which set of actions BEST represents host hardening as defined by SY0-701?",
     "opts": [
-      "Disable unused ports and protocols, remove unnecessary software, change default passwords, and install host-based firewall and EDR",
-      "Increase disk size, add RAM, and enable jumbo frames",
-      "Rotate the server's IP address weekly and hide its hostname",
-      "Purchase cyber insurance and document the residual risk"
+      "Disable unused services and remove defaults",
+      "Increase disk size, add RAM, enable jumbo frames",
+      "Rotate the server's IP weekly and hide its name",
+      "Purchase cyber insurance and document the risk"
     ],
     "a": [
       0
@@ -128,9 +128,9 @@
     "type": "single",
     "q": "Which capability distinguishes endpoint detection and response from traditional signature-based antivirus?",
     "opts": [
-      "Behavioral telemetry with investigation and remote response actions such as host isolation and process termination",
-      "A larger virus signature database updated more often",
-      "The ability to encrypt the local disk",
+      "Behavioral telemetry with remote response",
+      "A larger signature database updated more often",
+      "The ability to encrypt the local system disk",
       "Automatic operating system patch deployment"
     ],
     "a": [
@@ -168,10 +168,10 @@
     "type": "single",
     "q": "A critical remote code execution vulnerability in a public web server is being actively exploited. The vendor patch requires a 20-minute restart, and the next maintenance window is 12 days away. What is the BEST course of action?",
     "opts": [
-      "Invoke the emergency change process to patch now, using a WAF virtual patch or access restriction until the restart occurs",
-      "Wait for the scheduled maintenance window to avoid unplanned downtime",
-      "Disable logging on the server to reduce noise while waiting",
-      "Rely on the antivirus product to detect exploitation"
+      "Patch now under emergency change",
+      "Wait for the scheduled window",
+      "Disable logging to reduce noise",
+      "Rely on antivirus to catch it"
     ],
     "a": [
       0
@@ -208,8 +208,8 @@
     "type": "single",
     "q": "Which mitigation technique is MOST directly aimed at shortening the time between compromise and discovery?",
     "opts": [
-      "Continuous monitoring with centralized log aggregation and alerting",
-      "Annual policy review",
+      "Continuous centralized monitoring",
+      "An annual security policy review",
       "Longer password history requirements",
       "Adding a second firewall in series"
     ],
@@ -228,7 +228,7 @@
     "type": "single",
     "q": "A workstation's CPU sits at 98 percent overnight, its fans run constantly, and outbound connections to a mining pool are observed. Which indicator and activity are present?",
     "opts": [
-      "Abnormal resource consumption caused by cryptojacking malware",
+      "Resource consumption from cryptojacking",
       "Resource inaccessibility caused by ransomware",
       "Out-of-cycle logging caused by clock drift",
       "Account lockout caused by password spraying"
@@ -288,7 +288,7 @@
     "type": "single",
     "q": "An attacker stands near an employee in an elevator with a concealed reader, then fabricates a working badge from the captured data. Which attack is this, and which control mitigates it?",
     "opts": [
-      "RFID cloning; adopt cryptographically authenticated smart cards and shielded badge holders",
+      "RFID cloning; use authenticated smart cards",
       "Bluesnarfing; disable Bluetooth pairing",
       "Tailgating; install an access control vestibule",
       "Vishing; train staff on caller verification"
@@ -328,10 +328,10 @@
     "type": "single",
     "q": "A scheduled task on a server runs a base64-encoded PowerShell command that downloads a payload from a pastebin URL. Which indicator category does this represent?",
     "opts": [
-      "Malicious code execution using obfuscated scripting",
-      "Blocked content",
-      "Resource inaccessibility",
-      "RFID cloning"
+      "Obfuscated script execution",
+      "Blocked content on the web gateway",
+      "Resource inaccessibility on the server",
+      "RFID badge cloning at the door"
     ],
     "a": [
       0
@@ -368,8 +368,8 @@
     "type": "single",
     "q": "An attacker obtains a long-lived cloud access key committed to a public code repository and uses it to enumerate storage buckets. Which combination of mitigations is BEST?",
     "opts": [
-      "Use short-lived federated credentials, secret scanning in CI, and automated key rotation",
-      "Increase the key length to 4096 bits",
+      "Use short-lived federated credentials",
+      "Increase the access key length to 4096 bits",
       "Move the repository to a different hosting provider",
       "Require complex passwords for the cloud console"
     ],
@@ -388,10 +388,10 @@
     "type": "single",
     "q": "A banking application lets an authenticated user change another customer's address by editing the account ID in the request URL. Which vulnerability is this?",
     "opts": [
-      "Insecure direct object reference enabling horizontal privilege escalation",
-      "Cross-site scripting",
-      "Buffer overflow",
-      "Cryptographic downgrade"
+      "Insecure direct object reference",
+      "Stored cross-site scripting",
+      "A heap buffer overflow",
+      "A cryptographic downgrade"
     ],
     "a": [
       0
@@ -408,9 +408,9 @@
     "type": "single",
     "q": "An attacker follows an employee through a badge-controlled door while carrying two coffee cups and asking for help with the handle. Which technique is used, and which control stops it?",
     "opts": [
-      "Tailgating; install an access control vestibule and train staff not to hold doors",
-      "Pretexting; require email signatures",
-      "Smishing; block shortened URLs",
+      "Tailgating; install an access vestibule",
+      "Pretexting; require signed email headers",
+      "Smishing; block shortened URLs at the gateway",
       "Watering hole; filter third-party websites"
     ],
     "a": [
@@ -448,10 +448,10 @@
     "type": "multi",
     "q": "Users keep executing macro-enabled documents that launch scripting interpreters. Which two mitigations MOST directly reduce this risk? (Choose two.)",
     "opts": [
-      "Block macros from files originating on the internet by policy",
-      "Restrict script interpreters through an application allow list",
-      "Require quarterly password rotation",
-      "Increase mailbox storage quotas"
+      "Block internet-sourced macros by policy",
+      "Allow list the script interpreters",
+      "Require quarterly password rotation for all staff",
+      "Increase mailbox storage quotas for users"
     ],
     "a": [
       0,
@@ -469,10 +469,10 @@
     "type": "single",
     "q": "A backup tape is lost in transit to an offsite facility. Which control would have made the loss a non-event from a confidentiality standpoint?",
     "opts": [
-      "Encrypting the backup media with keys stored separately",
-      "Labeling the tape as confidential",
-      "Using a courier with tracking numbers",
-      "Compressing the backup before writing it"
+      "Encrypt the media with separate keys",
+      "Label the tape as confidential material",
+      "Use a courier with tracking numbers",
+      "Compress the backup before writing it"
     ],
     "a": [
       0
@@ -489,10 +489,10 @@
     "type": "single",
     "q": "Clients on a corporate wireless network are repeatedly disconnected, and a capture shows a flood of 802.11 deauthentication frames. What is the attacker MOST likely doing?",
     "opts": [
-      "Forcing clients to reconnect so they associate with a rogue access point or expose handshake material",
-      "Performing SQL injection against the wireless controller",
-      "Cloning employee RFID badges",
-      "Exploiting a race condition in the DHCP server"
+      "Forcing clients to reconnect to a rogue AP",
+      "Performing SQL injection on the controller",
+      "Cloning employee RFID badges at the door",
+      "Exploiting a race condition in DHCP"
     ],
     "a": [
       0
@@ -530,10 +530,10 @@
     "type": "single",
     "q": "A vulnerability scan reports that a server is missing 43 operating system patches, several rated critical. Which action addresses the ROOT cause of the finding?",
     "opts": [
-      "Implement and monitor an automated patch management process with defined SLAs",
-      "Manually patch the server this week and close the ticket",
-      "Add the server to a deny list on the perimeter firewall",
-      "Reduce the scan frequency to quarterly to lower noise"
+      "Automate patch management with SLAs",
+      "Patch it manually and close the ticket",
+      "Deny-list the server at the firewall",
+      "Scan quarterly to reduce the noise"
     ],
     "a": [
       0
@@ -550,10 +550,10 @@
     "type": "single",
     "q": "A hardening standard requires eliminating cleartext administrative protocols. Which change satisfies it?",
     "opts": [
-      "Disable Telnet and FTP, and require SSH and SFTP instead",
+      "Disable Telnet and FTP; require SSH",
       "Change the Telnet port from 23 to 2323",
       "Require longer passwords for FTP accounts",
-      "Enable FTP passive mode"
+      "Enable passive mode on the FTP server"
     ],
     "a": [
       0
@@ -610,10 +610,10 @@
     "type": "single",
     "q": "Following a breach that began with a stolen VPN password, which single mitigation would have MOST likely prevented the initial access?",
     "opts": [
-      "Phishing-resistant multifactor authentication on remote access",
-      "A longer VPN pre-shared key",
+      "Phishing-resistant MFA on remote access",
+      "A longer VPN pre-shared key value",
       "Increasing log retention to one year",
-      "Weekly vulnerability scanning of internal hosts"
+      "Weekly vulnerability scanning of hosts"
     ],
     "a": [
       0
@@ -630,7 +630,7 @@
     "type": "single",
     "q": "Which characteristic distinguishes a virus from a worm?",
     "opts": [
-      "A virus requires a host file or user action to execute and replicate, while a worm self-propagates",
+      "A virus needs a host or user action; a worm self-propagates",
       "A virus only affects Linux, while a worm only affects Windows",
       "A virus encrypts files, while a worm steals credentials",
       "A virus operates in kernel mode, while a worm operates in user mode"
@@ -650,10 +650,10 @@
     "type": "single",
     "q": "An organization's update server is compromised, and attackers publish a signed-looking but malicious agent update to 2,000 endpoints. Which control would MOST likely have detected the tampering before deployment?",
     "opts": [
-      "Verifying vendor code signatures and hashes against an out-of-band source before distribution",
-      "Deploying updates faster to reduce exposure windows",
-      "Increasing endpoint disk encryption strength",
-      "Allowing endpoints to update directly from the internet"
+      "Verify signatures out of band first",
+      "Deploy the updates even faster",
+      "Increase disk encryption strength",
+      "Update endpoints from the internet"
     ],
     "a": [
       0
@@ -690,10 +690,10 @@
     "type": "single",
     "q": "A sales team must access internal applications from hotel and airport wireless networks. Which control set BEST protects the sessions?",
     "opts": [
-      "Always-on VPN or zero trust network access with certificate-based device authentication",
-      "Instructing users to prefer networks without a captive portal",
-      "Requiring users to change their password after each trip",
-      "Disabling wireless adapters and using hotel wired ports instead"
+      "Always-on VPN or ZTNA with device certs",
+      "Prefer networks without a captive portal",
+      "Change the password after each trip",
+      "Use hotel wired ports instead of Wi-Fi"
     ],
     "a": [
       0
@@ -710,10 +710,10 @@
     "type": "single",
     "q": "An API accepts a signed JWT but does not verify the signature algorithm, allowing an attacker to submit a token with \"alg\": \"none\". Which vulnerability class is this?",
     "opts": [
-      "Cryptographic implementation vulnerability leading to authentication bypass",
-      "Buffer overflow",
-      "Race condition",
-      "Resource reuse"
+      "A crypto implementation flaw",
+      "A stack-based buffer overflow",
+      "A timing race condition",
+      "Cloud resource reuse"
     ],
     "a": [
       0
@@ -730,10 +730,10 @@
     "type": "multi",
     "q": "An organization wants defense in depth against ransomware. Which THREE measures contribute MOST directly to recovery and containment?",
     "opts": [
-      "Immutable or offline backups tested by periodic restores",
-      "Network segmentation limiting SMB between user subnets",
-      "Least privilege with no standing domain administrator sessions on workstations",
-      "Publishing the incident response plan on the public website"
+      "Immutable or offline backups, restore-tested",
+      "Segmentation limiting SMB between subnets",
+      "No standing domain admin on workstations",
+      "Publishing the response plan on the public website"
     ],
     "a": [
       0,
@@ -772,7 +772,7 @@
     "type": "single",
     "q": "A logged-in user visits a malicious page that silently submits a form to the banking application, transferring funds using the user's existing session. Which attack is this, and which control prevents it?",
     "opts": [
-      "Cross-site request forgery; require unpredictable anti-CSRF tokens and SameSite cookies",
+      "CSRF; require anti-CSRF tokens",
       "Cross-site scripting; encode all output",
       "Replay attack; extend session lifetime",
       "Privilege escalation; remove local admin rights"
@@ -792,10 +792,10 @@
     "type": "single",
     "q": "Which control set MOST reduces successful email-based attacks reaching users?",
     "opts": [
-      "Enforce SPF, DKIM, and DMARC, plus attachment sandboxing and URL rewriting at the gateway",
-      "Increase mailbox quotas and enable auto-forwarding",
-      "Require users to read email in plain text only",
-      "Disable spam filtering to prevent false positives"
+      "Enforce SPF, DKIM, and DMARC policy",
+      "Raise quotas and enable forwarding",
+      "Require plain-text email reading",
+      "Disable spam filtering entirely"
     ],
     "a": [
       0
@@ -872,10 +872,10 @@
     "type": "multi",
     "q": "Which contractual and technical controls BEST reduce third-party vendor risk for a critical SaaS provider? (Choose two.)",
     "opts": [
-      "Right-to-audit clause with defined security requirements and breach notification timelines",
-      "Least-privilege, MFA-protected, individually attributable vendor accounts with time-bound access",
-      "A verbal assurance from the vendor's sales representative",
-      "Shared administrator credentials so the vendor can respond quickly"
+      "A right-to-audit clause with terms",
+      "Least-privilege vendor accounts",
+      "A verbal assurance from the sales rep",
+      "Shared admin credentials for speed"
     ],
     "a": [
       0,
@@ -893,7 +893,7 @@
     "type": "single",
     "q": "An intruder pries open a server room door with a crowbar, defeating the strike plate. Which attack category is this, and which control would MOST directly resist it?",
     "opts": [
-      "Physical brute force; install reinforced doors and frames with high-security locks and door contacts",
+      "Physical brute force; reinforce doors",
       "Environmental attack; add redundant HVAC",
       "Credential replay; rotate badge encryption keys",
       "Vishing; add caller verification procedures"
@@ -913,7 +913,7 @@
     "type": "single",
     "q": "Which practice MOST reduces the risk that a compromised virtual machine affects other tenants on the same host?",
     "opts": [
-      "Keep the hypervisor patched and separate workloads of differing trust levels onto distinct hosts or clusters",
+      "Patch the hypervisor; separate trust levels",
       "Increase each VM's allocated memory",
       "Enable nested virtualization on all guests",
       "Store all VM disk files on a single shared datastore"
@@ -933,7 +933,7 @@
     "type": "single",
     "q": "Which statement BEST describes the significance of the birthday attack in cryptography?",
     "opts": [
-      "Because of probability, collisions in an n-bit hash can be found in roughly 2^(n/2) attempts, so hash output length must be generous",
+      "Collisions appear near 2^(n/2) attempts",
       "It proves that longer passwords are unnecessary",
       "It allows recovery of an AES key from a single ciphertext block",
       "It permits forging a digital signature without any hash weakness"
@@ -953,7 +953,7 @@
     "type": "single",
     "q": "A SOC receives 4,000 low-value alerts daily and misses a genuine intrusion. Which improvement addresses the underlying problem MOST effectively?",
     "opts": [
-      "Tune detection rules and prioritize alerts by asset criticality and confidence, automating triage of known-benign patterns",
+      "Tune rules and prioritize by criticality",
       "Hire additional analysts to read every alert",
       "Disable the noisiest detection sources entirely",
       "Increase log retention so missed alerts can be found later"
@@ -973,8 +973,8 @@
     "type": "multi",
     "q": "An external assessment finds a forgotten staging web application exposed to the internet with test credentials. Which two mitigations should be prioritized? (Choose two.)",
     "opts": [
-      "Remove internet exposure and restrict access to authorized networks",
-      "Decommission the staging application or rebuild it with unique, strong credentials",
+      "Remove internet exposure",
+      "Decommission or rebuild with new credentials",
       "Add a copyright notice to the login page",
       "Increase the application's session timeout"
     ],
@@ -994,10 +994,10 @@
     "type": "single",
     "q": "Which combination of observations MOST strongly suggests an active credential-based intrusion rather than a user error?",
     "opts": [
-      "Successful authentication from a new country, immediate mailbox rule creation, and mass file downloads within minutes",
-      "A single failed login followed by a successful login from the user's usual device",
-      "A password reset request submitted through the self-service portal",
-      "A user reporting that a legitimate site was blocked by the web filter"
+      "New-country login, mailbox rule, downloads",
+      "A failed login, then success from usual device",
+      "A self-service password reset request",
+      "A blocked legitimate site reported by a user"
     ],
     "a": [
       0
@@ -1014,7 +1014,7 @@
     "type": "single",
     "q": "A manufacturing line depends on software that runs only on an unsupported OS version and cannot be virtualized or upgraded for 18 months. Which combination BEST manages the risk in the interim?",
     "opts": [
-      "Segment and isolate the host, restrict traffic to required flows, monitor closely, and record a formal risk acceptance with an expiration date",
+      "Isolate, monitor, and document time-bound acceptance",
       "Accept the risk silently and revisit it after the replacement project",
       "Expose the host to the internet so vendors can support it remotely",
       "Uninstall the endpoint agent to avoid compatibility issues"
@@ -1034,7 +1034,7 @@
     "type": "single",
     "q": "A file server audit shows that a group named Everyone has Modify rights to the finance folder. Which principle was violated, and what is the correct remediation?",
     "opts": [
-      "Least privilege; replace broad group access with role-based permissions granted only to finance staff",
+      "Least privilege; scope access to finance roles",
       "Non-repudiation; enable digital signatures on all documents",
       "Availability; add a second file server",
       "Separation of duties; require two approvals for file deletion"
@@ -1074,10 +1074,10 @@
     "type": "single",
     "q": "Which of the following is the BEST example of an agentless attack surface concern?",
     "opts": [
-      "An internet-facing management interface reachable without any endpoint software installed on the attacker's side",
+      "An internet-facing management interface",
       "A corporate laptop missing its EDR agent",
       "A phishing email opened by a user",
-      "A stolen backup tape"
+      "A stolen offsite backup tape"
     ],
     "a": [
       0
@@ -1094,7 +1094,7 @@
     "type": "single",
     "q": "Given limited resources, which vulnerability should be remediated FIRST?",
     "opts": [
-      "An internet-facing server with a critical, actively exploited remote code execution flaw",
+      "An exploited internet-facing critical RCE",
       "An internal test server with a medium-severity information disclosure flaw",
       "A workstation with an outdated media player",
       "A printer with an unpatched web interface on an isolated VLAN"
@@ -1114,10 +1114,10 @@
     "type": "single",
     "q": "After reimaging a laptop, the same malicious network beacon returns within hours with no user activity. Which possibility should the analyst investigate FIRST?",
     "opts": [
-      "Firmware or UEFI-level persistence surviving the reimage",
-      "A weak user password",
+      "Firmware-level persistence",
+      "A weak local user password",
       "An expired TLS certificate",
-      "Insufficient disk space on the new image"
+      "Insufficient disk space on the image"
     ],
     "a": [
       0
@@ -1174,7 +1174,7 @@
     "type": "single",
     "q": "A domain controller's security log shows a successful logon for a service account at 03:12 followed by creation of a new account added to Domain Admins at 03:14. What should the analyst conclude?",
     "opts": [
-      "Likely privilege escalation and persistence by an attacker, requiring immediate incident response",
+      "Privilege escalation and persistence",
       "Routine maintenance that should be documented next quarter",
       "A benign replication artifact between domain controllers",
       "A false positive caused by clock skew"
@@ -1194,7 +1194,7 @@
     "type": "single",
     "q": "Which statement BEST expresses why layered mitigations are preferred over a single strong control?",
     "opts": [
-      "Any single control can fail or be bypassed, so overlapping controls preserve protection and detection",
+      "Any single control can fail or be bypassed",
       "Layered controls eliminate the need for monitoring",
       "Multiple controls always cost less than one strong control",
       "Layering guarantees that no incident can occur"

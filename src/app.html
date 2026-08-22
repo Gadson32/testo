@@ -39,6 +39,9 @@
 }
 
 *{box-sizing:border-box}
+/* A display rule on a component silently defeats the hidden attribute, leaving an
+   invisible overlay that still eats clicks. Make hidden authoritative. */
+[hidden]{display:none !important}
 body{
   margin:0; background:var(--paper); color:var(--body);
   font-family:"IBM Plex Sans", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
@@ -214,6 +217,28 @@ legend{padding:0; margin-bottom:8px}
 .flagbtn.on{color:var(--warn); border-color:var(--warn)}
 .hint{font-size:.72rem; color:var(--muted); font-family:"IBM Plex Mono",monospace}
 
+/* ---------- exam review panel ---------- */
+.sr-only{
+  position:absolute; width:1px; height:1px; padding:0; margin:-1px;
+  overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0;
+}
+.navpanel{
+  position:fixed; inset:0; z-index:60; display:grid; place-items:center; padding:20px;
+  background:color-mix(in srgb, var(--ink) 45%, transparent);
+}
+.navinner{max-width:520px; width:100%; max-height:85vh; overflow-y:auto}
+.navgrid{
+  display:grid; grid-template-columns:repeat(auto-fill,minmax(44px,1fr));
+  gap:6px; margin:12px 0 4px;
+}
+.navcell{
+  aspect-ratio:1; border:1px solid var(--line); border-radius:7px; background:var(--surface);
+  font-family:"IBM Plex Mono",monospace; font-size:.8rem; color:var(--muted);
+}
+.navcell:hover{border-color:var(--signal); color:var(--signal)}
+.navcell.done{background:var(--raised); color:var(--ink); border-color:var(--muted)}
+.navcell.flag{border-color:var(--warn); color:var(--warn)}
+
 /* ---------- results ---------- */
 .score{display:flex; align-items:baseline; gap:12px; flex-wrap:wrap}
 .score .pct{font-family:"Chivo",sans-serif; font-weight:900; font-size:3rem; line-height:1; color:var(--ink)}
@@ -289,6 +314,15 @@ td.num{text-align:right; font-variant-numeric:tabular-nums; font-family:"IBM Ple
           <h2 id="greet">Readiness</h2>
         </div>
         <button class="btn" id="quickStart">Start 20-question set</button>
+      </div>
+
+      <div class="card pad" id="resumeCard" hidden style="margin-bottom:14px;border-color:var(--signal)">
+        <span class="eyebrow">Unfinished set</span>
+        <p style="font-size:.9rem;margin-top:6px" id="resumeText"></p>
+        <div class="btnrow">
+          <button class="btn" id="resumeBtn">Resume</button>
+          <button class="btn ghost" id="discardBtn">Discard it</button>
+        </div>
       </div>
 
       <div class="grid g2">
@@ -521,12 +555,30 @@ td.num{text-align:right; font-variant-numeric:tabular-nums; font-family:"IBM Ple
         <p class="qtext" id="qText"></p>
         <div class="opts" id="qOpts"></div>
         <div id="qExp" aria-live="polite"></div>
+        <p class="sr-only" id="qLive" aria-live="polite"></p>
         <div class="actions">
+          <button class="btn ghost" id="prevBtn" hidden>← Back</button>
           <button class="btn" id="submitBtn">Submit</button>
           <button class="btn" id="nextBtn" hidden>Next</button>
           <button class="flagbtn" id="flagBtn">⚑ Flag</button>
+          <button class="flagbtn" id="reviewBtn" hidden>Review all</button>
           <span class="spacer"></span>
           <span class="hint">1–6 pick · Enter submit/next · F flag</span>
+        </div>
+      </div>
+
+      <div class="navpanel" id="navPanel" hidden role="dialog" aria-modal="true" aria-label="Exam review">
+        <div class="navinner card pad">
+          <div class="head" style="margin-bottom:10px">
+            <div><span class="eyebrow">Jump to any question before submitting</span><h3>Review</h3></div>
+            <button class="flagbtn" id="navClose">Close</button>
+          </div>
+          <p class="mono" id="navSummary" style="font-size:.82rem;color:var(--muted)"></p>
+          <div class="navgrid" id="navGrid"></div>
+          <div class="btnrow">
+            <button class="btn" id="navSubmit">Submit exam</button>
+            <span class="hint">Blank answers score as incorrect.</span>
+          </div>
         </div>
       </div>
     </section>
@@ -541,6 +593,7 @@ td.num{text-align:right; font-variant-numeric:tabular-nums; font-family:"IBM Ple
           <span class="pill" id="rPill"></span>
           <span class="of mono" id="rTime"></span>
         </div>
+        <p class="of mono" id="rScaled" style="margin-top:6px;font-size:.8rem"></p>
         <div class="dom" id="rDoms" style="margin-top:18px"></div>
         <div class="btnrow">
           <button class="btn" id="rAgain">New set</button>
@@ -689,23 +742,31 @@ function pick(pool, n, mode){
 /* ---------------- quiz engine ---------------- */
 let Q = null; // {items, i, picked, answers, mode, revealed, timer, endsAt, startedAt}
 
-function startQuiz(items, opts={}){
+function stopTimer(){ if(Q && Q.timer){ clearInterval(Q.timer); Q.timer = null; } }
+
+function startQuiz(items, opts={}, restore=null){
   if(!items.length){ alert("No questions match that selection."); return; }
+  stopTimer(); // a previous set's interval would otherwise keep running forever
   Q = {
-    items: items.map(q => ({q, order: shuffle(q.opts.map((_,i) => i))})),
-    i: 0, picked: [], answers: [], revealed: false,
+    items: items.map((q, n) => ({q, order: restore ? restore.orders[n] : shuffle(q.opts.map((_,i) => i))})),
+    i: restore ? restore.i : 0,
+    picked: [],
+    responses: restore ? restore.responses : new Array(items.length).fill(null),
+    revealed: false,
     mode: opts.mode || "practice", label: opts.label || "Practice set",
-    limitMs: opts.limitMs || 0, startedAt: Date.now(), endsAt: opts.limitMs ? Date.now()+opts.limitMs : 0,
+    limitMs: opts.limitMs || 0,
+    startedAt: restore ? restore.startedAt : Date.now(),
+    endsAt: restore ? restore.endsAt : (opts.limitMs ? Date.now()+opts.limitMs : 0),
     timer: null
   };
   go("quiz");
-  const t = document.getElementById("qTimer");
-  t.hidden = !Q.limitMs;
+  document.getElementById("qTimer").hidden = !Q.limitMs;
   if(Q.limitMs){
     tick();
     Q.timer = setInterval(tick, 1000);
   }
-  document.getElementById("qScore").textContent = Q.mode === "exam" ? "" : "0 correct";
+  updateScore();
+  saveSession();
   render();
 }
 function tick(){
@@ -714,7 +775,42 @@ function tick(){
   const m = Math.floor(left/60000), s = Math.floor(left/1000)%60;
   el.textContent = m + ":" + String(s).padStart(2,"0");
   el.classList.toggle("low", left < 5*60000);
-  if(left <= 0){ clearInterval(Q.timer); finish(); }
+  if(left <= 0){ stopTimer(); finish(); }
+}
+function updateScore(){
+  const el = document.getElementById("qScore");
+  if(Q.mode === "exam"){
+    const done = Q.responses.filter(Boolean).length;
+    el.textContent = done + " answered";
+  } else {
+    el.textContent = Q.responses.filter(r => r && r.correct).length + " correct";
+  }
+}
+
+/* ---- crash/refresh recovery: an in-progress set survives a reload ---- */
+function saveSession(){
+  if(!Q){ return; }
+  S.session = {
+    ids: Q.items.map(it => it.q.id),
+    orders: Q.items.map(it => it.order),
+    responses: Q.responses,
+    i: Q.i, mode: Q.mode, label: Q.label,
+    limitMs: Q.limitMs, startedAt: Q.startedAt, endsAt: Q.endsAt
+  };
+  save();
+}
+function clearSession(){ delete S.session; save(); }
+function resumeSession(){
+  const s = S.session;
+  if(!s) return;
+  const items = s.ids.map(id => BANK.find(q => q.id === id)).filter(Boolean);
+  if(items.length !== s.ids.length){ clearSession(); return; }   // bank changed under us
+  if(s.limitMs && Date.now() >= s.endsAt){                        // timer already expired
+    startQuiz(items, {mode:s.mode, label:s.label, limitMs:s.limitMs}, s);
+    finish();
+    return;
+  }
+  startQuiz(items, {mode:s.mode, label:s.label, limitMs:s.limitMs}, s);
 }
 
 function render(){
@@ -738,27 +834,51 @@ function render(){
 
   const wrap = document.getElementById("qOpts");
   wrap.innerHTML = "";
+  wrap.setAttribute("role", multi ? "group" : "radiogroup");
   order.forEach((origIdx, pos) => {
     const b = document.createElement("button");
     b.className = "optbtn";
     b.type = "button";
     b.dataset.idx = origIdx;
+    b.setAttribute("role", multi ? "checkbox" : "radio");
+    b.setAttribute("aria-checked", "false");
     b.innerHTML = '<span class="ltr">' + LTR[pos] + '</span><span class="txt"></span>';
     b.querySelector(".txt").textContent = q.opts[origIdx];
     b.onclick = () => choose(origIdx, multi);
     wrap.append(b);
   });
 
-  Q.picked = [];
+  // restore a previous answer (exam mode lets you navigate back)
+  const prior = Q.responses[Q.i];
+  Q.picked = prior ? prior.picked.slice() : [];
   Q.revealed = false;
+  paintSelection();
   document.getElementById("qExp").innerHTML = "";
+
+  const last = Q.i === Q.items.length-1;
+  const exam = Q.mode === "exam";
   document.getElementById("submitBtn").hidden = false;
-  document.getElementById("submitBtn").disabled = true;
+  document.getElementById("submitBtn").disabled = Q.picked.length === 0;
+  document.getElementById("submitBtn").textContent = exam ? (last ? "Save answer" : "Save & next") : "Submit";
   document.getElementById("nextBtn").hidden = true;
-  document.getElementById("nextBtn").textContent = Q.i === Q.items.length-1 ? "Finish" : "Next";
+  document.getElementById("nextBtn").textContent = last ? "Finish" : "Next";
+  document.getElementById("prevBtn").hidden = !exam || Q.i === 0;
+  document.getElementById("reviewBtn").hidden = !exam;
+
   const fb = document.getElementById("flagBtn");
   fb.classList.toggle("on", S.flags.includes(q.id));
   fb.textContent = S.flags.includes(q.id) ? "⚑ Flagged" : "⚑ Flag";
+
+  // announce the new question for screen readers
+  document.getElementById("qLive").textContent =
+    "Question " + (Q.i+1) + " of " + Q.items.length + ". " + q.q;
+}
+function paintSelection(){
+  document.querySelectorAll("#qOpts .optbtn").forEach(b => {
+    const on = Q.picked.includes(+b.dataset.idx);
+    b.classList.toggle("sel", on);
+    b.setAttribute("aria-checked", String(on));
+  });
 }
 function tag(text, cls){
   const s = document.createElement("span");
@@ -774,26 +894,40 @@ function choose(idx, multi){
   } else {
     Q.picked = [idx];
   }
-  document.querySelectorAll("#qOpts .optbtn").forEach(b => {
-    b.classList.toggle("sel", Q.picked.includes(+b.dataset.idx));
-  });
+  paintSelection();
   document.getElementById("submitBtn").disabled = Q.picked.length === 0;
+}
+
+function grade(q, picked){
+  return q.a.length === picked.length && q.a.every(a => picked.includes(a));
+}
+function recordStat(q, correct){
+  const s = stat(q.id);
+  s.seen++; s.last = Date.now();
+  if(correct){ s.right++; if(s.box > 0) s.box++; }
+  else { s.wrong++; s.box = 1; }
 }
 
 function submit(){
   if(Q.revealed || !Q.picked.length) return;
   const {q} = Q.items[Q.i];
-  const correct = q.a.length === Q.picked.length && q.a.every(a => Q.picked.includes(a));
-  Q.answers.push({id:q.id, picked:Q.picked.slice(), correct, d:q.d});
+  const correct = grade(q, Q.picked);
+  Q.responses[Q.i] = {id:q.id, picked:Q.picked.slice(), correct, d:q.d};
+
+  // In exam mode nothing is graded or written to long-term stats until submission,
+  // so answers stay changeable — the real exam lets you revisit questions.
+  if(Q.mode === "exam"){
+    updateScore(); saveSession();
+    if(Q.i < Q.items.length-1) next();
+    else openReview();
+    return;
+  }
+
   Q.revealed = true;
+  recordStat(q, correct);
+  markDay(); saveSession();
 
-  const s = stat(q.id);
-  s.seen++; s.last = Date.now();
-  if(correct){ s.right++; if(s.box > 0) s.box++; }
-  else { s.wrong++; s.box = 1; }
-  markDay(); save();
-
-  if(Q.mode !== "exam"){
+  {
     document.querySelectorAll("#qOpts .optbtn").forEach(b => {
       const i = +b.dataset.idx;
       b.disabled = true;
@@ -802,13 +936,12 @@ function submit(){
       b.classList.remove("sel");
     });
     showExp(q, correct);
-    const got = Q.answers.filter(a => a.correct).length;
-    document.getElementById("qScore").textContent = got + " correct";
+    updateScore();
   }
   document.getElementById("submitBtn").hidden = true;
+  document.getElementById("prevBtn").hidden = true;
   document.getElementById("nextBtn").hidden = false;
   document.getElementById("nextBtn").focus();
-  if(Q.mode === "exam") next();
 }
 function showExp(q, correct){
   const box = document.getElementById("qExp");
@@ -833,13 +966,61 @@ function showExp(q, correct){
   box.append(d);
 }
 function next(){
-  if(Q.i >= Q.items.length-1){ finish(); return; }
-  Q.i++;
+  if(Q.i >= Q.items.length-1){
+    if(Q.mode === "exam"){ openReview(); return; }
+    finish(); return;
+  }
+  goTo(Q.i + 1);
+}
+function prev(){ if(Q.i > 0) goTo(Q.i - 1); }
+function goTo(i){
+  Q.i = Math.max(0, Math.min(Q.items.length-1, i));
+  saveSession();
   render();
   window.scrollTo({top:0, behavior:"instant"});
 }
+
+/* ---- exam review screen: jump to any question before submitting ---- */
+function openReview(){
+  const grid = document.getElementById("navGrid");
+  grid.innerHTML = "";
+  Q.items.forEach((it, n) => {
+    const b = document.createElement("button");
+    b.type = "button";
+    const answered = !!Q.responses[n];
+    const flagged = S.flags.includes(it.q.id);
+    b.className = "navcell" + (answered ? " done" : "") + (flagged ? " flag" : "");
+    b.textContent = n + 1;
+    b.setAttribute("aria-label",
+      "Question " + (n+1) + (answered ? ", answered" : ", not answered") + (flagged ? ", flagged" : ""));
+    b.onclick = () => { closeReview(); goTo(n); };
+    grid.append(b);
+  });
+  const blank = Q.responses.filter(r => !r).length;
+  document.getElementById("navSummary").textContent =
+    (Q.items.length - blank) + " of " + Q.items.length + " answered" +
+    (blank ? " · " + blank + " left blank (scored wrong)" : " · nothing left blank");
+  document.getElementById("navPanel").hidden = false;
+  document.getElementById("navClose").focus();
+}
+function closeReview(){ document.getElementById("navPanel").hidden = true; }
 function finish(){
-  if(Q.timer) clearInterval(Q.timer);
+  stopTimer();
+  closeReview();
+  Q.done = true;      // stops the leave-guard from re-saving the set we just closed
+  clearSession();
+
+  // Exam mode defers grading to submission time, so write those stats now.
+  if(Q.mode === "exam"){
+    Q.responses.forEach((r, n) => {
+      if(!r) return;
+      recordStat(Q.items[n].q, r.correct);
+    });
+    if(Q.responses.some(Boolean)) markDay();
+    save();
+  }
+  Q.answers = Q.responses.filter(Boolean);
+
   const total = Q.items.length;
   const answered = Q.answers.length;
   const got = Q.answers.filter(a => a.correct).length;
@@ -869,6 +1050,11 @@ function finish(){
   const passed = pct >= 83;
   pill.className = "pill " + (passed ? "pass" : "fail");
   pill.textContent = passed ? "At or above target" : "Below 83% target";
+  // Rough CompTIA-style scaled equivalent (100-900, 750 to pass). Indicative only:
+  // the real exam weights items and includes unscored trial questions.
+  const scaled = Math.max(100, Math.min(900, Math.round(100 + (pct/100) * 800)));
+  document.getElementById("rScaled").textContent =
+    "≈ " + scaled + " scaled (750 passes; estimate only)";
 
   const dl = document.getElementById("rDoms");
   dl.innerHTML = "";
@@ -975,6 +1161,17 @@ function bar(name, c, n){
 
 /* ---------------- pages ---------------- */
 function go(name){
+  // Leaving a set mid-flight used to abandon it silently while its timer kept
+  // running in the background and could yank you to results from another page.
+  const onQuiz = document.getElementById("page-quiz").classList.contains("on");
+  if(onQuiz && name !== "quiz" && Q && !Q.done && Q.responses.some(r => !r)){
+    if(!confirm("Leave this set? Your progress is saved and you can resume it from the dashboard.")){
+      return;
+    }
+    stopTimer();
+    saveSession();
+    closeReview();
+  }
   document.querySelectorAll(".page").forEach(p => p.classList.toggle("on", p.id === "page-"+name));
   document.querySelectorAll(".navbtn").forEach(b => b.setAttribute("aria-current", String(b.dataset.go === name)));
   if(name === "home") drawHome();
@@ -1060,6 +1257,17 @@ function drawHome(){
   else if(r >= 85){ v.textContent = "Tracking well — hold this and keep drilling misses"; v.style.color = "var(--ok)"; }
   else if(r >= 65){ v.textContent = "Close — push weak domains above 80%"; v.style.color = "var(--warn)"; }
   else { v.textContent = "Keep grinding — coverage and accuracy both need work"; v.style.color = "var(--signal)"; }
+
+  // unfinished set recovery
+  const rc = document.getElementById("resumeCard");
+  if(S.session){
+    const done = S.session.responses.filter(Boolean).length;
+    const expired = S.session.limitMs && Date.now() >= S.session.endsAt;
+    rc.hidden = false;
+    document.getElementById("resumeText").textContent =
+      S.session.label + " — " + done + " of " + S.session.ids.length + " answered" +
+      (expired ? ". The timer has run out; resuming will score it." : ".");
+  } else rc.hidden = true;
 
   // recommended next move: core first, then breadth, then weak drill
   const cm = coreMastery();
@@ -1202,19 +1410,28 @@ document.getElementById("startPractice").onclick = () => {
   startQuiz(pick(BANK.filter(q => ds.includes(q.d)), n, mode),
             {label:"Practice · D" + ds.join("/") + " · " + mode});
 };
-function examSet(scale){
+function examSet(target){
+  // Allocate by exam weight using largest-remainder so the set totals exactly `target`.
+  const raw = Object.keys(EXAM_MIX).map(d => ({d:+d, exact: EXAM_MIX[d]/90*target}));
+  const counts = {};
+  let used = 0;
+  for(const r of raw){ counts[r.d] = Math.floor(r.exact); used += counts[r.d]; }
+  raw.sort((a,b) => (b.exact - Math.floor(b.exact)) - (a.exact - Math.floor(a.exact)));
+  for(let k = 0; used < target; k++, used++) counts[raw[k % raw.length].d]++;
+
   let items = [];
-  for(const d of Object.keys(EXAM_MIX)){
-    const n = Math.round(EXAM_MIX[d] * scale);
-    items = items.concat(shuffle(BANK.filter(q => q.d === +d)).slice(0, n));
+  for(const d of Object.keys(counts)){
+    items = items.concat(shuffle(BANK.filter(q => q.d === +d)).slice(0, counts[d]));
   }
   return shuffle(items);
 }
 document.getElementById("startExam").onclick = () => {
-  startQuiz(examSet(1), {mode:"exam", label:"Exam simulation (90)", limitMs:90*60000});
+  const set = examSet(90);
+  startQuiz(set, {mode:"exam", label:"Exam simulation (" + set.length + ")", limitMs:90*60000});
 };
 document.getElementById("startExam45").onclick = () => {
-  startQuiz(examSet(0.5), {mode:"exam", label:"Half exam (45)", limitMs:45*60000});
+  const set = examSet(45);
+  startQuiz(set, {mode:"exam", label:"Half exam (" + set.length + ")", limitMs:45*60000});
 };
 document.getElementById("startDrill").onclick = () => {
   startQuiz(shuffle(drillQueue()).slice(0, 40), {label:"Weak drill"});
@@ -1228,6 +1445,15 @@ document.getElementById("clearFlags").onclick = () => {
 };
 document.getElementById("submitBtn").onclick = submit;
 document.getElementById("nextBtn").onclick = next;
+document.getElementById("prevBtn").onclick = prev;
+document.getElementById("reviewBtn").onclick = openReview;
+document.getElementById("navClose").onclick = closeReview;
+document.getElementById("navSubmit").onclick = () => {
+  const blank = Q.responses.filter(r => !r).length;
+  if(blank && !confirm(blank + " question" + (blank===1?" is":"s are") + " unanswered and will score as wrong. Submit anyway?")) return;
+  finish();
+};
+document.getElementById("resumeBtn").onclick = resumeSession;
 document.getElementById("flagBtn").onclick = () => {
   const id = Q.items[Q.i].q.id;
   const at = S.flags.indexOf(id);
@@ -1238,9 +1464,13 @@ document.getElementById("flagBtn").onclick = () => {
   b.classList.toggle("on", on);
   b.textContent = on ? "⚑ Flagged" : "⚑ Flag";
 };
+document.getElementById("discardBtn").onclick = () => {
+  if(confirm("Discard the unfinished set? Answers already scored are kept.")){ clearSession(); drawHome(); }
+};
 document.getElementById("quitBtn").onclick = () => {
-  if(Q && Q.answers.length && confirm("End this set and score what you have answered?")) finish();
-  else if(Q && !Q.answers.length){ if(Q.timer) clearInterval(Q.timer); go("home"); }
+  const any = Q && Q.responses.some(Boolean);
+  if(any && confirm("End this set and score what you have answered?")) finish();
+  else if(Q && !any){ stopTimer(); clearSession(); go("home"); }
 };
 document.getElementById("rAgain").onclick = () => go("practice");
 document.getElementById("rHome").onclick = () => go("home");

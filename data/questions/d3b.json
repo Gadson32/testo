@@ -8,10 +8,10 @@
     "type": "single",
     "q": "Which technology protects data IN USE — while it is loaded in memory and being processed?",
     "opts": [
-      "Confidential computing using hardware-based trusted execution environments",
-      "Full-disk encryption",
-      "TLS 1.3",
-      "Tape backup encryption"
+      "Confidential computing enclaves",
+      "Full-disk encryption on the host",
+      "TLS 1.3 for transport security",
+      "Tape backup media encryption"
     ],
     "a": [
       0
@@ -108,8 +108,8 @@
     "type": "single",
     "q": "A SaaS provider must ensure that a regulated customer's records are never processed or stored outside a specific country. Which control set is MOST appropriate?",
     "opts": [
-      "Region-locked storage and processing with geolocation-based access restrictions and audit evidence",
-      "Client-side data masking in the user interface",
+      "Region-locked storage and processing",
+      "Client-side data masking in the interface",
       "Longer password expiration intervals",
       "Increasing the size of database backups"
     ],
@@ -128,8 +128,8 @@
     "type": "single",
     "q": "Which example BEST represents non-human-readable data that still requires protection?",
     "opts": [
-      "A serialized binary file containing customer identifiers used by an internal service",
-      "A printed customer invoice",
+      "A serialized binary identifier file",
+      "A printed customer invoice copy",
       "A plaintext spreadsheet of employee salaries",
       "An email body listing account numbers"
     ],
@@ -168,7 +168,7 @@
     "type": "single",
     "q": "Which control set BEST limits the number of people who can read a highly confidential merger document stored on a collaboration platform?",
     "opts": [
-      "Role-based permission restrictions with periodic access reviews and sensitivity labeling",
+      "Role-based permissions with reviews",
       "A password on the document shared by email",
       "Watermarking the document with the company logo",
       "Moving the document to a personal cloud drive"
@@ -188,10 +188,10 @@
     "type": "single",
     "q": "Why is segmenting cardholder data into a dedicated environment a common PCI DSS strategy?",
     "opts": [
-      "It reduces the scope of systems subject to assessment and limits exposure if other systems are compromised",
-      "It eliminates the requirement to encrypt cardholder data",
-      "It removes the need for access controls in that environment",
-      "It transfers all compliance responsibility to the acquiring bank"
+      "It reduces assessment scope and exposure",
+      "It removes the encryption requirement",
+      "It removes access control needs",
+      "It shifts compliance to the bank"
     ],
     "a": [
       0
@@ -208,7 +208,7 @@
     "type": "single",
     "q": "Which statement correctly distinguishes load balancing from clustering?",
     "opts": [
-      "Load balancing distributes requests across independent nodes; clustering makes multiple nodes act as a single system with shared state and coordinated failover",
+      "Load balancing distributes; clustering shares state",
       "Load balancing requires shared storage; clustering never does",
       "Clustering only works for stateless web servers",
       "Load balancing provides no availability benefit"
@@ -248,7 +248,7 @@
     "type": "single",
     "q": "A company's primary data center and its designated recovery site are eight miles apart in the same metropolitan area. Which risk does this design fail to address?",
     "opts": [
-      "A regional event such as a hurricane, flood, or extended grid failure affecting both sites",
+      "A regional event affecting both sites",
       "The need for encrypted replication traffic",
       "The requirement to test failover annually",
       "The need for role-based access control at both sites"
@@ -268,10 +268,10 @@
     "type": "single",
     "q": "After a vulnerability in a single hypervisor product took down every virtualized workload, the architecture team recommends platform diversity. What is the PRIMARY benefit?",
     "opts": [
-      "A single product flaw or vendor outage no longer affects the entire environment",
+      "No single vendor flaw affects all",
       "Licensing costs are always reduced",
       "Staff training requirements decrease",
-      "Patching becomes unnecessary"
+      "Patching becomes unnecessary entirely"
     ],
     "a": [
       0
@@ -308,7 +308,7 @@
     "type": "single",
     "q": "Which test provides the strongest assurance that a recovery site can carry production load, while still allowing rollback if problems appear?",
     "opts": [
-      "A controlled failover test with a defined rollback plan during a maintenance window",
+      "A controlled failover with rollback",
       "A tabletop discussion of the failover steps",
       "A review of the recovery site's asset inventory",
       "Verifying that backup jobs completed successfully"
@@ -328,7 +328,7 @@
     "type": "single",
     "q": "Ransomware encrypts production data and also deletes the backup repository because the backup server was joined to the same domain with reachable shares. Which backup practice would have prevented this?",
     "opts": [
-      "Immutable or air-gapped offline copies isolated from production credentials",
+      "Immutable or air-gapped copies",
       "More frequent incremental backups to the same repository",
       "Compressing backups to save space",
       "Storing backups on the same SAN with a different LUN"
@@ -368,7 +368,7 @@
     "type": "single",
     "q": "Why is a virtual machine snapshot NOT an adequate substitute for a backup?",
     "opts": [
-      "Snapshots usually depend on the same storage system and can be lost with it, and they are not designed for long-term retention",
+      "They share fate with the same storage",
       "Snapshots cannot be created while a VM is running",
       "Snapshots always take longer to create than full backups",
       "Snapshots automatically encrypt themselves"
@@ -388,9 +388,9 @@
     "type": "single",
     "q": "A company relies on synchronous replication between two data centers and has no separate backups. Which risk remains unaddressed?",
     "opts": [
-      "Logical corruption or malicious deletion is replicated instantly to the secondary site",
+      "Corruption replicates instantly",
       "Hardware failure at the primary site",
-      "Loss of a single disk in the primary array",
+      "Loss of a single disk in the array",
       "A network outage between the sites"
     ],
     "a": [
@@ -408,10 +408,10 @@
     "type": "single",
     "q": "Which backup-related technology allows recovery to a specific point in time by preserving an ordered record of every change?",
     "opts": [
-      "Transaction journaling or log shipping",
+      "Transaction journaling",
       "A weekly full backup only",
-      "RAID 5 parity",
-      "Disk defragmentation"
+      "RAID 5 parity protection",
+      "Disk defragmentation jobs"
     ],
     "a": [
       0
@@ -428,7 +428,7 @@
     "type": "single",
     "q": "Which power protection combination BEST supports continuous operation through a four-hour utility outage?",
     "opts": [
-      "A UPS to bridge the transition plus a fuel-supplied generator for sustained runtime",
+      "A UPS plus a fuel generator",
       "A UPS alone sized for 15 minutes of runtime",
       "Surge protectors on every rack",
       "A second power distribution unit fed from the same circuit"
@@ -448,7 +448,7 @@
     "type": "single",
     "q": "During a disaster recovery test, the recovery environment handles only 40 percent of production transaction volume before saturating. Which planning failure does this reveal?",
     "opts": [
-      "Inadequate capacity planning for technology and infrastructure at the recovery site",
+      "Inadequate capacity planning",
       "A failure of data classification",
       "An error in the data retention policy",
       "Insufficient password complexity requirements"
@@ -488,7 +488,7 @@
     "type": "single",
     "q": "Which combination BEST protects a database of customer records at rest against theft of the storage media?",
     "opts": [
-      "Transparent data encryption with keys managed in an HSM or KMS separate from the data",
+      "TDE with keys held in an HSM",
       "Restricting SQL logins to business hours",
       "Enabling verbose query logging",
       "Compressing the database files"
@@ -548,7 +548,7 @@
     "type": "single",
     "q": "An organization discovers unclassified sensitive files scattered across shares with no ownership. Which action should be taken FIRST?",
     "opts": [
-      "Perform data discovery and classification to identify what exists, where it resides, and who owns it",
+      "Discover and classify the data",
       "Encrypt every file share immediately",
       "Delete all files older than one year",
       "Grant read access to all employees to improve collaboration"
@@ -588,7 +588,7 @@
     "type": "single",
     "q": "Which configuration describes an active/passive high availability pair?",
     "opts": [
-      "One node handles all traffic while a synchronized standby takes over on failure",
+      "One active node, one synchronized standby",
       "Both nodes process traffic simultaneously and share the load",
       "Both nodes are powered off until a disaster is declared",
       "Traffic alternates between nodes every 24 hours"
@@ -608,7 +608,7 @@
     "type": "single",
     "q": "Which control BEST detects and blocks an employee attempting to email a spreadsheet of Social Security numbers to a personal address?",
     "opts": [
-      "A data loss prevention policy inspecting outbound mail for sensitive data patterns",
+      "A DLP policy inspecting outbound mail",
       "A host-based firewall rule blocking port 25",
       "A quarterly access review of the file share",
       "Full-disk encryption on the employee's laptop"
@@ -628,7 +628,7 @@
     "type": "single",
     "q": "A system's RPO is one hour, but backups run nightly at midnight. What is the consequence?",
     "opts": [
-      "Up to 24 hours of data could be lost, which fails the stated RPO",
+      "Up to 24 hours of data could be lost",
       "The RTO is automatically satisfied",
       "Backups will consume less storage than required",
       "The RPO becomes irrelevant once backups are encrypted"
@@ -668,7 +668,7 @@
     "type": "single",
     "q": "Which of the following BEST demonstrates resilience rather than simple redundancy?",
     "opts": [
-      "A system that automatically detects component failure, reroutes work, and continues serving requests in a degraded but functional state",
+      "It detects failure and keeps serving",
       "A spare server stored in a closet",
       "A second copy of a configuration file on the same disk",
       "A documented list of vendor support phone numbers"
@@ -728,7 +728,7 @@
     "type": "single",
     "q": "A company keeps every customer email indefinitely \"just in case.\" Which risk does this practice increase MOST?",
     "opts": [
-      "Larger breach impact and greater legal discovery exposure from unnecessary data retention",
+      "Bigger breach and discovery exposure",
       "Reduced storage costs over time",
       "Improved compliance with data minimization requirements",
       "Lower likelihood of regulatory scrutiny"
@@ -768,10 +768,10 @@
     "type": "single",
     "q": "Which approach BEST limits the amount of sensitive data an attacker can reach after compromising a single application server?",
     "opts": [
-      "Segmenting data stores by sensitivity and granting each application only the specific data access it requires",
-      "Storing all data in one database for easier backup",
-      "Granting applications broad read access to simplify development",
-      "Relying on perimeter firewalls to keep attackers out"
+      "Segment data stores by sensitivity",
+      "Keep all data in one database",
+      "Grant apps broad read access",
+      "Rely on the perimeter firewall"
     ],
     "a": [
       0
@@ -788,10 +788,10 @@
     "type": "single",
     "q": "Which activity provides the strongest evidence that backups are usable for recovery?",
     "opts": [
-      "Periodic test restores validated against expected data and documented results",
-      "Successful completion messages from the backup software",
-      "A backup retention policy approved by management",
-      "Monitoring the size of nightly backup files"
+      "Periodic validated test restores",
+      "Backup software success messages",
+      "An approved retention policy",
+      "Nightly backup file size trends"
     ],
     "a": [
       0
@@ -808,7 +808,7 @@
     "type": "single",
     "q": "A design review must reduce the risk of an internet-facing API being abused by automated credential stuffing. Which control combination is MOST effective?",
     "opts": [
-      "Rate limiting and bot detection at the API gateway plus MFA and breached-password screening on accounts",
+      "Rate limiting, bot detection, and MFA",
       "Increasing the API's TLS key size",
       "Adding a CAPTCHA to the marketing website",
       "Extending session lifetimes to reduce login frequency"
@@ -828,10 +828,10 @@
     "type": "single",
     "q": "An administrative portal should be reachable only from countries where the company operates. Which control implements this?",
     "opts": [
-      "Geolocation-based access restrictions at the edge, combined with explicit allow lists for known administrative sources",
+      "Geolocation restrictions at the edge",
       "Blocking all TLS 1.2 connections",
-      "Requiring longer passwords for administrators",
-      "Disabling logging for foreign IP addresses"
+      "Requiring longer administrator passwords",
+      "Disabling logging for foreign addresses"
     ],
     "a": [
       0
@@ -848,10 +848,10 @@
     "type": "single",
     "q": "Management asks whether to build an active/active multi-region deployment for an internal reporting tool that tolerates a full day of downtime. What is the BEST recommendation?",
     "opts": [
-      "Match the design to the business requirement using a lower-cost recovery approach and reserve multi-region investment for critical systems",
-      "Build the multi-region deployment because higher availability is always better",
-      "Eliminate backups for the tool since it is not critical",
-      "Move the tool to an unmanaged personal cloud account to reduce cost"
+      "Match the design to the requirement",
+      "Build multi-region; more is better",
+      "Drop backups since it is not critical",
+      "Move it to a personal cloud account"
     ],
     "a": [
       0
@@ -868,10 +868,10 @@
     "type": "single",
     "q": "Where should a database containing regulated customer data be placed relative to an internet-facing application tier?",
     "opts": [
-      "In a separate internal zone reachable only from the application tier on the specific required port",
-      "In the same subnet as the web servers to reduce latency",
-      "In the screened subnet alongside the web tier",
-      "Directly on the internet with strong database authentication"
+      "In a separate internal zone",
+      "In the web server subnet",
+      "In the screened subnet",
+      "On the internet with strong auth"
     ],
     "a": [
       0
@@ -888,10 +888,10 @@
     "type": "multi",
     "q": "Which THREE elements should a disaster recovery plan explicitly define to be actionable?",
     "opts": [
-      "Recovery time and recovery point objectives per system",
-      "Named roles with authority to declare a disaster and initiate failover",
-      "Prioritized recovery order based on business impact and dependencies",
-      "The marketing department's preferred press release font"
+      "RTO and RPO per system",
+      "Who may declare a disaster",
+      "A dependency-aware recovery order",
+      "A preferred press release font"
     ],
     "a": [
       0,

@@ -8,7 +8,7 @@
     "type": "single",
     "q": "What is the PRIMARY function of a SIEM platform?",
     "opts": [
-      "Aggregate and correlate log and event data from many sources to generate prioritized alerts and support investigation",
+      "Aggregate and correlate event data",
       "Encrypt data at rest on endpoints",
       "Replace the need for endpoint protection",
       "Automatically patch vulnerable systems"
@@ -28,10 +28,10 @@
     "type": "single",
     "q": "A detection rule fires 200 times per day, and analysts confirm all instances are legitimate administrative activity. What is the BEST action?",
     "opts": [
-      "Tune the rule with context-aware exclusions and validate that true positives would still trigger",
-      "Delete the rule entirely to eliminate the noise",
-      "Leave the rule as is and instruct analysts to ignore it",
-      "Route the alerts to a mailbox nobody monitors"
+      "Tune with context-aware exclusions",
+      "Delete the rule to remove the noise",
+      "Leave it and tell analysts to ignore",
+      "Route alerts to an unwatched mailbox"
     ],
     "a": [
       0
@@ -48,7 +48,7 @@
     "type": "single",
     "q": "Why should logs be forwarded to a central platform rather than retained only on the originating host?",
     "opts": [
-      "An attacker who compromises the host cannot delete the forwarded copies, and correlation across sources becomes possible",
+      "Forwarded copies survive host compromise",
       "Central storage uses less total disk space than local storage",
       "Local logs cannot record security events",
       "Central logging removes the need for time synchronization"
@@ -128,7 +128,7 @@
     "type": "single",
     "q": "An EDR platform detects credential-dumping behavior on a workstation. Which immediate automated response BEST limits damage while preserving investigation options?",
     "opts": [
-      "Network-isolate the host while keeping it powered on and collecting telemetry",
+      "Isolate but keep it powered on",
       "Immediately reimage the host",
       "Shut the host down and unplug it",
       "Delete the suspicious process binary and take no further action"
@@ -148,10 +148,10 @@
     "type": "single",
     "q": "A regulation requires that security logs remain available for three years, but the SIEM retains only 90 days of searchable data. What should be implemented?",
     "opts": [
-      "Archive older logs to lower-cost immutable storage with a documented retrieval process",
-      "Reduce logging verbosity so 90 days covers three years",
-      "Delete logs after 90 days and document the limitation",
-      "Store archives on the same SIEM indexers to simplify search"
+      "Archive to immutable cold storage",
+      "Reduce verbosity to stretch retention",
+      "Delete at 90 days and note the gap",
+      "Keep archives on the SIEM indexers"
     ],
     "a": [
       0
@@ -168,7 +168,7 @@
     "type": "single",
     "q": "Which web filtering approach protects users who are off the corporate network without backhauling traffic to headquarters?",
     "opts": [
-      "Agent-based filtering on the endpoint or a cloud-delivered secure web gateway",
+      "Endpoint agent or cloud gateway",
       "A centralized on-premises proxy requiring VPN for all traffic",
       "Perimeter firewall URL rules only",
       "A hosts-file blocklist maintained manually"
@@ -228,9 +228,9 @@
     "type": "single",
     "q": "An organization publishes SPF and DKIM but still receives spoofed messages that appear to come from its own domain. Which configuration is MOST likely missing?",
     "opts": [
-      "A DMARC policy set to quarantine or reject with alignment enforced",
-      "A longer DKIM key",
-      "An additional MX record",
+      "A DMARC policy set to reject",
+      "A longer DKIM signing key",
+      "An additional MX record entry",
       "A second outbound mail relay"
     ],
     "a": [
@@ -268,7 +268,7 @@
     "type": "single",
     "q": "Which pairing correctly matches an operating system security mechanism to its platform?",
     "opts": [
-      "Group Policy for Windows domain configuration enforcement; SELinux for mandatory access control on Linux",
+      "Group Policy for Windows; SELinux for Linux",
       "Group Policy for Linux kernel modules; SELinux for Windows registry settings",
       "Both mechanisms apply only to network appliances",
       "Both mechanisms are legacy antivirus engines"
@@ -288,9 +288,9 @@
     "type": "single",
     "q": "A device connects to the corporate LAN with outdated antivirus and missing patches. Which technology can place it in a remediation VLAN until it complies?",
     "opts": [
-      "Network access control with posture assessment",
+      "NAC with posture assessment",
       "A web application firewall",
-      "A DNS sinkhole",
+      "A DNS sinkhole entry",
       "A load balancer health check"
     ],
     "a": [
@@ -328,10 +328,10 @@
     "type": "single",
     "q": "An analyst must allow a partner to reach only an internal SFTP server on port 22 from one source address. Which rule is correct and MOST restrictive?",
     "opts": [
-      "Permit TCP from the partner's specific source IP to the SFTP server's IP on port 22, then deny all else",
-      "Permit TCP from any source to the SFTP server on any port",
-      "Permit TCP from the partner's subnet to the internal network on ports 1-1024",
-      "Permit all traffic from the partner and log it for review"
+      "Permit that source IP to port 22 only",
+      "Permit any source to that server",
+      "Permit their subnet to ports 1-1024",
+      "Permit all their traffic and log it"
     ],
     "a": [
       0
@@ -348,10 +348,10 @@
     "type": "single",
     "q": "Which practice MOST reduces the risk of orphaned accounts after employees leave?",
     "opts": [
-      "Automated deprovisioning triggered by HR system events, with periodic reconciliation reviews",
-      "A monthly email reminder to managers to report departures",
-      "Requiring departing employees to delete their own accounts",
-      "Disabling accounts only after the next annual audit"
+      "HR-triggered automated deprovisioning",
+      "A monthly reminder email to managers",
+      "Users deleting their own accounts",
+      "Disabling accounts at annual audit"
     ],
     "a": [
       0
@@ -448,7 +448,7 @@
     "type": "single",
     "q": "Which second factor is MOST resistant to real-time phishing proxy attacks?",
     "opts": [
-      "A FIDO2/WebAuthn security key bound to the site's origin",
+      "A FIDO2 security key",
       "An SMS one-time code",
       "A push notification with approve or deny",
       "A TOTP code from an authenticator app"
@@ -468,7 +468,7 @@
     "type": "single",
     "q": "A fingerprint reader is tuned so that fewer unauthorized people are accepted, but authorized users are rejected more often. Which metrics changed?",
     "opts": [
-      "False acceptance rate decreased while false rejection rate increased",
+      "FAR decreased; FRR increased",
       "Both false acceptance and false rejection rates decreased",
       "The crossover error rate is now zero",
       "Only the enrollment time changed"
@@ -508,7 +508,7 @@
     "type": "single",
     "q": "An application needs to verify who the user is and receive standardized identity claims from a provider. Which technology is appropriate?",
     "opts": [
-      "OpenID Connect, which layers authentication and ID tokens on OAuth 2.0",
+      "OpenID Connect on top of OAuth",
       "OAuth 2.0 alone, which is designed for authorization",
       "LDAP bind operations over the internet",
       "SNMPv3 authentication"
@@ -528,7 +528,7 @@
     "type": "single",
     "q": "A university lets students use their campus credentials to access a third-party library service without creating new accounts. Which concept enables this?",
     "opts": [
-      "Federation with a trust relationship between identity provider and service provider",
+      "Federation with a trust relationship",
       "Credential sharing through a common password",
       "Local account replication to the vendor's database",
       "Anonymous guest access"
@@ -548,10 +548,10 @@
     "type": "single",
     "q": "Quarterly, each manager reviews a report of their team's system entitlements and formally confirms or revokes each one. What is this process called?",
     "opts": [
-      "Access review and attestation",
+      "Access attestation",
       "Identity proofing",
-      "Provisioning",
-      "Federation"
+      "User provisioning",
+      "Federation trust"
     ],
     "a": [
       0
@@ -588,7 +588,7 @@
     "type": "single",
     "q": "An organization wants administrators to hold no standing privileged rights, instead requesting elevation that is granted for 60 minutes with full session recording. Which capability is this?",
     "opts": [
-      "Just-in-time privileged access management",
+      "Just-in-time PAM",
       "Password vaulting only",
       "Discretionary access control",
       "Single sign-on"
@@ -608,10 +608,10 @@
     "type": "single",
     "q": "Which password policy BEST reflects current guidance?",
     "opts": [
-      "Require long passphrases, screen against known-breached passwords, and avoid mandatory periodic expiration without evidence of compromise",
-      "Require exactly eight characters with mandatory monthly changes",
-      "Require complex passwords changed every 30 days with three-character minimum differences",
-      "Require users to write passwords down and store them at their desk"
+      "Long passphrases with breach screening",
+      "Exactly eight characters, changed monthly",
+      "Complex passwords rotated every 30 days",
+      "Written passwords stored at the desk"
     ],
     "a": [
       0
@@ -628,10 +628,10 @@
     "type": "single",
     "q": "Which approach BEST describes passwordless authentication?",
     "opts": [
-      "Authenticating with a possession or biometric factor bound to the device, such as a passkey, with no shared secret transmitted",
-      "Using a very long password stored in a manager",
-      "Emailing a one-time password to the user each login",
-      "Allowing anonymous access to non-sensitive resources"
+      "A device-bound passkey credential",
+      "A long password in a manager",
+      "An emailed one-time password",
+      "Anonymous access to low-risk data"
     ],
     "a": [
       0
@@ -648,10 +648,10 @@
     "type": "single",
     "q": "A manufacturing plant restricts shop-floor accounts to their assigned shifts. Which control is being applied, and what benefit does it provide?",
     "opts": [
-      "Time-of-day restrictions, which shrink the window in which stolen credentials can be used",
-      "Mandatory access control, which enforces classification labels",
-      "Federation, which extends trust to partners",
-      "Accounting, which records user activity"
+      "Time-of-day restrictions",
+      "Mandatory access control",
+      "Federation with partners",
+      "Accounting of user activity"
     ],
     "a": [
       0
@@ -688,7 +688,7 @@
     "type": "single",
     "q": "A DLP deployment blocks so many legitimate business emails that staff begin using personal accounts. What is the BEST corrective approach?",
     "opts": [
-      "Tune policies with accurate classification and approved exception workflows, starting in monitor mode before blocking",
+      "Tune with classification and exceptions",
       "Disable DLP entirely to restore productivity",
       "Block all outbound email attachments permanently",
       "Ignore the personal email usage since DLP is working as designed"
@@ -708,7 +708,7 @@
     "type": "single",
     "q": "Which statement BEST distinguishes XDR from EDR?",
     "opts": [
-      "XDR correlates telemetry across endpoints, identity, email, network, and cloud, while EDR focuses on endpoint telemetry",
+      "XDR correlates beyond the endpoint",
       "XDR runs only on network appliances and ignores endpoints",
       "EDR provides broader coverage than XDR",
       "XDR is a legacy antivirus technology"
@@ -728,10 +728,10 @@
     "type": "single",
     "q": "Which trade-off correctly describes agent-based versus agentless monitoring?",
     "opts": [
-      "Agents provide deeper, continuous host visibility but add deployment and resource overhead; agentless is easier to deploy but depends on reachability and credentials",
-      "Agents cannot collect data when a host is offline from the corporate network, while agentless can",
-      "Agentless monitoring always provides more detail than agents",
-      "Agents eliminate the need for network monitoring entirely"
+      "Agents are deeper; agentless is easier",
+      "Agents fail when a host is off-network",
+      "Agentless always gives more detail",
+      "Agents replace network monitoring"
     ],
     "a": [
       0
@@ -768,7 +768,7 @@
     "type": "single",
     "q": "After an alert is triaged and remediated, which step ensures the response actually worked?",
     "opts": [
-      "Validation, such as confirming the malicious process is gone, the host is clean, and the indicator no longer appears",
+      "Validation that the host is clean",
       "Closing the ticket immediately after remediation is attempted",
       "Deleting the alert from the SIEM",
       "Reporting the incident count in the monthly metrics only"
@@ -788,10 +788,10 @@
     "type": "single",
     "q": "Which practice BEST secures service accounts used by automated processes?",
     "opts": [
-      "Restrict them to non-interactive logon, scope permissions narrowly, vault and rotate credentials, and monitor for anomalous use",
-      "Grant them domain administrator rights to avoid permission errors",
-      "Use one shared service account across all applications",
-      "Set their passwords to never expire and document them in a shared spreadsheet"
+      "Non-interactive, scoped, and rotated",
+      "Domain admin rights to avoid errors",
+      "One shared account for all apps",
+      "Never-expiring documented passwords"
     ],
     "a": [
       0
@@ -828,7 +828,7 @@
     "type": "single",
     "q": "An antivirus console shows 40 endpoints with definitions more than 30 days old. What is the MOST significant risk?",
     "opts": [
-      "Those endpoints cannot detect recently identified malware, creating a coverage gap",
+      "They cannot detect recent malware",
       "The console will run out of storage",
       "Those endpoints will lose network connectivity",
       "Definition age has no security relevance"
@@ -848,10 +848,10 @@
     "type": "single",
     "q": "A developer needs to read production logs to troubleshoot but currently holds full production database write access. Which change applies least privilege MOST precisely?",
     "opts": [
-      "Grant read-only access limited to the specific log data required, time-bound and audited",
-      "Leave access unchanged but require a change ticket for each use",
-      "Remove all production access and rely on screenshots from operations staff",
-      "Grant read-only access to the entire production environment"
+      "Read-only access to the logs needed",
+      "Unchanged access plus a ticket each use",
+      "No access; screenshots from operations",
+      "Read-only across all of production"
     ],
     "a": [
       0
@@ -868,7 +868,7 @@
     "type": "single",
     "q": "Which scenario BEST justifies deploying file integrity monitoring?",
     "opts": [
-      "Detecting unauthorized modification of web server content and system binaries on regulated payment systems",
+      "Detecting unauthorized file changes",
       "Improving web server response time under load",
       "Encrypting customer records at rest",
       "Distributing traffic across application servers"
@@ -908,7 +908,7 @@
     "type": "single",
     "q": "Which monitoring activity would FIRST reveal that a new server was deployed without the approved security baseline?",
     "opts": [
-      "Automated configuration compliance scanning against the baseline",
+      "Configuration compliance scanning",
       "Reviewing employee training completion records",
       "Checking the office badge access logs",
       "Reading the quarterly financial statement"
@@ -928,7 +928,7 @@
     "type": "single",
     "q": "A newly deployed inline IPS blocks a critical business application because a signature matches its unusual traffic pattern. What is the BEST response?",
     "opts": [
-      "Create a narrowly scoped exception for that specific application traffic and report the false positive to the vendor",
+      "A narrowly scoped traffic exception",
       "Switch the IPS to detection-only mode for all traffic permanently",
       "Remove the IPS from the network path",
       "Instruct users to retry until the traffic passes"
@@ -968,10 +968,10 @@
     "type": "single",
     "q": "Which reporting practice MOST improves security operations effectiveness?",
     "opts": [
-      "Dashboards showing detection coverage, alert volumes by outcome, and mean time to detect and respond, reviewed on a cadence",
-      "Emailing raw log excerpts to executives weekly",
-      "Publishing every alert to a company-wide channel",
-      "Reporting only the number of blocked spam messages"
+      "Dashboards of coverage and MTTD/MTTR",
+      "Weekly raw log excerpts to executives",
+      "Every alert posted company-wide",
+      "Only the blocked spam message count"
     ],
     "a": [
       0

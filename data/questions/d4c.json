@@ -48,7 +48,7 @@
     "type": "single",
     "q": "What is the PRIMARY purpose of the lessons learned phase?",
     "opts": [
-      "Identify improvements to controls, detection, and procedures, and assign owners for those actions",
+      "Identify improvements and assign owners",
       "Determine which employee should be disciplined",
       "Produce a press release describing the incident",
       "Close the incident ticket as quickly as possible"
@@ -68,7 +68,7 @@
     "type": "single",
     "q": "An incident review determines the breach occurred because a public-facing server was missing patches for eight months, since it was never added to the patching inventory. What is the root cause?",
     "opts": [
-      "A process gap in asset onboarding that excluded the server from vulnerability and patch management",
+      "A gap in the asset onboarding process",
       "The specific CVE exploited by the attacker",
       "The attacker's choice of exploit tooling",
       "The absence of cyber insurance coverage"
@@ -88,7 +88,7 @@
     "type": "single",
     "q": "Which activity BEST describes threat hunting?",
     "opts": [
-      "Proactively searching telemetry for signs of undetected compromise based on hypotheses and adversary behaviors",
+      "Proactively hunting for missed compromise",
       "Waiting for SIEM alerts and triaging them",
       "Running an authenticated vulnerability scan",
       "Reviewing firewall change requests"
@@ -108,7 +108,7 @@
     "type": "single",
     "q": "Why is chain of custody documentation essential when collecting digital evidence?",
     "opts": [
-      "It records every person who handled the evidence and when, so its integrity and admissibility can be demonstrated",
+      "It proves continuous accountable control",
       "It speeds up the forensic imaging process",
       "It encrypts the evidence automatically",
       "It eliminates the need to hash the evidence"
@@ -128,9 +128,9 @@
     "type": "single",
     "q": "Following the order of volatility, which evidence should be collected FIRST from a running compromised system?",
     "opts": [
-      "CPU cache, memory contents, and running process and network connection state",
+      "Cache, memory, and connection state",
       "Data on the hard drive",
-      "Archived backups on tape",
+      "Archived backups stored on tape",
       "Printed documentation from the file room"
     ],
     "a": [
@@ -148,10 +148,10 @@
     "type": "single",
     "q": "A company anticipates litigation related to an incident. What must the security team do with relevant logs, images, and mailboxes?",
     "opts": [
-      "Preserve them under legal hold, suspending automatic deletion and documenting preservation",
-      "Delete anything not needed for the technical investigation",
-      "Compress and archive them with no special handling",
-      "Allow normal retention policies to expire the data"
+      "Preserve them under a legal hold",
+      "Delete what the investigation skips",
+      "Archive them with no special handling",
+      "Let normal retention expire the data"
     ],
     "a": [
       0
@@ -168,10 +168,10 @@
     "type": "single",
     "q": "Which practice ensures a forensic disk image can be proven identical to the original media?",
     "opts": [
-      "Use a write blocker during acquisition and record cryptographic hashes of the source and image",
-      "Copy files with the operating system's file explorer",
-      "Boot the original system normally and export data to a USB drive",
-      "Compress the drive contents into an archive with a password"
+      "Use a write blocker and hash both",
+      "Copy the files with file explorer",
+      "Boot it and export to a USB drive",
+      "Compress the drive with a password"
     ],
     "a": [
       0
@@ -208,10 +208,10 @@
     "type": "single",
     "q": "Which incident response testing method validates coordination and decision-making with the least operational risk?",
     "opts": [
-      "A tabletop exercise",
-      "A full-interruption failover of production systems",
-      "A live red team operation without notice",
-      "Deploying real ransomware in a production segment"
+      "A tabletop discussion exercise",
+      "A full-interruption failover test",
+      "An unannounced red team operation",
+      "Real ransomware in a live segment"
     ],
     "a": [
       0
@@ -228,10 +228,10 @@
     "type": "single",
     "q": "Which element of preparation MOST directly reduces confusion during a live incident?",
     "opts": [
-      "A documented plan with defined roles, decision authority, escalation paths, and out-of-band communication methods",
-      "A larger SIEM license",
+      "A plan with roles and authority",
+      "A larger SIEM license tier",
       "More frequent vulnerability scans",
-      "A longer password policy"
+      "A longer password policy standard"
     ],
     "a": [
       0
@@ -248,7 +248,7 @@
     "type": "single",
     "q": "An analyst must determine which internal host initiated a connection to a known malicious IP address and when. Which data source is MOST directly useful?",
     "opts": [
-      "Firewall or flow logs showing source and destination addresses, ports, and timestamps",
+      "Firewall or flow logs",
       "The organization's data classification policy",
       "Employee training completion records",
       "The physical badge access log"
@@ -268,9 +268,9 @@
     "type": "single",
     "q": "Which log source BEST shows the parent-child process relationship that launched a suspicious PowerShell command?",
     "opts": [
-      "Endpoint process creation logs from EDR or Windows event ID 4688 with command line auditing",
+      "Process creation logs (4688)",
       "Router interface counters",
-      "DHCP lease history",
+      "DHCP lease history records",
       "SMTP gateway delivery logs"
     ],
     "a": [
@@ -288,7 +288,7 @@
     "type": "single",
     "q": "When is full packet capture MOST justified despite its storage cost?",
     "opts": [
-      "When investigators must examine payload content, such as reconstructing exfiltrated data or protocol abuse",
+      "When payload content is needed",
       "When counting how many devices are on the network",
       "When verifying that backups completed",
       "When checking user training compliance"
@@ -308,7 +308,7 @@
     "type": "single",
     "q": "Which investigative question can email metadata answer without exposing message content?",
     "opts": [
-      "Which accounts communicated, when, from which IP addresses, and through which servers",
+      "Who communicated, when, and from where",
       "The exact wording of the confidential attachment",
       "The recipient's opinion of the message",
       "The financial impact of the incident"
@@ -328,7 +328,7 @@
     "type": "single",
     "q": "Why is accurate time synchronization across systems critical to investigations?",
     "opts": [
-      "Without consistent timestamps, events from different sources cannot be reliably ordered or correlated into a timeline",
+      "Events cannot be ordered reliably",
       "It reduces the storage required for logs",
       "It encrypts log data in transit automatically",
       "It eliminates the need for centralized logging"
@@ -348,7 +348,7 @@
     "type": "single",
     "q": "An IPS log entry shows a signature match for an exploit attempt with an action of 'dropped'. What does this tell the analyst?",
     "opts": [
-      "The attack attempt was blocked in transit, but the source and target should still be investigated",
+      "That attempt was blocked, not the threat",
       "The target system is confirmed compromised",
       "The signature is a false positive by definition",
       "No further action is ever required for dropped events"
@@ -368,8 +368,8 @@
     "type": "single",
     "q": "A web application was abused to download other customers' invoices. Which log source will BEST show which records each session accessed?",
     "opts": [
-      "Application logs recording authenticated user, resource identifier, and action per request",
-      "Switch port statistics",
+      "Application logs with user and object",
+      "Switch port traffic statistics",
       "Antivirus quarantine reports",
       "UPS battery event logs"
     ],
@@ -388,7 +388,7 @@
     "type": "single",
     "q": "Which task is an ideal candidate for security automation?",
     "opts": [
-      "Provisioning and deprovisioning user accounts based on authoritative HR events",
+      "Account provisioning from HR events",
       "Deciding whether to accept a major business risk",
       "Negotiating a vendor contract",
       "Determining an organization's risk appetite"
@@ -448,7 +448,7 @@
     "type": "single",
     "q": "Which risk is MOST associated with heavy reliance on a single orchestration platform for security operations?",
     "opts": [
-      "It becomes a single point of failure and a high-value target with broad privileges across systems",
+      "It becomes a single point of failure",
       "It eliminates the need for logging",
       "It guarantees slower incident response",
       "It prevents the use of APIs"
@@ -468,7 +468,7 @@
     "type": "single",
     "q": "Which control BEST prevents insecure code from reaching production in a CI/CD pipeline?",
     "opts": [
-      "Automated security gates — SAST, dependency scanning, and secret detection — that fail the build on policy violations",
+      "Automated security gates in the pipeline",
       "A monthly manual code review after deployment",
       "Allowing developers to bypass checks when deadlines are tight",
       "Scanning only the production environment after release"
@@ -488,7 +488,7 @@
     "type": "single",
     "q": "A SOAR playbook enriches an alert with asset and user context, opens a ticket, and notifies the on-call analyst. Which benefit does this MOST directly provide?",
     "opts": [
-      "Faster reaction time and consistent handling of every alert",
+      "Faster, consistent alert handling",
       "Elimination of the need for detection rules",
       "Guaranteed prevention of all incidents",
       "Reduced requirement for asset inventory accuracy"
@@ -508,10 +508,10 @@
     "type": "single",
     "q": "A team builds dozens of custom scripts that only one engineer understands, with no documentation or tests. Which automation consideration does this illustrate?",
     "opts": [
-      "Technical debt and ongoing supportability risk",
+      "Technical debt and support risk",
       "Improved employee retention",
-      "Reduced complexity",
-      "Guaranteed cost savings"
+      "Reduced operational complexity",
+      "Guaranteed long-term cost savings"
     ],
     "a": [
       0
@@ -528,10 +528,10 @@
     "type": "single",
     "q": "Which practice ensures new cloud workloads are deployed with required security settings every time?",
     "opts": [
-      "Provision exclusively through approved infrastructure-as-code templates with policy validation in the pipeline",
-      "Allow engineers to click through the console and apply settings from memory",
-      "Apply security settings manually after the first vulnerability scan",
-      "Rely on the provider's defaults without review"
+      "Provision through approved templates",
+      "Click through the console from memory",
+      "Harden manually after the first scan",
+      "Rely on the provider's defaults"
     ],
     "a": [
       0
@@ -548,7 +548,7 @@
     "type": "single",
     "q": "During analysis, the team determines that an alert reflects an employee legitimately using a new approved tool. What should happen next?",
     "opts": [
-      "Close it as a false positive, document the finding, and tune the detection to reduce recurrence",
+      "Close it and tune the detection",
       "Escalate it to a major incident for visibility",
       "Preserve forensic images of all involved systems indefinitely",
       "Notify regulators of a potential breach"
@@ -568,10 +568,10 @@
     "type": "single",
     "q": "Which action belongs to the recovery phase of incident response?",
     "opts": [
-      "Restoring systems from validated clean backups and monitoring closely for signs of reinfection",
-      "Blocking the attacker's IP address at the firewall during the attack",
-      "Interviewing the analyst who first noticed the alert",
-      "Documenting improvements for the response plan"
+      "Restore from validated clean backups",
+      "Blocking the attacker's IP mid-attack",
+      "Interviewing the reporting analyst",
+      "Documenting plan improvements"
     ],
     "a": [
       0
@@ -608,7 +608,7 @@
     "type": "single",
     "q": "During an investigation, how can historical vulnerability scan data help?",
     "opts": [
-      "It can show whether the exploited weakness was known and unpatched before the incident, supporting root cause analysis",
+      "Whether the flaw was known and unpatched",
       "It reveals the attacker's identity",
       "It provides the chain of custody for evidence",
       "It replaces the need for endpoint logs"
@@ -628,7 +628,7 @@
     "type": "single",
     "q": "Which practice MOST improves the readiness of staff outside the security team during an incident?",
     "opts": [
-      "Role-specific training and exercises covering how and when to report, escalate, and communicate",
+      "Role-specific reporting and escalation training",
       "Publishing the full technical playbook to all employees",
       "Requiring all staff to learn forensic imaging",
       "Restricting incident information to the security team only"
@@ -648,7 +648,7 @@
     "type": "single",
     "q": "Which data presentation BEST supports an analyst investigating a suspected account compromise?",
     "opts": [
-      "A dashboard correlating that account's authentications, source locations, resource access, and privilege changes over time",
+      "Correlated activity for that account",
       "A pie chart of total blocked emails this quarter",
       "A list of all software licenses in use",
       "A summary of help desk ticket volumes"
@@ -668,7 +668,7 @@
     "type": "single",
     "q": "Which practice BEST secures API integrations used by security automation?",
     "opts": [
-      "Use scoped, least-privilege API credentials stored in a secret manager with rotation and audit logging",
+      "Scoped credentials in a secret manager",
       "Use a single administrative API key shared across all integrations",
       "Embed API keys directly in scripts stored in the repository",
       "Disable logging on API calls to reduce noise"
@@ -688,10 +688,10 @@
     "type": "single",
     "q": "During a confirmed intrusion where the attacker may have access to corporate email, which communication approach should the response team use?",
     "opts": [
-      "A pre-established out-of-band channel not dependent on potentially compromised systems",
-      "Corporate email with a subject line marked confidential",
-      "The internal chat platform used by all employees",
-      "A public social media group for faster coordination"
+      "A pre-established out-of-band channel",
+      "Corporate email marked confidential",
+      "The company-wide chat platform",
+      "A public social media group"
     ],
     "a": [
       0
@@ -708,7 +708,7 @@
     "type": "single",
     "q": "Which Windows event category would BEST reveal that an attacker added an account to the Domain Admins group?",
     "opts": [
-      "Security log events for security group membership changes on a domain controller",
+      "Security group membership change events",
       "System log entries for driver installation",
       "Application log entries for a database service",
       "Setup log entries from OS installation"
@@ -728,10 +728,10 @@
     "type": "single",
     "q": "An automation playbook disables a user account when impossible travel is detected. Which safeguard should be included?",
     "opts": [
-      "Exception handling for executive and service accounts, with human approval and rapid rollback",
-      "Automatic deletion of the account after disabling it",
-      "Silent execution with no logging to avoid tipping off the attacker",
-      "Extension of the action to disable all accounts in the same department"
+      "Exceptions plus approval and rollback",
+      "Deleting the account after disabling",
+      "Silent execution with no logging",
+      "Disabling the whole department"
     ],
     "a": [
       0
@@ -748,7 +748,7 @@
     "type": "single",
     "q": "What should a forensic report contain to be defensible?",
     "opts": [
-      "Methodology, tools and versions used, evidence identifiers and hashes, findings, and clearly separated conclusions",
+      "Methodology, hashes, findings, conclusions",
       "Only the analyst's conclusions, to keep it concise",
       "Speculation about the attacker's identity and motives",
       "Recommendations for disciplinary action against employees"
@@ -768,7 +768,7 @@
     "type": "single",
     "q": "Which is the PRIMARY investigative value of automated recurring reports?",
     "opts": [
-      "They establish trends and baselines that make deviations visible and support historical comparison",
+      "They establish trends and baselines",
       "They replace the need for real-time alerting",
       "They guarantee regulatory compliance",
       "They eliminate the need for analyst judgment"
@@ -788,7 +788,7 @@
     "type": "single",
     "q": "Which factor should MOST influence the initial severity assignment of a security incident?",
     "opts": [
-      "The criticality of affected systems and the sensitivity of data potentially exposed",
+      "System criticality and data sensitivity",
       "The number of alerts generated by the SIEM",
       "The time of day the alert triggered",
       "Which analyst was on shift"
@@ -808,7 +808,7 @@
     "type": "single",
     "q": "An analyst suspects data exfiltration over DNS. Which data source is MOST useful?",
     "opts": [
-      "DNS query logs showing unusually long or high-volume queries to a single external domain",
+      "DNS query logs",
       "Printer spooler logs",
       "Backup job completion reports",
       "Badge reader entry logs"
@@ -828,7 +828,7 @@
     "type": "single",
     "q": "Which automation use case reduces the window during which a departing employee retains access?",
     "opts": [
-      "Event-driven disabling of accounts and revocation of tokens immediately upon HR termination entry",
+      "Event-driven disable and token revocation",
       "A weekly manual review of the termination list",
       "A monthly audit of active directory accounts",
       "An annual entitlement recertification"
@@ -848,10 +848,10 @@
     "type": "single",
     "q": "A compromised virtual machine must be preserved for investigation while the business needs the service restored quickly. What is the BEST approach?",
     "opts": [
-      "Snapshot and export the VM's disk and memory for forensic analysis, then rebuild a clean instance to restore service",
-      "Reboot the VM and continue using it while analysts watch",
-      "Delete the VM and restore from the most recent backup without preservation",
-      "Leave the VM running in production during the entire investigation"
+      "Snapshot disk and memory, then rebuild",
+      "Reboot it and keep watching",
+      "Delete it and restore from backup",
+      "Leave it running in production"
     ],
     "a": [
       0
@@ -868,9 +868,9 @@
     "type": "multi",
     "q": "Investigating a suspected compromise of a cloud administrator account, which THREE data sources are MOST relevant?",
     "opts": [
-      "Cloud provider control-plane audit logs (API calls, console sign-ins)",
-      "Identity provider authentication and MFA event logs",
-      "Cloud resource configuration change history",
+      "Cloud control-plane audit logs",
+      "Identity provider MFA events",
+      "Resource configuration history",
       "Office printer usage statistics"
     ],
     "a": [
@@ -890,10 +890,10 @@
     "type": "single",
     "q": "During a major incident, who should have the authority to declare the incident and authorize disruptive containment actions such as taking a revenue-generating system offline?",
     "opts": [
-      "A designated incident commander with pre-delegated authority defined in the response plan",
-      "Whichever analyst first noticed the activity",
-      "The vendor supplying the affected software",
-      "The employee whose account was compromised"
+      "A designated incident commander",
+      "The analyst who noticed it",
+      "The affected software vendor",
+      "The compromised account holder"
     ],
     "a": [
       0

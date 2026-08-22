@@ -8,7 +8,7 @@
     "type": "single",
     "q": "A healthcare provider fails to protect patient records as required by regulation. Which consequences are MOST directly applicable?",
     "opts": [
-      "Regulatory fines, sanctions, reputational damage, and potential loss of operating licensure",
+      "Fines, sanctions, and license loss",
       "An automatic increase in customer trust",
       "Reduced audit frequency going forward",
       "Exemption from future assessments"
@@ -28,7 +28,7 @@
     "type": "single",
     "q": "Which statement correctly distinguishes due diligence from due care?",
     "opts": [
-      "Due diligence is the investigation and ongoing assessment of risk; due care is acting reasonably on what that assessment reveals",
+      "Diligence investigates; care acts",
       "Due care is research and due diligence is action",
       "Both terms refer only to financial audits",
       "Due diligence applies only to vendors and due care only to employees"
@@ -48,7 +48,7 @@
     "type": "single",
     "q": "New employees must read the security policy and click to confirm they understand it. Which compliance activity does this represent?",
     "opts": [
-      "Acknowledgement and attestation of policy",
+      "Policy acknowledgement",
       "Independent third-party audit",
       "Penetration testing",
       "Business impact analysis"
@@ -68,7 +68,7 @@
     "type": "single",
     "q": "A customer in a jurisdiction with strong privacy law requests deletion of all personal data the company holds about them. What must the organization determine FIRST?",
     "opts": [
-      "Where the data resides across all systems and backups, and which legal bases require retention despite the request",
+      "Where the data resides and legal holds",
       "Whether the customer is likely to return as a client",
       "How much revenue the customer generated",
       "Whether deletion would inconvenience the marketing team"
@@ -88,7 +88,7 @@
     "type": "single",
     "q": "Why is a data inventory foundational to privacy compliance?",
     "opts": [
-      "An organization cannot honor access, correction, or deletion requests for data it cannot locate",
+      "Requests need a data location map",
       "It reduces the cost of storage hardware",
       "It replaces the need for encryption",
       "It eliminates the need for a privacy policy"
@@ -108,7 +108,7 @@
     "type": "single",
     "q": "Which approach MOST efficiently maintains continuous evidence of compliance across hundreds of cloud resources?",
     "opts": [
-      "Automated compliance monitoring that continuously evaluates configuration against control requirements and records results",
+      "Automated continuous compliance monitoring",
       "A manual annual sampling review by one analyst",
       "Requesting screenshots from engineers each quarter",
       "Assuming compliance unless an auditor reports otherwise"
@@ -128,10 +128,10 @@
     "type": "single",
     "q": "Which is an example of EXTERNAL compliance reporting?",
     "opts": [
-      "Submitting a required breach notification to a regulator within the mandated timeframe",
-      "Sending monthly patch metrics to the internal IT director",
-      "Presenting security KPIs to the internal steering committee",
-      "Emailing a team status update to the SOC manager"
+      "A breach notification to a regulator",
+      "Monthly patch metrics to the director",
+      "Security KPIs to the steering committee",
+      "A status update to the SOC manager"
     ],
     "a": [
       0
@@ -168,10 +168,10 @@
     "type": "single",
     "q": "Why should the internal audit function report to an audit committee rather than to the CIO?",
     "opts": [
-      "Reporting outside the operational chain preserves objectivity and prevents management from suppressing findings",
-      "The CIO lacks the technical background to read audit reports",
-      "Audit committees perform the testing themselves",
-      "It reduces the cost of the audit function"
+      "It preserves auditor objectivity",
+      "The CIO cannot read audit reports",
+      "The committee performs the testing",
+      "It lowers the cost of auditing"
     ],
     "a": [
       0
@@ -268,7 +268,7 @@
     "type": "single",
     "q": "What is the PRIMARY purpose of running internal simulated phishing campaigns?",
     "opts": [
-      "Measure susceptibility, deliver targeted training, and increase reporting rates over time",
+      "Measure susceptibility and train",
       "Identify employees to terminate",
       "Satisfy a technical control requirement for email filtering",
       "Test the mail server's throughput capacity"
@@ -288,7 +288,7 @@
     "type": "single",
     "q": "An employee receives a suspicious email requesting urgent payment. What is the BEST action?",
     "opts": [
-      "Report it using the organization's reporting mechanism without clicking links or replying",
+      "Report it without clicking or replying",
       "Forward it to colleagues to warn them",
       "Reply asking the sender to verify their identity",
       "Delete it silently so nobody else is affected"
@@ -308,10 +308,10 @@
     "type": "single",
     "q": "An employee begins downloading large volumes of client files at unusual hours shortly after submitting a resignation notice. Which category of anomalous behavior does this represent?",
     "opts": [
-      "Risky behavior warranting investigation as a potential insider threat",
-      "Unintentional behavior requiring only refresher training",
-      "Expected behavior consistent with normal offboarding",
-      "Behavior that should be ignored to avoid privacy concerns"
+      "Risky behavior warranting investigation",
+      "Unintentional; needs refresher training",
+      "Expected behavior during offboarding",
+      "Ignorable, given privacy concerns"
     ],
     "a": [
       0
@@ -348,10 +348,10 @@
     "type": "single",
     "q": "An engineer posts a screenshot of a production dashboard on social media, revealing internal hostnames and software versions. Which awareness topic does this violate?",
     "opts": [
-      "Operational security, which limits disclosure of information useful to adversaries",
-      "Physical security, which controls facility access",
-      "Business continuity, which sustains operations during disruption",
-      "Change management, which governs system modifications"
+      "Operational security failure",
+      "Physical security failure",
+      "Business continuity failure",
+      "Change management failure"
     ],
     "a": [
       0
@@ -368,10 +368,10 @@
     "type": "single",
     "q": "Which guidance is MOST relevant for employees working from public spaces such as cafes and airports?",
     "opts": [
-      "Use a VPN, apply a privacy screen, avoid sensitive calls in public, and never leave devices unattended",
-      "Disable device encryption to improve battery life",
-      "Connect to any open Wi-Fi with the strongest signal",
-      "Share credentials with a colleague in case of connectivity issues"
+      "VPN, privacy screen, and device custody",
+      "Disable encryption to save battery",
+      "Join the strongest open network",
+      "Share credentials with a colleague"
     ],
     "a": [
       0
@@ -388,7 +388,7 @@
     "type": "single",
     "q": "Which awareness program structure is MOST effective?",
     "opts": [
-      "Initial training at onboarding plus recurring training and continuous reinforcement tailored to roles",
+      "Initial plus recurring role-based training",
       "A single comprehensive session at hire with no follow-up",
       "Annual training delivered only to the IT department",
       "Ad hoc training after each incident only"
@@ -408,7 +408,7 @@
     "type": "single",
     "q": "Which program element MOST improves early identification of insider risk while respecting employee privacy?",
     "opts": [
-      "Clear policy, targeted monitoring of sensitive data access, and a confidential reporting channel with HR and legal involvement",
+      "Policy, targeted monitoring, and reporting",
       "Reading all employee personal email accounts",
       "Publicly posting a list of employees under investigation",
       "Installing keyloggers on all personal devices"
@@ -428,7 +428,7 @@
     "type": "single",
     "q": "A finance employee receives a call from someone claiming to be a new CFO, demanding an urgent transfer and discouraging verification \"because the deal is confidential.\" Which awareness behavior is MOST important?",
     "opts": [
-      "Verify the request through an independently known channel before acting, regardless of claimed urgency or authority",
+      "Verify through a known separate channel",
       "Comply quickly because executives outrank finance staff",
       "Ask the caller to email confirmation from the address they provide",
       "Complete the transfer and report it afterward"
@@ -468,7 +468,7 @@
     "type": "single",
     "q": "A company migrates customer data to a SaaS platform. Who retains ownership of that data?",
     "opts": [
-      "The customer organization that collected it, with the provider acting as processor under contract",
+      "The customer organization",
       "The SaaS provider, since the data resides on its infrastructure",
       "Whichever party holds the encryption keys",
       "The cloud data center operator"
@@ -508,7 +508,7 @@
     "type": "single",
     "q": "Which benefit does compliance automation provide beyond reducing manual effort?",
     "opts": [
-      "Consistent, timestamped evidence collection that shows control operation continuously rather than at a single point in time",
+      "Continuous timestamped evidence",
       "Elimination of the need for policies",
       "Guaranteed passing of every external audit",
       "Removal of the requirement for management oversight"
@@ -528,7 +528,7 @@
     "type": "single",
     "q": "Which statement correctly describes the relationship between policies and procedures?",
     "opts": [
-      "Policies state mandatory intent and requirements; procedures specify the steps to satisfy them",
+      "Policy states intent; procedure gives steps",
       "Procedures set direction and policies list the steps",
       "Policies and procedures are both optional guidance",
       "Procedures must be approved by regulators before use"
@@ -548,10 +548,10 @@
     "type": "single",
     "q": "Which user guidance BEST reduces the impact of credential reuse across sites?",
     "opts": [
-      "Use a password manager to generate and store a unique credential for every service, protected by MFA",
-      "Use one strong password everywhere so it is easy to remember",
-      "Rotate a base password by adding an incrementing number",
-      "Write passwords in a notebook kept in a desk drawer"
+      "A password manager plus MFA",
+      "One strong password everywhere",
+      "A base password with a counter",
+      "A notebook in a desk drawer"
     ],
     "a": [
       0
@@ -568,7 +568,7 @@
     "type": "single",
     "q": "Which contractual provision is MOST important to include for the end of a cloud vendor relationship?",
     "opts": [
-      "Data return in a usable format and certified deletion of all copies within a defined period",
+      "Data return and certified deletion",
       "A discount on the final month's invoice",
       "A commitment to provide marketing references",
       "An option to extend the contract automatically"
@@ -588,10 +588,10 @@
     "type": "single",
     "q": "What is the PRIMARY value of an internal self-assessment despite its lack of independence?",
     "opts": [
-      "It identifies and corrects gaps early, before an independent audit or a real incident exposes them",
-      "It can be presented to regulators in place of an external audit",
-      "It guarantees a clean external audit result",
-      "It eliminates the need for continuous monitoring"
+      "It finds gaps before an audit does",
+      "It can replace an external audit",
+      "It guarantees a clean audit",
+      "It removes the need to monitor"
     ],
     "a": [
       0
@@ -608,10 +608,10 @@
     "type": "single",
     "q": "A global company must comply with different privacy requirements in each region where it operates. Which approach is MOST sustainable?",
     "opts": [
-      "Adopt a baseline meeting the strictest applicable requirements, with regional additions where local law demands more",
-      "Apply the least restrictive jurisdiction's rules globally for simplicity",
-      "Handle each request individually without a documented standard",
-      "Store all data in one country and ignore other jurisdictions' laws"
+      "Adopt the strictest baseline",
+      "Apply the loosest rules globally",
+      "Handle each request ad hoc",
+      "Store all data in one country"
     ],
     "a": [
       0
@@ -628,7 +628,7 @@
     "type": "single",
     "q": "Which metric BEST indicates that a security awareness program is improving organizational resilience?",
     "opts": [
-      "An increasing rate of suspicious messages reported by employees combined with a declining click rate over time",
+      "Rising report rate, falling click rate",
       "The number of training slides delivered",
       "The percentage of employees who completed training within the deadline",
       "The length of the annual training video"
@@ -648,10 +648,10 @@
     "type": "single",
     "q": "A vendor declines to share its penetration test report, citing confidentiality. What is a reasonable alternative to obtain assurance?",
     "opts": [
-      "Request an executive summary or attestation letter confirming scope, methodology, severity counts, and remediation status",
-      "Accept the refusal without any further assurance",
-      "Demand full administrative access to the vendor's production environment",
-      "Cancel all contracts with any vendor that protects report details"
+      "Request an attestation summary",
+      "Accept the refusal as-is",
+      "Demand production access",
+      "Cancel every such contract"
     ],
     "a": [
       0
@@ -668,10 +668,10 @@
     "type": "single",
     "q": "Which governance document requires that all production modifications be requested, assessed, approved, and documented?",
     "opts": [
-      "The change management policy and its associated procedure",
+      "The change management policy",
       "The acceptable use policy",
       "The incident response playbook",
-      "The vendor NDA"
+      "The vendor NDA template"
     ],
     "a": [
       0
@@ -728,7 +728,7 @@
     "type": "single",
     "q": "Which indicator should employees be trained to recognize as a likely phishing signal?",
     "opts": [
-      "Unexpected urgency combined with a request to bypass normal process, and a mismatch between display name and actual sender address",
+      "Urgency plus a sender address mismatch",
       "An email arriving during business hours",
       "A message containing the company logo",
       "An email with more than three recipients"
@@ -748,7 +748,7 @@
     "type": "single",
     "q": "In an assessment context, what does attestation mean?",
     "opts": [
-      "A formal declaration, often by an independent party, that specified controls or statements are accurate",
+      "A formal declaration by an independent party",
       "An automated vulnerability scan of external systems",
       "An informal verbal confirmation from a manager",
       "A marketing claim published on a website"
@@ -768,7 +768,7 @@
     "type": "single",
     "q": "What is the role of a risk owner in the risk register?",
     "opts": [
-      "The accountable individual who monitors the risk, drives treatment, and decides on acceptance within their authority",
+      "The accountable individual for treatment",
       "The analyst who first documented the risk",
       "The vendor whose product introduced the risk",
       "The auditor who discovered the risk"
@@ -788,7 +788,7 @@
     "type": "single",
     "q": "Which statement BEST describes the purpose of security governance?",
     "opts": [
-      "Align security activity with business objectives and legal obligations through defined authority, accountability, and oversight",
+      "Align security with business objectives",
       "Ensure the security team can operate without management involvement",
       "Guarantee that no security incidents will occur",
       "Replace technical controls with documentation"
@@ -808,7 +808,7 @@
     "type": "single",
     "q": "Which factor MOST determines whether an organization must notify regulators and affected individuals after a security incident?",
     "opts": [
-      "Whether personal or regulated data was compromised, and the thresholds and deadlines defined by applicable law",
+      "Whether regulated data was compromised",
       "Whether the security team considers the incident embarrassing",
       "Whether the attacker has been identified",
       "Whether the affected systems have been restored"
@@ -828,10 +828,10 @@
     "type": "multi",
     "q": "Which THREE practices constitute effective third-party risk management?",
     "opts": [
-      "Risk-tiered due diligence before onboarding, proportional to the vendor's access and criticality",
-      "Contractual security requirements including breach notification timelines and a right to audit",
-      "Ongoing monitoring with periodic reassessment and defined exit provisions",
-      "Granting all vendors standing administrative access to simplify support"
+      "Risk-tiered due diligence at onboarding",
+      "Contract terms with breach notification",
+      "Ongoing monitoring and exit provisions",
+      "Standing administrative access for all vendors"
     ],
     "a": [
       0,
@@ -850,10 +850,10 @@
     "type": "single",
     "q": "When developing a security awareness program, what should drive the selection of topics?",
     "opts": [
-      "The organization's actual risk profile, incident history, and role-specific responsibilities",
-      "Whatever topics the training vendor bundles by default",
-      "The preferences of the most senior executive",
-      "The topics that require the least time to deliver"
+      "The actual risk profile and roles",
+      "The vendor's default bundle",
+      "The senior executive's preference",
+      "Whatever takes least time"
     ],
     "a": [
       0
@@ -870,10 +870,10 @@
     "type": "single",
     "q": "Which practice BEST supports both privacy compliance and breach risk reduction?",
     "opts": [
-      "Collect only necessary data and delete it on a defined schedule once its purpose is fulfilled",
-      "Retain all data indefinitely in case it becomes useful",
-      "Duplicate production data into multiple analytics environments for convenience",
-      "Store personal data in shared spreadsheets for accessibility"
+      "Collect less and delete on schedule",
+      "Retain everything indefinitely",
+      "Copy production into analytics",
+      "Keep it in shared spreadsheets"
     ],
     "a": [
       0
