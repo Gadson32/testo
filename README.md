@@ -116,9 +116,37 @@ plausible; the remaining gaps are 7–8 characters, below what a reader treats a
 Results now also show an approximate CompTIA-style scaled score (100–900, 750 to pass),
 labelled as an estimate — the real exam weights items and includes unscored trial questions.
 
-**Still open:** no performance-based questions (the real exam's PBQs draw on the long tail this
-bank does not cover), and per-topic depth is thin — most topics carry a single question, so
-re-drilling a topic returns the same item.
+**Still open:** per-topic depth is thin — most topics carry a single question, so re-drilling a
+topic returns the same item.
+
+## Alignment with the live exam
+
+Verified against CompTIA's published exam information: the SY0-701 exam is a **maximum of 90
+questions in 90 minutes**, mixing multiple choice, multiple response, drag-and-drop, and
+performance-based items, scored **100–900 with 750 to pass**.
+
+**Objective coverage audit.** Every question carries an objective code, and the build validates
+each one against the full 28-objective list in `data/objectives.json` (1.1–5.6). Result: zero
+invalid codes and **no objective left uncovered or thin** — the lowest are 1.1 and 4.2 with 8
+questions each, the highest is 2.4 with 40.
+
+**Performance-based questions.** 16 PBQs in `data/pbq.json`, in the two formats the exam uses:
+
+- `order` — arrange steps into the correct sequence (IR phases, order of volatility, vulnerability
+  management lifecycle, certificate enrollment, change management, forensic acquisition)
+- `match` — assign each item to a category (control types, control categories, ports, access
+  control models, data states, agreements, cloud responsibility, log sources, attack
+  identification, attack mitigation)
+
+Ordering uses arrow controls and matching uses labelled selects, so both work on a phone and with
+a keyboard. Grading is all-or-nothing for the score, but feedback marks each row so you see
+exactly which placement was wrong. The exam simulator front-loads 4 PBQs before the
+multiple-choice section, mirroring the real exam.
+
+**On scaled scores.** 750/900 is not 75% correct — CompTIA weights items and PBQs can carry more
+weight, so no practice tool can convert a raw percentage into a true scaled score. The app reports
+raw percentage, labels its 100–900 figure as a linear reference only, and holds an 83% target so a
+pass here means real margin.
 
 ## Readiness score
 

@@ -1,0 +1,174 @@
+[
+  {
+    "id": "P-01", "d": 4, "obj": "4.8", "topic": "Incident response process", "diff": 2, "type": "order",
+    "q": "A security incident has been declared. Place the incident response phases in the order CompTIA defines them.",
+    "items": ["Preparation", "Detection", "Analysis", "Containment", "Eradication", "Recovery", "Lessons learned"],
+    "exp": "SY0-701 lists the process as preparation, detection, analysis, containment, eradication, recovery, and lessons learned. Preparation comes first because plans, tooling, and training must exist before an event. Analysis sits between detection and containment: you confirm and scope the incident before acting on it. Lessons learned closes the loop by feeding improvements back into preparation.",
+    "tip": "The two most commonly confused neighbours are containment (stop the spread) and eradication (remove the cause). Isolating a host is containment; reimaging it is eradication."
+  },
+  {
+    "id": "P-02", "d": 4, "obj": "4.8", "topic": "Order of volatility", "diff": 3, "type": "order",
+    "q": "You are collecting evidence from a running compromised server. Order these sources from MOST volatile to LEAST volatile.",
+    "items": ["CPU registers and cache", "System memory (RAM)", "Network connection state", "Temporary file systems", "Data on the hard drive", "Remote logging and archived backups"],
+    "exp": "The order of volatility governs collection sequence: anything lost on power change is captured first. Registers and cache vanish almost immediately, RAM holds running processes and keys, active connection state disappears when the link drops, temp files may be cleared on reboot, disk persists, and remote or archived copies are the most durable.",
+    "tip": "This ordering is why you isolate a host from the network but leave it powered on — pulling the plug destroys the top three sources."
+  },
+  {
+    "id": "P-03", "d": 4, "obj": "4.3", "topic": "Vulnerability management", "diff": 2, "type": "order",
+    "q": "Place the vulnerability management activities in the correct operational order.",
+    "items": ["Identify vulnerabilities through scanning", "Confirm the finding and rule out false positives", "Prioritize using severity, exposure, and business impact", "Remediate, or apply a documented exception", "Validate by rescanning", "Report metrics and trends"],
+    "exp": "You cannot prioritize what you have not confirmed, and you cannot claim closure without validation. Confirmation removes false positives before effort is spent, prioritization applies environmental context to raw severity, remediation includes documented exceptions when a fix is not possible, and a rescan is the only real evidence the fix landed.",
+    "tip": "The step candidates skip is validation. Deployment status from a patch console is not proof — a rescan is."
+  },
+  {
+    "id": "P-04", "d": 1, "obj": "1.4", "topic": "Certificate enrollment", "diff": 3, "type": "order",
+    "q": "Order the steps to obtain and deploy a publicly trusted TLS certificate for a web server.",
+    "items": ["Generate a key pair on the server", "Create a CSR containing the public key and subject names", "Submit the CSR to the certificate authority", "The CA validates domain control and issues the certificate", "Install the certificate and chain on the server", "Verify the chain and expiry from a client"],
+    "exp": "The private key is generated on the server and never leaves it. The CSR carries the public key and subject information and is signed by the private key to prove possession. The CA validates control of the name before issuing. Installation must include any intermediate certificates, and verification from a client catches missing-chain and name-mismatch errors before users do.",
+    "tip": "If an answer anywhere suggests sending the private key to the CA, it is wrong. Only the CSR leaves the server."
+  },
+  {
+    "id": "P-05", "d": 1, "obj": "1.3", "topic": "Change management", "diff": 2, "type": "order",
+    "q": "Order the change management steps for a planned firewall upgrade.",
+    "items": ["Submit the change request with scope and justification", "Perform impact analysis and identify dependencies", "Obtain approval from the change advisory board", "Test the change in a non-production environment", "Implement during the approved maintenance window", "Update documentation and diagrams"],
+    "exp": "Requests are analyzed for impact and dependencies before approval, because the board needs that analysis to decide. Testing precedes production implementation, implementation happens inside the approved window, and documentation is updated afterward so the recorded state matches reality. A backout plan accompanies the request throughout.",
+    "tip": "Documentation last but never optional. 'Nobody knew the current configuration' is a change management failure, not a troubleshooting one."
+  },
+  {
+    "id": "P-06", "d": 4, "obj": "4.8", "topic": "Digital forensics", "diff": 3, "type": "order",
+    "q": "Order the steps for forensically acquiring a suspect drive so the image is defensible.",
+    "items": ["Document the scene and start the chain of custody", "Attach the source drive through a write blocker", "Hash the source media", "Create the forensic image", "Hash the image and compare it to the source hash", "Analyze the working copy, not the original"],
+    "exp": "Custody documentation begins before anything is touched. A write blocker prevents any modification of the source. Hashing before and after imaging, then comparing, proves the copy is faithful. All analysis is performed on a working copy so the original remains pristine and re-verifiable.",
+    "tip": "Matching hashes before and after are what make the image admissible. If the hashes differ, the acquisition is worthless."
+  },
+  {
+    "id": "P-07", "d": 1, "obj": "1.1", "topic": "Control types", "diff": 2, "type": "match",
+    "q": "Classify each control by its control TYPE.",
+    "cats": ["Preventive", "Deterrent", "Detective", "Corrective"],
+    "pairs": [
+      ["A warning sign stating the area is under armed patrol", "Deterrent"],
+      ["A SIEM rule that alerts on impossible travel", "Detective"],
+      ["An access control vestibule that admits one person at a time", "Preventive"],
+      ["Restoring encrypted files from an offline backup", "Corrective"]
+    ],
+    "exp": "Deterrent controls discourage the attempt, preventive controls stop it, detective controls identify that it happened, and corrective controls restore normal operation afterward. The vestibule physically prevents tailgating rather than merely discouraging it; the sign only discourages.",
+    "tip": "Test by timeline: before the event = deterrent or preventive, during = detective, after = corrective."
+  },
+  {
+    "id": "P-08", "d": 1, "obj": "1.1", "topic": "Control categories", "diff": 3, "type": "match",
+    "q": "Classify each control by its control CATEGORY.",
+    "cats": ["Managerial", "Technical", "Operational", "Physical"],
+    "pairs": [
+      ["The annual risk assessment and security policy set", "Managerial"],
+      ["Full-disk encryption enforced by endpoint policy", "Technical"],
+      ["Guards performing hourly badge checks on rounds", "Operational"],
+      ["Bollards installed outside the lobby entrance", "Physical"]
+    ],
+    "exp": "Category answers who or what implements the control. Managerial controls are governance artifacts, technical controls are enforced by systems, operational controls are carried out by people as ongoing work, and physical controls protect tangible assets and space.",
+    "tip": "Category and type are different axes. A policy is managerial by category and directive by type — expect the exam to ask for one and offer the other."
+  },
+  {
+    "id": "P-09", "d": 3, "obj": "3.2", "topic": "Secure protocols and ports", "diff": 2, "type": "match",
+    "q": "Match each secure protocol to its default port.",
+    "cats": ["22", "443", "636", "3389"],
+    "pairs": [
+      ["SSH and SFTP", "22"],
+      ["HTTPS", "443"],
+      ["LDAPS", "636"],
+      ["RDP", "3389"]
+    ],
+    "exp": "SFTP runs inside an SSH session on port 22, HTTPS uses 443, LDAPS is LDAP wrapped in TLS on 636, and RDP listens on 3389. RDP is not a 'secure protocol' by design and should never be exposed directly to the internet — put it behind a VPN or bastion host.",
+    "tip": "Do not confuse SFTP (SSH, port 22) with FTPS (FTP over TLS, ports 989 and 990). The exam tests that distinction directly."
+  },
+  {
+    "id": "P-10", "d": 4, "obj": "4.6", "topic": "Access control models", "diff": 3, "type": "match",
+    "q": "Match each scenario to the access control model it demonstrates.",
+    "cats": ["Mandatory (MAC)", "Discretionary (DAC)", "Role-based (RBAC)", "Attribute-based (ABAC)"],
+    "pairs": [
+      ["The system enforces clearance against classification labels and no owner can override it", "Mandatory (MAC)"],
+      ["The file's owner decides who else may read it", "Discretionary (DAC)"],
+      ["Moving from nurse to billing clerk automatically changes what the account can open", "Role-based (RBAC)"],
+      ["Access is granted only from a managed device, in-region, during business hours", "Attribute-based (ABAC)"]
+    ],
+    "exp": "MAC enforces labels and clearances system-wide with no owner discretion. DAC leaves the decision to the resource owner. RBAC binds permissions to job function so role changes update access. ABAC evaluates multiple attributes of subject, resource, action, and environment, which is the model behind conditional access and Zero Trust policy engines.",
+    "tip": "Multiple conditions combined in one decision — device, location, time, risk — is ABAC, not RBAC."
+  },
+  {
+    "id": "P-11", "d": 3, "obj": "3.3", "topic": "Data states", "diff": 2, "type": "match",
+    "q": "Match each data state to the control that protects it.",
+    "cats": ["Data at rest", "Data in transit", "Data in use"],
+    "pairs": [
+      ["Full-disk encryption on a stolen laptop", "Data at rest"],
+      ["An IPsec tunnel between two data centers", "Data in transit"],
+      ["A hardware enclave protecting values held in memory", "Data in use"],
+      ["Transparent data encryption on database files", "Data at rest"]
+    ],
+    "exp": "At rest covers stored data, protected by disk, volume, file, or database encryption. In transit covers data crossing a network, protected by TLS or IPsec. In use covers data loaded in memory during processing, where disk and transport encryption give no protection — that requires trusted execution environments or confidential computing.",
+    "tip": "Data in use is the state candidates forget. If a question stresses 'while being processed' or 'in memory', disk encryption is the wrong answer."
+  },
+  {
+    "id": "P-12", "d": 5, "obj": "5.3", "topic": "Agreement types", "diff": 3, "type": "match",
+    "q": "Match each agreement type to what it does.",
+    "cats": ["SLA", "MOU", "MSA", "NDA"],
+    "pairs": [
+      ["Commits the provider to measurable uptime and response targets", "SLA"],
+      ["Records the intent of both parties, usually without binding obligations", "MOU"],
+      ["Sets the overarching legal terms so individual projects need only a work order", "MSA"],
+      ["Binds the receiving party to keep disclosed information confidential", "NDA"]
+    ],
+    "exp": "An SLA carries measurable performance commitments and often remedies. An MOU expresses intent and is typically non-binding. An MSA establishes master terms, with statements of work defining each engagement's scope. An NDA governs confidentiality and is executed before sensitive information is shared.",
+    "tip": "MSA plus SOW is the standard consulting structure. If a question describes 'general terms once, project details many times', that is MSA and SOW."
+  },
+  {
+    "id": "P-13", "d": 3, "obj": "3.1", "topic": "Shared responsibility", "diff": 3, "type": "match",
+    "q": "In each cloud service model, who is responsible for patching the guest operating system?",
+    "cats": ["Customer", "Cloud provider"],
+    "pairs": [
+      ["IaaS virtual machines running the customer's workloads", "Customer"],
+      ["PaaS application platform runtime", "Cloud provider"],
+      ["SaaS collaboration suite", "Cloud provider"],
+      ["The customer's data and user access rights in any model", "Customer"]
+    ],
+    "exp": "In IaaS the provider stops at the hypervisor, so the guest OS is the customer's to patch. In PaaS and SaaS the provider maintains the operating system and runtime beneath the service. Data classification, identity, and access rights never transfer to the provider in any model.",
+    "tip": "You can outsource operations but never accountability. Whatever the model, the data and who may reach it stay yours."
+  },
+  {
+    "id": "P-14", "d": 4, "obj": "4.9", "topic": "Log sources", "diff": 3, "type": "match",
+    "q": "Match each investigative question to the data source that answers it.",
+    "cats": ["Firewall or flow logs", "Endpoint process logs", "DNS query logs", "Identity provider logs"],
+    "pairs": [
+      ["Which internal host connected to a known malicious IP, and when", "Firewall or flow logs"],
+      ["Which parent process launched the encoded PowerShell command", "Endpoint process logs"],
+      ["Whether a host is beaconing through long, random subdomain lookups", "DNS query logs"],
+      ["Whether the account's sign-in satisfied MFA and from where", "Identity provider logs"]
+    ],
+    "exp": "Match the question to the layer that observes it: flow and firewall logs record the conversation, endpoint telemetry records execution lineage, DNS logs expose tunneling and beaconing patterns, and identity provider logs record authentication context including MFA and location.",
+    "tip": "Objective 4.9 is almost entirely 'which source answers this'. Decide what you need to see, then name the layer that sees it."
+  },
+  {
+    "id": "P-15", "d": 2, "obj": "2.4", "topic": "Attack identification", "diff": 3, "type": "match",
+    "q": "Match each observation to the attack it indicates.",
+    "cats": ["Password spraying", "On-path attack", "DNS poisoning", "Cryptojacking"],
+    "pairs": [
+      ["One failed login against each of 6,000 accounts using the same password", "Password spraying"],
+      ["Forged ARP replies claiming to be the default gateway", "On-path attack"],
+      ["Correctly typed hostnames resolving to an attacker's server", "DNS poisoning"],
+      ["Sustained 98% CPU overnight with traffic to a mining pool", "Cryptojacking"]
+    ],
+    "exp": "Spraying spreads a few common passwords across many accounts to stay under lockout thresholds. Forged ARP replies place the attacker between hosts and the gateway. Corrupted resolver or zone data redirects correct names to hostile servers. Sustained resource consumption plus mining pool traffic is cryptojacking.",
+    "tip": "Distinguish spraying from brute force by shape: many accounts and few guesses is spraying; one account and many guesses is brute force."
+  },
+  {
+    "id": "P-16", "d": 2, "obj": "2.5", "topic": "Attack mitigation", "diff": 3, "type": "match",
+    "q": "Match each attack to the control that MOST directly mitigates it.",
+    "cats": ["Parameterized queries", "Network segmentation", "Phishing-resistant MFA", "Immutable backups"],
+    "pairs": [
+      ["SQL injection against a login form", "Parameterized queries"],
+      ["A worm spreading across a flat network", "Network segmentation"],
+      ["Credential stuffing with passwords from a public breach", "Phishing-resistant MFA"],
+      ["Ransomware that also deletes the backup repository", "Immutable backups"]
+    ],
+    "exp": "Parameterized queries separate code from data so injected syntax is treated as a literal. Segmentation denies the east-west paths a worm needs. Phishing-resistant MFA makes a valid stolen password insufficient and resists real-time relay. Immutable or offline copies survive an attacker who reaches production storage.",
+    "tip": "Pair each attack with its structural fix rather than a detective control — the exam usually asks what prevents it, not what notices it."
+  }
+]

@@ -217,6 +217,36 @@ legend{padding:0; margin-bottom:8px}
 .flagbtn.on{color:var(--warn); border-color:var(--warn)}
 .hint{font-size:.72rem; color:var(--muted); font-family:"IBM Plex Mono",monospace}
 
+/* ---------- performance-based items ---------- */
+.pbqrow{
+  display:flex; align-items:center; gap:10px; padding:10px 12px;
+  border:1px solid var(--line); border-radius:9px; background:var(--surface); margin-bottom:8px;
+}
+.pbqrow .seq{
+  flex:none; width:26px; height:26px; border-radius:6px; background:var(--raised);
+  border:1px solid var(--line); display:grid; place-items:center;
+  font-family:"IBM Plex Mono",monospace; font-size:.78rem; font-weight:600; color:var(--muted);
+}
+.pbqrow .body{flex:1; font-size:.92rem; line-height:1.4}
+.pbqrow .moves{display:flex; flex-direction:column; gap:2px}
+.pbqrow .moves button{
+  width:28px; height:20px; border:1px solid var(--line); border-radius:5px;
+  background:var(--surface); color:var(--muted); font-size:.65rem; line-height:1;
+}
+.pbqrow .moves button:hover:not(:disabled){border-color:var(--signal); color:var(--signal)}
+.pbqrow .moves button:disabled{opacity:.3; cursor:not-allowed}
+.pbqrow select{min-width:150px}
+.pbqrow.right{border-color:var(--ok); background:var(--ok-soft)}
+.pbqrow.wrong{border-color:var(--bad); background:var(--bad-soft)}
+.pbqrow .mark{font-family:"IBM Plex Mono",monospace; font-size:.72rem; font-weight:600}
+.pbqrow.right .mark{color:var(--ok)}
+.pbqrow.wrong .mark{color:var(--bad)}
+.pbqnote{font-size:.8rem; color:var(--muted); margin-bottom:10px}
+@media (max-width:520px){
+  .pbqrow{flex-wrap:wrap}
+  .pbqrow select{width:100%}
+}
+
 /* ---------- exam review panel ---------- */
 .sr-only{
   position:absolute; width:1px; height:1px; padding:0; margin:-1px;
@@ -448,6 +478,7 @@ td.num{text-align:right; font-variant-numeric:tabular-nums; font-family:"IBM Ple
           <label class="opt"><input type="radio" name="pmode" value="core"> 80/20 core only — the high-yield clusters</label>
           <label class="opt"><input type="radio" name="pmode" value="random"> Random across selected domains</label>
           <label class="opt"><input type="radio" name="pmode" value="hard"> Hard items only (difficulty 3)</label>
+          <label class="opt"><input type="radio" name="pmode" value="pbq"> Performance-based only (drag-order and matching)</label>
         </fieldset>
         <fieldset style="margin-bottom:0">
           <legend class="eyebrow">Length</legend>
@@ -464,13 +495,21 @@ td.num{text-align:right; font-variant-numeric:tabular-nums; font-family:"IBM Ple
 
     <!-- ============ EXAM SETUP ============ -->
     <section class="page" id="page-exam">
-      <div class="head"><div><span class="eyebrow">No feedback until you finish · 90 minutes</span><h2>Exam simulation</h2></div></div>
+      <div class="head"><div><span class="eyebrow">No feedback until you finish · 90 minutes</span><h2>Exam simulation</h2></div>
+      </div>
       <div class="card pad">
         <p style="font-size:.9rem">
-          90 questions drawn in the real objective weighting — 11 from Domain 1, 20 from Domain 2,
-          16 from Domain 3, 25 from Domain 4, and 18 from Domain 5. The timer runs down from 90:00
-          and the set auto-submits at zero. Passing on the real exam is 750/900 scaled; this sim
-          uses 83% correct as the pass line, which is deliberately stricter than the real cut score.
+          The real SY0-701 exam is a <b>maximum of 90 questions in 90 minutes</b>, mixing multiple
+          choice, multiple response, drag-and-drop, and performance-based items, and it is scored
+          on a <b>100–900 scale with 750 to pass</b>. This sim mirrors that: 4 performance-based
+          items first, then 86 multiple-choice questions drawn in the real objective weighting —
+          11 from Domain 1, 20 from Domain 2, 16 from Domain 3, 25 from Domain 4, 18 from Domain 5.
+        </p>
+        <p style="font-size:.85rem;color:var(--muted);margin-top:10px">
+          One caution on scoring: <b>750/900 is not 75% correct.</b> CompTIA weights items and PBQs
+          can carry more weight, so no practice tool can convert a raw percentage into a true scaled
+          score. This app reports raw percentage and uses a stricter 83% target so a pass here means
+          real margin, not a coin flip.
         </p>
         <div class="btnrow">
           <button class="btn" id="startExam">Begin exam</button>
@@ -727,6 +766,7 @@ const shuffle = a => { const r = a.slice(); for(let i=r.length-1;i>0;i--){ const
 function pick(pool, n, mode){
   if(mode === "hard") pool = pool.filter(q => q.diff === 3);
   if(mode === "core") pool = pool.filter(q => q.hy);
+  if(mode === "pbq") pool = pool.filter(isPbq);
   if(mode !== "smart" && mode !== "core") return shuffle(pool).slice(0, n);
   const score = q => {
     const s = S.stats[q.id];
@@ -742,13 +782,18 @@ function pick(pool, n, mode){
 /* ---------------- quiz engine ---------------- */
 let Q = null; // {items, i, picked, answers, mode, revealed, timer, endsAt, startedAt}
 
+const isPbq = q => q.type === "order" || q.type === "match";
+function rowIndices(q){
+  const n = q.type === "order" ? q.items.length : q.type === "match" ? q.pairs.length : q.opts.length;
+  return Array.from({length:n}, (_,i) => i);
+}
 function stopTimer(){ if(Q && Q.timer){ clearInterval(Q.timer); Q.timer = null; } }
 
 function startQuiz(items, opts={}, restore=null){
   if(!items.length){ alert("No questions match that selection."); return; }
   stopTimer(); // a previous set's interval would otherwise keep running forever
   Q = {
-    items: items.map((q, n) => ({q, order: restore ? restore.orders[n] : shuffle(q.opts.map((_,i) => i))})),
+    items: items.map((q, n) => ({q, order: restore ? restore.orders[n] : shuffle(rowIndices(q))})),
     i: restore ? restore.i : 0,
     picked: [],
     responses: restore ? restore.responses : new Array(items.length).fill(null),
@@ -827,6 +872,7 @@ function render(){
     tag(q.topic),
     tag(["", "core", "applied", "hard"][q.diff] || "applied", q.diff === 3 ? "hard" : "")
   );
+  if(isPbq(q)) meta.append(tag("performance-based", "hard"));
   if(q.hy) meta.append(tag("80/20 core", "hard"));
   if(multi) meta.append(tag("select " + q.a.length, "hard"));
 
@@ -834,6 +880,36 @@ function render(){
 
   const wrap = document.getElementById("qOpts");
   wrap.innerHTML = "";
+
+  if(isPbq(q)){
+    wrap.removeAttribute("role");
+    const prior = Q.responses[Q.i];
+    if(q.type === "order"){
+      Q.arrange = prior ? prior.picked.slice() : order.slice();
+      renderOrder(q);
+    } else {
+      Q.picks = prior ? prior.picked.slice() : new Array(q.pairs.length).fill(null);
+      renderMatch(q, order);
+    }
+    Q.revealed = false;
+    document.getElementById("qExp").innerHTML = "";
+    const lastP = Q.i === Q.items.length-1;
+    const examP = Q.mode === "exam";
+    document.getElementById("submitBtn").hidden = false;
+    document.getElementById("submitBtn").disabled = q.type === "match" && Q.picks.some(x => !x);
+    document.getElementById("submitBtn").textContent = examP ? (lastP ? "Save answer" : "Save & next") : "Submit";
+    document.getElementById("nextBtn").hidden = true;
+    document.getElementById("nextBtn").textContent = lastP ? "Finish" : "Next";
+    document.getElementById("prevBtn").hidden = !examP || Q.i === 0;
+    document.getElementById("reviewBtn").hidden = !examP;
+    const fbP = document.getElementById("flagBtn");
+    fbP.classList.toggle("on", S.flags.includes(q.id));
+    fbP.textContent = S.flags.includes(q.id) ? "\u2691 Flagged" : "\u2691 Flag";
+    document.getElementById("qLive").textContent =
+      "Question " + (Q.i+1) + " of " + Q.items.length + ", performance-based. " + q.q;
+    return;
+  }
+
   wrap.setAttribute("role", multi ? "group" : "radiogroup");
   order.forEach((origIdx, pos) => {
     const b = document.createElement("button");
@@ -873,6 +949,108 @@ function render(){
   document.getElementById("qLive").textContent =
     "Question " + (Q.i+1) + " of " + Q.items.length + ". " + q.q;
 }
+function pbqNote(text){
+  const p = document.createElement("p");
+  p.className = "pbqnote";
+  p.textContent = text;
+  return p;
+}
+function renderOrder(q){
+  const wrap = document.getElementById("qOpts");
+  wrap.innerHTML = "";
+  wrap.append(pbqNote("Use the arrows to put these in the correct order, top to bottom."));
+  Q.arrange.forEach((itemIdx, pos) => {
+    const row = document.createElement("div");
+    row.className = "pbqrow";
+    const seq = document.createElement("span");
+    seq.className = "seq"; seq.textContent = pos + 1;
+    const body = document.createElement("span");
+    body.className = "body"; body.textContent = q.items[itemIdx];
+    const moves = document.createElement("span");
+    moves.className = "moves";
+    const up = document.createElement("button");
+    up.type = "button"; up.textContent = "\u25B2";
+    up.setAttribute("aria-label", "Move \"" + q.items[itemIdx] + "\" up");
+    up.disabled = pos === 0;
+    up.onclick = () => moveStep(pos, -1);
+    const dn = document.createElement("button");
+    dn.type = "button"; dn.textContent = "\u25BC";
+    dn.setAttribute("aria-label", "Move \"" + q.items[itemIdx] + "\" down");
+    dn.disabled = pos === Q.arrange.length - 1;
+    dn.onclick = () => moveStep(pos, 1);
+    moves.append(up, dn);
+    row.append(seq, body, moves);
+    wrap.append(row);
+  });
+}
+function moveStep(pos, dir){
+  if(Q.revealed) return;
+  const to = pos + dir;
+  if(to < 0 || to >= Q.arrange.length) return;
+  [Q.arrange[pos], Q.arrange[to]] = [Q.arrange[to], Q.arrange[pos]];
+  renderOrder(Q.items[Q.i].q);
+  document.getElementById("submitBtn").disabled = false;
+}
+function renderMatch(q, order){
+  const wrap = document.getElementById("qOpts");
+  wrap.innerHTML = "";
+  wrap.append(pbqNote("Choose the correct category for each item."));
+  order.forEach(pairIdx => {
+    const [left] = q.pairs[pairIdx];
+    const row = document.createElement("div");
+    row.className = "pbqrow";
+    const body = document.createElement("span");
+    body.className = "body"; body.textContent = left;
+    const sel = document.createElement("select");
+    sel.setAttribute("aria-label", left);
+    const blank = document.createElement("option");
+    blank.value = ""; blank.textContent = "Select\u2026";
+    sel.append(blank);
+    for(const c of q.cats){
+      const o = document.createElement("option");
+      o.value = c; o.textContent = c;
+      if(Q.picks[pairIdx] === c) o.selected = true;
+      sel.append(o);
+    }
+    sel.onchange = () => {
+      if(Q.revealed){ return; }
+      Q.picks[pairIdx] = sel.value || null;
+      document.getElementById("submitBtn").disabled = Q.picks.some(x => !x);
+    };
+    row.append(body, sel);
+    wrap.append(row);
+  });
+}
+function gradePbq(q, picked){
+  if(q.type === "order") return picked.every((v, i) => v === i);
+  return q.pairs.every((pr, i) => picked[i] === pr[1]);
+}
+function markPbq(q, picked){
+  const rows = [...document.querySelectorAll("#qOpts .pbqrow")];
+  if(q.type === "order"){
+    rows.forEach((row, pos) => {
+      const ok = picked[pos] === pos;
+      row.classList.add(ok ? "right" : "wrong");
+      const m = document.createElement("span");
+      m.className = "mark";
+      m.textContent = ok ? "\u2713" : "\u2192 " + (picked[pos] + 1);
+      m.title = ok ? "Correct position" : "Belongs at position " + (picked[pos] + 1);
+      row.append(m);
+    });
+  } else {
+    const order = Q.items[Q.i].order;
+    rows.forEach((row, n) => {
+      const pairIdx = order[n];
+      const ok = picked[pairIdx] === q.pairs[pairIdx][1];
+      row.classList.add(ok ? "right" : "wrong");
+      row.querySelector("select").disabled = true;
+      const m = document.createElement("span");
+      m.className = "mark";
+      m.textContent = ok ? "\u2713" : "\u2717 " + q.pairs[pairIdx][1];
+      row.append(m);
+    });
+  }
+}
 function paintSelection(){
   document.querySelectorAll("#qOpts .optbtn").forEach(b => {
     const on = Q.picked.includes(+b.dataset.idx);
@@ -909,10 +1087,20 @@ function recordStat(q, correct){
 }
 
 function submit(){
-  if(Q.revealed || !Q.picked.length) return;
   const {q} = Q.items[Q.i];
-  const correct = grade(q, Q.picked);
-  Q.responses[Q.i] = {id:q.id, picked:Q.picked.slice(), correct, d:q.d};
+  if(Q.revealed) return;
+
+  let picked, correct;
+  if(isPbq(q)){
+    picked = q.type === "order" ? Q.arrange.slice() : Q.picks.slice();
+    if(q.type === "match" && picked.some(x => !x)) return;
+    correct = gradePbq(q, picked);
+  } else {
+    if(!Q.picked.length) return;
+    picked = Q.picked.slice();
+    correct = grade(q, picked);
+  }
+  Q.responses[Q.i] = {id:q.id, picked, correct, d:q.d, pbq:isPbq(q)};
 
   // In exam mode nothing is graded or written to long-term stats until submission,
   // so answers stay changeable — the real exam lets you revisit questions.
@@ -928,13 +1116,17 @@ function submit(){
   markDay(); saveSession();
 
   {
-    document.querySelectorAll("#qOpts .optbtn").forEach(b => {
-      const i = +b.dataset.idx;
-      b.disabled = true;
-      if(q.a.includes(i)) b.classList.add("right");
-      else if(Q.picked.includes(i)) b.classList.add("wrong");
-      b.classList.remove("sel");
-    });
+    if(isPbq(q)){
+      markPbq(q, picked);
+    } else {
+      document.querySelectorAll("#qOpts .optbtn").forEach(b => {
+        const i = +b.dataset.idx;
+        b.disabled = true;
+        if(q.a.includes(i)) b.classList.add("right");
+        else if(Q.picked.includes(i)) b.classList.add("wrong");
+        b.classList.remove("sel");
+      });
+    }
     showExp(q, correct);
     updateScore();
   }
@@ -950,7 +1142,9 @@ function showExp(q, correct){
   d.className = "exp " + (correct ? "right" : "wrong");
   const v = document.createElement("div");
   v.className = "verd " + (correct ? "right" : "wrong");
-  v.textContent = correct ? "Correct" : "Not quite — the answer is " + q.a.map(i => "“"+q.opts[i]+"”").join(" and ");
+  v.textContent = correct ? "Correct"
+    : isPbq(q) ? "Not quite — the correct placement is marked on each row above"
+    : "Not quite — the answer is " + q.a.map(i => "\u201C"+q.opts[i]+"\u201D").join(" and ");
   const p = document.createElement("p");
   p.textContent = q.exp;
   d.append(v, p);
@@ -1054,7 +1248,8 @@ function finish(){
   // the real exam weights items and includes unscored trial questions.
   const scaled = Math.max(100, Math.min(900, Math.round(100 + (pct/100) * 800)));
   document.getElementById("rScaled").textContent =
-    "≈ " + scaled + " scaled (750 passes; estimate only)";
+    "Linear reference only: " + pct + "% maps to ~" + scaled + " on a 100-900 scale. " +
+    "The real exam weights items and PBQs, so 750 is not 75% correct and no practice tool can predict your scaled score.";
 
   const dl = document.getElementById("rDoms");
   dl.innerHTML = "";
@@ -1115,14 +1310,25 @@ function reviewItem(q, a){
   yours.innerHTML = '<span class="k">You</span>';
   const ys = document.createElement("span");
   ys.className = a.correct ? "ok" : "no";
-  ys.textContent = a.picked.length ? a.picked.map(i => q.opts[i]).join(" · ") : "no answer";
-  yours.append(ys);
   const ans = document.createElement("div");
   ans.className = "revline";
   ans.innerHTML = '<span class="k">Answer</span>';
   const as = document.createElement("span");
   as.className = "ok";
-  as.textContent = q.a.map(i => q.opts[i]).join(" · ");
+  if(isPbq(q)){
+    if(q.type === "order"){
+      ys.textContent = a.picked.length ? a.picked.map(i => q.items[i]).join(" → ") : "no answer";
+      as.textContent = q.items.join(" → ");
+    } else {
+      ys.textContent = a.picked.length
+        ? q.pairs.map((pr, i) => pr[0] + " = " + (a.picked[i] || "—")).join(" · ") : "no answer";
+      as.textContent = q.pairs.map(pr => pr[0] + " = " + pr[1]).join(" · ");
+    }
+  } else {
+    ys.textContent = a.picked.length ? a.picked.map(i => q.opts[i]).join(" · ") : "no answer";
+    as.textContent = q.a.map(i => q.opts[i]).join(" · ");
+  }
+  yours.append(ys);
   ans.append(as);
   const ex = document.createElement("p");
   ex.className = "revline";
@@ -1357,6 +1563,7 @@ function updatePool(){
   let pool = BANK.filter(q => ds.includes(q.d));
   if(mode === "hard") pool = pool.filter(q => q.diff === 3);
   if(mode === "core") pool = pool.filter(q => q.hy);
+  if(mode === "pbq") pool = pool.filter(isPbq);
   document.getElementById("poolInfo").textContent = pool.length + " questions available";
 }
 function drawDrill(){
@@ -1410,7 +1617,12 @@ document.getElementById("startPractice").onclick = () => {
   startQuiz(pick(BANK.filter(q => ds.includes(q.d)), n, mode),
             {label:"Practice · D" + ds.join("/") + " · " + mode});
 };
-function examSet(target){
+function examSet(target, nPbq){
+  // The real exam front-loads performance-based items, so the sim does too.
+  const pbqs = shuffle(BANK.filter(isPbq)).slice(0, nPbq || 0);
+  return pbqs.concat(mcSet(target - pbqs.length));
+}
+function mcSet(target){
   // Allocate by exam weight using largest-remainder so the set totals exactly `target`.
   const raw = Object.keys(EXAM_MIX).map(d => ({d:+d, exact: EXAM_MIX[d]/90*target}));
   const counts = {};
@@ -1421,16 +1633,16 @@ function examSet(target){
 
   let items = [];
   for(const d of Object.keys(counts)){
-    items = items.concat(shuffle(BANK.filter(q => q.d === +d)).slice(0, counts[d]));
+    items = items.concat(shuffle(BANK.filter(q => q.d === +d && !isPbq(q))).slice(0, counts[d]));
   }
   return shuffle(items);
 }
 document.getElementById("startExam").onclick = () => {
-  const set = examSet(90);
+  const set = examSet(90, 4);
   startQuiz(set, {mode:"exam", label:"Exam simulation (" + set.length + ")", limitMs:90*60000});
 };
 document.getElementById("startExam45").onclick = () => {
-  const set = examSet(45);
+  const set = examSet(45, 2);
   startQuiz(set, {mode:"exam", label:"Half exam (" + set.length + ")", limitMs:45*60000});
 };
 document.getElementById("startDrill").onclick = () => {
@@ -1521,6 +1733,7 @@ addEventListener("keydown", e => {
   if(quizOn && Q){
     if(/^[1-6]$/.test(e.key)){
       const btns = document.querySelectorAll("#qOpts .optbtn");
+      if(!btns.length) return;
       const b = btns[+e.key - 1];
       if(b && !b.disabled){ b.click(); e.preventDefault(); }
       return;

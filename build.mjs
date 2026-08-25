@@ -22,6 +22,7 @@ const errors = [];
 const seen = new Map();
 const questions = [];
 
+const pbqPath = join(root, "data", "pbq.json");
 const files = readdirSync(bankDir).filter((f) => f.endsWith(".json")).sort();
 if (!files.length) errors.push("no question files found in data/questions");
 
@@ -45,6 +46,7 @@ for (const file of files) {
     if (!DOMAINS[q.d]) errors.push(`${at}: domain must be 1-5, got ${q.d}`);
     if (!q.obj) errors.push(`${at}: missing objective`);
     if (!q.q || q.q.length < 15) errors.push(`${at}: question text missing or too short`);
+    if (q.type === "order" || q.type === "match") { validatePbq(q, at); return; }
     if (!Array.isArray(q.opts) || q.opts.length < 3) errors.push(`${at}: needs at least 3 options`);
     if (!Array.isArray(q.a) || !q.a.length) errors.push(`${at}: missing answer array`);
     else {
@@ -68,6 +70,44 @@ for (const file of files) {
   });
 }
 
+function validatePbq(q, at) {
+  if (q.type === "order") {
+    if (!Array.isArray(q.items) || q.items.length < 3) errors.push(`${at}: order item needs 3+ steps`);
+    else if (new Set(q.items).size !== q.items.length) errors.push(`${at}: duplicate step text`);
+  } else {
+    if (!Array.isArray(q.cats) || q.cats.length < 2) errors.push(`${at}: match item needs 2+ categories`);
+    if (!Array.isArray(q.pairs) || q.pairs.length < 3) errors.push(`${at}: match item needs 3+ pairs`);
+    else {
+      for (const [left, cat] of q.pairs) {
+        if (!left || !cat) errors.push(`${at}: malformed pair`);
+        else if (!q.cats.includes(cat)) errors.push(`${at}: pair category "${cat}" is not in cats`);
+      }
+      if (new Set(q.pairs.map((x) => x[0])).size !== q.pairs.length) errors.push(`${at}: duplicate pair prompt`);
+      const used = new Set(q.pairs.map((x) => x[1]));
+      for (const c of q.cats) if (!used.has(c)) errors.push(`${at}: category "${c}" is never the answer`);
+    }
+  }
+  if (!q.exp || q.exp.length < 40) errors.push(`${at}: explanation missing or too thin`);
+  q.diff = q.diff || 2;
+  q.pbq = true;
+  questions.push(q);
+}
+
+// performance-based items live in their own file but share the bank pipeline
+{
+  const pbqs = JSON.parse(readFileSync(pbqPath, "utf8"));
+  pbqs.forEach((q, i) => {
+    const at = `pbq.json[${i}] ${q.id ?? "(no id)"}`;
+    if (!q.id) errors.push(`${at}: missing id`);
+    else if (seen.has(q.id)) errors.push(`${at}: duplicate id`);
+    else seen.set(q.id, "pbq.json");
+    if (!DOMAINS[q.d]) errors.push(`${at}: domain must be 1-5`);
+    if (!q.obj) errors.push(`${at}: missing objective`);
+    if (q.type !== "order" && q.type !== "match") errors.push(`${at}: type must be order or match`);
+    else validatePbq(q, at);
+  });
+}
+
 if (errors.length) {
   console.error(`\n✗ ${errors.length} problem(s) in the question bank:\n`);
   for (const e of errors.slice(0, 40)) console.error("  - " + e);
@@ -82,6 +122,7 @@ if (errors.length) {
 function lengthBot(pickLongest) {
   let hits = 0;
   for (const q of questions) {
+    if (q.pbq) continue;
     const lens = q.opts.map((o) => o.length);
     const order = lens
       .map((l, i) => [l, i])
@@ -91,7 +132,7 @@ function lengthBot(pickLongest) {
     const ans = [...q.a].sort((a, b) => a - b);
     if (guess.length === ans.length && guess.every((v, i) => v === ans[i])) hits++;
   }
-  return (hits / questions.length) * 100;
+  return (hits / questions.filter((q) => !q.pbq).length) * 100;
 }
 const longBot = lengthBot(true);
 const shortBot = lengthBot(false);
@@ -171,6 +212,7 @@ for (const d of Object.keys(DOMAINS)) {
   const hy = hyDomain[d] || 0;
   console.log(`   D${d} ${DOMAINS[d].name.padEnd(42)} ${String(n).padStart(3)}  ${share}% (exam ${DOMAINS[d].weight}%)  core ${String(hy).padStart(2)}`);
 }
+console.log(`✓ performance-based items: ${questions.filter((q) => q.pbq).length} (order + match)`);
 console.log(`✓ length-bias bots: longest ${longBot.toFixed(1)}%, shortest ${shortBot.toFixed(1)}% (random ~25%)`);
 console.log(`✓ 80/20 core: ${hyTotal} questions (${((hyTotal / questions.length) * 100).toFixed(1)}% of bank) across ${clusters.length} clusters`);
 console.log(`✓ wrote dist/index.html (${kb} KB)`);
