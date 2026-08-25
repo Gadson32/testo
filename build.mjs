@@ -193,6 +193,12 @@ const inlined = JSON.stringify(questions)
   .replace(/</g, "\\u003C")
   .replace(/\u2028/g, "\\u2028")
   .replace(/\u2029/g, "\\u2029");
+const objMarker = "/*__OBJ__*/{}";
+const OBJDOC = JSON.parse(readFileSync(join(root, "data", "objectives.json"), "utf8"));
+if (!html.includes(objMarker)) {
+  console.error(`✗ template is missing the ${objMarker} injection marker`);
+  process.exit(1);
+}
 const hyMarker = "/*__HY__*/[]";
 if (!html.includes(hyMarker)) {
   console.error(`✗ template is missing the ${hyMarker} injection marker`);
@@ -200,7 +206,8 @@ if (!html.includes(hyMarker)) {
 }
 const out = html
   .replace(marker, inlined)
-  .replace(hyMarker, JSON.stringify(clusters).replace(/</g, "\\u003C"));
+  .replace(hyMarker, JSON.stringify(clusters).replace(/</g, "\\u003C"))
+  .replace(objMarker, JSON.stringify(OBJDOC.objectives).replace(/</g, "\\u003C"));
 mkdirSync(outDir, { recursive: true });
 writeFileSync(join(outDir, "index.html"), out);
 

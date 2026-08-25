@@ -11,7 +11,7 @@
   --deep:#12464F;
   --ok:#256F4C; --ok-soft:#DDEDE3;
   --bad:#A3352A; --bad-soft:#F6E0DC;
-  --warn:#8A6212;
+  --warn:#8A6212; --warn-soft:#F7EAD1;
   --shadow:0 1px 2px rgba(18,23,27,.06), 0 8px 24px -12px rgba(18,23,27,.18);
   --r:10px;
 }
@@ -23,7 +23,7 @@
     --deep:#7FC9D4;
     --ok:#57B98A; --ok-soft:#12291F;
     --bad:#E2796A; --bad-soft:#2C1714;
-    --warn:#D2A24A;
+    --warn:#D2A24A; --warn-soft:#2B2114;
     --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 30px -14px rgba(0,0,0,.7);
   }
 }
@@ -34,7 +34,7 @@
   --deep:#7FC9D4;
   --ok:#57B98A; --ok-soft:#12291F;
   --bad:#E2796A; --bad-soft:#2C1714;
-  --warn:#D2A24A;
+  --warn:#D2A24A; --warn-soft:#2B2114;
   --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 30px -14px rgba(0,0,0,.7);
 }
 
@@ -217,6 +217,49 @@ legend{padding:0; margin-bottom:8px}
 .flagbtn.on{color:var(--warn); border-color:var(--warn)}
 .hint{font-size:.72rem; color:var(--muted); font-family:"IBM Plex Mono",monospace}
 
+/* ---------- countdown ---------- */
+.hero{display:grid; grid-template-columns:1.15fr .85fr; gap:14px}
+@media (max-width:760px){.hero{grid-template-columns:1fr}}
+.count{display:flex; align-items:baseline; gap:10px; flex-wrap:wrap}
+.count .d{font-family:"Chivo",sans-serif; font-weight:900; font-size:3.1rem; line-height:1; color:var(--ink); font-variant-numeric:tabular-nums}
+.count .u{font-size:.85rem; color:var(--muted)}
+.count .date{margin-left:auto; font-family:"IBM Plex Mono",monospace; font-size:.75rem; color:var(--muted)}
+.pace{display:flex; flex-direction:column; gap:7px; margin-top:14px}
+.paceline{display:flex; align-items:baseline; gap:8px; font-size:.84rem}
+.paceline .n{font-family:"IBM Plex Mono",monospace; font-weight:600; color:var(--signal); min-width:52px; text-align:right}
+.paceline .t{color:var(--body)}
+.datefield{display:flex; gap:8px; align-items:center; margin-top:12px; flex-wrap:wrap}
+.datefield label{font-size:.8rem; color:var(--muted)}
+input[type=date]{
+  font:inherit; font-size:.85rem; padding:7px 9px; border-radius:7px;
+  border:1px solid var(--line); background:var(--surface); color:var(--ink);
+}
+
+/* ---------- sparkline ---------- */
+.spark{display:flex; align-items:center; gap:12px; margin-top:12px}
+.spark svg{flex:none}
+.spark .lbl{font-size:.78rem; color:var(--muted)}
+
+/* ---------- objective heatmap ---------- */
+.heat{display:grid; grid-template-columns:repeat(auto-fill,minmax(66px,1fr)); gap:6px; margin-top:12px}
+.heatcell{
+  border:1px solid var(--line); border-radius:8px; padding:7px 4px; text-align:center;
+  background:var(--raised); transition:transform .1s, border-color .1s;
+}
+.heatcell:hover{transform:translateY(-1px); border-color:var(--signal)}
+.heatcell .o{display:block; font-family:"IBM Plex Mono",monospace; font-size:.76rem; font-weight:600; color:var(--ink); line-height:1.2}
+.heatcell .p{display:block; font-family:"IBM Plex Mono",monospace; font-size:.66rem; color:var(--muted); margin-top:2px; line-height:1.1}
+.heatcell.s0{background:var(--raised)}
+.heatcell.s0 .o{color:var(--muted)}
+.heatcell.s1{background:var(--bad-soft); border-color:var(--bad)}
+.heatcell.s1 .o, .heatcell.s1 .p{color:var(--bad)}
+.heatcell.s2{background:var(--warn-soft); border-color:var(--warn)}
+.heatcell.s2 .o, .heatcell.s2 .p{color:var(--warn)}
+.heatcell.s3{background:var(--ok-soft); border-color:var(--ok)}
+.heatcell.s3 .o, .heatcell.s3 .p{color:var(--ok)}
+.heatlegend{display:flex; gap:14px; flex-wrap:wrap; margin-top:10px; font-size:.74rem; color:var(--muted)}
+.heatlegend i{display:inline-block; width:10px; height:10px; border-radius:3px; margin-right:5px; vertical-align:-1px; border:1px solid var(--line)}
+
 /* ---------- performance-based items ---------- */
 .pbqrow{
   display:flex; align-items:center; gap:10px; padding:10px 12px;
@@ -316,7 +359,7 @@ td.num{text-align:right; font-variant-numeric:tabular-nums; font-family:"IBM Ple
         </svg>
         <h1>Security+ Range</h1>
       </div>
-      <span class="sub">SY0-701 · 520 items</span>
+      <span class="sub" id="brandSub">SY0-701</span>
     </div>
 
     <nav id="nav">
@@ -355,7 +398,7 @@ td.num{text-align:right; font-variant-numeric:tabular-nums; font-family:"IBM Ple
         </div>
       </div>
 
-      <div class="grid g2">
+      <div class="hero">
         <div class="card pad">
           <div class="gauge">
             <svg width="104" height="104" viewBox="0 0 104 104" aria-hidden="true">
@@ -370,6 +413,10 @@ td.num{text-align:right; font-variant-numeric:tabular-nums; font-family:"IBM Ple
               <div class="verdict" id="verdict">Not enough data yet</div>
             </div>
           </div>
+          <div class="spark" id="sparkWrap" hidden>
+            <svg id="sparkSvg" width="150" height="34" viewBox="0 0 150 34" aria-hidden="true"></svg>
+            <span class="lbl" id="sparkLbl"></span>
+          </div>
           <p style="font-size:.8rem;color:var(--muted);margin-top:14px">
             Blends accuracy with coverage per domain, weighted exactly like the real exam.
             Aim for 85%+ with every domain above 80% before test day.
@@ -378,8 +425,37 @@ td.num{text-align:right; font-variant-numeric:tabular-nums; font-family:"IBM Ple
         </div>
 
         <div class="card pad">
-          <span class="eyebrow">Domain mastery</span>
-          <div class="dom" id="domList"></div>
+          <span class="eyebrow">Time to exam</span>
+          <div class="count" style="margin-top:8px">
+            <span class="d" id="cdDays">—</span>
+            <span class="u" id="cdUnit">set your exam date</span>
+            <span class="date" id="cdDate"></span>
+          </div>
+          <div class="pace" id="paceList"></div>
+          <div class="datefield">
+            <label for="examDate">Exam date</label>
+            <input type="date" id="examDate">
+            <button class="flagbtn" id="clearDate" hidden>Clear</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card pad" style="margin-top:14px">
+        <span class="eyebrow">Domain mastery</span>
+        <div class="dom" id="domList"></div>
+      </div>
+
+      <div class="card pad" style="margin-top:14px">
+        <div class="head" style="margin-bottom:0">
+          <div><span class="eyebrow">Every SY0-701 objective · tap one to drill it</span>
+          <h3 style="margin-top:4px">Objective heatmap</h3></div>
+        </div>
+        <div class="heat" id="heatGrid"></div>
+        <div class="heatlegend">
+          <span><i style="background:var(--raised)"></i>unseen</span>
+          <span><i style="background:var(--bad-soft);border-color:var(--bad)"></i>under 60%</span>
+          <span><i style="background:var(--warn-soft);border-color:var(--warn)"></i>60–79%</span>
+          <span><i style="background:var(--ok-soft);border-color:var(--ok)"></i>80%+</span>
         </div>
       </div>
 
@@ -602,7 +678,7 @@ td.num{text-align:right; font-variant-numeric:tabular-nums; font-family:"IBM Ple
           <button class="flagbtn" id="flagBtn">⚑ Flag</button>
           <button class="flagbtn" id="reviewBtn" hidden>Review all</button>
           <span class="spacer"></span>
-          <span class="hint">1–6 pick · Enter submit/next · F flag</span>
+          <span class="hint" id="qHint">1–6 pick · Enter submit/next · F flag</span>
         </div>
       </div>
 
@@ -651,6 +727,7 @@ td.num{text-align:right; font-variant-numeric:tabular-nums; font-family:"IBM Ple
 <script>
 const BANK = /*__BANK__*/[];
 const HY = /*__HY__*/[];
+const OBJ = /*__OBJ__*/{};
 
 const DOMAINS = {
   1:{name:"General Security Concepts", w:12},
@@ -905,6 +982,9 @@ function render(){
     const fbP = document.getElementById("flagBtn");
     fbP.classList.toggle("on", S.flags.includes(q.id));
     fbP.textContent = S.flags.includes(q.id) ? "\u2691 Flagged" : "\u2691 Flag";
+    document.getElementById("qHint").textContent = q.type === "order"
+      ? "Arrows reorder · Enter submit/next · F flag"
+      : "Choose each row · Enter submit/next · F flag";
     document.getElementById("qLive").textContent =
       "Question " + (Q.i+1) + " of " + Q.items.length + ", performance-based. " + q.q;
     return;
@@ -945,6 +1025,7 @@ function render(){
   fb.classList.toggle("on", S.flags.includes(q.id));
   fb.textContent = S.flags.includes(q.id) ? "⚑ Flagged" : "⚑ Flag";
 
+  document.getElementById("qHint").textContent = "1–6 pick · Enter submit/next · F flag";
   // announce the new question for screen readers
   document.getElementById("qLive").textContent =
     "Question " + (Q.i+1) + " of " + Q.items.length + ". " + q.q;
@@ -1464,6 +1545,10 @@ function drawHome(){
   else if(r >= 65){ v.textContent = "Close — push weak domains above 80%"; v.style.color = "var(--warn)"; }
   else { v.textContent = "Keep grinding — coverage and accuracy both need work"; v.style.color = "var(--signal)"; }
 
+  drawCountdown();
+  drawSpark();
+  drawHeat();
+
   // unfinished set recovery
   const rc = document.getElementById("resumeCard");
   if(S.session){
@@ -1534,6 +1619,112 @@ function drawHome(){
     c.innerHTML = "D" + t.d + " · " + escapeHtml(topic) + " <b>" + Math.round(t.right/t.seen*100) + "%</b>";
     wl.append(c);
   });
+}
+function daysTo(iso){
+  if(!iso) return null;
+  const target = new Date(iso + "T00:00:00");
+  const today = new Date(); today.setHours(0,0,0,0);
+  return Math.round((target - today) / 86400000);
+}
+function drawCountdown(){
+  const inp = document.getElementById("examDate");
+  if(S.examDate) inp.value = S.examDate;
+  document.getElementById("clearDate").hidden = !S.examDate;
+  const d = daysTo(S.examDate);
+  const days = document.getElementById("cdDays");
+  const unit = document.getElementById("cdUnit");
+  const date = document.getElementById("cdDate");
+  const pace = document.getElementById("paceList");
+  pace.innerHTML = "";
+
+  if(d === null){
+    days.textContent = "—";
+    unit.textContent = "set your exam date";
+    date.textContent = "";
+    pace.append(paceRow("", "A date turns the bank into a daily target."));
+    return;
+  }
+  days.textContent = d < 0 ? "past" : d;
+  unit.textContent = d < 0 ? "exam date has passed" : d === 0 ? "today — good luck" : d === 1 ? "day left" : "days left";
+  days.style.color = d <= 3 ? "var(--bad)" : d <= 10 ? "var(--warn)" : "var(--ink)";
+  date.textContent = new Date(S.examDate + "T00:00:00").toLocaleDateString(undefined,
+    {weekday:"short", month:"short", day:"numeric"});
+
+  if(d <= 0) return;
+  const core = coreBank();
+  const coreLeft = core.filter(q => !S.stats[q.id] || !S.stats[q.id].seen).length;
+  const bankLeft = BANK.filter(q => !S.stats[q.id] || !S.stats[q.id].seen).length;
+  const due = drillQueue().length;
+  if(coreLeft) pace.append(paceRow(Math.ceil(coreLeft/Math.min(d,7)) + "/day", "to finish the 80/20 core within a week"));
+  pace.append(paceRow(Math.ceil(bankLeft/d) + "/day", "to see every remaining question before exam day"));
+  if(due) pace.append(paceRow(due + "", "in the weak drill queue, due now"));
+  pace.append(paceRow(Math.max(1, Math.floor(d/3)) + "", "full exam simulations if you run one every third day"));
+}
+function paceRow(n, t){
+  const row = document.createElement("div");
+  row.className = "paceline";
+  const a = document.createElement("span"); a.className = "n"; a.textContent = n;
+  const b = document.createElement("span"); b.className = "t"; b.textContent = t;
+  row.append(a, b);
+  return row;
+}
+function drawSpark(){
+  const sims = S.exams.filter(e => e.mode === "exam").slice(0, 8).reverse();
+  const wrap = document.getElementById("sparkWrap");
+  if(sims.length < 2){ wrap.hidden = true; return; }
+  wrap.hidden = false;
+  const svg = document.getElementById("sparkSvg");
+  const W = 150, H = 34, pad = 3;
+  const vals = sims.map(e => e.pct).concat([83]);
+  let lo = Math.min(...vals) - 4, hi = Math.max(...vals) + 4;
+  if(hi - lo < 12){ const mid = (hi+lo)/2; lo = mid - 6; hi = mid + 6; }
+  const y = v => H - pad - ((v - lo) / (hi - lo)) * (H - pad*2);
+  const pts = sims.map((e, i) => [pad + i * ((W - pad*2) / (sims.length - 1)), y(e.pct)]);
+  const last = sims[sims.length-1];
+  const line = pts.map(p => p[0].toFixed(1) + "," + p[1].toFixed(1)).join(" ");
+  const area = "M" + pts[0][0].toFixed(1) + "," + (H-pad) + " L" + line.replace(/ /g, " L") + " L" + pts[pts.length-1][0].toFixed(1) + "," + (H-pad) + " Z";
+  const target = y(83);
+  svg.innerHTML =
+    '<path d="' + area + '" fill="var(--signal)" opacity=".12"/>' +
+    '<line x1="0" y1="' + target.toFixed(1) + '" x2="' + W + '" y2="' + target.toFixed(1) +
+      '" stroke="var(--muted)" stroke-width="1" stroke-dasharray="2 3" opacity=".6"/>' +
+    '<polyline points="' + line + '" fill="none" stroke="var(--signal)" stroke-width="1.8" stroke-linejoin="round"/>' +
+    '<circle cx="' + pts[pts.length-1][0].toFixed(1) + '" cy="' + pts[pts.length-1][1].toFixed(1) +
+      '" r="3" fill="' + (last.pct >= 83 ? "var(--ok)" : "var(--signal)") + '"/>';
+  document.getElementById("sparkLbl").textContent =
+    "last " + sims.length + " sims · now " + last.pct + "% · dashed line is the 83% target";
+}
+function objStats(code){
+  const qs = BANK.filter(q => q.obj === code);
+  let att = 0, right = 0, seen = 0;
+  for(const q of qs){
+    const st = S.stats[q.id];
+    if(!st || !st.seen) continue;
+    seen++; att += st.seen; right += st.right;
+  }
+  return {total:qs.length, seen, acc: att ? right/att : 0};
+}
+function drawHeat(){
+  const grid = document.getElementById("heatGrid");
+  grid.innerHTML = "";
+  for(const code of Object.keys(OBJ)){
+    const st = objStats(code);
+    const b = document.createElement("button");
+    b.type = "button";
+    const band = !st.seen ? 0 : st.acc < 0.6 ? 1 : st.acc < 0.8 ? 2 : 3;
+    b.className = "heatcell s" + band;
+    b.title = code + " — " + OBJ[code] + "\n" + (st.seen ? Math.round(st.acc*100) + "% over " + st.seen + " of " + st.total + " seen" : "not attempted yet");
+    b.setAttribute("aria-label", b.title.replace("\n", ": "));
+    const o = document.createElement("span"); o.className = "o"; o.textContent = code;
+    const pc = document.createElement("span"); pc.className = "p";
+    pc.textContent = st.seen ? Math.round(st.acc*100) + "%" : st.total + " q";
+    b.append(o, pc);
+    b.onclick = () => {
+      const pool = BANK.filter(q => q.obj === code);
+      startQuiz(pick(pool, Math.min(15, pool.length), "smart"), {label:"Objective " + code});
+    };
+    grid.append(b);
+  }
 }
 function escapeHtml(s){ return String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
 
@@ -1666,6 +1857,16 @@ document.getElementById("navSubmit").onclick = () => {
   finish();
 };
 document.getElementById("resumeBtn").onclick = resumeSession;
+document.getElementById("examDate").onchange = e => {
+  S.examDate = e.target.value || null;
+  if(!S.examDate) delete S.examDate;
+  save(); drawCountdown();
+};
+document.getElementById("clearDate").onclick = () => {
+  delete S.examDate; save();
+  document.getElementById("examDate").value = "";
+  drawCountdown();
+};
 document.getElementById("flagBtn").onclick = () => {
   const id = Q.items[Q.i].q.id;
   const at = S.flags.indexOf(id);
@@ -1751,5 +1952,7 @@ addEventListener("keydown", e => {
   }
 });
 
+document.getElementById("brandSub").textContent =
+  "SY0-701 · " + BANK.length + " items · " + BANK.filter(isPbq).length + " PBQ";
 drawHome();
 </script>
