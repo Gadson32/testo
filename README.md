@@ -35,6 +35,29 @@ Every question carries:
 Difficulty is tagged `core` / `applied` / `hard`. Multi-select items ("choose two/three") are
 included, matching the real exam format.
 
+## Bootcamp — beginner to advanced
+
+A taught path, not just a question bank. `data/bootcamp.json` holds **17 modules across 4 levels**
+with **85 written lesson blocks and 116 key terms**, and the build fails if any module's drill
+selector cannot be filled from the bank.
+
+| Level | Name | Tag | Modules |
+|---|---|---|---:|
+| 1 | Foundations | Beginner | 4 |
+| 2 | Building Blocks | Beginner+ | 4 |
+| 3 | Operations | Intermediate | 4 |
+| 4 | Architecture & Governance | Advanced | 5 |
+
+Each module is **lesson → key terms → prove it**: 3–6 teaching blocks written in plain language,
+a term table, then a drill of 8–12 real questions pulled from the objectives that module covers.
+**Score 80% and the next module unlocks**; fail and it stays locked with a prompt to re-read.
+Level 4 ends in a **capstone**: a timed 45-question half exam with PBQs first, cleared at 83%.
+
+**Test out.** Already know a level? One 12-question check at 85% marks that level's modules passed
+and jumps you forward — the lessons stay readable if you want them later.
+
+Progress lives in `S.bc` alongside everything else, so it exports and imports with the rest.
+
 ## The 80/20 Core
 
 118 of the 520 questions (22.7%) are tagged as the **high-yield core** — 30 clusters covering the

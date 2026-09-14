@@ -217,6 +217,51 @@ legend{padding:0; margin-bottom:8px}
 .flagbtn.on{color:var(--warn); border-color:var(--warn)}
 .hint{font-size:.72rem; color:var(--muted); font-family:"IBM Plex Mono",monospace}
 
+/* ---------- bootcamp ---------- */
+.lvl{margin-top:16px}
+.lvlhead{display:flex; align-items:baseline; gap:10px; flex-wrap:wrap; margin-bottom:4px}
+.lvlnum{
+  font-family:"IBM Plex Mono",monospace; font-size:.7rem; font-weight:600; letter-spacing:.08em;
+  color:var(--signal); border:1px solid currentColor; border-radius:5px; padding:2px 7px;
+}
+.lvlname{font-family:"Chivo",sans-serif; font-weight:700; font-size:1.05rem; color:var(--ink)}
+.lvltag{font-size:.72rem; color:var(--muted); font-family:"IBM Plex Mono",monospace}
+.lvlprog{margin-left:auto; font-family:"IBM Plex Mono",monospace; font-size:.75rem; color:var(--muted)}
+.lvlblurb{font-size:.85rem; color:var(--muted); max-width:74ch; margin-bottom:10px}
+.mods{display:grid; grid-template-columns:repeat(auto-fill,minmax(250px,1fr)); gap:10px}
+.modcard{
+  text-align:left; border:1px solid var(--line); border-radius:10px; padding:13px;
+  background:var(--surface); display:flex; flex-direction:column; gap:6px; transition:border-color .12s, transform .1s;
+}
+.modcard:hover:not(:disabled){border-color:var(--signal); transform:translateY(-1px)}
+.modcard:disabled{opacity:.55; cursor:not-allowed}
+.modcard .t{font-size:.94rem; font-weight:600; color:var(--ink); line-height:1.3}
+.modcard .g{font-size:.8rem; color:var(--muted); line-height:1.4}
+.modcard .f{display:flex; align-items:center; gap:8px; margin-top:auto; padding-top:6px}
+.modstate{
+  font-family:"IBM Plex Mono",monospace; font-size:.68rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:2px 7px; border-radius:5px; border:1px solid var(--line); color:var(--muted);
+}
+.modstate.pass{color:var(--ok); border-color:var(--ok); background:var(--ok-soft)}
+.modstate.open{color:var(--signal); border-color:var(--signal); background:var(--signal-soft)}
+.modstate.cap{color:var(--deep); border-color:currentColor}
+.modmins{font-family:"IBM Plex Mono",monospace; font-size:.7rem; color:var(--muted); margin-left:auto}
+
+.lessonblock{border-left:3px solid var(--line); padding:2px 0 2px 14px; margin-bottom:16px}
+.lessonblock h4{font-family:"Chivo",sans-serif; font-size:.95rem; font-weight:700; color:var(--ink); margin:0 0 5px}
+.lessonblock p{font-size:.92rem; line-height:1.6; max-width:70ch; color:var(--body)}
+.lessonblock:nth-child(odd){border-color:var(--signal)}
+.lessonblock:nth-child(even){border-color:var(--deep)}
+.termtable{width:100%; border-collapse:collapse; font-size:.87rem}
+.termtable td{padding:8px 10px; border-bottom:1px solid var(--line); vertical-align:top}
+.termtable td:first-child{
+  font-weight:600; color:var(--ink); white-space:nowrap; width:1%; padding-right:16px;
+  font-family:"IBM Plex Mono",monospace; font-size:.8rem;
+}
+.bcbar{height:6px; border-radius:99px; background:var(--raised); border:1px solid var(--line); overflow:hidden; margin-top:10px}
+.bcbar i{display:block; height:100%; background:var(--signal)}
+.bcbar i.good{background:var(--ok)}
+
 /* ---------- countdown ---------- */
 .hero{display:grid; grid-template-columns:1.15fr .85fr; gap:14px}
 @media (max-width:760px){.hero{grid-template-columns:1fr}}
@@ -364,13 +409,14 @@ td.num{text-align:right; font-variant-numeric:tabular-nums; font-family:"IBM Ple
 
     <nav id="nav">
       <button class="navbtn" data-go="home" aria-current="true">Dashboard <span class="k">1</span></button>
-      <button class="navbtn" data-go="core">80/20 Core <span class="k">2</span></button>
-      <button class="navbtn" data-go="practice">Practice <span class="k">3</span></button>
-      <button class="navbtn" data-go="exam">Exam sim <span class="k">4</span></button>
-      <button class="navbtn" data-go="drill">Weak drill <span class="k">5</span></button>
-      <button class="navbtn" data-go="flagged">Flagged <span class="k">6</span></button>
-      <button class="navbtn" data-go="history">History <span class="k">7</span></button>
-      <button class="navbtn" data-go="settings">Settings <span class="k">8</span></button>
+      <button class="navbtn" data-go="bootcamp">Bootcamp <span class="k">2</span></button>
+      <button class="navbtn" data-go="core">80/20 Core <span class="k">3</span></button>
+      <button class="navbtn" data-go="practice">Practice <span class="k">4</span></button>
+      <button class="navbtn" data-go="exam">Exam sim <span class="k">5</span></button>
+      <button class="navbtn" data-go="drill">Weak drill <span class="k">6</span></button>
+      <button class="navbtn" data-go="flagged">Flagged <span class="k">7</span></button>
+      <button class="navbtn" data-go="history">History <span class="k">8</span></button>
+      <button class="navbtn" data-go="settings">Settings <span class="k">9</span></button>
     </nav>
 
     <div class="railfoot">
@@ -470,6 +516,63 @@ td.num{text-align:right; font-variant-numeric:tabular-nums; font-family:"IBM Ple
       <div class="card pad" style="margin-top:14px">
         <span class="eyebrow">Weakest topics</span>
         <div class="weaklist" id="weakList"><span class="empty" style="padding:8px 0">Answer some questions and your weak spots show up here.</span></div>
+      </div>
+    </section>
+
+    <!-- ============ BOOTCAMP ============ -->
+    <section class="page" id="page-bootcamp">
+      <div class="head">
+        <div>
+          <span class="eyebrow">Beginner to advanced · lessons, then proof</span>
+          <h2>Bootcamp</h2>
+        </div>
+        <button class="btn" id="bcContinue">Continue</button>
+      </div>
+
+      <div class="card pad">
+        <div class="grid g3" style="gap:14px">
+          <div class="stat"><div class="n mono" id="bcDone">0</div><div class="l">modules passed</div></div>
+          <div class="stat"><div class="n mono" id="bcLevel">1</div><div class="l">current level</div></div>
+          <div class="stat"><div class="n mono" id="bcMins">0</div><div class="l">minutes of lessons left</div></div>
+        </div>
+        <div class="bcbar"><i id="bcBar" style="width:0%"></i></div>
+        <p style="font-size:.84rem;color:var(--muted);margin-top:12px">
+          Each module teaches the concept, gives you the vocabulary, then makes you prove it on real
+          questions. Score 80% or better and the next module unlocks. Already know a level? Test out
+          of it with one check instead of working through every module.
+        </p>
+      </div>
+
+      <div id="bcLevels"></div>
+    </section>
+
+    <!-- ============ BOOTCAMP MODULE ============ -->
+    <section class="page" id="page-module">
+      <div class="head">
+        <div>
+          <span class="eyebrow" id="modEyebrow"></span>
+          <h2 id="modTitle"></h2>
+        </div>
+        <button class="btn ghost" id="modBack">← All modules</button>
+      </div>
+
+      <div class="card pad">
+        <p class="verdictline" style="margin-top:0" id="modGoal"></p>
+        <div id="modLesson" style="margin-top:18px"></div>
+      </div>
+
+      <div class="card pad" style="margin-top:14px">
+        <span class="eyebrow">Key terms</span>
+        <div class="scroll" style="margin-top:8px"><table class="termtable"><tbody id="modTerms"></tbody></table></div>
+      </div>
+
+      <div class="card pad" style="margin-top:14px">
+        <span class="eyebrow">Prove it</span>
+        <p style="font-size:.9rem;margin-top:6px" id="modCheckText"></p>
+        <div class="btnrow">
+          <button class="btn" id="modStart">Start the check</button>
+          <span class="hint" id="modBest"></span>
+        </div>
       </div>
     </section>
 
@@ -709,6 +812,7 @@ td.num{text-align:right; font-variant-numeric:tabular-nums; font-family:"IBM Ple
           <span class="of mono" id="rTime"></span>
         </div>
         <p class="of mono" id="rScaled" style="margin-top:6px;font-size:.8rem"></p>
+        <p class="verdictline" id="rBootcamp" hidden style="margin-top:14px"></p>
         <div class="dom" id="rDoms" style="margin-top:18px"></div>
         <div class="btnrow">
           <button class="btn" id="rAgain">New set</button>
@@ -728,6 +832,8 @@ td.num{text-align:right; font-variant-numeric:tabular-nums; font-family:"IBM Ple
 const BANK = /*__BANK__*/[];
 const HY = /*__HY__*/[];
 const OBJ = /*__OBJ__*/{};
+const BC = /*__BC__*/{};
+const BC_PASS = 0.8;
 
 const DOMAINS = {
   1:{name:"General Security Concepts", w:12},
@@ -876,6 +982,7 @@ function startQuiz(items, opts={}, restore=null){
     responses: restore ? restore.responses : new Array(items.length).fill(null),
     revealed: false,
     mode: opts.mode || "practice", label: opts.label || "Practice set",
+    bcModule: opts.bcModule || null, testOut: opts.testOut || null,
     limitMs: opts.limitMs || 0,
     startedAt: restore ? restore.startedAt : Date.now(),
     endsAt: restore ? restore.endsAt : (opts.limitMs ? Date.now()+opts.limitMs : 0),
@@ -916,7 +1023,7 @@ function saveSession(){
     ids: Q.items.map(it => it.q.id),
     orders: Q.items.map(it => it.order),
     responses: Q.responses,
-    i: Q.i, mode: Q.mode, label: Q.label,
+    i: Q.i, mode: Q.mode, label: Q.label, bcModule: Q.bcModule, testOut: Q.testOut,
     limitMs: Q.limitMs, startedAt: Q.startedAt, endsAt: Q.endsAt
   };
   save();
@@ -928,11 +1035,11 @@ function resumeSession(){
   const items = s.ids.map(id => BANK.find(q => q.id === id)).filter(Boolean);
   if(items.length !== s.ids.length){ clearSession(); return; }   // bank changed under us
   if(s.limitMs && Date.now() >= s.endsAt){                        // timer already expired
-    startQuiz(items, {mode:s.mode, label:s.label, limitMs:s.limitMs}, s);
+    startQuiz(items, {mode:s.mode, label:s.label, limitMs:s.limitMs, bcModule:s.bcModule, testOut:s.testOut}, s);
     finish();
     return;
   }
-  startQuiz(items, {mode:s.mode, label:s.label, limitMs:s.limitMs}, s);
+  startQuiz(items, {mode:s.mode, label:s.label, limitMs:s.limitMs, bcModule:s.bcModule, testOut:s.testOut}, s);
 }
 
 function render(){
@@ -973,7 +1080,8 @@ function render(){
     const lastP = Q.i === Q.items.length-1;
     const examP = Q.mode === "exam";
     document.getElementById("submitBtn").hidden = false;
-    document.getElementById("submitBtn").disabled = q.type === "match" && Q.picks.some(x => !x);
+    document.getElementById("submitBtn").disabled =
+      q.type === "match" && Q.picks.some(x => !x) && Q.mode !== "exam";
     document.getElementById("submitBtn").textContent = examP ? (lastP ? "Save answer" : "Save & next") : "Submit";
     document.getElementById("nextBtn").hidden = true;
     document.getElementById("nextBtn").textContent = lastP ? "Finish" : "Next";
@@ -1096,7 +1204,8 @@ function renderMatch(q, order){
     sel.onchange = () => {
       if(Q.revealed){ return; }
       Q.picks[pairIdx] = sel.value || null;
-      document.getElementById("submitBtn").disabled = Q.picks.some(x => !x);
+      document.getElementById("submitBtn").disabled =
+        Q.picks.some(x => !x) && Q.mode !== "exam";
     };
     row.append(body, sel);
     wrap.append(row);
@@ -1174,7 +1283,7 @@ function submit(){
   let picked, correct;
   if(isPbq(q)){
     picked = q.type === "order" ? Q.arrange.slice() : Q.picks.slice();
-    if(q.type === "match" && picked.some(x => !x)) return;
+    if(q.type === "match" && picked.some(x => !x) && Q.mode !== "exam") return;
     correct = gradePbq(q, picked);
   } else {
     if(!Q.picked.length) return;
@@ -1313,6 +1422,33 @@ function finish(){
   }
   S.exams.unshift(rec);
   S.exams = S.exams.slice(0, 50);
+
+  // bootcamp scoring: a module passes at 80%, a level test-out at 85%
+  let bcMsg = null;
+  const frac = total ? got/total : 0;
+  if(Q.bcModule){
+    const b = bcState();
+    const prev = b.done[Q.bcModule];
+    b.done[Q.bcModule] = {best: Math.max(prev ? prev.best : 0, frac), at: Date.now()};
+    const m = BC.modules.find(x => x.id === Q.bcModule);
+    const need = m && m.sel.exam ? 0.83 : BC_PASS;
+    bcMsg = frac >= need
+      ? {ok:true, text:"Module passed — " + Math.round(frac*100) + "%. " + (nextModule() ? "The next module is unlocked." : "That is the whole bootcamp cleared.")}
+      : {ok:false, text:"Not yet — " + Math.round(frac*100) + "%, and " + Math.round(need*100) + "% clears it. Re-read the lesson and retake the check."};
+  }
+  if(Q.testOut){
+    const passed = frac >= 0.85;
+    if(passed){
+      const b = bcState();
+      for(const m of BC.modules.filter(x => x.level === Q.testOut && !x.sel.exam)){
+        const prev = b.done[m.id];
+        if(!prev || prev.best < BC_PASS) b.done[m.id] = {best: frac, at: Date.now(), tested: true};
+      }
+    }
+    bcMsg = passed
+      ? {ok:true, text:"Tested out of level " + Q.testOut + " with " + Math.round(frac*100) + "%. Its modules are marked passed — the lessons stay readable if you want them."}
+      : {ok:false, text:"Test-out not cleared — " + Math.round(frac*100) + "%, and 85% is the bar. Work the level's modules instead."};
+  }
   save();
 
   // results page
@@ -1370,6 +1506,15 @@ function finish(){
     rev.append(det);
   }
   if(!Q.answers.length) rev.innerHTML = '<p class="empty">No questions answered.</p>';
+
+  const bcBox = document.getElementById("rBootcamp");
+  if(bcMsg){
+    bcBox.hidden = false;
+    bcBox.className = "verdictline";
+    bcBox.style.borderColor = bcMsg.ok ? "var(--ok)" : "var(--signal)";
+    bcBox.style.color = bcMsg.ok ? "var(--ok)" : "var(--ink)";
+    bcBox.textContent = bcMsg.text;
+  } else bcBox.hidden = true;
 
   document.getElementById("rMissed").hidden = missed.length === 0;
   Q.missedIds = missed.map(m => m.id);
@@ -1468,7 +1613,166 @@ function go(name){
   if(name === "history") drawHistory();
   if(name === "settings") drawAbout();
   if(name === "core") drawCore();
+  if(name === "bootcamp") drawBootcamp();
 }
+/* ================= bootcamp ================= */
+function bcState(){
+  if(!S.bc) S.bc = {done:{}};
+  return S.bc;
+}
+function modPassed(id){ const b = bcState().done[id]; return !!(b && b.best >= BC_PASS); }
+function modUnlocked(i){
+  if(i === 0) return true;
+  return modPassed(BC.modules[i-1].id);
+}
+function nextModule(){
+  const i = BC.modules.findIndex(m => !modPassed(m.id));
+  return i === -1 ? null : BC.modules[i];
+}
+function modPool(m){
+  if(m.sel.exam) return null;
+  let pool = BANK.filter(q => m.sel.obj.includes(q.obj));
+  if(m.sel.topics) pool = pool.filter(q => m.sel.topics.includes(q.topic));
+  if(m.sel.maxDiff) pool = pool.filter(q => q.diff <= m.sel.maxDiff);
+  return pool;
+}
+function drawBootcamp(){
+  bcState();
+  const done = BC.modules.filter(m => modPassed(m.id)).length;
+  document.getElementById("bcDone").textContent = done + "/" + BC.modules.length;
+  const nm = nextModule();
+  document.getElementById("bcLevel").textContent = nm ? nm.level : "✓";
+  const minsLeft = BC.modules.filter(m => !modPassed(m.id)).reduce((n, m) => n + m.mins, 0);
+  document.getElementById("bcMins").textContent = minsLeft;
+  const pct = Math.round(done / BC.modules.length * 100);
+  const bar = document.getElementById("bcBar");
+  bar.style.width = pct + "%";
+  bar.className = pct === 100 ? "good" : "";
+  document.getElementById("bcContinue").textContent = nm ? (done ? "Continue" : "Start level 1") : "Review modules";
+
+  const wrap = document.getElementById("bcLevels");
+  wrap.innerHTML = "";
+  for(const L of BC.levels){
+    const mods = BC.modules.filter(m => m.level === L.n);
+    const passed = mods.filter(m => modPassed(m.id)).length;
+    const sec = document.createElement("div");
+    sec.className = "lvl card pad";
+
+    const head = document.createElement("div");
+    head.className = "lvlhead";
+    const num = document.createElement("span"); num.className = "lvlnum"; num.textContent = "LEVEL " + L.n;
+    const nme = document.createElement("span"); nme.className = "lvlname"; nme.textContent = L.name;
+    const tag = document.createElement("span"); tag.className = "lvltag"; tag.textContent = L.tag;
+    const prg = document.createElement("span"); prg.className = "lvlprog"; prg.textContent = passed + "/" + mods.length + " passed";
+    head.append(num, nme, tag, prg);
+
+    const blurb = document.createElement("p");
+    blurb.className = "lvlblurb"; blurb.textContent = L.blurb;
+
+    const grid = document.createElement("div");
+    grid.className = "mods";
+    for(const m of mods){
+      const gi = BC.modules.indexOf(m);
+      const open = modUnlocked(gi);
+      const pass = modPassed(m.id);
+      const card = document.createElement("button");
+      card.type = "button";
+      card.className = "modcard";
+      card.disabled = !open && !pass;
+      const t = document.createElement("span"); t.className = "t"; t.textContent = m.title;
+      const g = document.createElement("span"); g.className = "g"; g.textContent = m.goal;
+      const f = document.createElement("span"); f.className = "f";
+      const st = document.createElement("span");
+      const best = bcState().done[m.id];
+      st.className = "modstate " + (pass ? "pass" : m.capstone ? "cap" : open ? "open" : "");
+      st.textContent = pass ? "passed " + Math.round(best.best*100) + "%"
+        : !open ? "locked" : m.capstone ? "capstone" : "ready";
+      const mins = document.createElement("span"); mins.className = "modmins"; mins.textContent = m.mins + " min";
+      f.append(st, mins);
+      card.append(t, g, f);
+      card.onclick = () => openModule(m.id);
+      grid.append(card);
+    }
+
+    sec.append(head, blurb, grid);
+
+    if(mods.some(m => !modPassed(m.id)) && !mods[0].capstone){
+      const row = document.createElement("div");
+      row.className = "btnrow";
+      const out = document.createElement("button");
+      out.className = "btn ghost";
+      out.textContent = "Test out of level " + L.n;
+      out.onclick = () => testOut(L.n);
+      const hint = document.createElement("span");
+      hint.className = "hint";
+      hint.textContent = "12 questions · 85% clears the whole level";
+      row.append(out, hint);
+      sec.append(row);
+    }
+    wrap.append(sec);
+  }
+}
+function testOut(level){
+  const mods = BC.modules.filter(m => m.level === level && !m.sel.exam);
+  const objs = [...new Set(mods.flatMap(m => m.sel.obj))];
+  const pool = BANK.filter(q => objs.includes(q.obj) && !isPbq(q));
+  startQuiz(shuffle(pool).slice(0, 12), {label:"Test out · level " + level, testOut:level});
+}
+let openMod = null;
+function openModule(id){
+  const m = BC.modules.find(x => x.id === id);
+  if(!m) return;
+  openMod = m;
+  const L = BC.levels.find(l => l.n === m.level);
+  document.getElementById("modEyebrow").textContent =
+    "Level " + m.level + " · " + L.name + " · " + L.tag + " · " + m.mins + " min";
+  document.getElementById("modTitle").textContent = m.title;
+  document.getElementById("modGoal").innerHTML = "<b>Goal:</b> ";
+  document.getElementById("modGoal").append(document.createTextNode(m.goal));
+
+  const les = document.getElementById("modLesson");
+  les.innerHTML = "";
+  for(const blk of m.lesson){
+    const d = document.createElement("div");
+    d.className = "lessonblock";
+    const h = document.createElement("h4"); h.textContent = blk.h;
+    const p = document.createElement("p"); p.textContent = blk.p;
+    d.append(h, p);
+    les.append(d);
+  }
+  const tb = document.getElementById("modTerms");
+  tb.innerHTML = "";
+  for(const [term, def] of m.terms){
+    const tr = document.createElement("tr");
+    const a = document.createElement("td"); a.textContent = term;
+    const b = document.createElement("td"); b.textContent = def;
+    tr.append(a, b);
+    tb.append(tr);
+  }
+  const pool = modPool(m);
+  document.getElementById("modCheckText").textContent = m.sel.exam
+    ? "A timed " + m.sel.exam + "-question half exam with " + m.sel.pbq + " performance-based items first, in the real domain weighting. 83% to clear the capstone."
+    : m.sel.n + " questions drawn from objective" + (m.sel.obj.length > 1 ? "s " : " ") + m.sel.obj.join(", ") +
+      ". Score " + Math.round(BC_PASS*100) + "% or better to pass this module and unlock the next.";
+  const best = bcState().done[m.id];
+  document.getElementById("modBest").textContent = best
+    ? "best so far: " + Math.round(best.best*100) + "%" : "not attempted yet";
+  document.getElementById("modStart").textContent = best ? "Retake the check" : "Start the check";
+  go("module");
+  window.scrollTo({top:0});
+}
+function startModuleCheck(){
+  const m = openMod;
+  if(!m) return;
+  if(m.sel.exam){
+    const set = examSet(m.sel.exam, m.sel.pbq);
+    startQuiz(set, {mode:"exam", label:"Capstone · " + m.title, limitMs:m.sel.exam*60000, bcModule:m.id});
+    return;
+  }
+  const pool = modPool(m);
+  startQuiz(pick(pool, m.sel.n, "smart"), {label:"Module · " + m.title, bcModule:m.id});
+}
+
 function drawCore(){
   const qs = coreBank();
   const m = coreMastery();
@@ -1857,6 +2161,12 @@ document.getElementById("navSubmit").onclick = () => {
   finish();
 };
 document.getElementById("resumeBtn").onclick = resumeSession;
+document.getElementById("bcContinue").onclick = () => {
+  const m = nextModule() || BC.modules[0];
+  openModule(m.id);
+};
+document.getElementById("modBack").onclick = () => go("bootcamp");
+document.getElementById("modStart").onclick = startModuleCheck;
 document.getElementById("examDate").onchange = e => {
   S.examDate = e.target.value || null;
   if(!S.examDate) delete S.examDate;
@@ -1946,8 +2256,8 @@ addEventListener("keydown", e => {
       e.preventDefault(); return;
     }
     if(e.key.toLowerCase() === "f"){ document.getElementById("flagBtn").click(); return; }
-  } else if(/^[1-8]$/.test(e.key)){
-    const order = ["home","core","practice","exam","drill","flagged","history","settings"];
+  } else if(/^[1-9]$/.test(e.key)){
+    const order = ["home","bootcamp","core","practice","exam","drill","flagged","history","settings"];
     if(order[+e.key - 1]) go(order[+e.key - 1]);
   }
 });

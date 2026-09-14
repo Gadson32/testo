@@ -1,0 +1,1156 @@
+{
+  "levels": [
+    {
+      "n": 1,
+      "name": "Foundations",
+      "tag": "Beginner",
+      "blurb": "The vocabulary and mental models everything else is built on. If these are shaky, every later domain feels like memorization instead of reasoning."
+    },
+    {
+      "n": 2,
+      "name": "Building Blocks",
+      "tag": "Beginner+",
+      "blurb": "Cryptography, identity, and networks — the three machines the exam keeps asking you to operate. Learn what each one does and the answers stop looking alike."
+    },
+    {
+      "n": 3,
+      "name": "Operations",
+      "tag": "Intermediate",
+      "blurb": "The day-job domain, and the heaviest on the exam at 28%. Recognizing attacks, running vulnerability management, reading logs, and handling incidents."
+    },
+    {
+      "n": 4,
+      "name": "Architecture & Governance",
+      "tag": "Advanced",
+      "blurb": "Design decisions and the business layer above them: resilience, data protection, risk math, and the paperwork that carries real exam weight."
+    }
+  ],
+  "modules": [
+    {
+      "id": "L1M1",
+      "level": 1,
+      "title": "What security actually protects",
+      "mins": 12,
+      "goal": "Classify any incident by what it damaged, and name the property that stops a denial.",
+      "lesson": [
+        {
+          "h": "Three properties, not one",
+          "p": "Security is not one goal. Confidentiality means only authorized parties can read data. Integrity means data has not been altered without authorization. Availability means authorized users can reach it when needed. Every incident damages one or more of these, and the exam constantly asks which."
+        },
+        {
+          "h": "Diagnose by damage, not by drama",
+          "p": "Ransomware that encrypts files but steals nothing is an availability incident — the data is intact and undisclosed, just unreachable. Add exfiltration and confidentiality is hit too. An attacker quietly editing a transaction log damages integrity while availability and confidentiality hold."
+        },
+        {
+          "h": "AAA is a sequence, not a synonym",
+          "p": "Authentication proves who you are. Authorization decides what you may do. Accounting records what you did. They happen in that order and answer different questions. A question describing logs and command history is asking about accounting, even if it mentions login."
+        },
+        {
+          "h": "Non-repudiation is proof you acted",
+          "p": "Non-repudiation means you cannot credibly deny having done something. It comes from digital signatures: only your private key could have produced a signature that validates with your public key. Shared secrets cannot provide it, because either party could have acted."
+        },
+        {
+          "h": "Why this framing wins points",
+          "p": "When four answers all look plausible, ask what property the scenario actually threatens. Half the distractors on this exam are controls that protect a property the question never mentioned."
+        }
+      ],
+      "terms": [
+        [
+          "Confidentiality",
+          "Only authorized parties can read the data."
+        ],
+        [
+          "Integrity",
+          "Data has not been modified without authorization."
+        ],
+        [
+          "Availability",
+          "Authorized users can access resources when needed."
+        ],
+        [
+          "Authentication",
+          "Proving an identity claim is genuine."
+        ],
+        [
+          "Authorization",
+          "Deciding what an authenticated identity may do."
+        ],
+        [
+          "Accounting",
+          "Recording what was done, for audit and attribution."
+        ],
+        [
+          "Non-repudiation",
+          "Cryptographic proof that a specific party performed an action."
+        ]
+      ],
+      "sel": {
+        "obj": [
+          "1.2"
+        ],
+        "maxDiff": 2,
+        "n": 10
+      }
+    },
+    {
+      "id": "L1M2",
+      "level": 1,
+      "title": "Controls: the two axes",
+      "mins": 14,
+      "goal": "Place any control on both axes — what it does, and who implements it.",
+      "lesson": [
+        {
+          "h": "Type answers 'what does it do?'",
+          "p": "Six types. Preventive stops the act. Deterrent discourages the attempt. Detective notices it happened. Corrective restores afterward. Compensating substitutes when the required control is impossible. Directive instructs people what to do."
+        },
+        {
+          "h": "Category answers 'who or what runs it?'",
+          "p": "Four categories. Managerial controls are governance — policies, risk assessments. Technical controls are enforced by systems — firewalls, encryption. Operational controls are performed by people as ongoing work — guard rounds, log review. Physical controls protect space and hardware — fences, locks, bollards."
+        },
+        {
+          "h": "The same object can be two things",
+          "p": "A camera is detective by type and technical by category. A guard walking rounds is operational. A sign warning about the camera is deterrent. Read what the question emphasizes: the recording, or the warning."
+        },
+        {
+          "h": "Compensating has a tell",
+          "p": "Whenever a scenario says a required control cannot be implemented — legacy system, unsupported agent, vendor restriction — and something else is put in its place, that substitute is a compensating control. The phrase 'cannot support, so instead' is the giveaway."
+        },
+        {
+          "h": "Timeline trick",
+          "p": "Before the event: deterrent, preventive, directive. During: detective. After: corrective. When two answers both fit, the timeline usually separates them."
+        }
+      ],
+      "terms": [
+        [
+          "Preventive control",
+          "Stops an action from occurring (vestibule, MFA)."
+        ],
+        [
+          "Deterrent control",
+          "Discourages the attempt (signage, visible guards)."
+        ],
+        [
+          "Detective control",
+          "Identifies that something happened (SIEM alert, camera)."
+        ],
+        [
+          "Corrective control",
+          "Restores normal state after an event (restore from backup)."
+        ],
+        [
+          "Compensating control",
+          "Alternative safeguard when the required one is not feasible."
+        ],
+        [
+          "Directive control",
+          "Instructs required behavior (policy, standard)."
+        ]
+      ],
+      "sel": {
+        "obj": [
+          "1.1"
+        ],
+        "n": 8
+      }
+    },
+    {
+      "id": "L1M3",
+      "level": 1,
+      "title": "Who attacks you and why",
+      "mins": 12,
+      "goal": "Name the actor from resources, sophistication, and motive alone.",
+      "lesson": [
+        {
+          "h": "Three attributes decide the actor",
+          "p": "CompTIA profiles actors on internal versus external, resources and funding, and sophistication. A long dwell time with custom zero-days means funding and skill: nation-state. Ready-made tools and bragging rights: unskilled attacker."
+        },
+        {
+          "h": "Motive narrows it further",
+          "p": "Financial gain and blackmail point to organized crime. Espionage and strategic advantage point to nation-states. Philosophical or political belief plus publicity points to hacktivists. Revenge, from someone who already had access, points to an insider."
+        },
+        {
+          "h": "Insiders break the model",
+          "p": "An insider does not need to breach the perimeter — access is already granted, and their activity resembles normal work. That is why insider defenses are least privilege, separation of duties, DLP, and behavior analytics rather than firewalls."
+        },
+        {
+          "h": "Shadow IT is not an attacker",
+          "p": "Shadow IT is unsanctioned technology adopted by your own staff. It is a risk because data moves outside monitoring and contracts, but no adversary is involved. Watch for it as a distractor in actor questions."
+        },
+        {
+          "h": "Ransomware has a standard profile",
+          "p": "Encryption plus a cryptocurrency demand plus a threat to leak stolen data is organized crime, motivated by financial gain and blackmail. That combination appears repeatedly."
+        }
+      ],
+      "terms": [
+        [
+          "Nation-state",
+          "Highly funded, highly sophisticated, usually espionage or disruption."
+        ],
+        [
+          "Organized crime",
+          "Professionalized, profit-driven; ransomware and fraud."
+        ],
+        [
+          "Hacktivist",
+          "Ideologically motivated, seeks publicity for a cause."
+        ],
+        [
+          "Unskilled attacker",
+          "Uses tools built by others; low resources and sophistication."
+        ],
+        [
+          "Insider threat",
+          "Internal, already authorized, motive often revenge or money."
+        ],
+        [
+          "Shadow IT",
+          "Unapproved technology adopted internally, outside governance."
+        ]
+      ],
+      "sel": {
+        "obj": [
+          "2.1"
+        ],
+        "n": 9
+      }
+    },
+    {
+      "id": "L1M4",
+      "level": 1,
+      "title": "Social engineering, the channel game",
+      "mins": 13,
+      "goal": "Name the attack from its delivery channel and spot the pressure tactics.",
+      "lesson": [
+        {
+          "h": "The channel names the attack",
+          "p": "Email is phishing. SMS or messaging is smishing. A voice call is vishing. Targeting one high-value executive is whaling. Targeting a specific group with tailored detail is spear phishing. The technique is identical; the exam is testing the vocabulary."
+        },
+        {
+          "h": "Pretexting is the story, impersonation is the mask",
+          "p": "Pretexting is the fabricated scenario that makes a request sound legitimate — 'I'm the new field tech, here for the install.' Impersonation is claiming to be a specific trusted party. They usually appear together, so read which one the question is naming."
+        },
+        {
+          "h": "Indirect routes",
+          "p": "A watering hole attack compromises a third-party site the victims habitually visit. Typosquatting registers a look-alike domain to catch mistyped names. Brand impersonation copies a trusted company's visual identity to borrow its credibility."
+        },
+        {
+          "h": "Business email compromise is procedural, not technical",
+          "p": "BEC uses a real or convincingly spoofed executive mailbox to authorize a fraudulent payment. The defenses are process defenses: out-of-band verification of payment changes, dual approval, and MFA on mail — not a better spam filter."
+        },
+        {
+          "h": "The universal tell",
+          "p": "Urgency plus authority plus secrecy is the social engineering triad. Any request that combines 'this is urgent', 'I'm senior to you', and 'don't discuss it' should stop you, regardless of channel."
+        }
+      ],
+      "terms": [
+        [
+          "Phishing",
+          "Fraudulent email seeking credentials or payload execution."
+        ],
+        [
+          "Vishing",
+          "Voice-call social engineering, often with spoofed caller ID."
+        ],
+        [
+          "Smishing",
+          "SMS or messaging-app social engineering."
+        ],
+        [
+          "Pretexting",
+          "An invented backstory that makes a request seem legitimate."
+        ],
+        [
+          "Watering hole",
+          "Compromising a third-party site the targets frequently visit."
+        ],
+        [
+          "Typosquatting",
+          "Registering look-alike domains to capture mistyped traffic."
+        ],
+        [
+          "BEC",
+          "Business email compromise: fraud via a real or spoofed executive mailbox."
+        ]
+      ],
+      "sel": {
+        "obj": [
+          "2.2"
+        ],
+        "maxDiff": 2,
+        "n": 10
+      }
+    },
+    {
+      "id": "L2M1",
+      "level": 2,
+      "title": "Cryptography without the math",
+      "mins": 16,
+      "goal": "Pick the right primitive for a stated requirement, every time.",
+      "lesson": [
+        {
+          "h": "Decide by requirement, not by strength",
+          "p": "Need confidentiality? Encrypt. Need to detect modification? Hash. Need proof of who acted? Sign. Need the original value back later? Encrypt or tokenize, never hash. Most crypto questions are answered by this single decision tree."
+        },
+        {
+          "h": "Symmetric versus asymmetric",
+          "p": "Symmetric uses one shared key, is fast, and handles bulk data — AES. Asymmetric uses a key pair, is slow, and handles key exchange and signatures — RSA, ECDH. TLS uses both: asymmetric to agree on a key, symmetric to move the data."
+        },
+        {
+          "h": "Which key, which direction",
+          "p": "To send confidentially, encrypt with the recipient's public key; only their private key opens it. To sign, encrypt the hash with your own private key; anyone verifies with your public key. Reversing these is the most common crypto mistake on the exam."
+        },
+        {
+          "h": "Passwords are a special case",
+          "p": "Never store passwords with a plain fast hash. Add a unique salt per user to defeat precomputed rainbow tables, then use a deliberately slow key derivation function — bcrypt, scrypt, PBKDF2, Argon2 — so each guess costs the attacker real time."
+        },
+        {
+          "h": "Where keys live matters",
+          "p": "A TPM is a chip on one device that seals keys to that platform's state. An HSM is a tamper-resistant appliance doing high-volume key operations for the enterprise. Key escrow stores a recoverable copy so the business survives losing a key holder."
+        },
+        {
+          "h": "Forward secrecy",
+          "p": "Ephemeral Diffie-Hellman (DHE, ECDHE) derives a throwaway key per session. If the long-term private key leaks later, previously captured traffic still cannot be decrypted. The letter E for ephemeral is your cue."
+        }
+      ],
+      "terms": [
+        [
+          "Symmetric encryption",
+          "One shared key; fast; bulk data (AES)."
+        ],
+        [
+          "Asymmetric encryption",
+          "Key pair; slow; key exchange and signatures (RSA, ECC)."
+        ],
+        [
+          "Hashing",
+          "One-way fixed-length fingerprint used for integrity."
+        ],
+        [
+          "Salt",
+          "Unique random value per password that defeats rainbow tables."
+        ],
+        [
+          "Key stretching",
+          "Deliberately slow derivation (bcrypt, PBKDF2, Argon2)."
+        ],
+        [
+          "TPM",
+          "Per-device chip for boot integrity and sealed keys."
+        ],
+        [
+          "HSM",
+          "Tamper-resistant appliance for enterprise key operations."
+        ],
+        [
+          "Perfect forward secrecy",
+          "Session keys that survive later long-term key compromise."
+        ]
+      ],
+      "sel": {
+        "obj": [
+          "1.4"
+        ],
+        "topics": [
+          "Symmetric vs asymmetric",
+          "Salting",
+          "Key stretching",
+          "Digital signature",
+          "Hashing vs encryption",
+          "Levels of encryption",
+          "TPM",
+          "HSM",
+          "Key exchange",
+          "Obfuscation",
+          "Key escrow",
+          "Symmetric algorithms"
+        ],
+        "n": 10
+      }
+    },
+    {
+      "id": "L2M2",
+      "level": 2,
+      "title": "PKI and certificates",
+      "mins": 14,
+      "goal": "Trace a certificate from request to revocation and diagnose browser errors.",
+      "lesson": [
+        {
+          "h": "The chain of trust",
+          "p": "A certificate authority vouches for identities by signing certificates. Your device trusts a small set of root CAs; roots sign intermediates, intermediates sign end-entity certificates. Roots stay offline so that a compromised intermediate can be revoked without replacing every trust store on earth."
+        },
+        {
+          "h": "Enrollment in one line",
+          "p": "Generate a key pair on the server, create a CSR containing the public key and subject names, send the CSR to the CA, the CA validates control and issues, you install the certificate plus its chain. The private key never leaves the server — any answer that moves it is wrong."
+        },
+        {
+          "h": "Revocation: list versus query",
+          "p": "A CRL is a downloadable list of revoked serial numbers — bulk, cacheable, potentially stale. OCSP is a live per-certificate query. OCSP stapling has the server fetch its own signed status and present it during the handshake, which is fastest for the client."
+        },
+        {
+          "h": "Reading the error",
+          "p": "Name mismatch means the hostname is not in the subject alternative names. Untrusted issuer means the chain does not lead to a trusted root, often a missing intermediate or a self-signed certificate. Expired means exactly that. These three cover almost every certificate question."
+        },
+        {
+          "h": "Wildcards cover one label",
+          "p": "A certificate for *.corp.example.com covers mail.corp.example.com but not a.b.corp.example.com. Multiple unrelated names need a SAN certificate instead."
+        }
+      ],
+      "terms": [
+        [
+          "CA",
+          "Certificate authority: validates identity and signs certificates."
+        ],
+        [
+          "CSR",
+          "Certificate signing request containing the public key and subject."
+        ],
+        [
+          "CRL",
+          "Published list of revoked certificates."
+        ],
+        [
+          "OCSP",
+          "Live query for a single certificate's revocation status."
+        ],
+        [
+          "OCSP stapling",
+          "Server presents its own recent signed status in the handshake."
+        ],
+        [
+          "Wildcard certificate",
+          "Covers all single-label subdomains at one level."
+        ],
+        [
+          "Root of trust",
+          "The offline root CA anchoring the entire chain."
+        ]
+      ],
+      "sel": {
+        "obj": [
+          "1.4"
+        ],
+        "topics": [
+          "Certificate authority",
+          "Certificate revocation",
+          "CSR",
+          "Wildcard certificate",
+          "Self-signed certificates",
+          "Root of trust",
+          "PKI trust",
+          "Certificates",
+          "Digital certificates"
+        ],
+        "n": 9
+      }
+    },
+    {
+      "id": "L2M3",
+      "level": 2,
+      "title": "Identity, MFA, and access models",
+      "mins": 16,
+      "goal": "Choose the right authentication factor and name the access control model on sight.",
+      "lesson": [
+        {
+          "h": "Factors must differ in kind",
+          "p": "Something you know, something you have, something you are, somewhere you are. A password plus a PIN is not multifactor — both are knowledge. A password plus a hardware key is, because the categories differ."
+        },
+        {
+          "h": "Not all second factors are equal",
+          "p": "SMS codes and TOTP can be relayed by an attacker-controlled proxy site in real time. Push approvals can be worn down by fatigue. FIDO2 and WebAuthn security keys are cryptographically bound to the site's origin, so a proxy cannot use them. 'Phishing-resistant' means this."
+        },
+        {
+          "h": "The four access models",
+          "p": "MAC enforces labels and clearances system-wide with no owner discretion. DAC lets the owner decide. RBAC binds permissions to job roles. ABAC evaluates multiple attributes — user, device, location, time, risk — and is the engine behind conditional access and Zero Trust."
+        },
+        {
+          "h": "Privileged access",
+          "p": "Standing administrative rights are what attackers hunt for. Modern practice is just-in-time elevation: no permanent admin, request access for a bounded window, record the session, rotate credentials from a vault."
+        },
+        {
+          "h": "Federation and SSO protocols",
+          "p": "SAML carries XML assertions for enterprise web SSO. OAuth 2.0 delegates authorization and issues access tokens. OpenID Connect layers authentication on top of OAuth and returns identity claims. Using a bare OAuth token as proof of identity is a classic design flaw."
+        }
+      ],
+      "terms": [
+        [
+          "MFA",
+          "Two or more factors from different categories."
+        ],
+        [
+          "Phishing-resistant MFA",
+          "Origin-bound credentials such as FIDO2/WebAuthn passkeys."
+        ],
+        [
+          "MAC",
+          "Mandatory access control: labels and clearances, no owner override."
+        ],
+        [
+          "DAC",
+          "Discretionary access control: the owner grants access."
+        ],
+        [
+          "RBAC",
+          "Role-based access control: permissions follow job function."
+        ],
+        [
+          "ABAC",
+          "Attribute-based: decisions combine user, device, location, and risk."
+        ],
+        [
+          "JIT elevation",
+          "Time-bounded privilege granted on request, then revoked."
+        ],
+        [
+          "SAML / OAuth / OIDC",
+          "Web SSO assertions / delegated authorization / authentication on OAuth."
+        ]
+      ],
+      "sel": {
+        "obj": [
+          "4.6"
+        ],
+        "n": 12
+      }
+    },
+    {
+      "id": "L2M4",
+      "level": 2,
+      "title": "Networks, zones, and the boxes in them",
+      "mins": 15,
+      "goal": "Place a device in the right zone and name the appliance that does the job.",
+      "lesson": [
+        {
+          "h": "Zones before boxes",
+          "p": "Internet-facing services belong in a screened subnet (DMZ). The data tier belongs deeper inside, reachable only from the application tier on the specific port it needs. Compromising the web tier then gives an attacker one narrow path, not the database."
+        },
+        {
+          "h": "Know each appliance's job",
+          "p": "A firewall filters by rule. A WAF inspects HTTP for injection and scripting. An NGFW adds application and user awareness. A forward proxy controls clients going out; a reverse proxy protects servers coming in. A load balancer distributes and health-checks. A jump server is the single hardened door into a protected zone."
+        },
+        {
+          "h": "Detect versus prevent",
+          "p": "An IDS observes out of band and alerts. An IPS sits inline and can drop traffic. The trade-off is real: a false positive on an IDS is noise, a false positive on an IPS is an outage. That is why IPS deployments start in detection mode."
+        },
+        {
+          "h": "Segmentation is the answer to lateral movement",
+          "p": "Whenever a scenario describes something spreading across a flat network, the structural fix is segmentation with filtering between zones. VLANs alone only separate broadcast domains — the filtering at the routed boundary is what makes it segmentation."
+        },
+        {
+          "h": "Swap the cleartext protocols",
+          "p": "Telnet becomes SSH. FTP becomes SFTP or FTPS. HTTP becomes HTTPS. LDAP becomes LDAPS. SNMPv1 and v2c become SNMPv3. These swaps are free points and appear in every exam form."
+        }
+      ],
+      "terms": [
+        [
+          "Screened subnet (DMZ)",
+          "Zone for internet-facing services, isolated from internal networks."
+        ],
+        [
+          "WAF",
+          "Layer 7 filter for web application attacks."
+        ],
+        [
+          "NGFW",
+          "Firewall with application and user awareness plus deep inspection."
+        ],
+        [
+          "Jump server",
+          "Hardened single entry point for administrative access."
+        ],
+        [
+          "IDS vs IPS",
+          "Detects and alerts, out of band / blocks inline."
+        ],
+        [
+          "Segmentation",
+          "Dividing networks and filtering between zones to limit spread."
+        ],
+        [
+          "802.1X",
+          "Port-based network access control: supplicant, authenticator, RADIUS server."
+        ]
+      ],
+      "sel": {
+        "obj": [
+          "3.2"
+        ],
+        "maxDiff": 2,
+        "n": 11
+      }
+    },
+    {
+      "id": "L3M1",
+      "level": 3,
+      "title": "Recognizing malware and attacks",
+      "mins": 15,
+      "goal": "Name the malware or attack from its observable behavior, not its payload.",
+      "lesson": [
+        {
+          "h": "Classify by how it spreads",
+          "p": "A worm self-propagates with no user action. A virus needs a host file and execution. A trojan hides inside something the user wants to run. A rootkit conceals itself below the operating system. A logic bomb waits for a condition. The payload varies; the spread mechanism is what names it."
+        },
+        {
+          "h": "Rootkits have a signature symptom",
+          "p": "When the host's own tools disagree with an external view — a port visible to an outside scan but invisible to netstat locally, or file hashes that change when checked from a live boot — you are looking at a rootkit. Remediation is usually rebuild, not clean."
+        },
+        {
+          "h": "Password attacks differ by shape",
+          "p": "Many accounts with one or two guesses each is spraying, designed to stay under lockout thresholds. One account with thousands of guesses is brute force. Precomputed tables against stolen unsalted hashes is a rainbow table attack, which happens offline where lockout cannot help."
+        },
+        {
+          "h": "Network attacks and their fixes",
+          "p": "Forged ARP replies put an attacker on-path; dynamic ARP inspection with DHCP snooping stops it. Spoofed queries to open resolvers returning oversized answers is amplified reflected DDoS. Correct hostnames resolving to hostile servers is DNS poisoning, and DNSSEC is the integrity answer."
+        },
+        {
+          "h": "Indicators are a finite list",
+          "p": "Objective 2.4 names them: account lockout, concurrent sessions, impossible travel, blocked content, resource consumption, resource inaccessibility, out-of-cycle logging, missing logs, published documentation. Learn what each implies and you can answer from the indicator alone."
+        }
+      ],
+      "terms": [
+        [
+          "Worm",
+          "Self-propagating malware requiring no user action."
+        ],
+        [
+          "Trojan",
+          "Malicious functionality hidden inside apparently useful software."
+        ],
+        [
+          "Rootkit",
+          "Malware that hides itself at or below the OS level."
+        ],
+        [
+          "Logic bomb",
+          "Malicious code triggered by a specific condition."
+        ],
+        [
+          "Password spraying",
+          "Few passwords across many accounts, avoiding lockout."
+        ],
+        [
+          "On-path attack",
+          "Attacker positioned between two communicating parties."
+        ],
+        [
+          "Impossible travel",
+          "Authentications from distant locations too close in time."
+        ],
+        [
+          "Missing logs",
+          "Gaps suggesting anti-forensic clearing by a privileged attacker."
+        ]
+      ],
+      "sel": {
+        "obj": [
+          "2.4"
+        ],
+        "n": 12
+      }
+    },
+    {
+      "id": "L3M2",
+      "level": 3,
+      "title": "Vulnerability management as a loop",
+      "mins": 14,
+      "goal": "Run the cycle end to end and justify a prioritization decision.",
+      "lesson": [
+        {
+          "h": "The loop",
+          "p": "Identify by scanning, confirm the finding, prioritize by real risk, remediate or formally except, validate by rescanning, then report trends. Skipping confirmation wastes effort on false positives; skipping validation means you never actually know it was fixed."
+        },
+        {
+          "h": "CVE names, CVSS scores, context decides",
+          "p": "A CVE is the identifier for a specific vulnerability. CVSS is the severity framework. Two findings can both score 9.8 while one sits on an internet-facing payment API and the other on an isolated lab box — exposure, exploitation in the wild, and asset criticality break the tie."
+        },
+        {
+          "h": "Credentialed scans see more",
+          "p": "An authenticated scan reads installed software, patch level, and configuration from inside the host. An unauthenticated scan infers from network responses and both misses things and invents things. When a question contrasts scan depth, this is why."
+        },
+        {
+          "h": "False positive versus false negative",
+          "p": "A false positive is an alarm with no fire: verify, document, suppress with justification, tune the scanner. A false negative is a fire with no alarm, and is far more dangerous because nothing prompts you to look."
+        },
+        {
+          "h": "Exceptions are governance, not avoidance",
+          "p": "When something genuinely cannot be patched, the defensible path is a documented, time-bound exception with compensating controls and a named approver. Silently marking a finding as a false positive or excluding the host from scans is how breaches get written up afterward."
+        }
+      ],
+      "terms": [
+        [
+          "CVE",
+          "Unique identifier for a known vulnerability."
+        ],
+        [
+          "CVSS",
+          "Scoring framework expressing severity; base plus environmental context."
+        ],
+        [
+          "Credentialed scan",
+          "Authenticated scan reading host state from inside."
+        ],
+        [
+          "False positive",
+          "Reported vulnerability that does not actually exist."
+        ],
+        [
+          "False negative",
+          "Real vulnerability the scan failed to report."
+        ],
+        [
+          "Exception",
+          "Documented, time-bound approval to deviate, with compensating controls."
+        ],
+        [
+          "Validation",
+          "Rescanning to prove remediation actually landed."
+        ]
+      ],
+      "sel": {
+        "obj": [
+          "4.3"
+        ],
+        "n": 11
+      }
+    },
+    {
+      "id": "L3M3",
+      "level": 3,
+      "title": "Monitoring, logging, and the tools",
+      "mins": 15,
+      "goal": "Match a tool to a job and a question to its data source.",
+      "lesson": [
+        {
+          "h": "One tool, one job",
+          "p": "SIEM aggregates and correlates telemetry into alerts. EDR watches endpoint behavior and can respond on the host. XDR correlates across endpoint, identity, email, network, and cloud. DLP stops sensitive data leaving. NAC gates devices at connection. UEBA baselines behavior per identity to catch insiders and stolen accounts."
+        },
+        {
+          "h": "Which log answers which question",
+          "p": "Who talked to whom and when: firewall or flow logs. What executed and what launched it: endpoint process logs. Who signed in, from where, with what factor: identity provider logs. What a user actually opened: application logs. Content of a transfer: full packet capture, and only when you truly need it."
+        },
+        {
+          "h": "Central logging is not optional",
+          "p": "Logs left on the host die with the host. A privileged attacker clears them — that is what missing logs indicate. Forward everything off-box in near real time to append-only storage, and synchronize clocks so a timeline can be reconstructed at all."
+        },
+        {
+          "h": "Tuning is the real skill",
+          "p": "A rule firing two hundred times a day on legitimate admin work is a detection problem, not an analyst problem. Tune with narrow documented exclusions and verify true positives still fire. Deleting the rule or telling analysts to ignore it creates the blind spot the attacker needs."
+        },
+        {
+          "h": "Email authentication trio",
+          "p": "SPF authorizes which hosts may send for your domain. DKIM signs messages so tampering shows. DMARC publishes what receivers should do when SPF or DKIM fail alignment, and sends you reports. Having SPF and DKIM without an enforcing DMARC policy is why spoofed mail still lands."
+        }
+      ],
+      "terms": [
+        [
+          "SIEM",
+          "Aggregates and correlates events into prioritized alerts."
+        ],
+        [
+          "EDR / XDR",
+          "Endpoint detection and response / correlation across more domains."
+        ],
+        [
+          "DLP",
+          "Detects and blocks sensitive data leaving approved channels."
+        ],
+        [
+          "NAC",
+          "Gates network access by identity and device posture."
+        ],
+        [
+          "UEBA",
+          "Behavioral baselining per user and entity."
+        ],
+        [
+          "NetFlow",
+          "Conversation metadata without payload — who, what port, how much."
+        ],
+        [
+          "SPF / DKIM / DMARC",
+          "Sender authorization / message signing / policy and reporting."
+        ]
+      ],
+      "sel": {
+        "obj": [
+          "4.4",
+          "4.5",
+          "4.9"
+        ],
+        "n": 12
+      }
+    },
+    {
+      "id": "L3M4",
+      "level": 3,
+      "title": "Incident response and forensics",
+      "mins": 16,
+      "goal": "Sequence a response correctly and handle evidence defensibly.",
+      "lesson": [
+        {
+          "h": "Seven phases, in order",
+          "p": "Preparation, detection, analysis, containment, eradication, recovery, lessons learned. Preparation is first because plans and tooling must exist beforehand. Lessons learned feeds back into preparation, which is why it is a loop rather than a line."
+        },
+        {
+          "h": "The three that get confused",
+          "p": "Containment limits spread — isolate the host. Eradication removes the cause — reimage, remove persistence. Recovery returns to service with validated clean backups and heightened monitoring. A question describing network isolation is containment even if the word 'remove' appears nearby."
+        },
+        {
+          "h": "Isolate, do not power off",
+          "p": "Pulling power destroys memory, running processes, and connection state — the top of the order of volatility, and often where keys and injected code live. Network-isolate the host and leave it running."
+        },
+        {
+          "h": "Evidence handling",
+          "p": "Start the chain of custody before touching anything. Use a write blocker. Hash the source, image it, hash the image, compare. Analyze the working copy. Matching hashes are what make the image defensible; without them the acquisition is worthless."
+        },
+        {
+          "h": "Legal hold beats retention",
+          "p": "When litigation is reasonably anticipated, a legal hold suspends routine deletion for relevant data. It is triggered by anticipation, not by a filed lawsuit, and ignoring it risks spoliation sanctions."
+        }
+      ],
+      "terms": [
+        [
+          "Containment",
+          "Limiting the spread and impact while analysis continues."
+        ],
+        [
+          "Eradication",
+          "Removing the cause, including persistence mechanisms."
+        ],
+        [
+          "Order of volatility",
+          "Collect most-perishable evidence first: cache, RAM, connections, disk."
+        ],
+        [
+          "Chain of custody",
+          "Documented record of everyone who handled evidence and when."
+        ],
+        [
+          "Write blocker",
+          "Hardware preventing any modification of source media."
+        ],
+        [
+          "Legal hold",
+          "Suspension of routine deletion when litigation is anticipated."
+        ],
+        [
+          "Root cause analysis",
+          "Finding the process failure behind the technical trigger."
+        ]
+      ],
+      "sel": {
+        "obj": [
+          "4.8"
+        ],
+        "n": 12
+      }
+    },
+    {
+      "id": "L4M1",
+      "level": 4,
+      "title": "Architecture models and cloud",
+      "mins": 15,
+      "goal": "Assign responsibility correctly and pick an architecture for a constraint.",
+      "lesson": [
+        {
+          "h": "Shared responsibility by model",
+          "p": "IaaS: the provider stops at the hypervisor, so the guest OS is yours to patch. PaaS: the provider maintains the OS and runtime, you own the application and data. SaaS: the provider owns the application, you still own data, identity, and configuration. Data and identity never transfer."
+        },
+        {
+          "h": "Containers versus virtual machines",
+          "p": "Containers share the host kernel, which makes them fast and dense but gives a weaker isolation boundary than a hypervisor. A kernel vulnerability can affect every container on the host. VM escape is the equivalent worst case for virtualization."
+        },
+        {
+          "h": "Serverless and microservices shift the risk",
+          "p": "Serverless removes OS patching but concentrates risk in code, over-permissive execution roles, dependencies, and secrets. Microservices multiply east-west traffic, so each service boundary needs authentication, authorization, and encryption — usually a service mesh with mutual TLS."
+        },
+        {
+          "h": "Operational technology inverts the priorities",
+          "p": "In ICS, SCADA, and embedded environments, availability and safety come first. Devices cannot host agents and cannot be patched on your schedule. Protection moves to the network: segment OT from IT, allow only required flows, monitor passively, patch on the vendor's cadence."
+        },
+        {
+          "h": "Failure modes are a design choice",
+          "p": "Fail-closed preserves security and risks availability. Fail-open preserves availability and lets traffic pass uninspected. Life-safety systems fail open so people can leave; data security controls usually fail closed."
+        }
+      ],
+      "terms": [
+        [
+          "Shared responsibility",
+          "Split of security duties between customer and provider by service model."
+        ],
+        [
+          "VM escape",
+          "Breaking isolation from guest to hypervisor or host."
+        ],
+        [
+          "Resource reuse",
+          "Residual data exposed when resources are reallocated uncleaned."
+        ],
+        [
+          "Serverless",
+          "Provider-managed runtime; risk concentrates in code, roles, and secrets."
+        ],
+        [
+          "ICS / SCADA",
+          "Operational technology where availability and safety outrank confidentiality."
+        ],
+        [
+          "Fail-closed / fail-open",
+          "Deny on failure (secure) / permit on failure (available)."
+        ]
+      ],
+      "sel": {
+        "obj": [
+          "3.1"
+        ],
+        "n": 11
+      }
+    },
+    {
+      "id": "L4M2",
+      "level": 4,
+      "title": "Protecting data and surviving failure",
+      "mins": 15,
+      "goal": "Match a control to a data state, and size recovery to the business requirement.",
+      "lesson": [
+        {
+          "h": "Three states, three control sets",
+          "p": "At rest: disk, volume, file, or database encryption. In transit: TLS or IPsec. In use: the data sits decrypted in memory, where neither of the others helps — that needs enclaves or confidential computing. 'While being processed' is the tell for data in use."
+        },
+        {
+          "h": "Obfuscation techniques are not interchangeable",
+          "p": "Masking hides part of a value for display. Tokenization swaps the value for an unrelated surrogate with the mapping in a vault, which is how PCI scope shrinks. Hashing is one-way and cannot be reversed to process a payment. Choose by whether you need the original value back."
+        },
+        {
+          "h": "RPO and RTO drive the design",
+          "p": "RPO is how much data you can afford to lose and sets backup or replication frequency. RTO is how long you can be down and sets recovery architecture. A stated RPO of one hour with nightly backups is a contradiction the exam loves to plant."
+        },
+        {
+          "h": "Replication is not backup",
+          "p": "Replication copies corruption and deletion just as faithfully as good data. Backups give point-in-time history. Ransomware that reaches the backup repository is why immutable or offline copies exist — remember 3-2-1-1-0."
+        },
+        {
+          "h": "Sites and testing",
+          "p": "Hot, warm, and cold sites trade cost against recovery speed. Geographic dispersion matters: two sites in one metro share one hurricane. And an untested plan is an assumption — only a real restore or failover proves recoverability."
+        }
+      ],
+      "terms": [
+        [
+          "Data in use",
+          "Data in memory during processing; protected by enclaves."
+        ],
+        [
+          "Tokenization",
+          "Replacing a value with an unrelated surrogate held in a vault."
+        ],
+        [
+          "RPO",
+          "Maximum tolerable data loss, measured in time."
+        ],
+        [
+          "RTO",
+          "Maximum tolerable downtime before restoration."
+        ],
+        [
+          "Immutable backup",
+          "Copy that cannot be altered or deleted within its retention window."
+        ],
+        [
+          "Hot / warm / cold site",
+          "Ready now / partially provisioned / space and power only."
+        ],
+        [
+          "Data sovereignty",
+          "Data is subject to the laws where it physically resides."
+        ]
+      ],
+      "sel": {
+        "obj": [
+          "3.3",
+          "3.4"
+        ],
+        "n": 12
+      }
+    },
+    {
+      "id": "L4M3",
+      "level": 4,
+      "title": "Risk, measured",
+      "mins": 14,
+      "goal": "Compute ALE, choose a treatment, and defend the decision.",
+      "lesson": [
+        {
+          "h": "The only arithmetic on the exam",
+          "p": "SLE = asset value × exposure factor. ALE = SLE × ARO. Work in that order. The most common wrong answer is the SLE presented as if it were the annualized figure, so always finish the multiplication."
+        },
+        {
+          "h": "Cost-justify the control",
+          "p": "If a control costs more per year than the ALE it removes, it is not economically justified — unless law, safety, or reputational exposure changes the calculus. Inflating the asset value to justify a purchase is the wrong answer dressed as diligence."
+        },
+        {
+          "h": "Four treatments",
+          "p": "Mitigate reduces likelihood or impact. Transfer shifts financial consequences via insurance or contract. Avoid stops the activity entirely. Accept knowingly retains the risk. Insurance covers money, never operational disruption, regulatory penalties, or your accountability for the data."
+        },
+        {
+          "h": "Appetite, tolerance, register",
+          "p": "Appetite is the strategic willingness to take risk — expansionary, conservative, or neutral. Tolerance is the acceptable variance around specific objectives, usually expressed as thresholds. The register records each risk with a named owner, treatment, residual risk, and key risk indicators."
+        },
+        {
+          "h": "Business impact analysis comes first",
+          "p": "The BIA identifies critical processes, their dependencies, and downtime tolerance, producing RTO and RPO. Continuity and recovery plans are built from it. Metrics to know alongside: MTTR for repair time, MTBF for reliability."
+        }
+      ],
+      "terms": [
+        [
+          "SLE",
+          "Single loss expectancy: asset value × exposure factor."
+        ],
+        [
+          "ARO",
+          "Annualized rate of occurrence: expected events per year."
+        ],
+        [
+          "ALE",
+          "Annualized loss expectancy: SLE × ARO."
+        ],
+        [
+          "Risk appetite",
+          "Strategic willingness to take risk: expansionary, conservative, neutral."
+        ],
+        [
+          "Risk tolerance",
+          "Acceptable variance around a specific risk objective."
+        ],
+        [
+          "Residual risk",
+          "What remains after controls, accepted by a named owner."
+        ],
+        [
+          "BIA",
+          "Business impact analysis producing criticality, RTO, and RPO."
+        ]
+      ],
+      "sel": {
+        "obj": [
+          "5.2"
+        ],
+        "n": 12
+      }
+    },
+    {
+      "id": "L4M4",
+      "level": 4,
+      "title": "Governance, vendors, and compliance",
+      "mins": 14,
+      "goal": "Tell the document types apart and manage a third party end to end.",
+      "lesson": [
+        {
+          "h": "The document hierarchy",
+          "p": "Policy states mandatory intent. Standards specify mandatory technical requirements. Procedures give ordered steps. Guidelines advise without binding. Read the verb: must and shall are mandatory, should and consider are advisory, numbered steps are a procedure."
+        },
+        {
+          "h": "Agreement acronyms",
+          "p": "SLA carries measurable performance commitments. MOU records intent, usually non-binding. MSA sets master legal terms so each project needs only a SOW or work order. NDA governs confidentiality and is signed before sensitive information is shared. BPA governs a partnership."
+        },
+        {
+          "h": "Third-party lifecycle",
+          "p": "Risk-tiered due diligence before onboarding, contractual security requirements including breach notification and a right to audit, least-privilege attributable vendor accounts, ongoing monitoring with reassessment, and exit provisions covering data return and certified deletion."
+        },
+        {
+          "h": "Evidence quality",
+          "p": "A SOC 2 Type II tests whether controls operated effectively over a period and carries the most weight. Type I only tests design at a point in time. A vendor questionnaire is self-reported and needs corroboration. Marketing pages and verbal assurances are not evidence."
+        },
+        {
+          "h": "Due diligence versus due care",
+          "p": "Due diligence is the investigation — understanding the risk. Due care is acting reasonably on what you found. Memory aid: diligence discovers, care corrects. Non-compliance consequences to name: fines, sanctions, reputational damage, loss of license, contractual impacts."
+        }
+      ],
+      "terms": [
+        [
+          "Policy / standard / procedure / guideline",
+          "Intent / mandatory specifics / steps / advice."
+        ],
+        [
+          "SLA",
+          "Measurable service performance commitments."
+        ],
+        [
+          "MSA + SOW",
+          "Master legal terms plus per-project scope."
+        ],
+        [
+          "Right to audit",
+          "Contractual right to inspect a vendor's controls."
+        ],
+        [
+          "SOC 2 Type II",
+          "Independent test of control effectiveness over a period."
+        ],
+        [
+          "Due diligence / due care",
+          "Investigating risk / acting prudently on it."
+        ],
+        [
+          "Data controller / processor",
+          "Decides purpose and means / acts on the controller's instructions."
+        ]
+      ],
+      "sel": {
+        "obj": [
+          "5.1",
+          "5.3",
+          "5.4",
+          "5.5"
+        ],
+        "n": 12
+      }
+    },
+    {
+      "id": "L4M5",
+      "level": 4,
+      "title": "Capstone: exam conditions",
+      "mins": 45,
+      "goal": "Prove it under time pressure, in the real format.",
+      "capstone": true,
+      "lesson": [
+        {
+          "h": "What this is",
+          "p": "A timed 45-question half exam with performance-based items first, the real domain weighting, no feedback until you submit, and back-navigation like the live exam. Passing here is 83%, deliberately stricter than the real 750/900 cut."
+        },
+        {
+          "h": "Pacing",
+          "p": "The real exam allows a maximum of 90 questions in 90 minutes — about a minute each, and PBQs eat more than that. Flag anything that takes over ninety seconds and come back through the review grid rather than burning time in place."
+        },
+        {
+          "h": "Reading the stem",
+          "p": "Find the qualifier before you read the options. BEST means several answers work and one is superior. FIRST means sequence matters. MOST LIKELY means probability, not possibility. The qualifier usually eliminates two options on its own."
+        },
+        {
+          "h": "When you are stuck",
+          "p": "Eliminate answers that protect a property the scenario never mentioned, that solve a different layer than the one described, or that are detective when the question asked what prevents. What remains is usually right."
+        }
+      ],
+      "terms": [
+        [
+          "BEST",
+          "Several options work; choose the superior one."
+        ],
+        [
+          "FIRST",
+          "Sequence matters; choose the correct starting action."
+        ],
+        [
+          "MOST LIKELY",
+          "Choose by probability given the evidence described."
+        ],
+        [
+          "Flag and return",
+          "Mark uncertain items and revisit via the review grid."
+        ]
+      ],
+      "sel": {
+        "exam": 45,
+        "pbq": 2
+      }
+    }
+  ]
+}

@@ -193,8 +193,41 @@ const inlined = JSON.stringify(questions)
   .replace(/</g, "\\u003C")
   .replace(/\u2028/g, "\\u2028")
   .replace(/\u2029/g, "\\u2029");
+const bcMarker = "/*__BC__*/{}";
+const BC = JSON.parse(readFileSync(join(root, "data", "bootcamp.json"), "utf8"));
+{
+  // Every module's drill must be fillable from the bank, or the bootcamp
+  // silently serves short sets.
+  const bcErrors = [];
+  const ids = new Set();
+  for (const m of BC.modules) {
+    if (ids.has(m.id)) bcErrors.push(`${m.id}: duplicate module id`);
+    ids.add(m.id);
+    if (!m.lesson || m.lesson.length < 3) bcErrors.push(`${m.id}: needs 3+ lesson blocks`);
+    if (!m.terms || m.terms.length < 4) bcErrors.push(`${m.id}: needs 4+ key terms`);
+    if (!BC.levels.some((l) => l.n === m.level)) bcErrors.push(`${m.id}: unknown level ${m.level}`);
+    if (m.sel.exam) continue;
+    let pool = questions.filter((q) => m.sel.obj.includes(q.obj));
+    if (m.sel.topics) pool = pool.filter((q) => m.sel.topics.includes(q.topic));
+    if (m.sel.maxDiff) pool = pool.filter((q) => q.diff <= m.sel.maxDiff);
+    if (pool.length < m.sel.n) {
+      bcErrors.push(`${m.id}: drill needs ${m.sel.n} questions, selector matches only ${pool.length}`);
+    }
+    m.pool = pool.length;
+  }
+  if (bcErrors.length) {
+    console.error(`\n✗ ${bcErrors.length} problem(s) in the bootcamp curriculum:\n`);
+    for (const e of bcErrors) console.error("  - " + e);
+    process.exit(1);
+  }
+}
+
 const objMarker = "/*__OBJ__*/{}";
 const OBJDOC = JSON.parse(readFileSync(join(root, "data", "objectives.json"), "utf8"));
+if (!html.includes(bcMarker)) {
+  console.error(`✗ template is missing the ${bcMarker} injection marker`);
+  process.exit(1);
+}
 if (!html.includes(objMarker)) {
   console.error(`✗ template is missing the ${objMarker} injection marker`);
   process.exit(1);
@@ -207,7 +240,8 @@ if (!html.includes(hyMarker)) {
 const out = html
   .replace(marker, inlined)
   .replace(hyMarker, JSON.stringify(clusters).replace(/</g, "\\u003C"))
-  .replace(objMarker, JSON.stringify(OBJDOC.objectives).replace(/</g, "\\u003C"));
+  .replace(objMarker, JSON.stringify(OBJDOC.objectives).replace(/</g, "\\u003C"))
+  .replace(bcMarker, JSON.stringify(BC).replace(/</g, "\\u003C"));
 mkdirSync(outDir, { recursive: true });
 writeFileSync(join(outDir, "index.html"), out);
 
@@ -219,6 +253,9 @@ for (const d of Object.keys(DOMAINS)) {
   const hy = hyDomain[d] || 0;
   console.log(`   D${d} ${DOMAINS[d].name.padEnd(42)} ${String(n).padStart(3)}  ${share}% (exam ${DOMAINS[d].weight}%)  core ${String(hy).padStart(2)}`);
 }
+console.log(`✓ bootcamp: ${BC.modules.length} modules across ${BC.levels.length} levels, ` +
+  `${BC.modules.reduce((n, m) => n + m.lesson.length, 0)} lessons, ` +
+  `${BC.modules.reduce((n, m) => n + m.terms.length, 0)} key terms`);
 console.log(`✓ performance-based items: ${questions.filter((q) => q.pbq).length} (order + match)`);
 console.log(`✓ length-bias bots: longest ${longBot.toFixed(1)}%, shortest ${shortBot.toFixed(1)}% (random ~25%)`);
 console.log(`✓ 80/20 core: ${hyTotal} questions (${((hyTotal / questions.length) * 100).toFixed(1)}% of bank) across ${clusters.length} clusters`);
