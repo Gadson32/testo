@@ -8,7 +8,7 @@
     "type": "single",
     "q": "An organization runs virtual machines in a public cloud IaaS environment. Under the shared responsibility model, who is responsible for patching the guest operating systems?",
     "opts": [
-      "The customer",
+      "The customer organization",
       "The cloud provider",
       "The hypervisor vendor",
       "The internet service provider"
@@ -69,9 +69,9 @@
     "q": "Which benefit does software-defined networking provide that traditional per-device configuration does not?",
     "opts": [
       "Centralized programmatic policy control",
-      "Elimination of the need for any physical switches",
-      "Automatic encryption of all traffic by default",
-      "Guaranteed immunity to denial-of-service attacks"
+      "Reduced dependence on physical switching hardware",
+      "Built-in intrusion prevention at every switch port",
+      "Lower denial-of-service exposure"
     ],
     "a": [
       0
@@ -89,9 +89,9 @@
     "q": "A cloud team defines all network and server configuration in version-controlled templates deployed through a pipeline. Which security benefit does this MOST directly provide?",
     "opts": [
       "Reviewable, repeatable configuration",
-      "Automatic detection of zero-day vulnerabilities",
-      "Elimination of the need for identity and access management",
-      "Guaranteed compliance with all regulations"
+      "Zero-day vulnerability detection",
+      "Reduced reliance on identity and access management",
+      "Automatic mapping of configurations to regulatory controls"
     ],
     "a": [
       0
@@ -109,9 +109,9 @@
     "q": "Which statement about serverless (function as a service) architecture is accurate from a security standpoint?",
     "opts": [
       "Focus shifts to code, permissions, and secrets",
-      "Serverless functions cannot be exploited because they are short-lived",
-      "Serverless removes the need for logging and monitoring",
-      "The customer must patch the underlying operating system"
+      "The provider's runtime isolation removes application-layer risk",
+      "Provider-native logging covers application monitoring needs",
+      "The customer patches the OS"
     ],
     "a": [
       0
@@ -150,7 +150,7 @@
     "opts": [
       "Containers share the host kernel",
       "Containers each run a full guest OS",
-      "Containers cannot be scanned at all",
+      "Container images are scanned at runtime rather than in the registry",
       "Containers isolate better than a hypervisor"
     ],
     "a": [
@@ -189,9 +189,9 @@
     "q": "Which characteristic of a real-time operating system creates the greatest security constraint?",
     "opts": [
       "Timing requirements limit patching",
-      "An RTOS cannot use any encryption",
-      "RTOS devices have unlimited compute",
-      "RTOS code cannot overflow buffers"
+      "An RTOS relies on proprietary protocols that resist analysis",
+      "RTOS devices have spare compute",
+      "RTOS firmware is typically written in memory-safe languages"
     ],
     "a": [
       0
@@ -330,8 +330,8 @@
     "opts": [
       "Fail-closed; security is preserved but availability may be lost",
       "Fail-open; availability is preserved but traffic goes uninspected",
-      "Fail-safe; both security and availability are guaranteed",
-      "Fail-secure; the device automatically reboots into a bypass mode"
+      "Fail-safe; the device prioritizes personnel safety over inspection",
+      "Fail-secure; the device reboots into a bypass mode to restore flow"
     ],
     "a": [
       0
@@ -491,7 +491,7 @@
       "ESP encrypts; AH authenticates only",
       "AH provides confidentiality; ESP provides integrity only",
       "IKE provides confidentiality; ESP provides key exchange",
-      "Both AH and ESP provide identical services"
+      "AH and ESP are identical"
     ],
     "a": [
       0
@@ -649,9 +649,9 @@
     "q": "An organization deploys TLS interception at the perimeter. Which concern MUST be addressed for this to work without breaking client trust?",
     "opts": [
       "Endpoints must trust the inspection CA",
-      "TLS interception requires disabling all certificate validation on clients",
-      "Interception eliminates the need for endpoint protection",
-      "Interception works only with TLS 1.0"
+      "The gateway must hold the private key of each destination server",
+      "Interception replaces the need for endpoint-based inspection",
+      "Sessions downgrade to TLS 1.2"
     ],
     "a": [
       0
@@ -709,7 +709,7 @@
     "q": "A company must prevent unmanaged personal devices from accessing internal applications while allowing corporate laptops. Which combination is MOST effective?",
     "opts": [
       "Device certificates plus posture checks",
-      "A shared VPN password distributed to employees",
+      "A shared VPN password",
       "Blocking access from non-corporate IP addresses only",
       "Requiring users to promise not to use personal devices"
     ],
@@ -770,7 +770,7 @@
     "opts": [
       "Data residency requirements",
       "A desire to reduce capital expenditure",
-      "The need for rapid elastic scaling",
+      "Rapid elastic scaling",
       "A preference for provider-managed patching"
     ],
     "a": [
@@ -830,8 +830,8 @@
     "opts": [
       "IDS detects; IPS blocks inline",
       "An IDS blocks traffic while an IPS only logs it",
-      "Both must be deployed inline to function",
-      "An IPS cannot generate alerts"
+      "Both run inline",
+      "An IPS reports only on traffic it has blocked"
     ],
     "a": [
       0
@@ -849,7 +849,7 @@
     "q": "A security team must detect malicious activity in encrypted east-west traffic between application servers without decrypting it. Which approach is MOST practical?",
     "opts": [
       "Host-based sensors and EDR",
-      "Add a second perimeter firewall",
+      "Perimeter firewall rules",
       "Block all encrypted server traffic",
       "Rely solely on NetFlow volume totals"
     ],
@@ -869,7 +869,7 @@
     "q": "An architecture uses a single large database instance that all microservices depend on. Which resilience weakness does this create?",
     "opts": [
       "A single point of failure",
-      "Excessive geographic dispersion",
+      "Geographic dispersion",
       "Insufficient logging capability",
       "Unavoidable data sovereignty violations"
     ],
@@ -891,7 +891,7 @@
       "Separate VLANs with filtered routing",
       "One flat VLAN with host-based firewalls only",
       "Assigning different DHCP scopes in the same broadcast domain",
-      "Using unique hostnames per device category"
+      "Unique hostnames per device"
     ],
     "a": [
       0
@@ -951,7 +951,7 @@
       "Add a diverse secondary circuit",
       "Increase the bandwidth of the existing circuit",
       "Add a second firewall behind the existing one",
-      "Enable quality of service on the router"
+      "Enable QoS on the router"
     ],
     "a": [
       0

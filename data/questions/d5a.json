@@ -191,7 +191,7 @@
       "Threats and requirements change",
       "Auditors require the document creation date to change annually",
       "Revisions automatically improve employee compliance",
-      "Policies expire legally after 12 months"
+      "Policies expire annually"
     ],
     "a": [
       0
@@ -229,7 +229,7 @@
     "q": "A control costing $40,000 per year would reduce a risk with an ALE of $25,000 to nearly zero. What is the appropriate recommendation?",
     "opts": [
       "Do not implement it; the cost exceeds the loss",
-      "Implement it immediately because eliminating risk is always worthwhile",
+      "Implement it because reducing the risk to near zero justifies the cost",
       "Implement it and increase the asset's valuation to justify the cost",
       "Transfer the risk and also implement the control"
     ],
@@ -489,7 +489,7 @@
     "q": "A risk register entry shows a KRI crossing its defined threshold. What should happen?",
     "opts": [
       "Escalation to the risk owner",
-      "Automatic closure of the risk entry",
+      "Automatic risk closure",
       "Removal of the KRI to prevent further alerts",
       "Immediate termination of the responsible employee"
     ],
@@ -551,7 +551,7 @@
       "A master service agreement with statements of work",
       "A non-disclosure agreement with a memorandum of understanding",
       "A service level agreement with a business partnership agreement",
-      "A memorandum of agreement with an acceptable use policy"
+      "An MOA with an AUP"
     ],
     "a": [
       0
@@ -610,7 +610,7 @@
     "opts": [
       "Supply chain analysis",
       "Penetration testing of the supplier's network",
-      "Internal compliance reporting",
+      "Compliance reporting",
       "Data subject access request handling"
     ],
     "a": [
@@ -670,7 +670,7 @@
     "opts": [
       "Responses are self-reported",
       "They take too long for vendors to complete",
-      "They are legally binding contracts",
+      "They are legally binding",
       "They only apply to hardware vendors"
     ],
     "a": [
@@ -709,9 +709,9 @@
     "q": "Which is a disadvantage of a highly centralized security governance model in a large multinational organization?",
     "opts": [
       "Policies may not fit local realities",
-      "Policy consistency becomes impossible to achieve",
-      "Audit evidence cannot be collected centrally",
-      "Security expertise cannot be concentrated"
+      "Policy consistency degrades across business units",
+      "Audit evidence must be collected separately per region",
+      "Expertise becomes diluted"
     ],
     "a": [
       0
@@ -728,7 +728,7 @@
     "type": "single",
     "q": "Which pair of factors determines a risk's rating in most risk matrices?",
     "opts": [
-      "Likelihood and impact",
+      "Likelihood and impact ratings",
       "Cost and vendor reputation",
       "Patch availability and log volume",
       "Employee count and office location"
@@ -769,8 +769,8 @@
     "q": "After purchasing cyber insurance, an executive states the organization no longer needs to invest in security controls. Why is this reasoning flawed?",
     "opts": [
       "Insurance covers money, not the rest",
-      "Insurance policies are not legally enforceable",
-      "Insurance always costs more than any control",
+      "Insurance premiums rise faster than control investment",
+      "Insurance costs more than controls",
       "Insurers implement security controls on the customer's behalf"
     ],
     "a": [
@@ -868,7 +868,7 @@
     "type": "single",
     "q": "Which policy establishes security requirements at each stage of software development, including design review, secure coding, and testing gates?",
     "opts": [
-      "The SDLC policy",
+      "The secure development lifecycle policy",
       "The acceptable use policy",
       "The physical security standard",
       "The vendor NDA template"

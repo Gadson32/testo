@@ -331,7 +331,7 @@
       "Endpoint device control on USB classes",
       "Requiring longer and more complex passwords",
       "Enabling a DNS sinkhole for malicious domains",
-      "Adding a warning banner to the login screen"
+      "A warning banner at login"
     ],
     "a": [
       0
@@ -1191,7 +1191,7 @@
       "Downgrade; enforce a TLS 1.2 minimum",
       "Collision; switch from SHA-256 to SHA-512",
       "Replay; increase the session timeout value",
-      "Amplification; block outbound UDP port 53"
+      "Amplification; block UDP 53"
     ],
     "a": [
       0

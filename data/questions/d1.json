@@ -551,7 +551,7 @@
       "Hardware security module",
       "Trusted Platform Module in each web server",
       "Software key vault on the application server",
-      "Self-signed certificate store"
+      "A local key store"
     ],
     "a": [
       0
@@ -788,8 +788,8 @@
     "type": "single",
     "q": "A web server's private key is suspected stolen. After revoking the certificate, which mechanism lets clients check revocation status in real time with the least latency for the browser?",
     "opts": [
-      "OCSP stapling",
-      "Downloading the full certificate revocation list on each connection",
+      "OCSP stapling on the server",
+      "CRL download per connection",
       "Certificate pinning",
       "Shortening the certificate's key length"
     ],
@@ -809,7 +809,7 @@
     "q": "An internal monitoring tool uses a self-signed certificate, and staff have been trained to click through the browser warning. What is the PRIMARY security risk of this practice?",
     "opts": [
       "Users learn to click through certificate warnings",
-      "Self-signed certificates cannot encrypt session traffic",
+      "Self-signed certificates use weaker cipher suites than CA-issued ones",
       "Self-signed certificates expire within twenty-four hours",
       "Self-signed certificates disable TLS 1.3 negotiation"
     ],
@@ -829,7 +829,7 @@
     "q": "In a hierarchical PKI, why is the root CA typically kept offline while intermediate CAs issue end-entity certificates?",
     "opts": [
       "A compromised intermediate can be revoked and reissued",
-      "Offline root authorities issue end-entity certificates faster",
+      "Offline roots issue certificates faster",
       "Intermediate authorities do not require their own private keys",
       "Root authorities are technically unable to sign certificates"
     ],
@@ -1351,7 +1351,7 @@
     "q": "A development team needs realistic data in a test environment but must guarantee that no production customer can be re-identified. Which approach BEST satisfies both requirements?",
     "opts": [
       "Generate masked or synthetic test data",
-      "Copy the production database and rely on NDAs",
+      "Copy production data under NDA",
       "Encrypt the production copy and give devs the key",
       "Restrict the test environment to internal addresses"
     ],

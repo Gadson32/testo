@@ -49,7 +49,7 @@
     "q": "What is the PRIMARY purpose of the lessons learned phase?",
     "opts": [
       "Identify improvements and assign owners",
-      "Determine which employee should be disciplined",
+      "Decide who to discipline",
       "Produce a press release describing the incident",
       "Close the incident ticket as quickly as possible"
     ],
@@ -111,7 +111,7 @@
       "It proves continuous accountable control",
       "It speeds up the forensic imaging process",
       "It encrypts the evidence automatically",
-      "It eliminates the need to hash the evidence"
+      "It substitutes for hashing when originals are preserved"
     ],
     "a": [
       0
@@ -251,7 +251,7 @@
       "Firewall or flow logs",
       "The organization's data classification policy",
       "Employee training completion records",
-      "The physical badge access log"
+      "Badge access logs"
     ],
     "a": [
       0
@@ -290,7 +290,7 @@
     "opts": [
       "When payload content is needed",
       "When counting how many devices are on the network",
-      "When verifying that backups completed",
+      "When verifying backups",
       "When checking user training compliance"
     ],
     "a": [
@@ -329,9 +329,9 @@
     "q": "Why is accurate time synchronization across systems critical to investigations?",
     "opts": [
       "Events cannot be ordered reliably",
-      "It reduces the storage required for logs",
+      "It reduces log storage",
       "It encrypts log data in transit automatically",
-      "It eliminates the need for centralized logging"
+      "It allows logs to remain on their originating hosts"
     ],
     "a": [
       0
@@ -449,9 +449,9 @@
     "q": "Which risk is MOST associated with heavy reliance on a single orchestration platform for security operations?",
     "opts": [
       "It becomes a single point of failure",
-      "It eliminates the need for logging",
-      "It guarantees slower incident response",
-      "It prevents the use of APIs"
+      "It reduces logging",
+      "It slows incident response during high alert volume",
+      "It limits integration to vendor-supported APIs"
     ],
     "a": [
       0
@@ -469,7 +469,7 @@
     "q": "Which control BEST prevents insecure code from reaching production in a CI/CD pipeline?",
     "opts": [
       "Automated security gates in the pipeline",
-      "A monthly manual code review after deployment",
+      "Monthly manual code review",
       "Allowing developers to bypass checks when deadlines are tight",
       "Scanning only the production environment after release"
     ],
@@ -489,8 +489,8 @@
     "q": "A SOAR playbook enriches an alert with asset and user context, opens a ticket, and notifies the on-call analyst. Which benefit does this MOST directly provide?",
     "opts": [
       "Faster, consistent alert handling",
-      "Elimination of the need for detection rules",
-      "Guaranteed prevention of all incidents",
+      "Fewer detection rules",
+      "Prevention of incidents before they reach an analyst",
       "Reduced requirement for asset inventory accuracy"
     ],
     "a": [
@@ -511,7 +511,7 @@
       "Technical debt and support risk",
       "Improved employee retention",
       "Reduced operational complexity",
-      "Guaranteed long-term cost savings"
+      "Lower long-term operating cost"
     ],
     "a": [
       0
@@ -551,7 +551,7 @@
       "Close it and tune the detection",
       "Escalate it to a major incident for visibility",
       "Preserve forensic images of all involved systems indefinitely",
-      "Notify regulators of a potential breach"
+      "Notify regulators of a breach"
     ],
     "a": [
       0
@@ -671,7 +671,7 @@
       "Scoped credentials in a secret manager",
       "Use a single administrative API key shared across all integrations",
       "Embed API keys directly in scripts stored in the repository",
-      "Disable logging on API calls to reduce noise"
+      "Disable API call logging"
     ],
     "a": [
       0
@@ -749,7 +749,7 @@
     "q": "What should a forensic report contain to be defensible?",
     "opts": [
       "Methodology, hashes, findings, conclusions",
-      "Only the analyst's conclusions, to keep it concise",
+      "Conclusions only",
       "Speculation about the attacker's identity and motives",
       "Recommendations for disciplinary action against employees"
     ],
@@ -769,9 +769,9 @@
     "q": "Which is the PRIMARY investigative value of automated recurring reports?",
     "opts": [
       "They establish trends and baselines",
-      "They replace the need for real-time alerting",
-      "They guarantee regulatory compliance",
-      "They eliminate the need for analyst judgment"
+      "They replace real-time alerts",
+      "They satisfy regulatory evidence requirements",
+      "They standardize analyst judgment across shifts"
     ],
     "a": [
       0
@@ -808,7 +808,7 @@
     "type": "single",
     "q": "An analyst suspects data exfiltration over DNS. Which data source is MOST useful?",
     "opts": [
-      "DNS query logs",
+      "DNS query logs from the resolver",
       "Printer spooler logs",
       "Backup job completion reports",
       "Badge reader entry logs"

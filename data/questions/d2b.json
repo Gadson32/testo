@@ -31,7 +31,7 @@
       "Isolate the host but leave it powered on",
       "Power the host off immediately to stop encryption",
       "Run a full antivirus scan and wait for results",
-      "Restore the file share from backup right away"
+      "Restore from backup now"
     ],
     "a": [
       0
@@ -69,7 +69,7 @@
     "q": "Endpoints repeatedly drift from the approved security baseline because users disable the host firewall. Which mitigation technique addresses this?",
     "opts": [
       "Automated configuration enforcement",
-      "Monthly manual spot checks by the help desk",
+      "Monthly manual spot checks",
       "Adding a note to the acceptable use policy",
       "Rotating device names on a quarterly basis"
     ],
@@ -369,7 +369,7 @@
     "q": "An attacker obtains a long-lived cloud access key committed to a public code repository and uses it to enumerate storage buckets. Which combination of mitigations is BEST?",
     "opts": [
       "Use short-lived federated credentials",
-      "Increase the access key length to 4096 bits",
+      "Longer access keys",
       "Move the repository to a different hosting provider",
       "Require complex passwords for the cloud console"
     ],
@@ -774,7 +774,7 @@
     "opts": [
       "CSRF; require anti-CSRF tokens",
       "Cross-site scripting; encode all output",
-      "Replay attack; extend session lifetime",
+      "Replay; longer sessions",
       "Privilege escalation; remove local admin rights"
     ],
     "a": [
@@ -795,7 +795,7 @@
       "Enforce SPF, DKIM, and DMARC policy",
       "Raise quotas and enable forwarding",
       "Require plain-text email reading",
-      "Disable spam filtering entirely"
+      "Publish an SPF record ending in a neutral qualifier"
     ],
     "a": [
       0
@@ -834,7 +834,7 @@
     "opts": [
       "Apply a recognized benchmark as code and scan continuously against it",
       "Have each administrator harden servers using personal checklists",
-      "Harden the first server and clone it, never scanning again",
+      "Harden a golden image once and clone it to all 200 servers",
       "Rely on the cloud provider's default image as sufficient"
     ],
     "a": [
@@ -934,7 +934,7 @@
     "q": "Which statement BEST describes the significance of the birthday attack in cryptography?",
     "opts": [
       "Collisions appear near 2^(n/2) attempts",
-      "It proves that longer passwords are unnecessary",
+      "Longer passwords are unneeded",
       "It allows recovery of an AES key from a single ciphertext block",
       "It permits forging a digital signature without any hash weakness"
     ],
@@ -955,7 +955,7 @@
     "opts": [
       "Tune rules and prioritize by criticality",
       "Hire additional analysts to read every alert",
-      "Disable the noisiest detection sources entirely",
+      "Raise the severity threshold so fewer alerts are generated",
       "Increase log retention so missed alerts can be found later"
     ],
     "a": [
@@ -1017,7 +1017,7 @@
       "Isolate, monitor, and document time-bound acceptance",
       "Accept the risk silently and revisit it after the replacement project",
       "Expose the host to the internet so vendors can support it remotely",
-      "Uninstall the endpoint agent to avoid compatibility issues"
+      "Uninstall the endpoint agent"
     ],
     "a": [
       0
@@ -1195,9 +1195,9 @@
     "q": "Which statement BEST expresses why layered mitigations are preferred over a single strong control?",
     "opts": [
       "Any single control can fail or be bypassed",
-      "Layered controls eliminate the need for monitoring",
-      "Multiple controls always cost less than one strong control",
-      "Layering guarantees that no incident can occur"
+      "Layers reduce control testing",
+      "Multiple inexpensive controls cost less than one strong control",
+      "Layering shifts residual risk onto the outermost control"
     ],
     "a": [
       0

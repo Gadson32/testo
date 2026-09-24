@@ -11,7 +11,7 @@
       "Establish, deploy, then maintain",
       "Deploy, then document, then discard",
       "Maintain, then baseline after a breach",
-      "Establish once and never revise it"
+      "Establish once and inherit it for all future systems"
     ],
     "a": [
       0
@@ -29,7 +29,7 @@
     "q": "Which action is part of hardening a network switch?",
     "opts": [
       "Disable unused ports and services",
-      "Enable Telnet for faster troubleshooting",
+      "Enable Telnet access",
       "Configure all ports as trunk ports for flexibility",
       "Leave the default SNMP community strings for compatibility"
     ],
@@ -69,7 +69,7 @@
     "q": "Which improvement does WPA3-Personal provide over WPA2-Personal?",
     "opts": [
       "SAE replaces the WPA2 handshake",
-      "It removes the need for any passphrase",
+      "It removes the passphrase",
       "It reduces the key length to improve performance on IoT devices",
       "It disables management frame protection to improve compatibility"
     ],
@@ -210,8 +210,8 @@
     "opts": [
       "Endpoints can verify publisher identity",
       "Signed code runs measurably faster",
-      "Signing encrypts the application so competitors cannot read it",
-      "Signing eliminates the need for vulnerability scanning"
+      "Signing obfuscates the application against reverse engineering",
+      "Signing satisfies supply chain dependency scanning requirements"
     ],
     "a": [
       0
@@ -249,7 +249,7 @@
     "q": "Why is a complete and accurate asset inventory considered foundational to security operations?",
     "opts": [
       "You cannot protect unknown assets",
-      "It reduces the cost of hardware purchases",
+      "It reduces hardware cost",
       "It replaces the need for vulnerability scanning",
       "It satisfies all regulatory requirements by itself"
     ],
@@ -350,7 +350,7 @@
     "opts": [
       "CVE identifies; CVSS scores severity",
       "CVE rates severity; CVSS assigns the identifier",
-      "Both are proprietary vendor scoring systems",
+      "Both are vendor systems",
       "CVE measures exploitability while CVSS lists affected products"
     ],
     "a": [
@@ -530,7 +530,7 @@
     "opts": [
       "Software composition analysis",
       "Network intrusion detection signatures",
-      "A quarterly external penetration test",
+      "Quarterly pen testing",
       "Endpoint antivirus scanning of the build server"
     ],
     "a": [
@@ -709,9 +709,9 @@
     "q": "Why does asset management require an assigned owner for each system?",
     "opts": [
       "An accountable owner makes risk decisions",
-      "Ownership records reduce hardware depreciation",
+      "Ownership reduces depreciation",
       "Owners physically maintain the hardware themselves",
-      "Ownership eliminates the need for classification"
+      "Ownership assigns the classification level automatically"
     ],
     "a": [
       0
@@ -731,7 +731,7 @@
       "Formally accept the residual risk",
       "Ignore the finding until the next scan cycle",
       "Remove the system from the asset inventory",
-      "Transfer responsibility to the help desk"
+      "Hand it to the help desk"
     ],
     "a": [
       0
@@ -929,7 +929,7 @@
     "q": "A hardening baseline for web servers should require which of the following?",
     "opts": [
       "TLS 1.2+ with HSTS enabled",
-      "SSLv3 support for older clients",
+      "SSLv3 for older clients",
       "HTTP available alongside HTTPS with no redirect",
       "Directory listing enabled for troubleshooting"
     ],
@@ -970,7 +970,7 @@
     "opts": [
       "Isolate, monitor, and patch on vendor cadence",
       "Install a full endpoint protection suite on each device",
-      "Enable automatic updates from any available source",
+      "Enable automatic updates",
       "Grant clinical staff administrative access for faster troubleshooting"
     ],
     "a": [

@@ -50,8 +50,8 @@
     "opts": [
       "Forwarded copies survive host compromise",
       "Central storage uses less total disk space than local storage",
-      "Local logs cannot record security events",
-      "Central logging removes the need for time synchronization"
+      "Local logs lack detail",
+      "Central logging normalizes timestamps automatically"
     ],
     "a": [
       0
@@ -689,8 +689,8 @@
     "q": "A DLP deployment blocks so many legitimate business emails that staff begin using personal accounts. What is the BEST corrective approach?",
     "opts": [
       "Tune with classification and exceptions",
-      "Disable DLP entirely to restore productivity",
-      "Block all outbound email attachments permanently",
+      "Switch DLP to alert-only",
+      "Extend the blocking policy to personal webmail domains",
       "Ignore the personal email usage since DLP is working as designed"
     ],
     "a": [
@@ -730,7 +730,7 @@
     "opts": [
       "Agents are deeper; agentless is easier",
       "Agents fail when a host is off-network",
-      "Agentless always gives more detail",
+      "Agentless collection provides deeper host telemetry",
       "Agents replace network monitoring"
     ],
     "a": [
@@ -791,7 +791,7 @@
       "Non-interactive, scoped, and rotated",
       "Domain admin rights to avoid errors",
       "One shared account for all apps",
-      "Never-expiring documented passwords"
+      "Documented passwords rotated annually by the owner"
     ],
     "a": [
       0

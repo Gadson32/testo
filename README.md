@@ -1,8 +1,9 @@
 # Security+ Range — SY0-701 exam trainer
 
 A self-contained study app for the **CompTIA Security+ SY0-701** exam: 520 original,
-scenario-driven questions with full explanations, an exam simulator, and spaced repetition
-on everything you miss.
+scenario-driven questions plus 16 performance-based items, full explanations, a bootcamp
+curriculum, 134 recall flashcards, an exam simulator, and spaced repetition on everything
+you miss.
 
 Open `dist/index.html` in any browser. No server, no build step required to use it, no network
 calls except the web font.
@@ -86,12 +87,59 @@ The build tags matching questions with `hy` and fails if a listed topic matches 
   no feedback until you submit. A 45-question half exam is also available.
 - **Weak drill** — Leitner spaced repetition. Miss a question and it enters box 1 and returns
   immediately; each correct answer promotes it (1 day → 3 days → 7 days) and a miss knocks it
-  back to box 1. Items graduate out after box 4.
+  back to box 1. Items graduate out after box 4. Each set also mixes in unseen questions from
+  the same objectives as what's due, so recall has to transfer to different wording, not just
+  the memorized phrasing of the one item you got wrong.
+- **Flashcards** — five self-graded decks (ports & protocols, acronyms, crypto quick recall,
+  frameworks/laws/roles, sequences & numbers) covering the recall-only facts the exam expects
+  verbatim. 134 cards. Weakest-first ordering, missed cards repeat before the deck ends, and
+  per-card mastery persists between sessions.
 - **Flagged** — anything you marked with `F` during a set.
 - **History** — every completed set with per-domain breakdown.
 
-Keyboard: `1`–`6` select an answer, `Enter` submit/next, `F` flag. Outside a quiz, `1`–`8`
-switch pages.
+Keyboard: `1`–`6` select an answer, `Enter` submit/next, `F` flag, `Esc` closes the exam review
+modal. Outside a quiz, `0`–`9` switch pages (`0` is Flashcards).
+
+## Explanation depth
+
+Every graded answer — practice or exam review — now shows more than the one-paragraph
+explanation:
+
+- **Objective context.** The exact CompTIA outline text for that question's objective code
+  (e.g. *"1.4 — Explain the importance of using appropriate cryptographic solutions"*), pulled
+  straight from `data/objectives.json` so it can never drift out of sync with the real exam
+  blueprint or be paraphrased inaccurately.
+- **Inline glossary.** Any acronym from the flashcard decks that appears in the question,
+  explanation, or exam tip (AES, RSA, PKI, GDPR, ...) becomes a clickable chip. Click it to see
+  the definition inline, without leaving the question. Matching is exact-case and whole-word
+  only against a curated set of unambiguous acronyms — no bare port numbers or multi-word terms,
+  to avoid false hits in ordinary prose. About 23% of questions surface at least one term.
+- **Practice more on this objective.** A one-click button starts an 8-question set filtered to
+  the same objective code, using the same never-seen-first weighting as Smart practice — so a
+  shaky answer turns immediately into more reps on exactly that objective instead of waiting
+  for it to resurface on its own.
+
+## Progress that actually persists
+
+If progress seems to vanish between visits, it is almost never the app losing data — the save
+path writes to `localStorage` after every single answer and that has been tested to survive a
+reload. The two real causes are both about *where* the page is running:
+
+1. **An embedded preview** (for example, a hosted Artifact link opened inside another site's
+   iframe) can be handed a fresh, unpersisted storage area on every load, or have its storage
+   blocked by the embedding page's sandbox. Progress written there can vanish the next time you
+   open the link, through no fault of the save code.
+2. **The browser is blocking local storage outright** — strict privacy settings, private
+   browsing, or an extension that clears site data.
+
+The app now detects both conditions on load (`isEmbedded()` checks whether it is running inside
+a frame, `storageWorks()` does a real read/write roundtrip) and shows a banner explaining what is
+happening, with two one-click fixes: **Download this app** saves the current page as a
+self-contained `.html` file you open directly — a real, stable origin under your control, not an
+embedded preview — and **Copy my progress now** puts your current progress on the clipboard so
+you can paste it into Import after opening that downloaded copy. Settings also shows a live
+storage-status line (✓ working / ⚠ embedded / ⚠ blocked) so you can check at any time rather than
+finding out only after progress is gone.
 
 ## Red-team findings
 
@@ -112,12 +160,41 @@ a second pass of 83 questions rebalanced the option lengths.
 | Always picks longest option | 74.6% | **24.0%** | ~25% |
 | Always picks shortest option | — | **40.0%** | ~25% |
 
-`build.mjs` now runs both bots on every build and fails if either exceeds 50%, so the bias
-cannot creep back in. **Known residual:** the shortest-option bot still sits at 40%. Correct
-answers are naturally more concise than distractors that need qualifying clauses to stay
-plausible; the remaining gaps are 7–8 characters, below what a reader treats as a signal.
+`build.mjs` now runs both bots on every build and fails if either exceeds 35%.
 
-**Code defects found and fixed:**
+**Second pass, two more tells found.** Measuring differently surfaced two tells the length
+bots didn't catch:
+
+- **Absolute language.** Distractors reached for words like *always*, *never*, *eliminates*,
+  *guarantees*, and *cannot*. Across 50 hits, 92.6% were wrong answers — a bot that discards
+  every option containing one of those words, without reading the question, scored 92.6%.
+  37 distractors were rewritten as plausible misconceptions instead of straw men (a few
+  legitimate exam terms — *impossible travel*, *always-on VPN* — are excluded from the
+  heuristic). The tell is now at 0%: none of the surviving hits are wrong answers.
+- **Stem-keyword overlap.** The correct option echoing the most words from the question stem
+  was right 34.9% of the time against decidable items (random ~25%). Not severe enough to
+  rewrite wholesale, but a build guard now fails above 45% so it can't drift upward.
+
+The shortest-option bot (40.0% after the first pass) was also revisited: 74 more questions had
+their distractors rebalanced to match the correct answer's length and register.
+
+| Attacker | Round 1 | Round 2 | Random baseline |
+|---|---:|---:|---:|
+| Always picks longest option | 74.6% → 24.0% | **23.8%** | ~25% |
+| Always picks shortest option | — → 40.0% | **27.1%** | ~25% |
+| Discards every absolute-language option | *(not measured)* | **0.0%** | n/a |
+| Picks highest stem-keyword overlap | *(not measured)* | 34.9% (guarded < 45%) | ~25% |
+
+`build.mjs` runs all four bots on every build and fails the build if any crosses its threshold.
+
+**Code defects found and fixed (this round):**
+
+- The exam review modal (`#navPanel`) had no keyboard dismissal — `Esc` now closes it.
+- Re-drilling a missed question returned the *identical* item, which teaches the wording
+  rather than the concept. Weak drill now pairs each due item with unseen questions on the
+  same objective, so recall has to transfer to different phrasing.
+
+**Earlier round — code defects found and fixed:**
 
 - A set's countdown timer kept running after navigating away, and could yank you to a results
   screen from another page. Timers are now cleared on exit and on starting a new set.
@@ -139,8 +216,11 @@ plausible; the remaining gaps are 7–8 characters, below what a reader treats a
 Results now also show an approximate CompTIA-style scaled score (100–900, 750 to pass),
 labelled as an estimate — the real exam weights items and includes unscored trial questions.
 
-**Still open:** per-topic depth is thin — most topics carry a single question, so re-drilling a
-topic returns the same item.
+**Still open:** per-topic depth is thin — 96% of topics carry exactly one multiple-choice
+question, so a student who wants a *different* question on the same narrow topic (as opposed
+to the same topic's objective, which weak-drill siblings now cover) won't find one. Explanations
+remain self-reviewed with no CompTIA-certified human validation — cross-check against
+Professor Messer or an official study guide before trusting an explanation you're unsure of.
 
 ## Alignment with the live exam
 
@@ -217,3 +297,20 @@ Question shape:
 `d` is the domain (1–5), `a` holds the correct option indices, and `type` is `single` or `multi`.
 Answer options are shuffled at runtime, so the correct answer's position in the file does not
 matter.
+
+## Self-test
+
+```
+node build.mjs && node tools/selftest.mjs
+```
+
+`build.mjs` guards the *content* — schema, coverage, and the four answer-bias bots above.
+`tools/selftest.mjs` drives the *built app* end to end with Playwright: every page renders,
+practice/exam/PBQ/bootcamp/flashcard sessions can be completed, the exam review modal opens,
+warns on blanks, and closes on `Esc`, weak-drill siblings are distinct from the due items and
+share an objective with them, every graded answer shows its objective context and offers a
+working "practice more" jump, glossary chips reveal and collapse correctly, the embedded/blocked
+storage banner appears and clears under the right conditions and its download button produces a
+real file, progress survives a reload, the theme toggle works, and nothing throws. ~90–110
+checks depending on which random items are drawn, run to run — all green, confirmed stable
+across repeated runs.

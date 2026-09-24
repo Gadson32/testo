@@ -30,7 +30,7 @@
     "opts": [
       "Diligence investigates; care acts",
       "Due care is research and due diligence is action",
-      "Both terms refer only to financial audits",
+      "Both refer to audits",
       "Due diligence applies only to vendors and due care only to employees"
     ],
     "a": [
@@ -89,9 +89,9 @@
     "q": "Why is a data inventory foundational to privacy compliance?",
     "opts": [
       "Requests need a data location map",
-      "It reduces the cost of storage hardware",
-      "It replaces the need for encryption",
-      "It eliminates the need for a privacy policy"
+      "It reduces storage cost",
+      "It satisfies the encryption requirement for regulated data",
+      "It serves as the organization's published privacy policy"
     ],
     "a": [
       0
@@ -169,7 +169,7 @@
     "q": "Why should the internal audit function report to an audit committee rather than to the CIO?",
     "opts": [
       "It preserves auditor objectivity",
-      "The CIO cannot read audit reports",
+      "The CIO lacks authority to act on audit findings",
       "The committee performs the testing",
       "It lowers the cost of auditing"
     ],
@@ -431,7 +431,7 @@
       "Verify through a known separate channel",
       "Comply quickly because executives outrank finance staff",
       "Ask the caller to email confirmation from the address they provide",
-      "Complete the transfer and report it afterward"
+      "Transfer now, report later"
     ],
     "a": [
       0
@@ -471,7 +471,7 @@
       "The customer organization",
       "The SaaS provider, since the data resides on its infrastructure",
       "Whichever party holds the encryption keys",
-      "The cloud data center operator"
+      "The data center operator"
     ],
     "a": [
       0
@@ -509,9 +509,9 @@
     "q": "Which benefit does compliance automation provide beyond reducing manual effort?",
     "opts": [
       "Continuous timestamped evidence",
-      "Elimination of the need for policies",
-      "Guaranteed passing of every external audit",
-      "Removal of the requirement for management oversight"
+      "Fewer written policies",
+      "Direct approval of controls by external auditors",
+      "Reduced management involvement in control review"
     ],
     "a": [
       0
@@ -530,7 +530,7 @@
     "opts": [
       "Policy states intent; procedure gives steps",
       "Procedures set direction and policies list the steps",
-      "Policies and procedures are both optional guidance",
+      "Both are optional guidance",
       "Procedures must be approved by regulators before use"
     ],
     "a": [
@@ -569,7 +569,7 @@
     "q": "Which contractual provision is MOST important to include for the end of a cloud vendor relationship?",
     "opts": [
       "Data return and certified deletion",
-      "A discount on the final month's invoice",
+      "A final-month discount",
       "A commitment to provide marketing references",
       "An option to extend the contract automatically"
     ],
@@ -589,9 +589,9 @@
     "q": "What is the PRIMARY value of an internal self-assessment despite its lack of independence?",
     "opts": [
       "It finds gaps before an audit does",
-      "It can replace an external audit",
-      "It guarantees a clean audit",
-      "It removes the need to monitor"
+      "It satisfies the external audit requirement",
+      "It predicts the external audit outcome",
+      "It reduces the need for continuous monitoring"
     ],
     "a": [
       0
@@ -790,8 +790,8 @@
     "opts": [
       "Align security with business objectives",
       "Ensure the security team can operate without management involvement",
-      "Guarantee that no security incidents will occur",
-      "Replace technical controls with documentation"
+      "Define the technical standards the security team enforces",
+      "Replace controls with documents"
     ],
     "a": [
       0

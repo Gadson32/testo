@@ -136,11 +136,74 @@ function lengthBot(pickLongest) {
 }
 const longBot = lengthBot(true);
 const shortBot = lengthBot(false);
-const BIAS_FAIL = 50;
+const BIAS_FAIL = 35;
 if (longBot > BIAS_FAIL || shortBot > BIAS_FAIL) {
   console.error(
     `\n✗ answer-length bias too high (longest ${longBot.toFixed(1)}%, shortest ${shortBot.toFixed(1)}%).` +
       `\n  A bot that never reads the question should score near 25%. Rebalance option lengths.`
+  );
+  process.exit(1);
+}
+
+// ---- absolute-language bias guard ----
+// Writers reach for "always / never / eliminates" when inventing wrong answers, which
+// lets a student discard those options without knowing the material. "Impossible travel"
+// and "always-on VPN" are real SY0-701 terms, so they are excluded from the heuristic.
+const ABSOLUTE = /\b(always|entirely|guarantees?|guaranteed|eliminates?|impossible|cannot|never)\b/i;
+function absoluteBot() {
+  let wrong = 0;
+  let right = 0;
+  for (const q of questions) {
+    if (q.pbq) continue;
+    q.opts.forEach((o, i) => {
+      if (!ABSOLUTE.test(o.replace(/impossible travel|always-on/gi, ""))) return;
+      if (q.a.includes(i)) right++;
+      else wrong++;
+    });
+  }
+  return { wrong, right, pct: wrong + right ? (wrong / (wrong + right)) * 100 : 50 };
+}
+const absBot = absoluteBot();
+if (absBot.wrong + absBot.right >= 10 && absBot.pct > 75) {
+  console.error(
+    `\n✗ absolute-language bias: ${absBot.pct.toFixed(1)}% of options containing an absolute are wrong answers.` +
+      `\n  Eliminating every "always/never" option would score far above chance. Rewrite those distractors` +
+      `\n  as plausible misconceptions instead.`
+  );
+  process.exit(1);
+}
+
+// ---- stem-keyword overlap guard ----
+// If the correct option reliably repeats the most words from the question stem, a student
+// can word-match their way to a pass.
+const OVERLAP_STOP = new Set(
+  ("which that this with from their them when what would should most best first following " +
+    "scenario organization company security also into only each other after before been must " +
+    "have does some").split(" ")
+);
+function overlapBot() {
+  const words = (s) =>
+    s.toLowerCase().replace(/[^a-z0-9 ]/g, " ").split(/\s+/)
+      .filter((w) => w.length > 3 && !OVERLAP_STOP.has(w));
+  let hits = 0;
+  let decidable = 0;
+  for (const q of questions) {
+    if (q.pbq || q.a.length !== 1) continue;
+    const stem = new Set(words(q.q));
+    const scores = q.opts.map((o) => words(o).filter((w) => stem.has(w)).length);
+    const max = Math.max(...scores);
+    const top = scores.map((v, i) => [v, i]).filter((x) => x[0] === max);
+    if (top.length > 1) continue;
+    decidable++;
+    if (top[0][1] === q.a[0]) hits++;
+  }
+  return decidable ? (hits / decidable) * 100 : 25;
+}
+const overBot = overlapBot();
+if (overBot > 45) {
+  console.error(
+    `\n✗ stem-keyword overlap bias: ${overBot.toFixed(1)}% (random ~25%).` +
+      `\n  The correct option echoes the stem's wording too often. Vary the vocabulary.`
   );
   process.exit(1);
 }
@@ -222,6 +285,34 @@ const BC = JSON.parse(readFileSync(join(root, "data", "bootcamp.json"), "utf8"))
   }
 }
 
+// ---- flashcard decks ----
+const fcMarker = "/*__FC__*/{}";
+const FC = JSON.parse(readFileSync(join(root, "data", "flashcards.json"), "utf8"));
+{
+  const errs = [];
+  const seenDeck = new Set();
+  for (const d of FC.decks) {
+    if (!d.id || !d.name) errs.push(`deck ${d.id || "?"}: missing id or name`);
+    if (seenDeck.has(d.id)) errs.push(`duplicate deck id ${d.id}`);
+    seenDeck.add(d.id);
+    if (!Array.isArray(d.cards) || !d.cards.length) errs.push(`${d.id}: no cards`);
+    const fronts = new Set();
+    for (const c of d.cards || []) {
+      if (!Array.isArray(c) || c.length !== 2) { errs.push(`${d.id}: card must be [front, back]`); continue; }
+      const [f, b] = c;
+      if (!f || !b) errs.push(`${d.id}: card has an empty side`);
+      if (fronts.has(f)) errs.push(`${d.id}: duplicate front "${f}"`);
+      fronts.add(f);
+      if (String(b).length < 12) errs.push(`${d.id}: back of "${f}" is too thin to teach anything`);
+    }
+  }
+  if (errs.length) {
+    console.error(`\n✗ ${errs.length} problem(s) in the flashcard decks:\n`);
+    for (const e of errs) console.error("  - " + e);
+    process.exit(1);
+  }
+}
+
 const objMarker = "/*__OBJ__*/{}";
 const OBJDOC = JSON.parse(readFileSync(join(root, "data", "objectives.json"), "utf8"));
 if (!html.includes(bcMarker)) {
@@ -237,11 +328,16 @@ if (!html.includes(hyMarker)) {
   console.error(`✗ template is missing the ${hyMarker} injection marker`);
   process.exit(1);
 }
+if (!html.includes(fcMarker)) {
+  console.error(`✗ template is missing the ${fcMarker} injection marker`);
+  process.exit(1);
+}
 const out = html
   .replace(marker, inlined)
   .replace(hyMarker, JSON.stringify(clusters).replace(/</g, "\\u003C"))
   .replace(objMarker, JSON.stringify(OBJDOC.objectives).replace(/</g, "\\u003C"))
-  .replace(bcMarker, JSON.stringify(BC).replace(/</g, "\\u003C"));
+  .replace(bcMarker, JSON.stringify(BC).replace(/</g, "\\u003C"))
+  .replace(fcMarker, JSON.stringify(FC).replace(/</g, "\\u003C"));
 mkdirSync(outDir, { recursive: true });
 writeFileSync(join(outDir, "index.html"), out);
 
@@ -256,7 +352,9 @@ for (const d of Object.keys(DOMAINS)) {
 console.log(`✓ bootcamp: ${BC.modules.length} modules across ${BC.levels.length} levels, ` +
   `${BC.modules.reduce((n, m) => n + m.lesson.length, 0)} lessons, ` +
   `${BC.modules.reduce((n, m) => n + m.terms.length, 0)} key terms`);
+console.log(`✓ flashcards: ${FC.decks.length} decks, ${FC.decks.reduce((n, d) => n + d.cards.length, 0)} cards`);
 console.log(`✓ performance-based items: ${questions.filter((q) => q.pbq).length} (order + match)`);
 console.log(`✓ length-bias bots: longest ${longBot.toFixed(1)}%, shortest ${shortBot.toFixed(1)}% (random ~25%)`);
+console.log(`✓ tell bots: absolutes ${absBot.pct.toFixed(1)}% wrong-side, stem-overlap ${overBot.toFixed(1)}% (random ~25%)`);
 console.log(`✓ 80/20 core: ${hyTotal} questions (${((hyTotal / questions.length) * 100).toFixed(1)}% of bank) across ${clusters.length} clusters`);
 console.log(`✓ wrote dist/index.html (${kb} KB)`);

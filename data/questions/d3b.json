@@ -169,7 +169,7 @@
     "q": "Which control set BEST limits the number of people who can read a highly confidential merger document stored on a collaboration platform?",
     "opts": [
       "Role-based permissions with reviews",
-      "A password on the document shared by email",
+      "A password on the document",
       "Watermarking the document with the company logo",
       "Moving the document to a personal cloud drive"
     ],
@@ -209,9 +209,9 @@
     "q": "Which statement correctly distinguishes load balancing from clustering?",
     "opts": [
       "Load balancing distributes; clustering shares state",
-      "Load balancing requires shared storage; clustering never does",
-      "Clustering only works for stateless web servers",
-      "Load balancing provides no availability benefit"
+      "Load balancing requires shared storage while clustering does not",
+      "Clustering applies to web tiers and load balancing to databases",
+      "Load balancing adds no availability"
     ],
     "a": [
       0
@@ -269,9 +269,9 @@
     "q": "After a vulnerability in a single hypervisor product took down every virtualized workload, the architecture team recommends platform diversity. What is the PRIMARY benefit?",
     "opts": [
       "No single vendor flaw affects all",
-      "Licensing costs are always reduced",
+      "Licensing and support costs are reduced",
       "Staff training requirements decrease",
-      "Patching becomes unnecessary entirely"
+      "Patching cycles can be extended across platforms"
     ],
     "a": [
       0
@@ -309,7 +309,7 @@
     "q": "Which test provides the strongest assurance that a recovery site can carry production load, while still allowing rollback if problems appear?",
     "opts": [
       "A controlled failover with rollback",
-      "A tabletop discussion of the failover steps",
+      "A tabletop discussion",
       "A review of the recovery site's asset inventory",
       "Verifying that backup jobs completed successfully"
     ],
@@ -369,9 +369,9 @@
     "q": "Why is a virtual machine snapshot NOT an adequate substitute for a backup?",
     "opts": [
       "They share fate with the same storage",
-      "Snapshots cannot be created while a VM is running",
-      "Snapshots always take longer to create than full backups",
-      "Snapshots automatically encrypt themselves"
+      "Snapshots require the VM to be powered off",
+      "Snapshots take longer to create than full backups",
+      "Snapshots self-encrypt"
     ],
     "a": [
       0
@@ -549,7 +549,7 @@
     "q": "An organization discovers unclassified sensitive files scattered across shares with no ownership. Which action should be taken FIRST?",
     "opts": [
       "Discover and classify the data",
-      "Encrypt every file share immediately",
+      "Encrypt every share",
       "Delete all files older than one year",
       "Grant read access to all employees to improve collaboration"
     ],
@@ -591,7 +591,7 @@
       "One active node, one synchronized standby",
       "Both nodes process traffic simultaneously and share the load",
       "Both nodes are powered off until a disaster is declared",
-      "Traffic alternates between nodes every 24 hours"
+      "Nodes alternate daily"
     ],
     "a": [
       0
@@ -610,7 +610,7 @@
     "opts": [
       "A DLP policy inspecting outbound mail",
       "A host-based firewall rule blocking port 25",
-      "A quarterly access review of the file share",
+      "A quarterly access review",
       "Full-disk encryption on the employee's laptop"
     ],
     "a": [
