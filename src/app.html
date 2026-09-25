@@ -1012,8 +1012,22 @@ function storageWorks(){
     return ok;
   }catch(e){ return false; }
 }
-function downloadStandalone(){
+async function downloadStandalone(){
   const html = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
+  // Inside the Artifact viewer a page cannot trigger a browser download directly —
+  // a plain <a download> silently does nothing there. Saves must go through the
+  // platform's downloads capability instead. Try that first; fall back to a normal
+  // browser download for every other context (a standalone opened file, or a viewer
+  // without the capability), where the capability simply is not present.
+  try{
+    const dl = window.claude ? await window.claude.use("downloads") : null;
+    if(dl){
+      await dl.save({filename: "security-plus-range.html", data: html});
+      return;
+    }
+  }catch(e){
+    if(e && e.code === "declined") return; // the viewer said no — do not fall back
+  }
   const blob = new Blob([html], {type:"text/html"});
   const url = URL.createObjectURL(blob);
   const a = document.createElement("a");
