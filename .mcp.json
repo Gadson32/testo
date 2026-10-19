@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "testo-local-model": {
+      "command": "python",
+      "args": ["mcp_server/server.py"]
+    }
+  }
+}
